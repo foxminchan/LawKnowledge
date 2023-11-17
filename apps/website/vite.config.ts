@@ -1,9 +1,7 @@
-import babel from 'vite-plugin-babel';
 import react from '@vitejs/plugin-react';
 import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { extname } from 'path';
 
 const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: 'prompt' as const,
@@ -91,23 +89,7 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [
-    babel({
-      babelConfig: {
-        babelrc: false,
-        configFile: false,
-        plugins: ['@babel/plugin-proposal-decorators'],
-        loader: (path: string) => {
-          if (extname(path) === '.jsx') {
-            return 'jsx';
-          }
-        },
-      },
-    }),
-    react(),
-    nxViteTsPaths(),
-    VitePWA(manifestForPlugIn),
-  ],
+  plugins: [react(), nxViteTsPaths(), VitePWA(manifestForPlugIn)],
 
   build: {
     minify: true,

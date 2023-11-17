@@ -3,8 +3,13 @@
   "targetDefaults": {
     "build": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "lint": {
       "cache": true,
@@ -17,15 +22,25 @@
     },
     "e2e": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": [
+        "default",
+        "^production"
+      ]
     },
     "@nx/vite:test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": [
+        "default",
+        "^production"
+      ]
     },
     "@nx/jest:jest": {
       "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ],
       "options": {
         "passWithNoTests": true
       },
@@ -38,7 +53,10 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -66,7 +84,14 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@nxlv/python:poetry-project": {
+      "projectNameAndRootFormat": "as-provided"
     }
   },
-  "nxCloudAccessToken": "OGU2MTRiNGItNGY5Yy00MzVhLTk5OWUtMzNkMDY1NjNlMzBhfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "OGU2MTRiNGItNGY5Yy00MzVhLTk5OWUtMzNkMDY1NjNlMzBhfHJlYWQtd3JpdGU=",
+  "plugins": [
+    "@nxlv/python",
+    "@nx-dotnet/core"
+  ]
 }
