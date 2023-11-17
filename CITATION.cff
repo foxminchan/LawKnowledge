@@ -1,0 +1,13 @@
+cff-version: 1.0.0
+title: "Law Knowledge: A legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database"
+message: >-
+  If you use this application, please cite it using these metadata.
+type: software
+authors:
+  - family-names: Nguyen
+    given-names: Xuan Nhan
+  - name: 'Contributors to Law Knowledge'
+repository-code: 'https://github.com/foxminchan/LawKnowledge'
+abstract: >-
+  This repository hosts an application that allows users to search for legal knowledge and ask questions about legal issues. The application is based on the legal document database of Vietnam and the legal code of Vietnam. The application is built using the Django framework and the PostgreSQL database.
+license: MIT

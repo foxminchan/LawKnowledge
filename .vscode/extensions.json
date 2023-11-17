@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "nrwl.angular-console",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "firsttris.vscode-jest-runner",
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets",
+    "sonarsource.sonarlint-vscode"
+  ]
+}
