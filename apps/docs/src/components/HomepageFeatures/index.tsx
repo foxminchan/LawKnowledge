@@ -1,55 +1,59 @@
-import React from 'react';
 import clsx from 'clsx';
-import styles from './styles.module.css';
+import React from 'react';
 
 type FeatureItem = {
+  id: number;
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  img: string;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    id: 1,
+    title: 'Knowledge Search',
+    img: require('@site/static/img/search.png').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Knowledge search and Q&A application based on Vietnam&apos;s legal
+        document database ⚖️
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    id: 2,
+    title: 'Lawyer Q&A',
+    img: require('@site/static/img/lawyer.png').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        A platform for lawyers to ask and answer questions related to legal
+        knowledge 🤓
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    id: 3,
+    title: 'Legal Document Management',
+    img: require('@site/static/img/law-book.png').default,
+    description: <>A platform for lawyers to manage their legal documents 📚</>,
   },
 ];
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Feature(feature: Readonly<FeatureItem>) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img
+          role="img"
+          loading="lazy"
+          src={feature.img}
+          alt={feature.title}
+          className="h-[200px] w-[200px]"
+        />
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3>{feature.title}</h3>
+        <p>{feature.description}</p>
       </div>
     </div>
   );
@@ -57,11 +61,11 @@ function Feature({ title, Svg, description }: FeatureItem) {
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
+    <section className="flex items-center w-full py-9">
       <div className="container">
         <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+          {FeatureList.map((props) => (
+            <Feature key={props.id} {...props} />
           ))}
         </div>
       </div>

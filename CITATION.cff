@@ -9,5 +9,5 @@ authors:
   - name: 'Contributors to Law Knowledge'
 repository-code: 'https://github.com/foxminchan/LawKnowledge'
 abstract: >-
-  This repository hosts an application that allows users to search for legal knowledge and ask questions about legal issues. The application is based on the legal document database of Vietnam and the legal code of Vietnam. The application is built using the Django framework and the PostgreSQL database.
+  This repository hosts an application that allows users to search for legal knowledge and ask questions about legal issues. The application is based on the legal document database of Vietnam and the legal code of Vietnam.
 license: MIT
