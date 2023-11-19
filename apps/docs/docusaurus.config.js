@@ -114,7 +114,7 @@ const config = {
           title: 'References',
           items: [
             {
-              label: 'Pháp điển',
+              label: 'Phap dien',
               href: 'https://phapdien.moj.gov.vn/',
             },
             {

@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React from 'react';
 
 type FeatureItem = {
@@ -41,14 +40,13 @@ const FeatureList: FeatureItem[] = [
 
 function Feature(feature: Readonly<FeatureItem>) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className="col col--4">
       <div className="text--center">
         <img
-          role="img"
           loading="lazy"
           src={feature.img}
           alt={feature.title}
-          className="h-[200px] w-[200px]"
+          className="h-[200px] w-[200px] transition ease-in-out delay-150 hover:scale-110 hover:-translate-y-1 duration-300"
         />
       </div>
       <div className="text--center padding-horiz--md">
@@ -59,7 +57,7 @@ function Feature(feature: Readonly<FeatureItem>) {
   );
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function HomepageFeatures() {
   return (
     <section className="flex items-center w-full py-9">
       <div className="container">
