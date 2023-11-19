@@ -73,16 +73,16 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-  - [🛠️ Prerequisites](#️-prerequisites)
-  - [🧑‍💻 Setup](#-setup)
-  - [🚀 Running](#-running)
-  - [🧪 Testing](#-testing)
+	- [🛠️ Prerequisites](#️-prerequisites)
+	- [🧑‍💻 Setup](#-setup)
+	- [🚀 Running](#-running)
+	- [🧪 Testing](#-testing)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-  - [📖 Contributing Guidelines](#-contributing-guidelines)
-  - [💁 Want to Help?](#-want-to-help)
-  - [🫂 Code of Conduct](#-code-of-conduct)
+	- [📖 Contributing Guidelines](#-contributing-guidelines)
+	- [💁 Want to Help?](#-want-to-help)
+	- [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -238,7 +238,7 @@ npx nx dep-graph
 
 # CI/CD
 
-(Coming soon)
+<img loading="lazy" src="./assets/images/cicd.png" alt="CI/CD" width="100%">
 
 # Contributing
 
@@ -262,7 +262,7 @@ Want to report a bug, contribute some code, or improve the documentation? Excell
 
 ## 🫂 Code of Conduct
 
-Help us keep Angular open and inclusive. Please read and follow our [Code of Conduct](.github/CODE_OF_CONDUCT.md).
+Help us keep Law Knowledge open and inclusive. Please read and follow our [Code of Conduct](.github/CODE_OF_CONDUCT.md).
 
 # Contributer
 
@@ -285,7 +285,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 			<td align="center" valign="top">
 					<img src="https://github.com/baohuy2k3.png?s=150" loading="lazy" width="150" height="150">
 	        <br>
-	        <a href="ttps://github.com/baohuy2k3">Bao Huy</a>
+	        <a href="https://github.com/baohuy2k3">Bao Huy</a>
 	        <p>
 	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=baohuy2k3" title="Developer">💻</a>
 						<a href="#data" title="Data">🔣</a>
