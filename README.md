@@ -73,16 +73,16 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-	- [🛠️ Prerequisites](#️-prerequisites)
-	- [🧑‍💻 Setup](#-setup)
-	- [🚀 Running](#-running)
-	- [🧪 Testing](#-testing)
+  - [🛠️ Prerequisites](#️-prerequisites)
+  - [🧑‍💻 Setup](#-setup)
+  - [🚀 Running](#-running)
+  - [🧪 Testing](#-testing)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-	- [📖 Contributing Guidelines](#-contributing-guidelines)
-	- [💁 Want to Help?](#-want-to-help)
-	- [🫂 Code of Conduct](#-code-of-conduct)
+  - [📖 Contributing Guidelines](#-contributing-guidelines)
+  - [💁 Want to Help?](#-want-to-help)
+  - [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -124,7 +124,7 @@ We used **Microservice Architecture** to build this project to make it easier to
 
 </p>
 
-<img loading="lazy" src="./assets/images/architecture.png" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/software-architecture.png" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -238,7 +238,7 @@ npx nx dep-graph
 
 # CI/CD
 
-<img loading="lazy" src="./assets/images/cicd.png" alt="CI/CD" width="100%">
+<img loading="lazy" src="./assets/images/software-cicd.png" alt="CI/CD" width="100%">
 
 # Contributing
 
