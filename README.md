@@ -73,16 +73,16 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-  - [🛠️ Prerequisites](#️-prerequisites)
-  - [🧑‍💻 Setup](#-setup)
-  - [🚀 Running](#-running)
-  - [🧪 Testing](#-testing)
+	- [🛠️ Prerequisites](#️-prerequisites)
+	- [🧑‍💻 Setup](#-setup)
+	- [🚀 Running](#-running)
+	- [🧪 Testing](#-testing)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-  - [📖 Contributing Guidelines](#-contributing-guidelines)
-  - [💁 Want to Help?](#-want-to-help)
-  - [🫂 Code of Conduct](#-code-of-conduct)
+	- [📖 Contributing Guidelines](#-contributing-guidelines)
+	- [💁 Want to Help?](#-want-to-help)
+	- [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -272,32 +272,32 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 	<table>
 		<tr>
 			<td align="center" valign="top">
-					<img loading="lazy" width="150" height="150" src="https://github.com/	foxminchan.png?s=150">
+					<img src="https://github.com/foxminchan.png?s=150" loading="lazy" width="150" height="150">
 	        <br>
 	        <a href="https://github.com/foxminchan">Xuan Nhan</a>
 	        <p>
-	          <a href="https://github.com/HutechCJ/ProfioApp/commits?	author=foxminchan" title="Developer">💻</a>
+	          <a href="https://github.com/HutechCJ/ProfioApp/commits?author=foxminchan" title="Developer">💻</a>
 	          <a href="#docs" title="Documentation">📖</a>
 	          <a href="#infra" title="Infrastructure">🚇</a>
 						<a href="#mentoring" title="Mentoring">🧑‍🏫</a>
 	        </p>
 			</td>
 			<td align="center" valign="top">
-					<img loading="lazy" width="150" height="150" src="https://github.com/	baohuy2k3.png?s=150">
+					<img src="https://github.com/baohuy2k3.png?s=150" loading="lazy" width="150" height="150">
 	        <br>
 	        <a href="ttps://github.com/baohuy2k3">Bao Huy</a>
 	        <p>
-	          <a href="https://github.com/foxminchan/LawKnowledge/commits?	author=baohuy2k3" title="Developer">💻</a>
+	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=baohuy2k3" title="Developer">💻</a>
 						<a href="#data" title="Data">🔣</a>
 						<a href="#design" title="Design">🎨</a>
 	        </p>
 			</td>
 			<td align="center" valign="top">
-					<img loading="lazy" width="150" height="150" src="https://github.com/	NguyenTriBaoThang.png?s=150">
+					<img src="https://github.com/NguyenTriBaoThang.png?s=150" loading="lazy" width="150" height="150">
 	        <br>
 	        <a href="https://github.com/NguyenTriBaoThang">Bao Thang</a>
 	        <p>
-	          <a href="https://github.com/foxminchan/LawKnowledge/commits?	author=NguyenTriBaoThang" title="Developer">💻</a>
+	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=NguyenTriBaoThang" title="Developer">💻</a>
 						<a href="#design" title="Design">🎨</a>
 	        </p>
 			</td>
