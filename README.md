@@ -262,10 +262,10 @@ Help us keep Angular open and inclusive. Please read and follow our [Code of Con
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key))
 
-<table>
+<table style="margin-left: auto; margin-right: auto;">
 	<tr>
 		<td align="center" valign="top">
-				<img loading="lazy" width="235" height="235" src="https://github.com/foxminchan.png?s=235">
+				<img loading="lazy" width="150" height="150" src="https://github.com/foxminchan.png?s=150">
         <br>
         <a href="https://github.com/foxminchan">Xuan Nhan</a>
         <p>
@@ -276,7 +276,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
         </p>
 		</td>
 		<td align="center" valign="top">
-				<img loading="lazy" width="235" height="235" src="https://github.com/baohuy2k3.png?s=235">
+				<img loading="lazy" width="150" height="150" src="https://github.com/baohuy2k3.png?s=150">
         <br>
         <a href="ttps://github.com/baohuy2k3">Bao Huy</a>
         <p>
@@ -286,7 +286,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
         </p>
 		</td>
 		<td align="center" valign="top">
-				<img loading="lazy" width="235" height="235" src="https://github.com/NguyenTriBaoThang.png?s=235">
+				<img loading="lazy" width="150" height="150" src="https://github.com/NguyenTriBaoThang.png?s=150">
         <br>
         <a href="https://github.com/NguyenTriBaoThang">Bao Thang</a>
         <p>
@@ -301,16 +301,16 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <p align="center">
 	<a href="https://hutech.edu.vn/" target="_blank">
-		<img loading="lazy" src="./assets/images/hutech.png" height="50px" alt="Hutech">
+		<img loading="lazy" src="./assets/images/hutech.png" height="60px" alt="Hutech">
 	</a>
 	<a href="https://vfossa.vn/" target="_blank">
-		<img loading="lazy" src="./assets/images/vfossa.png" height="50px" alt="Hutech">
+		<img loading="lazy" src="./assets/images/vfossa.png" height="60px" alt="Hutech">
 	</a>
 	<a href="http://husc.hueuni.edu.vn/" target="_blank">
-		<img loading="lazy" src="./assets/images/husc.jpg" height="50px" alt="Husc">
+		<img loading="lazy" src="./assets/images/husc.jpg" height="60px" alt="Husc">
 	</a>
 	<a href="https://olp.husc.edu.vn/" target="_blank">
-		<img loading="lazy" src="./assets/images/icpc.jpg" height="50px" alt="ICPC">
+		<img loading="lazy" src="./assets/images/icpc.jpg" height="60px" alt="ICPC">
 	</a>
 </p>
 
