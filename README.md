@@ -73,16 +73,16 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-	- [🛠️ Prerequisites](#️-prerequisites)
-	- [🧑‍💻 Setup](#-setup)
-	- [🚀 Running](#-running)
-	- [🧪 Testing](#-testing)
+  - [🛠️ Prerequisites](#️-prerequisites)
+  - [🧑‍💻 Setup](#-setup)
+  - [🚀 Running](#-running)
+  - [🧪 Testing](#-testing)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-	- [📖 Contributing Guidelines](#-contributing-guidelines)
-	- [💁 Want to Help?](#-want-to-help)
-	- [🫂 Code of Conduct](#-code-of-conduct)
+  - [📖 Contributing Guidelines](#-contributing-guidelines)
+  - [💁 Want to Help?](#-want-to-help)
+  - [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -303,7 +303,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 			</td>
 		</tr>
 	</table>
-<div>
+</div>
 
 # Support and Organization
 
