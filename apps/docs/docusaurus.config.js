@@ -40,6 +40,7 @@ const config = {
       },
       { name: 'og:title', content: 'Tri Thức Pháp Luật' },
     ],
+    image: 'img/preview.png',
     navbar: {
       title: 'Law Knowledge',
       logo: {

@@ -16,7 +16,7 @@
 	|
 	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=%F0%9F%9A%80+Feature%3A+">Request Feature ✈️</a>
 	|
-	<a href="https://discord.novu.co">Join Our Telegram 💬</a>
+	<a href="https://t.me/+bz74heXQgBwwOWRl">Join Our Telegram 💬</a>
 	|
 	<a href="https://github.com/foxminchan/LawKnowledge/wiki">Read Wiki 📚</a>
 </p>
@@ -195,6 +195,12 @@ npx nx serve api-law-svc
 npx nx serve api-search-svc
 ```
 
+To set up the infrastructure, you can run the following command:
+
+```bash
+npx nx up iac
+```
+
 > [!IMPORTANT]
 > If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>= 3.8 and < 3.11`.
 
@@ -262,40 +268,42 @@ Help us keep Angular open and inclusive. Please read and follow our [Code of Con
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key))
 
-<table style="margin-left: auto; margin-right: auto;">
-	<tr>
-		<td align="center" valign="top">
-				<img loading="lazy" width="150" height="150" src="https://github.com/foxminchan.png?s=150">
-        <br>
-        <a href="https://github.com/foxminchan">Xuan Nhan</a>
-        <p>
-          <a href="https://github.com/HutechCJ/ProfioApp/commits?author=foxminchan" title="Developer">💻</a>
-          <a href="#docs" title="Documentation">📖</a>
-          <a href="#infra" title="Infrastructure">🚇</a>
-					<a href="#mentoring" title="Mentoring">🧑‍🏫</a>
-        </p>
-		</td>
-		<td align="center" valign="top">
-				<img loading="lazy" width="150" height="150" src="https://github.com/baohuy2k3.png?s=150">
-        <br>
-        <a href="ttps://github.com/baohuy2k3">Bao Huy</a>
-        <p>
-          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=baohuy2k3" title="Developer">💻</a>
-					<a href="#data" title="Data">🔣</a>
-					<a href="#design" title="Design">🎨</a>
-        </p>
-		</td>
-		<td align="center" valign="top">
-				<img loading="lazy" width="150" height="150" src="https://github.com/NguyenTriBaoThang.png?s=150">
-        <br>
-        <a href="https://github.com/NguyenTriBaoThang">Bao Thang</a>
-        <p>
-          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=NguyenTriBaoThang" title="Developer">💻</a>
-					<a href="#design" title="Design">🎨</a>
-        </p>
-		</td>
-	</tr>
-</table>
+<div align="center">
+	<table>
+		<tr>
+			<td align="center" valign="top">
+					<img loading="lazy" width="150" height="150" src="https://github.com/	foxminchan.png?s=150">
+	        <br>
+	        <a href="https://github.com/foxminchan">Xuan Nhan</a>
+	        <p>
+	          <a href="https://github.com/HutechCJ/ProfioApp/commits?	author=foxminchan" title="Developer">💻</a>
+	          <a href="#docs" title="Documentation">📖</a>
+	          <a href="#infra" title="Infrastructure">🚇</a>
+						<a href="#mentoring" title="Mentoring">🧑‍🏫</a>
+	        </p>
+			</td>
+			<td align="center" valign="top">
+					<img loading="lazy" width="150" height="150" src="https://github.com/	baohuy2k3.png?s=150">
+	        <br>
+	        <a href="ttps://github.com/baohuy2k3">Bao Huy</a>
+	        <p>
+	          <a href="https://github.com/foxminchan/LawKnowledge/commits?	author=baohuy2k3" title="Developer">💻</a>
+						<a href="#data" title="Data">🔣</a>
+						<a href="#design" title="Design">🎨</a>
+	        </p>
+			</td>
+			<td align="center" valign="top">
+					<img loading="lazy" width="150" height="150" src="https://github.com/	NguyenTriBaoThang.png?s=150">
+	        <br>
+	        <a href="https://github.com/NguyenTriBaoThang">Bao Thang</a>
+	        <p>
+	          <a href="https://github.com/foxminchan/LawKnowledge/commits?	author=NguyenTriBaoThang" title="Developer">💻</a>
+						<a href="#design" title="Design">🎨</a>
+	        </p>
+			</td>
+		</tr>
+	</table>
+<div>
 
 # Support and Organization
 
