@@ -12,7 +12,6 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --without dev --no-root
 
-
 FROM python:3.11-slim-buster AS runtime
 
 RUN useradd -m nonroot
@@ -24,6 +23,8 @@ ENV VIRTUAL_ENV=/app/.venv \
 COPY --from=builder --chown=nonroot:nonroot /app/.venv /app/.venv
 
 COPY --chown=nonroot:nonroot searching-svc ./searching-svc
+
+RUN chmod -R 555 /app/searching-svc
 
 WORKDIR /app/searching-svc
 

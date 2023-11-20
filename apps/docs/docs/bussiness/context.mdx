@@ -7,3 +7,46 @@ last_update:
 ---
 
 # Context
+
+## Problem Statement
+
+<p align="justify">
+
+The Vietnamese Legal Code, or "Pháp điển," is a comprehensive collection of all legal norms that are in force and have been issued by central government bodies in Vietnam. These range from circulars to higher-level legislative instruments but notably exclude the Constitution itself. The structure and maintenance of the Legal Code are formal and systematic, carried out by a designated authority that ensures the Legal Code is kept up-to-date with the latest legal norms and that outdated regulations are removed.
+
+The structure of the Vietnamese Legal Code is organized into 45 topics, which in turn are divided into 271 sections. These topics represent broad areas of social relations regulated by law, and the sections within these topics address specific groups of social relations.
+
+The Legal Code is accessible to the public via the Electronic Legal Code Portal, maintained by the Ministry of Justice at [https://phapdien.moj.gov.vn](https://phapdien.moj.gov.vn). This platform allows users to consult the legal norms online or download them by sections. An advanced feature of this portal is the keyword search, which facilitates the discovery of legal articles across the different documents, offering a comprehensive view of legal norms within a particular field.
+
+One significant advantage of this system is the logical arrangement of various legal documents within the same field under a unified topic. This organization helps users to understand the continuity and full spectrum of legal regulations pertaining to a field of interest. However, the Legal Code's primary limitation lies in its infrequent updates, which can lag behind the enactment of new legal documents. For instance, even though the new Environmental Protection Law was passed in 2020 and came into force at the beginning of 2022, the corresponding section in the Legal Code has yet to be updated, leaving a gap in the current legal framework available to the public.
+
+</p>
+
+## Approach
+
+<p align="justify">
+
+To enhance the Vietnamese Legal Code system for automatic updating with the latest legal norms, an advanced technological solution can be implemented using a combination of Retrieval-Augmented Generation (RAG) for Natural Language Processing (NLP), microservice architecture, and HayStack. This system will effectively keep the Legal Code up-to-date and accurate, addressing the current lag in updates.
+
+</p>
+
+<img
+  loading="lazy"
+  src="/LawKnowledge/img/rag-perform.png"
+  alt="retreival augmented generation"
+  style={{ width: '100%', height: 'auto' }}
+/>
+
+## Implementation Steps
+
+<p align="justify">
+
+1. **Crawling Service Development**: To track new legal documents.
+2. **RAG-based NLP Implementation**: For analysis and categorization of legal norms.
+3. **Database Management with Update Mechanism**: Creates a seamless updating database system.
+4. **Integration of Haystack**: Sets up advanced document retrieval and search.
+5. **User Interface Design**: Focuses on accessibility and ease of use.
+6. **Comprehensive Testing and QA**: Ensures accuracy and efficiency.
+7. **Continuous Monitoring and Maintenance**: Establishes ongoing system evaluation.
+
+</p>

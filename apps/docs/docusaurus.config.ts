@@ -1,4 +1,4 @@
-const config = {
+export default {
   title: 'Law Knowledge',
   tagline:
     "A legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database",
@@ -8,6 +8,12 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'foxminchan',
+
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
@@ -79,6 +85,7 @@ const config = {
     },
     docs: {
       sidebar: {
+        hideable: true,
         autoCollapseCategories: true,
       },
     },
@@ -219,5 +226,3 @@ const config = {
     },
   ],
 };
-
-module.exports = config;
