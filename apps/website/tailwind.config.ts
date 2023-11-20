@@ -1,8 +1,8 @@
-const { join } = require('path');
-const tailwindTypo = require('@tailwindcss/typography');
-const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
+import { join } from 'path';
+import tailwindTypo from '@tailwindcss/typography';
+import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
 
-module.exports = {
+export default {
   content: [
     join(
       __dirname,

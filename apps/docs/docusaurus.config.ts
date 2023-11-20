@@ -14,7 +14,7 @@ const config = {
       'classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: 'sidebars.ts',
           editUrl:
             'https://github.com/foxminchan/LawKnowledge/tree/main/apps/docs',
           showLastUpdateAuthor: true,
