@@ -15,5 +15,9 @@
   ],
   "tailwindCSS.experimental.classRegex": [
     ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ]
+  ],
+  "sonarlint.connectedMode.project": {
+    "connectionId": "foxminchan",
+    "projectKey": "foxminchan_LawKnowledge"
+  }
 }

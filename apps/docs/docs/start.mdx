@@ -1,0 +1,125 @@
+---
+title: Getting Started
+description: Getting Started with the project
+sidebar_position: 2
+last_update:
+  author: Nguyen Xuan Nhan
+---
+
+# Getting Started
+
+<p align="justify">
+
+Welcome to the getting started for Law Knowledge project!
+
+If you are new to the project, this is the place to start. Here you will find the information you need to get up and running with the project quickly. You will also find information about the project's architecture, the technologies used, and the tools that are available to help you develop your application.
+
+If you have any questions, please feel free to ask in the [Telegram](https://discord.gg/3qfQ8fz). Our Telegram channel is a place where you can ask questions, share ideas, and collaborate on the project. Connect with users from the community and get help from the project maintainers. Get your questions answered and learn cool new tips and tricks! Watch for notifications of the latest content from Redis and the community. And share your own content with the community.
+
+</p>
+
+## 💻 Hardware Requirements
+
+<p align="justify">
+
+- **Memory (RAM):** 16GB of RAM is recommended. This amount of RAM is advised to ensure smooth operation when running multiple Docker containers. Running the application with 8GB of RAM may lead to performance issues and resource constraints.
+
+- **Processor (CPU):** A multi-core processor with good performance is recommended, as it will help with running containerized services efficiently.
+
+- **Storage:** Sufficient storage space is required to store code repositories, container images, and application data. It's recommended to have at least 100GB of free disk space.
+
+- **Network:** A stable and high-speed internet connection is beneficial, especially when pulling and pushing container images and collaborating on projects hosted on GitHub.
+
+Having a computer that meets or exceeds these recommended hardware requirements will enhance your development experience and ensure that your Law Knowledge development environment can handle the demands of running containerized services and managing code effectively.
+
+</p>
+
+## 🛠️ Prerequisites
+
+<p align="justify">
+
+- [**Nx**](https://nx.dev/): A set of extensible dev tools for monorepos.
+- [**Docker**](https://www.docker.com/): A set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
+- [**Helm**](https://helm.sh/): A tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.
+- [**Kubernetes**](https://kubernetes.io/): An open-source system for automating deployment, scaling, and management of containerized applications.
+- [**Python**](https://www.python.org/): An interpreted, high-level, general-purpose programming language.
+- [**Poetry**](https://python-poetry.org/): A tool for dependency management and packaging in Python.
+- [**Node.js**](https://nodejs.org/): An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
+- [**pnpm**](https://pnpm.io/): A fast, disk space efficient package manager that helps to minimize duplication while installing dependencies.
+- [**Pulumi**](https://www.pulumi.com/): Acloud development platform that makes creating cloud programs easy and productive.
+
+</p>
+
+## 🧑‍💻 Setup
+
+First, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/foxminchan/LawKnowledge
+```
+
+Next, navigate to the root directory of the project and install the dependencies:
+
+```bash
+pnpm install --force
+```
+
+## 🚀 Running
+
+For the website, you can run the following command:
+
+```bash
+npx nx serve website
+```
+
+For the API, you can run the following command:
+
+```bash
+# For the API Gateway
+npx nx serve api-gateway
+
+# For the Auth Service
+npx nx serve api-auth-svc
+
+# For the Law Service
+npx nx serve api-law-svc
+
+# For the Search Service
+npx nx serve api-search-svc
+```
+
+To set up the infrastructure, you can run the following command:
+
+```bash
+npx nx up iac
+```
+
+:::warning
+
+If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>= 3.8 and < 3.11`.
+
+:::
+
+## 🧪 Testing
+
+For the website, you can run the following command:
+
+```bash
+npx nx test website
+```
+
+For the API, you can run the following command:
+
+```bash
+# For the API Gateway
+npx nx test api-gateway
+
+# For the Auth Service
+npx nx test api-auth-svc
+
+# For the Law Service
+npx nx test api-law-svc
+
+# For the Search Service
+npx nx test api-search-svc
+```

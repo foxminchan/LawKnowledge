@@ -95,6 +95,14 @@ const config = {
           title: 'Organization',
           items: [
             {
+              label: 'OLP - HUSC',
+              href: 'http://olp.husc.edu.vn/',
+            },
+            {
+              label: 'Hue University of Science',
+              href: 'http://husc.hueuni.edu.vn/',
+            },
+            {
               label: 'ICPC Vietnam',
               href: 'https://www.olp.vn/',
             },
@@ -105,7 +113,7 @@ const config = {
             {
               html: `
                 <a href="https://vfossa.vn/" target="_blank" rel="noreferrer noopener" aria-label="Vfossa">
-                  <img loading="lazy" src="/img/vfossa.png" alt="Vfossa" width="150" height="55" />
+                  <img loading="lazy" src="/LawKnowledge/img/vfossa.png" alt="Vfossa" width="150" height="55" />
                 </a>
               `,
             },
@@ -125,19 +133,23 @@ const config = {
           ],
         },
         {
-          title: 'More',
+          title: 'ICPC',
           items: [
             {
-              label: 'About the Contest',
-              href: 'https://vfossa.vn/topic/olympic-tin-hoc-sinh-vien-viet-nam-lan-thu-32/',
+              label: 'Global',
+              href: 'https://icpc.global',
             },
             {
-              label: 'OLP - HUSC',
-              href: 'http://olp.husc.edu.vn',
+              label: 'Asia Pacific',
+              href: ' https://icpc.iisf.or.jp/asia-pacific/',
             },
             {
-              label: 'Hutech University',
-              href: 'https://www.hutech.edu.vn',
+              label: 'Asia',
+              href: 'https://icpcasia.wp.txstate.edu',
+            },
+            {
+              label: 'Fanpage',
+              href: 'https://www.facebook.com/icpc.vietnam/',
             },
           ],
         },
@@ -145,7 +157,6 @@ const config = {
       copyright: `Copyright © ${new Date().getFullYear()} Hutech. All rights reserved`,
       logo: {
         alt: 'School Logo',
-        loading: 'lazy',
         src: 'img/school.png',
         href: 'https://www.hutech.edu.vn/',
         width: 300,

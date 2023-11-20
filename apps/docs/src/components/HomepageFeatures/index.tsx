@@ -11,7 +11,7 @@ const FeatureList: FeatureItem[] = [
   {
     id: 1,
     title: 'Knowledge Search',
-    img: require('@site/static/img/search.png').default,
+    img: '/LawKnowledge/img/search.png',
     description: (
       <>
         Knowledge search and Q&A application based on Vietnam&apos;s legal
@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
   {
     id: 2,
     title: 'Lawyer Q&A',
-    img: require('@site/static/img/lawyer.png').default,
+    img: '/LawKnowledge/img/lawyer.png',
     description: (
       <>
         A platform for lawyers to ask and answer questions related to legal
@@ -33,7 +33,7 @@ const FeatureList: FeatureItem[] = [
   {
     id: 3,
     title: 'Legal Document Management',
-    img: require('@site/static/img/law-book.png').default,
+    img: '/LawKnowledge/img/law-book.png',
     description: <>A platform for lawyers to manage their legal documents 📚</>,
   },
 ];

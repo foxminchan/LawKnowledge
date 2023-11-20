@@ -13,22 +13,22 @@ const TechList: TechItem[] = [
   {
     id: 1,
     url: 'https://react.dev/',
-    logo: require('../../../static/img/tech/reactjs.png').default,
+    logo: '/LawKnowledge/img/tech/reactjs.png',
   },
   {
     id: 2,
     url: 'https://nestjs.com/',
-    logo: require('../../../static/img/tech/nest.png').default,
+    logo: '/LawKnowledge/img/tech/nest.png',
   },
   {
     id: 3,
     url: 'https://fastapi.tiangolo.com/',
-    logo: require('../../../static/img/tech/fastapi.png').default,
+    logo: '/LawKnowledge/img/tech/fastapi.png',
   },
   {
     id: 4,
     url: 'https://haystack.deepset.ai/',
-    logo: require('../../../static/img/tech/haystack.png').default,
+    logo: '/LawKnowledge/img/tech/haystack.png',
   },
 ];
 

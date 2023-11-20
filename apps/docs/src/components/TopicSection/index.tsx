@@ -13,7 +13,7 @@ type TopicProps = {
 
 const TopicProp: TopicProps = {
   title: 'Topic Details',
-  image: require('../../../static/img/topic.png').default,
+  image: '/LawKnowledge/img/topic.png',
   btnText: 'Read More',
   btnLink:
     'https://vfossa.vn/tin-tuc/de-thi-phan-mem-nguon-mo-olp-2023-688.html',

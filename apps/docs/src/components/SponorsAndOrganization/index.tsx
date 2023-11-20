@@ -13,25 +13,25 @@ const SponorList: Sponor[] = [
   {
     id: 1,
     url: 'https://hutech.edu.vn/',
-    logo: require('../../../static/img/organization/hutech.png').default,
+    logo: '/LawKnowledge/img/organization/hutech.png',
     name: 'Ho Chi Minh City University of Technology and Education',
   },
   {
     id: 2,
     url: 'https://vfossa.vn/',
-    logo: require('../../../static/img/organization/vfossa.png').default,
+    logo: '/LawKnowledge/img/organization/vfossa.png',
     name: 'Vietnam Free and Open Source Software Association',
   },
   {
     id: 3,
     url: 'http://olp.husc.edu.vn/',
-    logo: require('../../../static/img/organization/icpc.jpg').default,
+    logo: '/LawKnowledge/img/organization/icpc.jpg',
     name: 'International Collegiate Programming Contest',
   },
   {
     id: 4,
     url: 'http://husc.hueuni.edu.vn/',
-    logo: require('../../../static/img/organization/husc.jpg').default,
+    logo: '/LawKnowledge/img/organization/husc.jpg',
     name: 'Hue University of Sciences',
   },
 ];
