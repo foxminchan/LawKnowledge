@@ -6,13 +6,6 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 
-declare const module: NodeModule & {
-  hot?: {
-    accept: () => void;
-    dispose: (callback: () => void) => void;
-  };
-};
-
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
@@ -21,13 +14,6 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/v1/');
   await app.listen(process.env.PORT || 8081);
-
-  if (module.hot) {
-    module.hot.accept();
-    module.hot.dispose(() => {
-      app.close();
-    });
-  }
 }
 
 void (async (): Promise<void> => {
