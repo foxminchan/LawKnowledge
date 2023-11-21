@@ -17,8 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@law-knowledge/framework": ["libs/framework/src/index.ts"],
-      "@law-knowledge/shared": ["libs/shared/src/index.ts"],
-      "@law-knowledge/ui": ["libs/ui/src/index.ts"]
+      "@law-knowledge/shared": ["libs/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],

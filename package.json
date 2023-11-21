@@ -101,8 +101,6 @@
     "react-router-dom": "^6.19.0",
     "react-slick": "^0.29.0",
     "reflect-metadata": "^0.1.13",
-    "rehype-katex": "^7.0.0",
-    "remark-math": "^6.0.0",
     "rxjs": "^7.8.1",
     "slick-carousel": "^1.8.1",
     "swagger-stats": "^0.99.7",
