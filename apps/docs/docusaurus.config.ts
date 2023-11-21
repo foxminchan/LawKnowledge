@@ -1,3 +1,5 @@
+import simplePlantUML from '@akebifiky/remark-simple-plantuml';
+
 export default {
   title: 'Law Knowledge',
   tagline:
@@ -21,8 +23,10 @@ export default {
       {
         docs: {
           sidebarPath: 'sidebars.ts',
+          sidebarCollapsed: false,
           editUrl:
             'https://github.com/foxminchan/LawKnowledge/tree/main/apps/docs',
+          remarkPlugins: [simplePlantUML],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
@@ -84,10 +88,7 @@ export default {
       },
     },
     docs: {
-      sidebar: {
-        hideable: true,
-        autoCollapseCategories: true,
-      },
+      sidebar: {},
     },
     announcementBar: {
       id: 'announcement-bar',

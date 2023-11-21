@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git+https://github.com/foxminchan/LawKnowledge"
   },
+  "bugs": {
+    "url": "https://github.com/foxminchan/LawKnowledge/issues"
+  },
   "author": {
     "name": "Hutech University",
     "url": "https://hutech.edu.vn"
@@ -37,6 +40,7 @@
   },
   "private": true,
   "dependencies": {
+    "@akebifiky/remark-simple-plantuml": "^1.0.2",
     "@docusaurus/core": "^3.0.0",
     "@docusaurus/plugin-content-docs": "^3.0.0",
     "@docusaurus/plugin-content-pages": "^3.0.0",
@@ -78,6 +82,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "clsx": "^2.0.0",
+    "helper-fns": "^2.6.38",
     "inversify": "^6.0.2",
     "js-cookie": "^3.0.5",
     "jwt-decode": "^4.0.0",
@@ -100,13 +105,16 @@
     "remark-math": "^6.0.0",
     "rxjs": "^7.8.1",
     "slick-carousel": "^1.8.1",
+    "swagger-stats": "^0.99.7",
     "sweetalert2": "^11.10.1",
     "sweetalert2-react-content": "^5.0.7",
     "tslib": "^2.6.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.5",
     "@babel/plugin-proposal-decorators": "^7.23.3",
+    "@babel/preset-react": "^7.14.5",
     "@commitlint/cli": "^18.4.2",
     "@commitlint/config-conventional": "^18.4.2",
     "@docusaurus/eslint-plugin": "^3.0.0",
@@ -155,6 +163,7 @@
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
     "@types/react-slick": "^0.23.12",
+    "@types/swagger-stats": "^0.95.11",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "@vitejs/plugin-react": "~4.0.4",
@@ -187,6 +196,7 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "~5.2.2",
     "vite": "^5.0.0",
+    "vite-plugin-dts": "~2.3.0",
     "vite-plugin-pwa": "^0.16.7",
     "vitest": "^0.34.6"
   }
