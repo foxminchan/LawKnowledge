@@ -124,7 +124,7 @@ We used **Microservice Architecture** to build this project to make it easier to
 
 </p>
 
-<img loading="lazy" src="./assets/images/software-architecture.png" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -238,7 +238,7 @@ npx nx dep-graph
 
 # CI/CD
 
-<img loading="lazy" src="./assets/images/software-cicd.png" alt="CI/CD" width="100%">
+<img loading="lazy" src="./assets/images/cicd.svg" alt="CI/CD" width="100%">
 
 # Contributing
 
