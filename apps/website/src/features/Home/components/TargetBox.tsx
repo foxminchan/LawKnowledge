@@ -2,7 +2,7 @@ import {
   targetGroupCitizen,
   targetGroupBusiness,
   targetGroupOrganization,
-} from '../../../mocks/home.data';
+} from '@mocks/home.data';
 import { Container, Grid } from '@mui/material';
 
 export default function TargetBox() {

@@ -2,7 +2,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { LegacyRef, useState } from 'react';
 import 'slick-carousel/slick/slick-theme.css';
-import { hostNewsData } from '../../../mocks/home.data';
+import { hostNewsData } from '@mocks/home.data';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 

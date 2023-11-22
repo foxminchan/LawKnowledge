@@ -20,7 +20,7 @@ export default function GuideContent(props: Readonly<Props>) {
         </div>
         {props.content.split('\n').map((line) => (
           <Fragment key={props.id}>
-            <div className="text-xl">
+            <div className="text-xl text-justify">
               {line}
               <br />
             </div>

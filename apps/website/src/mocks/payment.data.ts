@@ -1,7 +1,4 @@
-import {
-  IconPaymentCitizen,
-  IconPaymentEnterprise,
-} from '../common/utils/image';
+import { IconPaymentCitizen, IconPaymentEnterprise } from '@common/utils/image';
 
 export const itemCitizenCatalog = [
   {

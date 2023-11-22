@@ -1,5 +1,5 @@
-import { VideoGuide } from '../common/utils/video';
-import { ImagePreviewGuide } from '../common/utils/image';
+import { VideoGuide } from '@common/utils/video';
+import { ImagePreviewGuide } from '@common/utils/image';
 
 export const itemBreadcrumbs = [
   {

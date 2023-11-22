@@ -2,9 +2,9 @@ import {
   itemBreadcrumbs,
   itemCitizenCatalog,
   itemEnterpriseCatalog,
-} from '../../mocks/payment.data';
+} from '@mocks/payment.data';
 import clsx from 'clsx';
-import useMetadata from '../../common/hooks/useMetadata';
+import useMetadata from '@common/hooks/useMetadata';
 import PaymentSection from './components/PaymentSection';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Container, Grid, Breadcrumbs, Typography } from '@mui/material';

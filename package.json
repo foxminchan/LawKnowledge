@@ -1,5 +1,8 @@
 {
   "name": "@law-knowledge/source",
+  "imports": {
+    "@/*": "src/*"
+  },
   "version": "1.0.0",
   "license": "MIT",
   "description": "A legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database",

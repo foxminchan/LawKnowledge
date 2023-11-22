@@ -1,7 +1,7 @@
 import GuideVideo from './GuideVideo';
 import GuideContent from './GuideContent';
 import { Box, Grid, useMediaQuery } from '@mui/material';
-import { itemGuide } from '../../../mocks/guide.data';
+import { itemGuide } from '@mocks/guide.data';
 
 export default function GuideHelpStepsContent() {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
