@@ -6,4 +6,42 @@ last_update:
   author: Nguyen Xuan Nhan
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # REST API
+
+## Introduction
+
+<p align="justify">
+  The REST API is a set of endpoints that allow you to build custom integrations
+  with the system. Use it to interact with the system programmatically, to
+  automate workflows, or to build custom integrations.
+</p>
+
+## Authentication
+
+<Tabs>
+  <TabItem value="Bearer Token" lable="Bearer Token" default>
+    <p align="justify">
+      The REST API uses JSON Web Token (JWT) for authentication. To authenticate
+      your requests, you must include an HTTP header of `Authorization` with the
+      value `Bearer <token>`.
+    </p>
+  </TabItem>
+  <TabItem value="API Key" lable="API Key">
+    <p align="justify">
+      The REST API uses API Key for authentication. To authenticate your
+      requests, you must include an HTTP header of `X-Api-Key` with the value
+      of your API Key provided by the administrator.
+    </p>
+  </TabItem>
+</Tabs>
+
+## Endpoints
+
+:::info
+
+All endpoints will be update soon.
+
+:::

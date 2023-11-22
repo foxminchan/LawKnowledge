@@ -7,3 +7,68 @@ last_update:
 ---
 
 # Kubernetes (Helm)
+
+<img
+  loading="lazy"
+  src="/LawKnowledge/img/banner/helm.png"
+  alt="Helm"
+  width="100%"
+/>
+
+<p align="justify">
+
+[Helm](https://helm.sh/) is a package manager for Kubernetes that allows developers and operators to more easily package, configure, and deploy applications and services onto Kubernetes clusters.
+
+</p>
+
+## Prerequisites
+
+- Kubernetes 1.28.0+
+- Helm 3.13.0+
+
+## Installing
+
+<p align="justify">
+
+To install the chart with the release name `law-knowledge`:
+
+```bash
+# Download Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+
+# Install Helm
+chmod 700 get_helm.sh
+
+./get_helm.sh
+```
+
+</p>
+
+## Usage
+
+<p align="justify">
+
+To install the chart with the release name `law-knowledge`:
+
+```bash
+# Add the Helm repository
+helm repo add law-knowledge https://foxminchan.github.io/law-knowledge/charts
+
+# Install the chart
+helm install law-knowledge law-knowledge/law-knowledge
+```
+
+</p>
+
+## Uninstalling
+
+<p align="justify">
+
+To uninstall/delete the `law-knowledge` deployment:
+
+```bash
+# Uninstall the chart
+helm uninstall law-knowledge
+```
+
+</p>
