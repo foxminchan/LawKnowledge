@@ -7,11 +7,11 @@ import {
   Breadcrumbs,
 } from '@mui/material';
 import clsx from 'clsx';
-import SubNavbar from '../../components/SubNavbar';
-import { support } from '../../mocks/navSupport.data';
-import useMetadata from '../../common/hooks/useMetadata';
+import SubNavbar from '@components/SubNavbar';
+import { support } from '@mocks/navSupport.data';
+import useMetadata from '@common/hooks/useMetadata';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { itemBreadcrumbs, itemGuide } from '../../mocks/guide.data';
+import { itemBreadcrumbs, itemGuide } from '@mocks/guide.data';
 import GuideHelpStepsContent from './components/GuideHelpStepsContent';
 
 type Props = {

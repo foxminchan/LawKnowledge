@@ -12,18 +12,18 @@ import {
   itemBreadcrumbs,
   itemCitizenCatalog,
   itemEnterpriseCatalog,
-} from '../../mocks/signatureService.data';
+} from '@mocks/signatureService.data';
 import clsx from 'clsx';
-import React from 'react';
+import { useState } from 'react';
 import CustomText from './components/CustomText';
 import MenuBottom from './components/MenuBottom';
-import SubNavbar from '../../components/SubNavbar';
+import SubNavbar from '@components/SubNavbar';
 import CustomTabPanel from './components/TabPanel';
 import a11yProps from './components/AccessibilityProps';
-import useMetadata from '../../common/hooks/useMetadata';
+import useMetadata from '@common/hooks/useMetadata';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { IconServiceInformation } from '../../common/utils/image';
-import { informationAndServices } from '../../mocks/navSupport.data';
+import { IconServiceInformation } from '@common/utils/image';
+import { informationAndServices } from '@mocks/navSupport.data';
 
 type Props = {
   title: string;
@@ -31,7 +31,7 @@ type Props = {
 
 export default function SignatureService(props: Readonly<Props>) {
   useMetadata(props.title);
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import useMetadata from '../../common/hooks/useMetadata';
+import useMetadata from '@common/hooks/useMetadata';
 
 export default function NotFound() {
   useMetadata();

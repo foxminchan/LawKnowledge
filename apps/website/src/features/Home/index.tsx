@@ -1,8 +1,8 @@
+import { button } from '@mocks/home.data';
 import TargetBox from './components/TargetBox';
-import { button } from '../../mocks/home.data';
 import ItemSlider from './components/ItemSlider';
+import useMetadata from '@common/hooks/useMetadata';
 import { Button, Container, Grid } from '@mui/material';
-import useMetadata from '../../common/hooks/useMetadata';
 
 type Props = {
   title: string;

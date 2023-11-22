@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { IconServiceInformation } from '../../../common/utils/image';
+import { IconServiceInformation } from '@common/utils/image';
 
 type Props = {
   data: { id: number; name: string }[];

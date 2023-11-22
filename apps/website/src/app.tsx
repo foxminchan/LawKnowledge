@@ -8,13 +8,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 const Home = loadable(() => import('./features/Home'));
 const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
-const SignatureService = loadable(
-  () => import('./features/ServiceInformation')
-);
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
+const SignatureService = loadable(() => import('./features/SignatureService'));
 
 export default function App() {
   return (

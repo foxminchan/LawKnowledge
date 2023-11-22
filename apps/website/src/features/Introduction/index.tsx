@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import Timeline from './components/Timeline';
 import ItemIntro from './components/ItemIntro';
-import useMetadata from '../../common/hooks/useMetadata';
+import useMetadata from '@common/hooks/useMetadata';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Breadcrumbs, Container, Typography } from '@mui/material';
-import intro from '../../assets/images/banners/gioi-thieu-slider.png';
+import intro from '@assets/images/banners/gioi-thieu-slider.png';
 
 type Props = {
   title: string;

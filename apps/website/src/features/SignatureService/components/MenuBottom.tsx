@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Grid, Container } from '@mui/material';
-import { IconServiceInformation } from '../../../common/utils/image';
-import { itemMenuBottom } from '../../../mocks/signatureService.data';
+import { IconServiceInformation } from '@common/utils/image';
+import { itemMenuBottom } from '@mocks/signatureService.data';
 
 export default function MenuBottom() {
   return (

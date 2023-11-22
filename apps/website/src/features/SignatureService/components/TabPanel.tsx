@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { Box } from '@mui/material';
 
 type Props = {
@@ -15,8 +14,8 @@ export default function CustomTabPanel(props: Readonly<Props>) {
     <div
       role="tabpanel"
       hidden={!isVisible}
-      id={clsx('tabpanel-' + index)}
-      aria-labelledby={clsx('tab-' + index)}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
     >
       {isVisible && <Box>{children}</Box>}
     </div>

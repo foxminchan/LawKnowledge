@@ -3,12 +3,12 @@ import {
   itemBreadcrumbs,
   behaviourSection,
   responsibilitySection,
-} from '../../mocks/policy.data';
+} from '@mocks/policy.data';
 import clsx from 'clsx';
-import SubNavbar from '../../components/SubNavbar';
-import { support } from '../../mocks/navSupport.data';
+import SubNavbar from '@components/SubNavbar';
+import { support } from '@mocks/navSupport.data';
 import ContentSection from './components/ContentSection';
-import useMetadata from '../../common/hooks/useMetadata';
+import useMetadata from '@common/hooks/useMetadata';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Container, Divider, Breadcrumbs, Typography } from '@mui/material';
 

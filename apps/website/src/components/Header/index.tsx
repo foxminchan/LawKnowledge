@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/images/logo.png';
-import { StorageKeys } from '../../common/constants/keys';
+import Logo from '@assets/images/logo.png';
+import { StorageKeys } from '@common/constants/keys';
 
 const textButton = [
   { id: 1, name: 'Đăng ký', link: '/dang-ky' },

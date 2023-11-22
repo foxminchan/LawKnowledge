@@ -5,6 +5,15 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@mocks/*": ["src/mocks/*"],
+      "@assets/*": ["src/assets/*"],
+      "@common/*": ["src/common/*"],
+      "@components/*": ["src/components/*"]
+    },
+    "moduleResolution": "bundler",
     "types": ["vite/client", "vitest"]
   },
   "files": [],

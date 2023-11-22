@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { itemIntroInfo } from '../../../mocks/intro.data';
+import { itemIntroInfo } from '@mocks/intro.data';
 
 export default function ItemIntro() {
   return (
