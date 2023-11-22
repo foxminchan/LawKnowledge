@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_law_knowledge_source=self.webpackChunk_law_knowledge_source||[]).push([[8348],{1383:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-pages","id":"default"}')}}]);
