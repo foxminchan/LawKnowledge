@@ -3,7 +3,7 @@ type bannerNotificationType = {
   DVC: string;
   UnEmployment: string;
   ErrorSignUp: string;
-  LPTB: string;
+  Lptb: string;
 };
 
 type IconIntroType = {

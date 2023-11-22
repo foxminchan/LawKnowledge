@@ -89,7 +89,7 @@ export const bannerNotification: bannerNotificationType = {
   DVC: dvc,
   UnEmployment: unemployment,
   ErrorSignUp: errorSignUp,
-  LPTB: lptb,
+  Lptb: lptb,
 };
 
 export const IconHomeCitizen: IconHomeCitizenType = {

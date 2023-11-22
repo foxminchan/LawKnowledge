@@ -6,6 +6,7 @@ import { CircularProgress } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const Home = loadable(() => import('./features/Home'));
+const Chat = loadable(() => import('./features/Chat'));
 const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
 const Payment = loadable(() => import('./features/Payment'));
@@ -20,6 +21,14 @@ export default function App() {
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path="/dang-xuat" element={<SignOut />} />
+          <Route
+            path="/hoi-dap"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <Chat title="Hỏi đáp" />
+              </Suspense>
+            }
+          />
         </Route>
         <Route path="/" element={<BasicLayout />}>
           <Route

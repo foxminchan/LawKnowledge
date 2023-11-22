@@ -15,13 +15,26 @@ const navItems = [
   },
   {
     id: 2,
-    name: 'Thanh toán trực tuyến',
+    name: 'Thanh toán',
     link: '/thanh-toan-truc-tuyen',
-    width: 'w-60',
+    width: 'w-28',
   },
   { id: 3, name: 'Tra cứu', link: '/tra-cuu', width: 'w-28' },
   {
     id: 4,
+    name: 'Dịch vụ công nổi bật',
+    link: '/dich-vu-cong-noi-bat',
+    width: 'w-60',
+  },
+  {
+    id: 5,
+    name: 'Dịch vụ công trực tuyến',
+    link: '/dich-vu-cong-noi-bat',
+    width: 'w-60',
+  },
+  { id: 6, name: 'Hỏi đáp', link: '/hoi-dap', width: 'w-28' },
+  {
+    id: 7,
     name: 'Hỗ trợ',
     link: '/dieu-khoan-su-dung',
     subMenu: true,

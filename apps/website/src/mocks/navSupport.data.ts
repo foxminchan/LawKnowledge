@@ -14,12 +14,12 @@ export const support = [
 export const informationAndServices = [
   {
     id: 1,
-    name: 'Dịch vụ công trực tuyến',
-    link: '/dich-vu-cong-truc-tuyen',
+    name: 'Dịch vụ công nổi bật',
+    link: '/dich-vu-cong-noi-bat',
   },
   {
     id: 2,
-    name: 'Dịch vụ công nổi bật',
-    link: '/dich-vu-cong-noi-bat',
+    name: 'Dịch vụ công trực tuyến',
+    link: '/dich-vu-cong-truc-tuyen',
   },
 ];

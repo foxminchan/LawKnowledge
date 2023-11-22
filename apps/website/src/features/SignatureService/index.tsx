@@ -14,16 +14,14 @@ import {
   itemEnterpriseCatalog,
 } from '@mocks/signatureService.data';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import CustomText from './components/CustomText';
 import MenuBottom from './components/MenuBottom';
-import SubNavbar from '@components/SubNavbar';
 import CustomTabPanel from './components/TabPanel';
-import a11yProps from './components/AccessibilityProps';
 import useMetadata from '@common/hooks/useMetadata';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import a11yProps from './components/AccessibilityProps';
 import { IconServiceInformation } from '@common/utils/image';
-import { informationAndServices } from '@mocks/navSupport.data';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 type Props = {
   title: string;
@@ -32,13 +30,12 @@ type Props = {
 export default function SignatureService(props: Readonly<Props>) {
   useMetadata(props.title);
   const [value, setValue] = useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
     <>
-      <SubNavbar data={informationAndServices} />
       <Container>
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}
