@@ -77,3 +77,9 @@ type ImagePreviewGuideType = {
   Preview3: string;
   Preview4: string;
 };
+
+type IconServiceInformationType = {
+  Drum: string;
+  Document: string;
+  LaptopIcon: string;
+};

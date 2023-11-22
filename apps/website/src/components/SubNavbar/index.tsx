@@ -1,18 +1,9 @@
 import clsx from 'clsx';
 import { NavLink, useMatch, useResolvedPath } from 'react-router-dom';
 
-const navSupport = [
-  {
-    id: 1,
-    name: 'Điều khoản sử dụng',
-    link: '/dieu-khoan-su-dung',
-  },
-  {
-    id: 2,
-    name: 'Hướng dẫn sử dụng',
-    link: '/huong-dan-su-dung',
-  },
-];
+type Props = {
+  data: { id: number; name: string; link: string }[];
+};
 
 function NavItem({ name, to }: Readonly<{ name: string; to: string }>) {
   const resolved = useResolvedPath(to);
@@ -32,10 +23,10 @@ function NavItem({ name, to }: Readonly<{ name: string; to: string }>) {
   );
 }
 
-export default function SubNavbar() {
+export default function SubNavbar(props: Readonly<Props>) {
   return (
-    <div className="hidden bg-japonica-500 h-11 sm:flex pl-44">
-      {navSupport.map((subItem) => (
+    <div className="hidden bg-japonica-400 h-11 sm:flex pl-44">
+      {props.data.map((subItem) => (
         <NavItem key={subItem.id} name={subItem.name} to={subItem.link} />
       ))}
     </div>

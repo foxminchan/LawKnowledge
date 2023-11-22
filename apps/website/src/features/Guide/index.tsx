@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import clsx from 'clsx';
 import SubNavbar from '../../components/SubNavbar';
+import { support } from '../../mocks/navSupport.data';
 import useMetadata from '../../common/hooks/useMetadata';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { itemBreadcrumbs, itemGuide } from '../../mocks/guide.data';
@@ -21,7 +22,7 @@ export default function Guide(props: Readonly<Props>) {
   useMetadata(props.title);
   return (
     <>
-      <SubNavbar />
+      <SubNavbar data={support} />
       <Container>
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}

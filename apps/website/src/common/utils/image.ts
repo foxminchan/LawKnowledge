@@ -12,7 +12,9 @@ import search from '../../assets/images/icons/intro/timkiem.svg';
 import payment from '../../assets/images/icons/intro/payment.svg';
 import evaluate from '../../assets/images/icons/intro/danhgia.svg';
 import perform from '../../assets/images/icons/intro/thuchien.svg';
+import drums from '../../assets/images/notification/trongdong.png';
 import dvc_banner from '../../assets/images/notification/dvc_banner.jpg';
+import laptopIcon from '../../assets/images/serviceInformation/laptop.svg';
 import house from '../../../src/assets/images/icons/citizen/home/nhao.svg';
 import job from '../../../src/assets/images/icons/citizen/home/vieclam.svg';
 import reside from '../../../src/assets/images/icons/citizen/home/cutru.svg';
@@ -20,6 +22,7 @@ import death from '../../../src/assets/images/icons/citizen/home/quadoi.svg';
 import tlcn from '../../../src/assets/images/icons/enterprise/home/tlcn.svg';
 import errorSignUp from '../../assets/images/notification/Loi-dang-ky-tk.png';
 import land from '../../../src/assets/images/icons/enterprise/home/datdai.svg';
+import documentIcon from '../../assets/images/serviceInformation/document.svg';
 import healthy from '../../../src/assets/images/icons/citizen/home/suckhoe.svg';
 import balance from '../../../src/assets/images/icons/citizen/home/balance.svg';
 import media from '../../../src/assets/images/icons/citizen/home/phuongtien.svg';
@@ -123,3 +126,9 @@ export const ImagePreviewGuide: ImagePreviewGuideType = {
   Preview3: preview3,
   Preview4: preview4,
 };
+
+export const IconServiceInformation : IconServiceInformationType = {
+  Drum: drums,
+  Document: documentIcon,
+  LaptopIcon: laptopIcon,
+}

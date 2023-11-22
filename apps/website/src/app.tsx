@@ -8,6 +8,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 const Home = loadable(() => import('./features/Home'));
 const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
+const SignatureService = loadable(
+  () => import('./features/ServiceInformation')
+);
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
@@ -34,6 +37,14 @@ export default function App() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Introduction title="Giới thiệu" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dich-vu-cong-noi-bat"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignatureService title="Dịch vụ công nổi bật" />
               </Suspense>
             }
           />

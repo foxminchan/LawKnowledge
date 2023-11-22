@@ -20,7 +20,10 @@ export default function ContentSection(props: Readonly<Props>) {
               fontSize="inherit"
             />
           </ListItemIcon>
-          <Typography variant="body1" className="text-xl text-black">
+          <Typography
+            variant="body1"
+            className="text-xl text-black text-justify"
+          >
             {item.name}
           </Typography>
         </ListItem>

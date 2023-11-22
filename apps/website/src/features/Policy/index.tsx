@@ -6,6 +6,7 @@ import {
 } from '../../mocks/policy.data';
 import clsx from 'clsx';
 import SubNavbar from '../../components/SubNavbar';
+import { support } from '../../mocks/navSupport.data';
 import ContentSection from './components/ContentSection';
 import useMetadata from '../../common/hooks/useMetadata';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
@@ -20,7 +21,7 @@ export default function SupportPolicy(props: Readonly<Props>) {
 
   return (
     <>
-      <SubNavbar />
+      <SubNavbar data={support} />
       <Container>
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}
@@ -46,7 +47,7 @@ export default function SupportPolicy(props: Readonly<Props>) {
         <Typography className="!mb-[20px] !text-[28px] font-semibold text-center text-black main-title">
           Điều khoản và điều kiện sử dụng Cổng Dịch vụ công Quốc gia
         </Typography>
-        <Typography className="mb-5 text-lg text-black">
+        <Typography className="mb-5 text-lg text-black text-justify">
           {' '}
           Bằng việc sử dụng các Dịch vụ trên Cổng Dịch vụ công Quốc gia, tổ
           chức, cá nhân sử dụng mặc nhiên chấp thuận và cam kết thực hiện các
