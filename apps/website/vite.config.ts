@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'url';
 import react from '@vitejs/plugin-react';
 import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
@@ -101,6 +102,33 @@ export default defineConfig({
         },
       },
     },
+  },
+
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+      },
+      {
+        find: '@assets',
+        replacement: fileURLToPath(new URL('./src/assets', import.meta.url)),
+      },
+      {
+        find: '@components',
+        replacement: fileURLToPath(
+          new URL('./src/components', import.meta.url)
+        ),
+      },
+      {
+        find: '@common',
+        replacement: fileURLToPath(new URL('./src/common', import.meta.url)),
+      },
+      {
+        find: '@mocks',
+        replacement: fileURLToPath(new URL('./src/mocks', import.meta.url)),
+      },
+    ],
   },
 
   test: {
