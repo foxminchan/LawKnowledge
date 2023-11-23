@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import TabContent from './components/TabContent';
-import ItemBoxStatic from './components/ItemBoxStatic';
+import useMetadata from '@common/hooks/useMetadata';
 import SectionBottom from './components/SectionBottom';
-import useMetadata from '../../common/hooks/useMetadata';
+import ItemBoxStatic from './components/ItemBoxStatic';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Breadcrumbs, Container, Typography } from '@mui/material';
 

@@ -20,7 +20,7 @@ export default function ItemBoxStatic() {
               </Typography>
               <Typography
                 className={clsx(
-                  '!text-5xl !font-bold  !mt-5 cursor-pointer ',
+                  '!text-5xl !font-bold  !mt-5 cursor-pointer',
                   item.style
                 )}
               >
