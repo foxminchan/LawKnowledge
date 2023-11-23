@@ -9,6 +9,7 @@ const Home = loadable(() => import('./features/Home'));
 const Chat = loadable(() => import('./features/Chat'));
 const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
+const Search = loadable(() => import('./features/Search'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
@@ -48,18 +49,26 @@ export default function App() {
             }
           />
           <Route
-            path="/dich-vu-cong-noi-bat"
-            element={
-              <Suspense fallback={<CircularProgress />}>
-                <SignatureService title="Dịch vụ công nổi bật" />
-              </Suspense>
-            }
-          />
-          <Route
             path="/thanh-toan-truc-tuyen"
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Payment title="Thanh toán trực tuyến" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/tra-cuu"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <Search title="Tra cứu" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dich-vu-cong-noi-bat"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignatureService title="Dịch vụ công nổi bật" />
               </Suspense>
             }
           />
