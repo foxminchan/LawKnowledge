@@ -128,6 +128,10 @@ export default defineConfig({
         find: '@mocks',
         replacement: fileURLToPath(new URL('./src/mocks', import.meta.url)),
       },
+      {
+        find: '@features',
+        replacement: fileURLToPath(new URL('./src/features', import.meta.url)),
+      },
     ],
   },
 

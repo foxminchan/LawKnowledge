@@ -11,6 +11,7 @@
       "@mocks/*": ["src/mocks/*"],
       "@assets/*": ["src/assets/*"],
       "@common/*": ["src/common/*"],
+      "@features/*": ["src/features/*"],
       "@components/*": ["src/components/*"]
     },
     "moduleResolution": "bundler",

@@ -9,6 +9,8 @@ const Home = loadable(() => import('./features/Home'));
 const Chat = loadable(() => import('./features/Chat'));
 const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
+const SignUp = loadable(() => import('./features/SignUp'));
+const SignIn = loadable(() => import('./features/SignIn'));
 const Search = loadable(() => import('./features/Search'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
@@ -31,6 +33,22 @@ export default function App() {
             }
           />
         </Route>
+        <Route
+          path="/dang-ky"
+          element={
+            <Suspense fallback={<CircularProgress />}>
+              <SignUp title="Đăng ký" />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dang-nhap"
+          element={
+            <Suspense fallback={<CircularProgress />}>
+              <SignIn title="Đăng nhập" />
+            </Suspense>
+          }
+        />
         <Route path="/" element={<BasicLayout />}>
           <Route
             index
