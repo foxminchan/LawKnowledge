@@ -19,7 +19,10 @@ export default function ItemBoxStatic() {
                 {item.title}
               </Typography>
               <Typography
-                className={clsx('!text-5xl !font-bold  !mt-5', item.style)}
+                className={clsx(
+                  '!text-5xl !font-bold  !mt-5 cursor-pointer ',
+                  item.style
+                )}
               >
                 {item.value}
               </Typography>
@@ -51,7 +54,7 @@ export default function ItemBoxStatic() {
                   <Typography className="!text-3xl !font-medium !mb-5">
                     {item.title}
                   </Typography>
-                  <Typography className="!text-5xl !font-bold text-red-800 !mt-5">
+                  <Typography className="!text-5xl !font-bold text-rose-700 !mt-5 hover:text-japonica-600 cursor-pointer">
                     {item.value}
                   </Typography>
                 </CardContent>
