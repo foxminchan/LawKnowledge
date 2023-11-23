@@ -49,37 +49,11 @@ export default function TabContent() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {item.id === 1 &&
-                itemTableMinistries1.map((item) => (
-                  <TableRow
-                    key={item.id}
-                    sx={{
-                      '&:last-child td, &:last-child th': { border: 0 },
-                    }}
-                  >
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      className="!text-base"
-                    >
-                      {item.name}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="!text-base hover:!text-saffron-mango-600 cursor-pointer"
-                    >
-                      {item.value1}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="!text-base !text-saffron-mango-600 hover:!text-saffron-mango-700 cursor-pointer"
-                    >
-                      {item.value2}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              {item.id === 2 &&
-                itemTableMinistries2.map((item) => (
+              {selectedTabIndex === 0 &&
+                (item.id === 1
+                  ? itemTableMinistries1
+                  : itemTableMinistries2
+                ).map((item) => (
                   <TableRow
                     key={item.id}
                     sx={{
@@ -134,64 +108,37 @@ export default function TabContent() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {item.id === 1 &&
-                itemTableCity1.map((item) => (
-                  <TableRow
-                    key={item.id}
-                    sx={{
-                      '&:last-child td, &:last-child th': { border: 0 },
-                    }}
-                  >
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      className="!text-base"
+              {selectedTabIndex === 1 &&
+                (item.id === 1 ? itemTableCity1 : itemTableCity2).map(
+                  (tableItem) => (
+                    <TableRow
+                      key={tableItem.id}
+                      sx={{
+                        '&:last-child td, &:last-child th': { border: 0 },
+                      }}
                     >
-                      {item.name}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="!text-base hover:!text-saffron-mango-600 cursor-pointer"
-                    >
-                      {item.value1}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="!text-base !text-saffron-mango-600 hover:!text-saffron-mango-700 cursor-pointer"
-                    >
-                      {item.value2}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              {item.id === 2 &&
-                itemTableCity2.map((item) => (
-                  <TableRow
-                    key={item.id}
-                    sx={{
-                      '&:last-child td, &:last-child th': { border: 0 },
-                    }}
-                  >
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      className="!text-base"
-                    >
-                      {item.name}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="!text-base hover:!text-saffron-mango-600 cursor-pointer"
-                    >
-                      {item.value1}
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      className="!text-base !text-saffron-mango-600 hover:!text-saffron-mango-700 cursor-pointer"
-                    >
-                      {item.value2}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        className="!text-base"
+                      >
+                        {tableItem.name}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="!text-base hover:!text-saffron-mango-600 cursor-pointer"
+                      >
+                        {tableItem.value1}
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        className="!text-base !text-saffron-mango-600 hover:!text-saffron-mango-700 cursor-pointer"
+                      >
+                        {tableItem.value2}
+                      </TableCell>
+                    </TableRow>
+                  )
+                )}
             </TableBody>
           </Table>
         </TableContainer>
