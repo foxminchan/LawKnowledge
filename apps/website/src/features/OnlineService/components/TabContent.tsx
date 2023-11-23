@@ -29,7 +29,7 @@ export default function TabContent() {
     setSelectedTabIndex(index);
   };
   const tableMinistries = indexTable.map((item) => (
-    <Grid item xs={12} sm={6}>
+    <Grid key={item.id} item xs={12} sm={6}>
       {selectedTabIndex === 0 && (
         <TableContainer>
           <Table
@@ -39,7 +39,10 @@ export default function TabContent() {
             <TableHead>
               <TableRow>
                 {itemHeaderMinistries.map((item) => (
-                  <TableCell className="text-center bg-white-smoke-200 !text-base">
+                  <TableCell
+                    key={item.id}
+                    className="text-center bg-white-smoke-200 !text-base"
+                  >
                     {item.title}
                   </TableCell>
                 ))}
@@ -111,7 +114,7 @@ export default function TabContent() {
     </Grid>
   ));
   const tableCity = indexTable.map((item) => (
-    <Grid item xs={12} sm={6}>
+    <Grid key={item.id} item xs={12} sm={6}>
       {selectedTabIndex === 1 && (
         <TableContainer>
           <Table
@@ -121,7 +124,10 @@ export default function TabContent() {
             <TableHead>
               <TableRow>
                 {itemHeaderCity.map((item) => (
-                  <TableCell className="text-center bg-white-smoke-200 !text-base">
+                  <TableCell
+                    key={item.id}
+                    className="text-center bg-white-smoke-200 !text-base"
+                  >
                     {item.title}
                   </TableCell>
                 ))}
