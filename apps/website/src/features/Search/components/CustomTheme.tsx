@@ -1,11 +1,8 @@
 import { createTheme } from '@mui/material/styles';
-import clsx from 'clsx';
 
-const outerTheme = createTheme();
-
-export const CustomTheme = createTheme({
+export default createTheme({
   palette: {
-    mode: outerTheme.palette.mode,
+    mode: createTheme().palette.mode,
   },
   components: {
     MuiTextField: {
@@ -28,10 +25,10 @@ export const CustomTheme = createTheme({
           borderWidth: 'var(--TextField-borderWidth)',
         },
         root: {
-          [clsx('&:hover .MuiOutlinedInput-notchedOutline')]: {
+          '&:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: 'var(--TextField-brandBorderHoverColor)',
           },
-          [clsx('&.Mui-focused .MuiOutlinedInput-notchedOutline')]: {
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             borderColor: 'var(--TextField-brandBorderFocusedColor)',
           },
         },
