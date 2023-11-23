@@ -142,6 +142,9 @@ export default function Navbar() {
                       window.location.pathname.includes(subItem.link)
                     )
                     ? 'bg-japonica-500 text-white'
+                    : 'bg-white-smoke-100',
+                  window.location.pathname === item.link
+                    ? '!bg-japonica-500 text-white'
                     : 'bg-white-smoke-100'
                 )}
               >
