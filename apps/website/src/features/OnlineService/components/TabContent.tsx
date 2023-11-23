@@ -6,7 +6,7 @@ import {
   itemTableCity2,
   itemTableMinistries1,
   itemTableMinistries2,
-} from '@/mocks/onlineservice.data';
+} from '@/mocks/onlineService.data';
 import {
   Button,
   Grid,
@@ -146,7 +146,7 @@ export default function TabContent() {
     </Grid>
   ));
   return (
-    <div className="mt-5 mb-0 -ml-1 -mr-1 bg-transparent">
+    <section className="mt-5 mb-0 -ml-1 -mr-1 bg-transparent">
       <div className="mt-10 rounded py-5 ">
         <Grid
           container
@@ -157,7 +157,7 @@ export default function TabContent() {
             <Grid key={item.id} item className="w-1/2 ">
               <div
                 className={clsx(
-                  ' border-b-4 border-b-japonica-400 rounded rounded-br-none rounded-bl-none',
+                  'border-b-4 border-b-japonica-400 rounded rounded-br-none rounded-bl-none',
                   selectedTabIndex === index ? '!bg-japonica-400' : '!bg-white '
                 )}
               >
@@ -193,6 +193,6 @@ export default function TabContent() {
           {tableCity}
         </Grid>
       </Grid>
-    </div>
+    </section>
   );
 }

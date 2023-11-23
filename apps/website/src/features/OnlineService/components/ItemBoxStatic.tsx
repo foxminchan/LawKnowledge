@@ -1,6 +1,6 @@
-import { Card, CardContent, Grid, Typography } from '@mui/material';
-import { itemBoxData, subItemBoxData } from '../../../mocks/onlineservice.data';
 import clsx from 'clsx';
+import { Card, CardContent, Grid, Typography } from '@mui/material';
+import { itemBoxData, subItemBoxData } from '@mocks/onlineService.data';
 
 export default function ItemBoxStatic() {
   const subItemBox = (
@@ -33,7 +33,7 @@ export default function ItemBoxStatic() {
     </div>
   );
   return (
-    <main className="mt-0 mb-0 -ml-1 -mr-1 bg-transparent">
+    <section className="mt-0 mb-0 -ml-1 -mr-1 bg-transparent">
       <Grid
         container
         columnSpacing={{ xs: 1, md: 1 }}
@@ -63,6 +63,6 @@ export default function ItemBoxStatic() {
           </Grid>
         ))}
       </Grid>
-    </main>
+    </section>
   );
 }
