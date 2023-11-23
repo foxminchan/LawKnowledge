@@ -146,7 +146,7 @@ export default function TabContent() {
     </Grid>
   ));
   return (
-    <main className="mt-5 mb-0 -ml-1 -mr-1 bg-transparent">
+    <div className="mt-5 mb-0 -ml-1 -mr-1 bg-transparent">
       <div className="mt-10 rounded py-5 ">
         <Grid
           container
@@ -193,6 +193,6 @@ export default function TabContent() {
           {tableCity}
         </Grid>
       </Grid>
-    </main>
+    </div>
   );
 }

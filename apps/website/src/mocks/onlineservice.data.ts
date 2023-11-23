@@ -37,17 +37,17 @@ export const  itemTableMinistries1=[
     {id:12 , name:"Bộ Kế hoạch và Đầu tư" , value1:"41" , value2:"41"},
 ]
 export const  itemTableMinistries2=[
-    {id:12 , name:"Bộ Văn hóa, Thể thao và Du lịch" , value1:"41" , value2:"41"},
-    {id:13 , name:"Bộ Xây dựng" , value1:"36" , value2:"36"},
-    {id:14, name:"Bộ Nội vụ	" , value1:"36" , value2:"36"},
-    {id:15 , name:"Ngân hàng Nhà nước Việt Nam" , value1:"27" , value2:"27"},
-    {id:16, name:"Ngân hàng Nhà nước Việt Nam" , value1:"18" , value2:"18"},
-    {id:17 , name:"Bảo hiểm xã hội Việt Nam" , value1:"17" , value2:"23"},
-    {id:18, name:"Bộ Giáo dục và Đào tạo" , value1:"11" , value2:"11"},
-    {id:19, name:"Tập đoàn Điện lực Việt Nam" , value1:"11" , value2:"11"},
-    {id:20, name:"Bộ Ngoại giao" , value1:"4" , value2:"5"},
-    {id:21 , name:"Tòa án nhân dân" , value1:"3" , value2:"3"},
-    {id:22 , name:"Ủy ban Dân tộc" , value1:"2" , value2:"2"},
+    {id:13 , name:"Bộ Văn hóa, Thể thao và Du lịch" , value1:"41" , value2:"41"},
+    {id:14 , name:"Bộ Xây dựng" , value1:"36" , value2:"36"},
+    {id:15, name:"Bộ Nội vụ	" , value1:"36" , value2:"36"},
+    {id:16 , name:"Ngân hàng Nhà nước Việt Nam" , value1:"27" , value2:"27"},
+    {id:17, name:"Ngân hàng Nhà nước Việt Nam" , value1:"18" , value2:"18"},
+    {id:18 , name:"Bảo hiểm xã hội Việt Nam" , value1:"17" , value2:"23"},
+    {id:19, name:"Bộ Giáo dục và Đào tạo" , value1:"11" , value2:"11"},
+    {id:20, name:"Tập đoàn Điện lực Việt Nam" , value1:"11" , value2:"11"},
+    {id:21, name:"Bộ Ngoại giao" , value1:"4" , value2:"5"},
+    {id:22 , name:"Tòa án nhân dân" , value1:"3" , value2:"3"},
+    {id:23 , name:"Ủy ban Dân tộc" , value1:"2" , value2:"2"},
 ]
 export const itemTableCity1=[
     {id:1 , name:"UBND tỉnh Cà Mau" , value1:"1736" , value2:"1739"},
