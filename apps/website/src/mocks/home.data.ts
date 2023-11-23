@@ -1,4 +1,4 @@
-import { IconHomeCitizen, IconHomeBusiness } from '../common/utils/image';
+import { IconHomeCitizen, IconHomeBusiness } from '@common/utils/image';
 
 export const button = [
   {

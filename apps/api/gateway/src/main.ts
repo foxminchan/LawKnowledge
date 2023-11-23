@@ -2,23 +2,46 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import cors from '@fastify/cors';
+import helmet from '@fastify/helmet';
 import { Logger } from '@nestjs/common';
+import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
-
-import { AppModule } from './app/app.module';
+import compression from '@fastify/compress';
+import fastifyCsrfProtection from '@fastify/csrf-protection';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter()
   );
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
+
+  app.register(fastifyCsrfProtection);
+  app.register(cors, {
+    origin: true,
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'HEAD', 'OPTIONS'],
+    credentials: true,
+  });
+  app.register(compression, { encodings: ['gzip', 'deflate'] });
+  app.register(helmet, {
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: [`'self'`],
+        styleSrc: [`'self'`, `'unsafe-inline'`],
+        imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
+        scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
+      },
+    },
+  });
+
+  app.listen(process.env.PORT || 8080);
 }
 
-bootstrap();
+void (async (): Promise<void> => {
+  try {
+    await bootstrap();
+    Logger.log(`🚀 Api Gateway is running`);
+  } catch (error) {
+    Logger.error(error, '❌ Error starting server');
+  }
+})();

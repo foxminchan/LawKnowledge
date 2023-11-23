@@ -1,4 +1,6 @@
-const config = {
+import simplePlantUML from '@akebifiky/remark-simple-plantuml';
+
+export default {
   title: 'Law Knowledge',
   tagline:
     "A legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database",
@@ -9,14 +11,22 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'foxminchan',
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
       {
         docs: {
           sidebarPath: 'sidebars.ts',
+          sidebarCollapsed: false,
           editUrl:
             'https://github.com/foxminchan/LawKnowledge/tree/main/apps/docs',
+          remarkPlugins: [simplePlantUML],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
@@ -78,9 +88,7 @@ const config = {
       },
     },
     docs: {
-      sidebar: {
-        autoCollapseCategories: true,
-      },
+      sidebar: {},
     },
     announcementBar: {
       id: 'announcement-bar',
@@ -219,5 +227,3 @@ const config = {
     },
   ],
 };
-
-module.exports = config;

@@ -113,6 +113,7 @@ export default {
     },
     backgroundImage: {
       'crane-bg': "url('./assets/images/banners/bg.svg')",
+      'search-bg': "url('./assets/images/search/bg.jpg')",
       'slogan-bg': "url('././assets/images/banners/hac.svg')",
       'hotnews-bg': "url('./assets/images/banners/bg-news.jpg')",
       'hero-banner': "url('././assets/images/banners/banner.jpg')",

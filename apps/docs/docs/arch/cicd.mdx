@@ -1,0 +1,229 @@
+---
+title: CI/CD
+description: A pipeline of CI/CD for a project
+sidebar_position: 2
+last_update:
+  author: Nguyen Xuan Nhan
+---
+
+# CI/CD
+
+## Overview
+
+<p align="justify">
+
+The CI/CD pipeline is an essential part of modern software development, facilitating automated testing and deployment of code. In this project, we use Jenkins for continuous integration, SonarQube for code quality analysis, and Spinnaker for continuous deployment.
+
+</p>
+
+## CI/CD Pipeline
+
+<img
+  loading="lazy"
+  src="/LawKnowledge/img/banner/cicd.svg"
+  alt="CI/CD Pipeline"
+  width="100%"
+/>
+
+## Jenkins
+
+<p align="justify">
+
+Jenkins is an open-source automation server that offers an easy way to set up a continuous integration and continuous delivery (CI/CD) pipeline. Continuous integration (CI) is a DevOps practice in which team members regularly commit their code changes to the version control repository, after which automated builds and tests are run. Continuous delivery (CD) is a series of practices where code changes are automatically built, tested, and deployed to production. Jenkins is the most popular open-source CI/CD tool on the market today and is used by companies large and small, including Google, Amazon, and Facebook.
+
+</p>
+
+### Installation
+
+<p align="justify">
+
+We use Jenkins as a Docker container. The following command will pull the latest Jenkins image from Docker Hub and run it on port 8080.
+
+</p>
+
+```bash
+docker run -d -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+```
+
+<p align="justify">
+
+After running the above command, we can access Jenkins at http://localhost:8080. The first time we access Jenkins, we will be asked to enter the administrator password. We can get the password by running the following command.
+
+</p>
+
+```bash
+docker exec -it <container_id> cat /var/jenkins_home/secrets/initialAdminPassword
+```
+
+<p align="justify">
+
+After entering the password, we will be asked to install the suggested plugins or select the plugins to install. We can select the plugins to install. After installing the plugins, we will be asked to create the first admin user. After creating the admin user, we can access Jenkins.
+
+</p>
+
+### Webhook Configuration
+
+<p align="justify">
+
+We need to configure the webhook for the GitHub repository. We can configure the webhook by going to the repository settings, selecting Webhooks, and clicking Add webhook. We need to enter the Payload URL, which is the URL of the Jenkins server, and the secret token. We can get the secret token by going to the Jenkins server, selecting Manage Jenkins, selecting Configure System, and scrolling down to GitHub Web Hook. We need to select the option Let Jenkins auto-manage hook URLs. We can also select the option Let Jenkins auto-manage hook URLs for jobs that use the GitSCM feature. We need to click Advanced and select the option Specify another hook secret for each job. We need to click Generate and copy the secret token. We need to paste the secret token to the GitHub repository settings.
+
+</p>
+
+### Pipeline Configuration
+
+<p align="justify">
+
+We need to create a pipeline for the project. We can create a pipeline by going to the Jenkins server, selecting New Item, entering the item name, and selecting Pipeline. We need to click OK. We need to scroll down to Pipeline and select Pipeline script from SCM. We need to select Git for SCM, enter the repository URL, and enter the credentials. We need to click Save.
+
+</p>
+
+### Pipeline Script
+
+<p align="justify">
+
+We need to create a pipeline script for the project. We can create a pipeline script by going to the Jenkins server, selecting New Item, entering the item name, and selecting Pipeline. We need to click OK. We need to scroll down to Pipeline and select Pipeline script. We need to enter the pipeline script and click Save.
+
+</p>
+
+### Pipeline Script for the Project
+
+<p align="justify">
+
+We need to create a pipeline script for the project. We can create a pipeline script by going to the Jenkins server, selecting New Item, entering the item name, and selecting Pipeline. We need to click OK. We need to scroll down to Pipeline and select Pipeline script. We need to enter the pipeline script and click Save.
+
+</p>
+
+```jenkinsfile
+pipeline {
+    agent none
+    environment {
+        NX_BRANCH = env.BRANCH_NAME.replace('PR-', '')
+    }
+    stages {
+        stage('Pipeline') {
+            parallel {
+                stage('Main') {
+                    when {
+                        branch 'main'
+                    }
+                    agent any
+                    steps {
+                        sh "npm ci"
+                        sh "npx nx-cloud start-ci-run --stop-agents-after='build'"
+                        sh "npx nx format:check"
+                        sh "npx nx affected --base=HEAD~1 -t lint --parallel=3 & npx nx affected --base=HEAD~1 -t test --parallel=3 --configuration=ci & npx nx affected --base=HEAD~1 -t build --parallel=3"
+                    }
+                }
+                stage('PR') {
+                    when {
+                        not { branch 'main' }
+                    }
+                    agent any
+                    steps {
+                        sh "npm ci"
+                        sh "npx nx-cloud start-ci-run --stop-agents-after='build'"
+                        sh "npx nx format:check"
+                        sh "npx nx affected --base origin/${env.CHANGE_TARGET} -t lint --parallel=2 & npx nx affected --base origin/${env.CHANGE_TARGET} -t test --parallel=2 --configuration=ci & npx nx affected --base origin/${env.CHANGE_TARGET} -t build --parallel=2"
+                    }
+                }
+
+                # Add as many agent you want
+                stage('Agent1') {
+                   agent any
+                   steps {
+                    sh "npm ci"
+                    sh "npx nx-cloud start-agent"
+                   }
+                }
+                stage('Agent2') {
+                   agent any
+                   steps {
+                    sh "npm ci"
+                    sh "npx nx-cloud start-agent"
+                   }
+                }
+                stage('Agent3') {
+                   agent any
+                   steps {
+                    sh "npm ci"
+                    sh "npx nx-cloud start-agent"
+                   }
+                }
+            }
+        }
+    }
+}
+```
+
+## SonarQube
+
+<p align="justify">
+
+SonarQube is an open-source platform for continuous inspection of code quality. It is used to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities on 20+ programming languages. SonarQube offers reports on duplicated code, coding standards, unit tests, code coverage, code complexity, comments, bugs, and security vulnerabilities. SonarQube can be extended with plugins for additional languages, metrics, and integration with other development tools such as continuous integration and build systems.
+
+</p>
+
+### Installation
+
+<p align="justify">
+
+We use SonarQube as a Docker container. The following command will pull the latest SonarQube image from Docker Hub and run it on port 9000.
+
+</p>
+
+```bash
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
+
+## Spinnaker
+
+<p align="justify">
+
+Spinnaker is an open-source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence. It provides two core sets of features: cluster management and deployment management. Spinnaker’s deployment management features include:
+
+- Automated Canary Deployments
+- Pipeline Orchestration
+- Stage Orchestration
+- Notifications
+- Load Balancing
+- Cloud Provider Integrations
+
+</p>
+
+### Installation
+
+<p align="justify">
+
+We use Spinnaker as a Helm chart. The following command will add the Spinnaker Helm chart repository.
+
+</p>
+
+```bash
+helm repo add spinnaker https://charts.spinnaker.io/stable
+```
+
+<p align="justify">
+
+The following command will install Spinnaker.
+
+</p>
+
+```bash
+helm install spinnaker spinnaker/spinnaker
+```
+
+<p align="justify">
+
+The following command will forward the Spinnaker UI port to port 9000.
+
+</p>
+
+```bash
+kubectl port-forward svc/spin-deck 9000:9000
+```
+
+## References
+
+- [Jenkins](https://www.jenkins.io/)
+- [SonarQube](https://www.sonarqube.org/)
+- [Spinnaker](https://spinnaker.io/)

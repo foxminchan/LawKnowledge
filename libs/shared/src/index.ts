@@ -1,1 +1,3 @@
-export * from './lib/shared.module';
+export * from './utils';
+export * from './@types';
+export * from './filters';

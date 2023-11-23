@@ -1,0 +1,57 @@
+---
+title: Infrastructure
+description: An overview of the infrastructure of the project
+sidebar_position: 3
+last_update:
+  author: Nguyen Xuan Nhan
+---
+
+# Infrastructure
+
+## Overview
+
+<p align="justify">
+
+The infrastructure of the project is built on the OpenStack platform. OpenStack is a free and open-source software platform for cloud computing, mostly deployed as infrastructure-as-a-service (IaaS), whereby virtual servers and other resources are made available to customers. The software platform consists of interrelated components that control diverse, multi-vendor hardware pools of processing, storage, and networking resources throughout a data center. Users either manage it through a web-based dashboard, through command-line tools, or through RESTful web services.
+
+</p>
+
+## Architecture
+
+<img
+  loading="lazy"
+  src="/LawKnowledge/img/o11y/infra.svg"
+  alt="Infrastructure"
+  width="100%"
+/>
+
+## Components
+
+- **OpenStack Services:**
+
+  - **Nova:** Manages compute instances for Kubernetes nodes.
+  - **Neutron:** Provides networking for the Kubernetes cluster.
+  - **Cinder:** Offers block storage services.
+  - **Keystone:** Handles identity services for authentication and authorization.
+  - **Glance:** Manages VM images for Kubernetes nodes.
+
+- **Kubernetes Cluster:**
+
+  - **Master Node:** Oversees the entire Kubernetes cluster.
+  - **Worker Nodes:** Host the application services.
+  - **Ingress Controller:** Manages external access to the services.
+  - **Website**: The front-end user interface.
+  - **API Gateway:** Routes API requests to appropriate services.
+
+- **Individual Services:**
+
+  - **Law Service:** Handles law-related functionalities.
+  - **Auth Service:** Manages authentication processes.
+  - **Search Service:** Provides search capabilities.
+  - **Chat Service:** Enables chat functionalities.
+
+- **Interactions:**
+  - User requests are received by the Ingress controller.
+  - The Ingress controller routes requests to the website or the API Gateway.
+  - The API Gateway further routes requests to the respective services like Law, Auth, Search, and Chat services.
+  - Kubernetes nodes interact with OpenStack services for resources.

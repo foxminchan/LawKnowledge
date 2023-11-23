@@ -4,7 +4,6 @@ import {
 } from '@nestjs/platform-fastify';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
@@ -13,13 +12,15 @@ async function bootstrap() {
     new FastifyAdapter()
   );
 
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
+  app.setGlobalPrefix('api/v1/');
+  await app.listen(process.env.PORT || 8082);
 }
 
-bootstrap();
+void (async (): Promise<void> => {
+  try {
+    await bootstrap();
+    Logger.log(`🚀 Law Service is running`);
+  } catch (error) {
+    Logger.error(error, '❌ Error starting server');
+  }
+})();

@@ -6,13 +6,16 @@ import { CircularProgress } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const Home = loadable(() => import('./features/Home'));
+const Chat = loadable(() => import('./features/Chat'));
 const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
+const Search = loadable(() => import('./features/Search'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
 const OnlineService = loadable(() => import('./features/OnlineService'));
+const SignatureService = loadable(() => import('./features/SignatureService'));
 
 export default function App() {
   return (
@@ -20,6 +23,14 @@ export default function App() {
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path="/dang-xuat" element={<SignOut />} />
+          <Route
+            path="/hoi-dap"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <Chat title="Hỏi đáp" />
+              </Suspense>
+            }
+          />
         </Route>
         <Route path="/" element={<BasicLayout />}>
           <Route
@@ -43,6 +54,22 @@ export default function App() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Payment title="Thanh toán trực tuyến" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/tra-cuu"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <Search title="Tra cứu" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dich-vu-cong-noi-bat"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignatureService title="Dịch vụ công nổi bật" />
               </Suspense>
             }
           />

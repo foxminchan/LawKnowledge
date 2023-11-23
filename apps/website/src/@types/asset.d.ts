@@ -3,7 +3,7 @@ type bannerNotificationType = {
   DVC: string;
   UnEmployment: string;
   ErrorSignUp: string;
-  LPTB: string;
+  Lptb: string;
 };
 
 type IconIntroType = {
@@ -76,4 +76,10 @@ type ImagePreviewGuideType = {
   Preview2: string;
   Preview3: string;
   Preview4: string;
+};
+
+type IconServiceInformationType = {
+  Drum: string;
+  Document: string;
+  LaptopIcon: string;
 };

@@ -1,4 +1,4 @@
-import { IconIntro } from '../common/utils/image';
+import { IconIntro } from '@common/utils/image';
 
 export const itemIntroInfo = [
   {

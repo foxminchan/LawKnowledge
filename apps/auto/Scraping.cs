@@ -41,7 +41,7 @@ public class Scraping
         return sb.ToString();
       })
       .Where(text => !string.IsNullOrEmpty(text) &&
-                     !text.StartsWith("{") &&
+                     !text.StartsWith('{') &&
                      text.Length > 1 &&
                      text != "\n" && text != "\r" && text != "\t" &&
                      text != "." && text != "," && text != "|")
