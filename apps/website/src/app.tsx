@@ -16,6 +16,7 @@ const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
+const OnlineService = loadable(() => import('./features/OnlineService'));
 const SignatureService = loadable(() => import('./features/SignatureService'));
 
 export default function App() {
@@ -95,6 +96,14 @@ export default function App() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Policy title="Điều khoản sử dụng" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dich-vu-cong-truc-tuyen"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <OnlineService title="Dịch vụ công trực tuyến" />
               </Suspense>
             }
           />
