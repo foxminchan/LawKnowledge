@@ -23,7 +23,7 @@ export default function OnlineService(props: Readonly<Props>) {
   ];
 
   return (
-    <main className="pb-8 min-h-[calc(100vh_-_400px)] mb-12">
+    <main className="min-h-[calc(100vh_-_400px)]">
       <Container>
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}
