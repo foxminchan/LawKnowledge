@@ -34,28 +34,28 @@ export default function App() {
             }
           />
         </Route>
-        <Route
-          path="/dang-ky"
-          element={
-            <Suspense fallback={<CircularProgress />}>
-              <SignUp title="Đăng ký" />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/dang-nhap"
-          element={
-            <Suspense fallback={<CircularProgress />}>
-              <SignIn title="Đăng nhập" />
-            </Suspense>
-          }
-        />
         <Route path="/" element={<BasicLayout />}>
           <Route
             index
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Home title="Trang chủ" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dang-ky"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignUp title="Đăng ký" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dang-nhap"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignIn title="Đăng nhập" />
               </Suspense>
             }
           />
