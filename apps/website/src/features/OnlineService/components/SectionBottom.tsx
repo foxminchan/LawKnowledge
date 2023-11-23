@@ -3,7 +3,7 @@ import drums from '@assets/images/notification/trongdong.png';
 
 export default function SectionBottom() {
   return (
-    <div className="h-40 px-0 py-10 mt-16 bg-white-smoke-200">
+    <section className="h-40 px-0 py-10 mt-16 bg-white-smoke-200">
       <Container>
         <Grid
           container
@@ -37,6 +37,6 @@ export default function SectionBottom() {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </section>
   );
 }
