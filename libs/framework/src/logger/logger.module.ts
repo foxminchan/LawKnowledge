@@ -6,6 +6,7 @@ import { LoggerModule as PinoLoggerModule } from 'nestjs-pino';
   imports: [
     PinoLoggerModule.forRoot({
       pinoHttp: {
+        safe: true,
         logger: logger,
       },
     }),

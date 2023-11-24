@@ -1,5 +1,5 @@
-import { Body, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { GrpcMethod } from '@nestjs/microservices';
 import { AccessToken, LoginPayload } from '../../@types';
 import { ApiController, SwaggerResponse } from '@law-knowledge/shared';
 
@@ -7,13 +7,13 @@ import { ApiController, SwaggerResponse } from '@law-knowledge/shared';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('login')
   @SwaggerResponse({
     operation: 'Login account',
     body: LoginPayload,
     response: AccessToken,
   })
-  login(@Body() user: LoginPayload) {
+  @GrpcMethod('AuthService', 'Login')
+  login(user: LoginPayload) {
     return this.authService.login(user);
   }
 }

@@ -1,19 +1,24 @@
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
 import { Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
+import { GrpcOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter()
-  );
+  const app = await NestFactory.createMicroservice(AppModule, {
+    transport: Transport.GRPC,
+    options: {
+      url: `${process.env.URL}:${process.env.PORT}`,
+      package: 'auth',
+      protoPath: './src/proto/auth.proto',
+      loader: {
+        enums: String,
+        objects: true,
+        arrays: true,
+      },
+    },
+  } as GrpcOptions);
 
-  app.setGlobalPrefix('api/v1/');
-  await app.listen(process.env.PORT || 8081);
+  await app.listen();
 }
 
 void (async (): Promise<void> => {

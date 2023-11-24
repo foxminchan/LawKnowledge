@@ -1,11 +1,15 @@
 import {
   CreateUserModel,
-  ResponseUserModel,
   UpdateUserModel,
+  ResponseUserModel,
 } from '../../models';
+import {
+  Auth,
+  JwtAuthGuard,
+  ApiController,
+  SwaggerResponse,
+} from '@law-knowledge/shared';
 import { UserService } from './user.service';
-import { JwtAuthGuard } from '@law-knowledge/shared';
-import { Auth, ApiController, SwaggerResponse } from '@law-knowledge/shared';
 import { Get, Put, Post, Body, Param, Delete, UseGuards } from '@nestjs/common';
 
 @ApiController('user')
