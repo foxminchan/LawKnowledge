@@ -8,6 +8,7 @@ tmp
 # dependencies
 .idea
 .venv
+.cache
 
 # dependencies
 node_modules

@@ -74,9 +74,11 @@
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
   - [🛠️ Prerequisites](#️-prerequisites)
+  - [📦 Dataset](#-dataset)
   - [🧑‍💻 Setup](#-setup)
   - [🚀 Running](#-running)
   - [🧪 Testing](#-testing)
+  - [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
@@ -158,6 +160,17 @@ We used **Microservice Architecture** to build this project to make it easier to
 	</li>
 </ul>
 
+## 📦 Dataset
+
+<p align="justify">
+
+You can download the dataset from the following link:
+
+- [Phap Dien](https://phapdien.moj.gov.vn/Pages/home.aspx): A website that provides legal documents of Vietnam.
+- [QPPL](https://vbpl.vn/pages/portal.aspx): Database of Vietnam's legal documents.
+
+</p>
+
 ## 🧑‍💻 Setup
 
 First, clone the repository to your local machine:
@@ -193,7 +206,16 @@ npx nx serve api-auth-svc
 npx nx serve api-law-svc
 
 # For the Search Service
-npx nx serve api-search-svc
+npx nx build api-search-svc
+
+# For the Chat Service
+npx nx build api-chat-svc
+```
+
+To traning the model, you can run the following command:
+
+```bash
+npx nx build model
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -227,6 +249,29 @@ npx nx test api-law-svc
 
 # For the Search Service
 npx nx test api-search-svc
+
+# For the Chat Service
+npx nx test api-chat-svc
+```
+
+To test the model, you can run the following command:
+
+```bash
+npx nx test model
+```
+
+## 🧩 Other
+
+To run the tooling for processing the dataset, you can run the following command:
+
+```bash
+npx nx serve auto
+```
+
+For running documentation, you can run the following command:
+
+```bash
+npx nx serve docs
 ```
 
 # Dependency Graph
@@ -236,6 +281,10 @@ You can see the dependency graph of the project by running the following command
 ```bash
 npx nx dep-graph
 ```
+
+Here is the dependency graph of the project:
+
+<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 
