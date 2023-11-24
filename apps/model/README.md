@@ -1,3 +1,0 @@
-# model
-
-Project description here.
