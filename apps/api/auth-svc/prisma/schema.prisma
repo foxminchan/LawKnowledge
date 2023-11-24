@@ -25,9 +25,10 @@ model Roles {
 }
 
 model UserRoles {
-  id      String @id @default(uuid())
   user_id String
   role_id String
   User    User   @relation(fields: [user_id], references: [id])
   Roles   Roles  @relation(fields: [role_id], references: [id])
+
+  @@id([user_id, role_id])
 }

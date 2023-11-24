@@ -1,8 +1,9 @@
+import { DataModule } from '@law-knowledge/framework';
+import { UserModule } from './modules';
 import { Module } from '@nestjs/common';
 
 @Module({
-  imports: [],
-  controllers: [],
+  imports: [DataModule, UserModule],
   providers: [],
 })
 export class AppModule {}
