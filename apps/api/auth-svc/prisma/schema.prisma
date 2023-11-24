@@ -8,25 +8,25 @@ datasource db {
 }
 
 model User {
-  id        String      @id @default(uuid())
-  name      String
-  email     String      @unique
-  phone     String?
-  card      String      @unique
-  address   String?
+  id        String      @id @default(uuid()) @db.Uuid
+  name      String      @db.VarChar(50)
+  email     String      @unique @db.VarChar(50)
+  phone     String?     @db.Char(10)
+  card      String      @unique @db.VarChar(12)
+  address   String?     @db.VarChar(100)
   password  String?
   UserRoles UserRoles[]
 }
 
 model Roles {
-  id        String      @id @default(uuid())
-  name      String      @unique
+  id        String      @id @default(uuid()) @db.Uuid
+  name      String      @unique @db.VarChar(50)
   UserRoles UserRoles[]
 }
 
 model UserRoles {
-  user_id String
-  role_id String
+  user_id String @db.Uuid
+  role_id String @db.Uuid
   User    User   @relation(fields: [user_id], references: [id])
   Roles   Roles  @relation(fields: [role_id], references: [id])
 

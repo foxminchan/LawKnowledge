@@ -206,5 +206,8 @@
     "vite-plugin-dts": "~2.3.0",
     "vite-plugin-pwa": "^0.16.7",
     "vitest": "^0.34.6"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

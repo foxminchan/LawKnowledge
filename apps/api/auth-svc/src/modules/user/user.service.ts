@@ -26,7 +26,16 @@ export class UserService {
   addUser(user: CreateUserModel) {
     return this.dataService.$transaction([
       this.dataService.user.create({
-        data: user,
+        data: {
+          ...user,
+          UserRoles: {
+            create: [
+              {
+                role_id: '538cca28-8e18-47e7-8b6f-63c5a5ba386a',
+              },
+            ],
+          },
+        },
       }),
     ]);
   }

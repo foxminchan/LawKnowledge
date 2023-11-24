@@ -7,6 +7,7 @@ import {
   IsNotEmpty,
 } from 'class-validator';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ResponseUserRoleModel } from './user-role.model';
 
 export class CreateUserModel {
   @ApiProperty()
@@ -53,4 +54,7 @@ export class UpdateUserModel extends PartialType(CreateUserModel) {}
 export class ResponseUserModel extends PartialType(CreateUserModel) {
   @ApiProperty()
   id: string;
+
+  @ApiProperty()
+  UserRoles: ResponseUserRoleModel[];
 }

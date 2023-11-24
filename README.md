@@ -105,13 +105,14 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 # Tentative technologies
 
 - [React](https://reactjs.org/)
-- [Kafka](https://kafka.apache.org/)
-- [Redis](https://redis.io/)
 - [NestJS](https://nestjs.com/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Pulumi](https://www.pulumi.com/)
+- [Kafka](https://kafka.apache.org/)
 - [Jenkins](https://www.jenkins.io/)
-- [PostgreSQL](https://www.postgresql.org/)
+- [Spinnaker](https://spinnaker.io/)
+- [OpenStack](https://www.openstack.org/)
+- [Kubernetes](https://kubernetes.io/)
 - [SonarCloud](https://sonarcloud.io/)
 - [OpenTelemetry](https://opentelemetry.io/)
 - [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/), [Loki](https://grafana.com/oss/loki/), [Tempo](https://grafana.com/oss/tempo/), [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/)
