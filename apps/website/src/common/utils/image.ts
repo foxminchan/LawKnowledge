@@ -3,7 +3,7 @@ import preview2 from '@assets/images/preview/2.png';
 import preview3 from '@assets/images/preview/3.png';
 import preview4 from '@assets/images/preview/4.png';
 import dvc from '@assets/images/notification/dvc.png';
-import lptb from '@assets/images/notification/lptb.png';
+import lptb from '@assets/images/notification/LPTB.png';
 import login from '@assets/images/icons/intro/login.svg';
 import query from '@assets/images/icons/intro/truyvan.svg';
 import share from '@assets/images/icons/intro/chiase.svg';
