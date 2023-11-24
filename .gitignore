@@ -6,6 +6,10 @@ tmp
 /out-tsc
 
 # dependencies
+.idea
+.venv
+
+# dependencies
 node_modules
 
 # misc

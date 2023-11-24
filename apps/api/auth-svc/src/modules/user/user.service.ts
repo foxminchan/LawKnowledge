@@ -7,12 +7,19 @@ export class UserService {
   constructor(private readonly dataService: DataService) {}
 
   getUsers() {
-    return this.dataService.user.findMany();
+    return this.dataService.user.findMany({
+      include: {
+        UserRoles: true,
+      },
+    });
   }
 
-  getUser(id: string) {
+  getUser(email: string) {
     return this.dataService.user.findUnique({
-      where: { id: id },
+      where: { email: email },
+      include: {
+        UserRoles: true,
+      },
     });
   }
 

@@ -27,12 +27,12 @@ export class UserController {
   @Auth()
   @Get(':id')
   @SwaggerResponse({
-    operation: 'User fetch by id',
-    params: ['id'],
+    operation: 'User fetch by email',
+    params: ['email'],
     response: ResponseUserModel,
   })
-  getUser(@Param('id') id: string) {
-    return this.userService.getUser(id);
+  getUser(@Param('email') email: string) {
+    return this.userService.getUser(email);
   }
 
   @UseGuards(JwtAuthGuard)

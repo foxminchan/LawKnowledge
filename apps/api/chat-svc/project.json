@@ -1,14 +1,14 @@
 {
-  "name": "api-searching-svc",
+  "name": "api-chat-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/api/searching-svc/searching_svc",
+  "sourceRoot": "/apps/api/chat-svc/chat-svc",
   "targets": {
     "lock": {
       "executor": "@nxlv/python:run-commands",
       "options": {
         "command": "poetry lock --no-update",
-        "cwd": "apps/api/searching-svc"
+        "cwd": "/apps/api/chat-svc"
       }
     },
     "add": {
@@ -29,7 +29,7 @@
         "{projectRoot}/dist"
       ],
       "options": {
-        "outputPath": "apps/api/searching-svc/dist",
+        "outputPath": "/apps/api/chat-svc/dist",
         "publish": false,
         "lockedVersions": true,
         "bundleLocalDependencies": true
@@ -48,21 +48,21 @@
     "lint": {
       "executor": "@nxlv/python:flake8",
       "outputs": [
-        "{workspaceRoot}/reports/apps/api/searching-svc/pylint.txt"
+        "{workspaceRoot}/reports//apps/api/chat-svc/pylint.txt"
       ],
       "options": {
-        "outputFile": "reports/apps/api/searching-svc/pylint.txt"
+        "outputFile": "reports//apps/api/chat-svc/pylint.txt"
       }
     },
     "test": {
       "executor": "@nxlv/python:run-commands",
       "outputs": [
-        "{workspaceRoot}/reports/apps/api/searching-svc/unittests",
-        "{workspaceRoot}/coverage/apps/api/searching-svc"
+        "{workspaceRoot}/reports//apps/api/chat-svc/unittests",
+        "{workspaceRoot}/coverage//apps/api/chat-svc"
       ],
       "options": {
         "command": "poetry run pytest tests/",
-        "cwd": "apps/api/searching-svc"
+        "cwd": "/apps/api/chat-svc"
       }
     }
   },

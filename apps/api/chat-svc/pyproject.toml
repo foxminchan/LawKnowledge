@@ -1,23 +1,23 @@
 [tool.coverage.run]
 branch = true
-source = ["searching_svc"]
+source = ["chat-svc"]
 
 [tool.coverage.report]
 exclude_lines = ['if TYPE_CHECKING:']
 show_missing = true
 
 [tool.pytest.ini_options]
-addopts = "--cov --cov-report html:'../../../coverage/apps/api/searching-svc/html' --cov-report xml:'../../../coverage/apps/api/searching-svc/coverage.xml' --html='../../../reports/apps/api/searching-svc/unittests/html/index.html' --junitxml='../../../reports/apps/api/searching-svc/unittests/junit.xml'"
+addopts = "--cov --cov-report html:'../../../coverage//apps/api/chat-svc/html' --cov-report xml:'../../../coverage//apps/api/chat-svc/coverage.xml' --html='../../../reports//apps/api/chat-svc/unittests/html/index.html' --junitxml='../../../reports//apps/api/chat-svc/unittests/junit.xml'"
 
 [tool.poetry]
-name = "searching-svc"
+name = "chat-svc"
 version = "1.0.0"
-description = "Searching service"
+description = "Chat service"
 authors = ['Nguyen Xuan Nhan <nguyenxuannhan407@gmail.com>']
 license = 'MIT'
 
 [[tool.poetry.packages]]
-include = "searching_svc"
+include = "chat-svc"
 
 [tool.poetry.dependencies]
 python = ">=3.12"
