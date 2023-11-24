@@ -1,5 +1,5 @@
 import { Divider, Typography } from '@mui/material';
-import DescriptionIcon from '@mui/icons-material/Description';
+import PdfIcon from '@assets/images/icons/pdf-icon.svg';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 export default function HeaderDetail() {
@@ -14,9 +14,7 @@ export default function HeaderDetail() {
           Xem chi tiết
         </span>
       </div>
-      <div>
-        <DescriptionIcon className="absolute text-saffron-mango-500 !w-10 !h-10 top-0 right-10" />
-      </div>
+      <img src={PdfIcon} alt="pdf-icon" className="absolute top-0 right-0" />
       <Divider className="!mt-5" />
     </div>
   );
