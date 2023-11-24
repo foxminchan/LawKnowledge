@@ -2,6 +2,8 @@ import useMetadata from '@/common/hooks/useMetadata';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Breadcrumbs, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import HeaderDetail from './components/HeaderDetail';
+import ContentDetail from './components/ContentDetail';
 
 type Props = {
   title: string;
@@ -32,6 +34,8 @@ export default function OnlineService(props: Readonly<Props>) {
         >
           {breadcrumbs}
         </Breadcrumbs>
+        <HeaderDetail />
+        <ContentDetail />
       </Container>
     </main>
   );
