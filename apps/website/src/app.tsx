@@ -11,9 +11,9 @@ const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
-const SearchResult = loadable(() => import('./features/SearchResult'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
+const SearchResult = loadable(() => import('./features/SearchResult'));
 const SignatureService = loadable(() => import('./features/SignatureService'));
 
 export default function App() {

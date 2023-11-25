@@ -1,27 +1,19 @@
-export const itemBreadcrumbs = [
-    {
-      id: 1,
-      name: 'Trang chủ',
-      link: '/',
-      isActive: false,
-    },
-    {
-      id: 2,
-      name: 'Thủ tục hành chính',
-      link: '/thu-tuc-hanh-chinh',
-      isActive: true,
-    },
-];
+import { Column, Data } from '@/common/utils/vendor';
 
-interface Column {
-  id: 'code' | 'name' | 'topic' | 'theme' | 'indexing';
-  label: string;
-  minWidth?: number;
-  align?: 'right' | 'left' | 'center' | 'justify';
-  color?: '!text-japonica-400' | '!text-dark-moderate-blue-800';
-  format?: (value: number) => string;
-  font_weight?: '!font-medium';
-}
+export const itemBreadcrumbs = [
+  {
+    id: 1,
+    name: 'Trang chủ',
+    link: '/',
+    isActive: false,
+  },
+  {
+    id: 2,
+    name: 'Thủ tục hành chính',
+    link: '/thu-tuc-hanh-chinh',
+    isActive: true,
+  },
+];
 
 export const columns: readonly Column[] = [
   {
@@ -61,14 +53,6 @@ export const columns: readonly Column[] = [
     color: '!text-dark-moderate-blue-800',
   },
 ];
-
-interface Data {
-  code: string;
-  name: string;
-  topic: string;
-  theme: string;
-  indexing: string;
-}
 
 function createData(
   code: string,

@@ -11,12 +11,12 @@ import {
   TablePagination,
 } from '@mui/material';
 import clsx from 'clsx';
-import React from 'react';
+import { useState } from 'react';
 import { columns, rows } from '@mocks/searchResult.data';
 
 export default function CustomTable() {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -91,8 +91,16 @@ export default function CustomTable() {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
             labelRowsPerPage="Số hàng mỗi trang"
-            nextIconButtonProps={{ style: { display: 'none' } }}
-            backIconButtonProps={{ style: { display: 'none' } }}
+            slotProps={{
+              actions: {
+                nextButton: {
+                  style: { display: 'none' },
+                },
+                previousButton: {
+                  style: { display: 'none' },
+                },
+              },
+            }}
           />
         </div>
         <div>

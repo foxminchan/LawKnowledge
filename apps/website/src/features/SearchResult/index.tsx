@@ -12,15 +12,16 @@ import CustomTheme from './components/CustomTheme';
 import CustomTable from './components/CustomTable';
 import SearchIcon from '@mui/icons-material/Search';
 import useMetadata from '@common/hooks/useMetadata';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { itemBreadcrumbs } from '@mocks/searchResult.data';
-
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import useQuery from '@/common/hooks/useQuery';
 
 type Props = {
   title: string;
 };
 
 export default function SearchResult(props: Readonly<Props>) {
+  const param = useQuery();
   useMetadata(props.title);
 
   return (
@@ -53,6 +54,8 @@ export default function SearchResult(props: Readonly<Props>) {
               className:
                 'h-11 !font-medium text-lg !text-dark-moderate-blue-800 bg-white border-0 !focus:border-japonica-400 !mr-1',
             }}
+            value={param.get('keyword')}
+            variant="outlined"
             className="w-full"
             placeholder="Nhập từ khoá tìm kiếm"
           />
