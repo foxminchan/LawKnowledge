@@ -61,6 +61,14 @@ export default function App() {
             }
           />
           <Route
+            path="/tra-cuu"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <Search title="Tra cứu" />
+              </Suspense>
+            }
+          />
+          <Route
             path="/gioi-thieu"
             element={
               <Suspense fallback={<CircularProgress />}>
@@ -85,18 +93,18 @@ export default function App() {
             }
           />
           <Route
-            path="/dich-vu-cong-noi-bat"
-            element={
-              <Suspense fallback={<CircularProgress />}>
-                <SignatureService title="Dịch vụ công nổi bật" />
-              </Suspense>
-            }
-          />
-          <Route
             path="/dieu-khoan-su-dung"
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Policy title="Điều khoản sử dụng" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dich-vu-cong-noi-bat"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignatureService title="Dịch vụ công nổi bật" />
               </Suspense>
             }
           />
