@@ -16,6 +16,7 @@ const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
+const SearchResult = loadable(() => import('./features/SearchResult'));
 const OnlineService = loadable(() => import('./features/OnlineService'));
 const SignatureService = loadable(() => import('./features/SignatureService'));
 
@@ -76,10 +77,10 @@ export default function App() {
             }
           />
           <Route
-            path="/tra-cuu"
+            path="/thu-tuc-hanh-chinh"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <Search title="Tra cứu" />
+                <SearchResult title="Thủ tục hành chính" />
               </Suspense>
             }
           />
