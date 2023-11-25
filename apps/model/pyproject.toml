@@ -1,0 +1,35 @@
+[tool.coverage.run]
+branch = true
+source = ["model"]
+
+[tool.coverage.report]
+exclude_lines = ['if TYPE_CHECKING:']
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report html:'../../coverage//apps/model/html' --cov-report xml:'../../coverage//apps/model/coverage.xml' --html='../../reports//apps/model/unittests/html/index.html' --junitxml='../../reports//apps/model/unittests/junit.xml'"
+
+[tool.poetry]
+name = "model"
+version = "1.0.0"
+description = "Train and evaluate a model"
+authors = ['Nguyen Xuan Nhan <nguyenxuannhan407@gmail.com>']
+license = 'MIT'
+
+[[tool.poetry.packages]]
+include = "model"
+
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "2.0.2"
+flake8 = "6.0.0"
+pytest = "7.3.1"
+pytest-sugar = "0.9.7"
+pytest-cov = "4.1.0"
+pytest-html = "3.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

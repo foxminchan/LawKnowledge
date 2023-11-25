@@ -1,26 +1,26 @@
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
-import { Logger } from '@nestjs/common';
+import { join } from 'path';
+import { Logger } from 'nestjs-pino';
+import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app/app.module';
+import { GrpcOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter()
-  );
+  const app = await NestFactory.createMicroservice(AppModule, {
+    transport: Transport.GRPC,
+    options: {
+      url: `${process.env.URL}:${process.env.PORT}`,
+      package: 'auth',
+      protoPath: join(__dirname, './proto/auth.proto'),
+      loader: {
+        enums: String,
+        objects: true,
+        arrays: true,
+      },
+    },
+  } as GrpcOptions);
 
-  app.setGlobalPrefix('api/v1/');
-  await app.listen(process.env.PORT || 8081);
+  app.useLogger(app.get(Logger));
+  await app.listen();
 }
 
-void (async (): Promise<void> => {
-  try {
-    await bootstrap();
-    Logger.log(`🚀 Auth Service is running`);
-  } catch (error) {
-    Logger.error(error, '❌ Error starting server');
-  }
-})();
+bootstrap();

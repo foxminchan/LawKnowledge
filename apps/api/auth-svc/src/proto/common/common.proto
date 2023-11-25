@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package common;
+
+message Id {
+	string id = 1;
+}
+
+message Email {
+	string email = 1;
+}
+
+message Empty {}

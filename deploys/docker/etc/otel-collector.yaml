@@ -8,13 +8,41 @@ receivers:
             - http://*
             - https://*
 exporters:
+  debug:
+    verbosity: detailed
+
+  prometheus:
+    endpoint: '0.0.0.0:8889'
+    const_labels:
+      label1: value1
+
   otlp:
     endpoint: tempo:4317
     tls:
       insecure: true
 
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 1024
+  transform:
+    metric_statements:
+      - context: metric
+
 service:
   pipelines:
     traces:
       receivers: [otlp]
+      processors: [batch]
       exporters: [otlp]
+    metrics:
+      receivers: [otlp]
+      processors: [transform, batch]
+      exporters: [prometheus]
+    logs:
+      receivers: [otlp]
+      processors: [resource/loki, batch]
+      exporters: [loki]
+  telemetry:
+    logs:
+      level: INFO

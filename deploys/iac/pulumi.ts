@@ -1,5 +1,8 @@
-import * as aws from "@pulumi/aws";
+import * as os from '@pulumi/openstack';
 
-const bucket = new aws.s3.Bucket("my-bucket");
+const instance = new os.compute.Instance('instance', {
+  flavorName: 's1-2',
+  imageName: 'Ubuntu 16.04',
+});
 
-export const bucketName = bucket.id;
+export const bucketName = instance.id;

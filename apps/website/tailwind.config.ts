@@ -91,6 +91,19 @@ export default {
           900: '#ff3f1e',
           950: '#ff2c1e',
         },
+        'dark-lime-green':{
+          50:'#509d51',
+          100:'#49904a',
+          200:'#438344',
+          300:'#3c763d',
+          400:'#356936',
+          500:'#2f5c30',
+          600:'#284f29',
+          700:'#224222',
+          800:'#1b351b',
+          900:'#1b351b',
+          950:'#142815',
+        }
       },
     },
     fontFamily: {
@@ -100,6 +113,7 @@ export default {
     },
     backgroundImage: {
       'crane-bg': "url('./assets/images/banners/bg.svg')",
+      'search-bg': "url('./assets/images/search/bg.jpg')",
       'slogan-bg': "url('././assets/images/banners/hac.svg')",
       'hotnews-bg': "url('./assets/images/banners/bg-news.jpg')",
       'hero-banner': "url('././assets/images/banners/banner.jpg')",

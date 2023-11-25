@@ -9,11 +9,15 @@ const Home = loadable(() => import('./features/Home'));
 const Chat = loadable(() => import('./features/Chat'));
 const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
+const SignUp = loadable(() => import('./features/SignUp'));
+const SignIn = loadable(() => import('./features/SignIn'));
+const Search = loadable(() => import('./features/Search'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
 const SearchResult = loadable(() => import('./features/SearchResult'));
+const OnlineService = loadable(() => import('./features/OnlineService'));
 const SignatureService = loadable(() => import('./features/SignatureService'));
 
 export default function App() {
@@ -41,18 +45,26 @@ export default function App() {
             }
           />
           <Route
-            path="/gioi-thieu"
+            path="/dang-ky"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <Introduction title="Giới thiệu" />
+                <SignUp title="Đăng ký" />
               </Suspense>
             }
           />
           <Route
-            path="/dich-vu-cong-noi-bat"
+            path="/dang-nhap"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <SignatureService title="Dịch vụ công nổi bật" />
+                <SignIn title="Đăng nhập" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/gioi-thieu"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <Introduction title="Giới thiệu" />
               </Suspense>
             }
           />
@@ -73,10 +85,26 @@ export default function App() {
             }
           />
           <Route
+            path="/dich-vu-cong-noi-bat"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignatureService title="Dịch vụ công nổi bật" />
+              </Suspense>
+            }
+          />
+          <Route
             path="/dieu-khoan-su-dung"
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Policy title="Điều khoản sử dụng" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dich-vu-cong-truc-tuyen"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <OnlineService title="Dịch vụ công trực tuyến" />
               </Suspense>
             }
           />

@@ -22,13 +22,13 @@ const navItems = [
   { id: 3, name: 'Tra cứu', link: '/tra-cuu', width: 'w-28' },
   {
     id: 4,
-    name: 'Dịch vụ công nổi bật',
-    link: '/dich-vu-cong-noi-bat',
+    name: 'Dịch vụ công trực tuyến',
+    link: '/dich-vu-cong-truc-tuyen',
     width: 'w-60',
   },
   {
     id: 5,
-    name: 'Dịch vụ công trực tuyến',
+    name: 'Dịch vụ công nổi bật',
     link: '/dich-vu-cong-noi-bat',
     width: 'w-60',
   },
@@ -142,6 +142,9 @@ export default function Navbar() {
                       window.location.pathname.includes(subItem.link)
                     )
                     ? 'bg-japonica-500 text-white'
+                    : 'bg-white-smoke-100',
+                  window.location.pathname === item.link
+                    ? '!bg-japonica-500 text-white'
                     : 'bg-white-smoke-100'
                 )}
               >
@@ -190,7 +193,7 @@ export default function Navbar() {
           className={clsx(
             'lg:hidden bg-white-smoke-100 top-0 left-0 px-[15px] pt-2 absolute z-10',
             menuVisible
-              ? 'h-full w-[260px] transition-all duration-[0.3s]'
+              ? 'h-full w-[300px] transition-all duration-[0.3s]'
               : 'w-0 transition-all duration-[0.3s]'
           )}
         >
