@@ -225,7 +225,7 @@ npx nx up iac
 ```
 
 > [!IMPORTANT]
-> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>= 3.12`.
+> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9 <=3.12`.
 
 ## 🧪 Testing
 

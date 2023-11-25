@@ -2,22 +2,18 @@ using HtmlAgilityPack;
 using System.Net;
 using System.Text;
 
-namespace LawKnowledge.Auto;
+namespace LawKnowledge.Auto.Scraping;
 
-public class Scraping
+public class Scraping : IScraping
 {
   private readonly HtmlDocument _htmlDocument = new();
-  private readonly ILogger<Scraping> _logger = new Logger<Scraping>(new LoggerFactory());
 
   private List<string> GetData(string filePath)
   {
     filePath = Uri.UnescapeDataString(filePath);
 
     if (!File.Exists(filePath))
-    {
-      _logger.LogError("{file} not found: {path}", nameof(File), filePath);
       return new();
-    }
 
     _htmlDocument.LoadHtml(File.ReadAllText(filePath, Encoding.UTF8));
     return GetBodyStr(_htmlDocument.DocumentNode.Descendants().Skip(1).ToList());
@@ -58,7 +54,6 @@ public class Scraping
     {
       var outputPath = Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(filePath) + ".txt");
       File.WriteAllLines(outputPath, GetData(filePath));
-      _logger.LogInformation("Output: {path}", outputPath);
     }
   }
 }
