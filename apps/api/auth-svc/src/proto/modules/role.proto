@@ -2,17 +2,15 @@ syntax = "proto3";
 
 package role;
 
-message Id {
-  string id = 1;
-}
+import "../common/common.proto";
 
 message RoleName {
 	string name = 1;
 }
 
 message Role {
-	Id id = 1;
-	string name = 2;
+	string id = 1;
+	RoleName name = 2;
 }
 
 message RoleList {
@@ -20,7 +18,7 @@ message RoleList {
 }
 
 service RoleService {
-	rpc GetRoles() returns (RoleList) {}
+	rpc GetRoles(common.Empty) returns (RoleList) {}
 	rpc GetRole(Id) returns (Role) {}
 	rpc CreateRole(RoleName) returns (Role) {}
 	rpc UpdateRole(Role) returns (Role) {}

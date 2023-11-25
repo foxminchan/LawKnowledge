@@ -12,8 +12,3 @@ export class CreateRoleModel {
 }
 
 export class UpdateRoleModel extends PartialType(CreateRoleModel) {}
-
-export class ResponseRoleModel extends PartialType(CreateRoleModel) {
-  @ApiProperty()
-  id: string;
-}

@@ -12,5 +12,3 @@ export class CreateUserRoleModel {
 }
 
 export class UpdateUserRoleModel extends PartialType(CreateUserRoleModel) {}
-
-export class ResponseUserRoleModel extends PartialType(CreateUserRoleModel) {}

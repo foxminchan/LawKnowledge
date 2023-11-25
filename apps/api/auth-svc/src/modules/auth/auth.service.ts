@@ -5,10 +5,9 @@ import {
 } from '@nestjs/common';
 import { UserService } from '../user';
 import { JwtService } from '@nestjs/jwt';
-import { AccessToken, JwtPayload, LoginPayload } from '../../@types';
-import { ResponseUserModel } from '../../models';
 import { CryptoUtils } from '@law-knowledge/shared';
-import { Observable, from, of, switchMap, throwError } from 'rxjs';
+import { from, of, switchMap, throwError } from 'rxjs';
+import { AccessToken, JwtPayload, LoginPayload } from '../../@types';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +16,7 @@ export class AuthService {
     private userService: UserService
   ) {}
 
-  validateUser(user: LoginPayload): Observable<ResponseUserModel> {
+  validateUser(user: LoginPayload) {
     return from(this.userService.getUser(user.email)).pipe(
       switchMap((res) => {
         if (!res)
@@ -41,7 +40,7 @@ export class AuthService {
     );
   }
 
-  login(user: LoginPayload): Observable<AccessToken> {
+  login(user: LoginPayload) {
     return this.validateUser(user).pipe(
       switchMap((res) => {
         if (!res) throw new UnauthorizedException();
@@ -55,7 +54,7 @@ export class AuthService {
 
         return of({
           access_token: this.jwtService.sign(token),
-        });
+        } as AccessToken);
       })
     );
   }

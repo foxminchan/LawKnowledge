@@ -1,75 +1,40 @@
-import {
-  CreateUserModel,
-  UpdateUserModel,
-  ResponseUserModel,
-} from '../../models';
-import {
-  Auth,
-  JwtAuthGuard,
-  ApiController,
-  SwaggerResponse,
-} from '@law-knowledge/shared';
 import { UserService } from './user.service';
-import { Get, Put, Post, Body, Param, Delete, UseGuards } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
+import { JwtAuthGuard } from '@law-knowledge/shared';
+import { Controller, UseGuards } from '@nestjs/common';
+import { CreateUserModel, UpdateUserModel } from '../../models';
 
-@ApiController('user')
+@Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Auth()
-  @Get()
-  @SwaggerResponse({
-    operation: 'User fetch',
-    response: ResponseUserModel,
-  })
+  @GrpcMethod('AuthService', 'GetUsers')
   getUsers() {
     return this.userService.getUsers();
   }
 
   @UseGuards(JwtAuthGuard)
-  @Auth()
-  @Get(':id')
-  @SwaggerResponse({
-    operation: 'User fetch by email',
-    params: ['email'],
-    response: ResponseUserModel,
-  })
-  getUser(@Param('email') email: string) {
+  @GrpcMethod('AuthService', 'GetUser')
+  getUser(email: string) {
     return this.userService.getUser(email);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Auth()
-  @Post()
-  @SwaggerResponse({
-    operation: 'Create user',
-    body: CreateUserModel,
-  })
-  addUser(@Body() user: CreateUserModel) {
+  @GrpcMethod('AuthService', 'AddUser')
+  addUser(user: CreateUserModel) {
     return this.userService.addUser(user);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Auth()
-  @Put(':id')
-  @SwaggerResponse({
-    operation: 'Update user',
-    params: ['id'],
-    body: UpdateUserModel,
-  })
-  updateUser(@Param('id') id: string, @Body() user: UpdateUserModel) {
+  @GrpcMethod('AuthService', 'UpdateUser')
+  updateUser(id: string, user: UpdateUserModel) {
     return this.userService.updateUser(id, user);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Auth()
-  @Delete(':id')
-  @SwaggerResponse({
-    operation: 'Delete user',
-    params: ['id'],
-  })
-  deleteUser(@Param('id') id: string) {
+  @GrpcMethod('AuthService', 'DeleteUser')
+  deleteUser(id: string) {
     return this.userService.deleteUser(id);
   }
 }

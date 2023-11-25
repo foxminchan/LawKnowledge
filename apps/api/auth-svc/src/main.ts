@@ -1,4 +1,5 @@
-import { Logger } from '@nestjs/common';
+import { join } from 'path';
+import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import { GrpcOptions, Transport } from '@nestjs/microservices';
@@ -9,7 +10,7 @@ async function bootstrap() {
     options: {
       url: `${process.env.URL}:${process.env.PORT}`,
       package: 'auth',
-      protoPath: './src/proto/auth.proto',
+      protoPath: join(__dirname, './proto/auth.proto'),
       loader: {
         enums: String,
         objects: true,
@@ -18,14 +19,8 @@ async function bootstrap() {
     },
   } as GrpcOptions);
 
+  app.useLogger(app.get(Logger));
   await app.listen();
 }
 
-void (async (): Promise<void> => {
-  try {
-    await bootstrap();
-    Logger.log(`🚀 Auth Service is running`);
-  } catch (error) {
-    Logger.error(error, '❌ Error starting server');
-  }
-})();
+bootstrap();
