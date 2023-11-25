@@ -20,7 +20,7 @@ license = 'MIT'
 include = "searching_svc"
 
 [tool.poetry.dependencies]
-python = ">=3.12"
+python = ">=3.9 <=3.12"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"

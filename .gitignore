@@ -9,6 +9,7 @@ tmp
 .idea
 .venv
 .cache
+.model
 
 # dependencies
 node_modules
