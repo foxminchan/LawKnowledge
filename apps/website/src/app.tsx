@@ -11,6 +11,7 @@ const Guide = loadable(() => import('./features/Guide'));
 const Policy = loadable(() => import('./features/Policy'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
+const SearchResult = loadable(() => import('./features/SearchResult'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
 const SignatureService = loadable(() => import('./features/SignatureService'));
@@ -60,6 +61,14 @@ export default function App() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Payment title="Thanh toán trực tuyến" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/thu-tuc-hanh-chinh"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SearchResult title="Thủ tục hành chính" />
               </Suspense>
             }
           />
