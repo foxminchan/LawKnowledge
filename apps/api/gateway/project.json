@@ -17,6 +17,9 @@
         "main": "apps/api/gateway/src/main.ts",
         "tsConfig": "apps/api/gateway/tsconfig.app.json",
         "isolatedConfig": true,
+        "assets": [
+          "apps/api/gateway/src/proto"
+        ],
         "webpackConfig": "apps/api/gateway/webpack.config.js"
       },
       "configurations": {
