@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { HealthCheckModule } from './modules';
+import { LoggerModule } from 'nestjs-pino';
+import { AuthSvcModule, HealthCheckModule } from './modules';
 
 @Module({
-  imports: [HealthCheckModule],
+  imports: [HealthCheckModule, LoggerModule, AuthSvcModule],
   providers: [],
 })
 export class AppModule {}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package user;
+
+import "../common/common.proto";
+
+message UserRequest {
+	string name = 1;
+	Email email = 2;
+	string phone =	3;
+	string card = 4;
+	string address = 5;
+	string password = 6;
+}
+
+message User {
+	string id = 1;
+	User user = 2;
+}
+
+message UserList {
+	repeated User user = 1;
+}
+
+service UserService {
+	rpc GetUsers(common.Empty) returns (UserList) {}
+	rpc GetUser (common.Email) returns (User) {}
+	rpc CreateUser (UserRequest) returns (User) {}
+	rpc UpdateUser (User) returns (User) {}
+	rpc DeleteUser (Id) returns (User) {}
+}
