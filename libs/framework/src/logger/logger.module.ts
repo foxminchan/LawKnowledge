@@ -11,7 +11,5 @@ import { LoggerModule as PinoLoggerModule } from 'nestjs-pino';
       },
     }),
   ],
-  controllers: [],
-  providers: [],
 })
 export class LoggerModule {}

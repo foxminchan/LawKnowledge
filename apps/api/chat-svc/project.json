@@ -1,68 +1,72 @@
 {
   "name": "api-chat-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/chat-svc/src",
   "projectType": "application",
-  "sourceRoot": "/apps/api/chat-svc/chat-svc",
   "targets": {
-    "lock": {
-      "executor": "@nxlv/python:run-commands",
-      "options": {
-        "command": "poetry lock --no-update",
-        "cwd": "/apps/api/chat-svc"
-      }
-    },
-    "add": {
-      "executor": "@nxlv/python:add",
-      "options": {}
-    },
-    "update": {
-      "executor": "@nxlv/python:update",
-      "options": {}
-    },
-    "remove": {
-      "executor": "@nxlv/python:remove",
-      "options": {}
-    },
     "build": {
-      "executor": "@nxlv/python:build",
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
-        "outputPath": "/apps/api/chat-svc/dist",
-        "publish": false,
-        "lockedVersions": true,
-        "bundleLocalDependencies": true
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/api/chat-svc",
+        "main": "apps/api/chat-svc/src/main.ts",
+        "tsConfig": "apps/api/chat-svc/tsconfig.app.json",
+        "isolatedConfig": true,
+        "webpackConfig": "apps/api/chat-svc/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
       }
     },
-    "install": {
-      "executor": "@nxlv/python:install",
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
       "options": {
-        "silent": false,
-        "args": "",
-        "cacheDir": ".cache/pypoetry",
-        "verbose": false,
-        "debug": false
+        "buildTarget": "api-chat-svc:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "api-chat-svc:build:development"
+        },
+        "production": {
+          "buildTarget": "api-chat-svc:build:production"
+        }
       }
     },
     "lint": {
-      "executor": "@nxlv/python:flake8",
-      "outputs": [
-        "{workspaceRoot}/reports//apps/api/chat-svc/pylint.txt"
-      ],
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "outputFile": "reports//apps/api/chat-svc/pylint.txt"
+        "lintFilePatterns": ["apps/api/chat-svc/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nxlv/python:run-commands",
-      "outputs": [
-        "{workspaceRoot}/reports//apps/api/chat-svc/unittests",
-        "{workspaceRoot}/coverage//apps/api/chat-svc"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "command": "poetry run pytest tests/",
-        "cwd": "/apps/api/chat-svc"
+        "jestConfig": "apps/api/chat-svc/jest.config.ts"
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "options": {
+        "engine": "docker",
+        "metadata": {
+          "images": ["api-chat-svc"],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=ref,event=pr",
+            "type=sha,prefix=sha-"
+          ]
+        }
       }
     }
   },

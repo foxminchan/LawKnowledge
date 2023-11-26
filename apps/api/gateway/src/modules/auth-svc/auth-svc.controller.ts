@@ -9,6 +9,7 @@ import {
   JwtAuthGuard,
   ApiController,
   SwaggerResponse,
+  NoCache,
 } from '@law-knowledge/shared';
 import { BaseResponse } from '../../common';
 import { AuthSvcService } from './auth-svc.service';
@@ -38,6 +39,7 @@ export class AuthSvcController {
   }
 
   @Auth()
+  @NoCache()
   @Get(':email')
   @UseGuards(JwtAuthGuard)
   @SwaggerResponse({

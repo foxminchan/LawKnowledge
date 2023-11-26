@@ -10,8 +10,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         name: 'AUTH_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
-          port: 8081,
+          host: process.env.AUTH_SVC_HOST,
+          port: parseInt(process.env.AUTH_SVC_PORT, 10),
         },
       },
     ]),
