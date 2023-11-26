@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class LoginPayload {
+export class BaseResponse<T> {
   @ApiProperty()
-  email: string;
+  data: T;
 
   @ApiProperty()
-  password: string;
+  isError: boolean;
 }

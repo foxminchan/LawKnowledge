@@ -18,7 +18,7 @@ export class UserController {
   }
 
   @MessagePattern({ cmd: 'addUser' })
-  addUser(@Payload('user') user: CreateUserModel) {
+  addUser(@Payload() user: CreateUserModel) {
     return this.userService.addUser(user);
   }
 

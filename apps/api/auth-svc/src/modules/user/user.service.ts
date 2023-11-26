@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataService } from '@law-knowledge/framework';
 import { CreateUserModel, UpdateUserModel } from '../../models';
+import { CryptoUtils } from '@law-knowledge/shared';
 
 @Injectable()
 export class UserService {
@@ -23,11 +24,12 @@ export class UserService {
     });
   }
 
-  addUser(user: CreateUserModel) {
+  async addUser(user: CreateUserModel) {
     return this.dataService.$transaction([
       this.dataService.user.create({
         data: {
           ...user,
+          password: await CryptoUtils.hashString(user.password),
           UserRoles: {
             create: [
               {
