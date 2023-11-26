@@ -73,18 +73,18 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-  - [🛠️ Prerequisites](#️-prerequisites)
-  - [📦 Dataset](#-dataset)
-  - [🧑‍💻 Setup](#-setup)
-  - [🚀 Running](#-running)
-  - [🧪 Testing](#-testing)
-  - [🧩 Other](#-other)
+	- [🛠️ Prerequisites](#️-prerequisites)
+	- [📦 Dataset](#-dataset)
+	- [🧑‍💻 Setup](#-setup)
+	- [🚀 Running](#-running)
+	- [🧪 Testing](#-testing)
+	- [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-  - [📖 Contributing Guidelines](#-contributing-guidelines)
-  - [💁 Want to Help?](#-want-to-help)
-  - [🫂 Code of Conduct](#-code-of-conduct)
+	- [📖 Contributing Guidelines](#-contributing-guidelines)
+	- [💁 Want to Help?](#-want-to-help)
+	- [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -127,7 +127,7 @@ We used **Microservice Architecture** to build this project to make it easier to
 
 </p>
 
-<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -205,11 +205,11 @@ npx nx serve api-auth-svc
 # For the Law Service
 npx nx serve api-law-svc
 
+# For the Chat Service
+npx nx serve api-chat-svc
+
 # For the Search Service
 npx nx build api-search-svc
-
-# For the Chat Service
-npx nx build api-chat-svc
 ```
 
 To traning the model, you can run the following command:
