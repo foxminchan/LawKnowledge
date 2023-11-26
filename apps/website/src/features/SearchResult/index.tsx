@@ -8,21 +8,28 @@ import {
   ThemeProvider,
 } from '@mui/material';
 import clsx from 'clsx';
+import { useState } from 'react';
+import useQuery from '@/common/hooks/useQuery';
 import CustomTheme from './components/CustomTheme';
 import CustomTable from './components/CustomTable';
 import SearchIcon from '@mui/icons-material/Search';
 import useMetadata from '@common/hooks/useMetadata';
+import useDebounce from '@/common/hooks/useDebounce';
 import { itemBreadcrumbs } from '@mocks/searchResult.data';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import useQuery from '@/common/hooks/useQuery';
 
 type Props = {
   title: string;
 };
 
 export default function SearchResult(props: Readonly<Props>) {
-  const param = useQuery();
   useMetadata(props.title);
+  const param = useQuery();
+  const [searchKeyword, setSearchKeyword] = useState(param.get('keyword'));
+  const [debouncedSearchKeyword, loading] = useDebounce(searchKeyword);
+  const handleSearch = () => {
+    console.log('Searching for:', debouncedSearchKeyword);
+  };
 
   return (
     <Container>
@@ -54,14 +61,19 @@ export default function SearchResult(props: Readonly<Props>) {
               className:
                 'h-11 !font-medium text-lg !text-dark-moderate-blue-800 bg-white border-0 !focus:border-japonica-400 !mr-1',
             }}
-            value={param.get('keyword')}
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
             variant="outlined"
             className="w-full"
             placeholder="Nhập từ khoá tìm kiếm"
           />
         </ThemeProvider>
-        <Button className="!w-44 !rounded-md !h-11 !bg-japonica-400 !text-white !ml-1">
-          <SearchIcon className="!text-lg" /> Tìm kiếm
+        <Button
+          onClick={handleSearch}
+          className="!w-60 !rounded-md !h-11 !bg-japonica-400 !text-white !ml-1"
+        >
+          <SearchIcon className="!text-lg" />{' '}
+          {loading ? 'Đang tìm kiếm...' : 'Tìm kiếm'}
         </Button>
       </Box>
       <Typography className="!font-medium !text-xl mb-5 text-justify leading-7 text-dark-moderate-blue-800">
