@@ -1,40 +1,37 @@
+import { Controller } from '@nestjs/common';
 import { UserService } from './user.service';
-import { GrpcMethod } from '@nestjs/microservices';
-import { JwtAuthGuard } from '@law-knowledge/shared';
-import { Controller, UseGuards } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateUserModel, UpdateUserModel } from '../../models';
 
 @Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @GrpcMethod('AuthService', 'GetUsers')
+  @MessagePattern({ cmd: 'getUsers' })
   getUsers() {
     return this.userService.getUsers();
   }
 
-  @UseGuards(JwtAuthGuard)
-  @GrpcMethod('AuthService', 'GetUser')
-  getUser(email: string) {
+  @MessagePattern({ cmd: 'getUser' })
+  getUser(@Payload('email') email: string) {
     return this.userService.getUser(email);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @GrpcMethod('AuthService', 'AddUser')
-  addUser(user: CreateUserModel) {
+  @MessagePattern({ cmd: 'addUser' })
+  addUser(@Payload('user') user: CreateUserModel) {
     return this.userService.addUser(user);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @GrpcMethod('AuthService', 'UpdateUser')
-  updateUser(id: string, user: UpdateUserModel) {
+  @MessagePattern({ cmd: 'updateUser' })
+  updateUser(
+    @Payload('id') id: string,
+    @Payload('user') user: UpdateUserModel
+  ) {
     return this.userService.updateUser(id, user);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @GrpcMethod('AuthService', 'DeleteUser')
-  deleteUser(id: string) {
+  @MessagePattern({ cmd: 'deleteUser' })
+  deleteUser(@Payload('id') id: string) {
     return this.userService.deleteUser(id);
   }
 }

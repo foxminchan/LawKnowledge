@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package auth;
-
-import "../components/auth/user.proto";
-import "../components/auth/roles.proto";
-import "../components/auth/authen.proto";
-
-message None {}

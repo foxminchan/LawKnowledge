@@ -1,4 +1,3 @@
-export * from './key.decorator';
 export * from './auth.decorator';
 export * from './cache.decorator';
 export * from './public.decorator';

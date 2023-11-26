@@ -1,34 +1,37 @@
 import { Controller } from '@nestjs/common';
 import { RoleService } from './role.service';
-import { GrpcMethod } from '@nestjs/microservices';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateRoleModel, UpdateRoleModel } from '../../models';
 
 @Controller()
 export class RoleController {
   constructor(private readonly RoleService: RoleService) {}
 
-  @GrpcMethod('RoleService', 'GetRoles')
+  @MessagePattern({ cmd: 'getRoles' })
   getRoles() {
     return this.RoleService.getRoles();
   }
 
-  @GrpcMethod('RoleService', 'GetRole')
-  getRole(id: string) {
+  @MessagePattern({ cmd: 'getRole' })
+  getRole(@Payload('id') id: string) {
     return this.RoleService.getRole(id);
   }
 
-  @GrpcMethod('RoleService', 'AddRole')
-  addRole(Role: CreateRoleModel) {
+  @MessagePattern({ cmd: 'addRole' })
+  addRole(@Payload('role') Role: CreateRoleModel) {
     return this.RoleService.addRole(Role);
   }
 
-  @GrpcMethod('RoleService', 'UpdateRole')
-  updateRole(id: string, Role: UpdateRoleModel) {
+  @MessagePattern({ cmd: 'updateRole' })
+  updateRole(
+    @Payload('id') id: string,
+    @Payload('role') Role: UpdateRoleModel
+  ) {
     return this.RoleService.updateRole(id, Role);
   }
 
-  @GrpcMethod('RoleService', 'DeleteRole')
-  deleteRole(id: string) {
+  @MessagePattern({ cmd: 'deleteRole' })
+  deleteRole(@Payload('id') id: string) {
     return this.RoleService.deleteRole(id);
   }
 }

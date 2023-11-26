@@ -127,7 +127,7 @@ We used **Microservice Architecture** to build this project to make it easier to
 
 </p>
 
-<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 

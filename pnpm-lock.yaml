@@ -59,12 +59,6 @@ dependencies:
   '@fastify/static':
     specifier: ^6.12.0
     version: 6.12.0
-  '@grpc/grpc-js':
-    specifier: ^1.9.11
-    version: 1.9.11
-  '@grpc/proto-loader':
-    specifier: ^0.7.10
-    version: 0.7.10
   '@loadable/component':
     specifier: ^5.15.3
     version: 5.15.3(react@18.2.0)
@@ -91,7 +85,7 @@ dependencies:
     version: 10.2.0(@nestjs/common@10.2.10)
   '@nestjs/microservices':
     specifier: ^10.2.10
-    version: 10.2.10(@grpc/grpc-js@1.9.11)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
+    version: 10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
   '@nestjs/passport':
     specifier: ^10.0.2
     version: 10.0.2(@nestjs/common@10.2.10)(passport@0.6.0)
@@ -103,7 +97,7 @@ dependencies:
     version: 7.1.16(@fastify/static@6.12.0)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
   '@nestjs/terminus':
     specifier: ^10.1.1
-    version: 10.1.1(@grpc/grpc-js@1.9.11)(@grpc/proto-loader@0.7.10)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/microservices@10.2.10)(@prisma/client@5.6.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
+    version: 10.1.1(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/microservices@10.2.10)(@prisma/client@5.6.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
   '@nestjs/throttler':
     specifier: ^5.0.1
     version: 5.0.1(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(reflect-metadata@0.1.13)
@@ -3732,6 +3726,7 @@ packages:
     dependencies:
       '@grpc/proto-loader': 0.7.10
       '@types/node': 18.14.2
+    dev: true
 
   /@grpc/grpc-js@1.9.6:
     resolution: {integrity: sha512-yq3qTy23u++8zdvf+h4mz4ohDFi681JAkMZZPTKh8zmUVh0AKLisFlgxcn22FMNowXz15oJ6pqgwT7DJ+PdJvg==}
@@ -3750,6 +3745,7 @@ packages:
       long: 5.2.3
       protobufjs: 7.2.5
       yargs: 17.7.2
+    dev: true
 
   /@hapi/accept@6.0.3:
     resolution: {integrity: sha512-p72f9k56EuF0n3MwlBNThyVE5PXX40g+aQh+C/xbKrfzahM2Oispv3AXmOIU51t3j77zay1qrX7IIziZXspMlw==}
@@ -4724,7 +4720,7 @@ packages:
         optional: true
     dependencies:
       '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      '@nestjs/microservices': 10.2.10(@grpc/grpc-js@1.9.11)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
+      '@nestjs/microservices': 10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
       iterare: 1.2.1
@@ -4765,7 +4761,7 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/microservices@10.2.10(@grpc/grpc-js@1.9.11)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1):
+  /@nestjs/microservices@10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1):
     resolution: {integrity: sha512-vebXc4lF67grtLr3UXc+rPErH5aCzCez1Y2Oec4k2K4ObhjftNug7L2O9W3XiprHlwPhPXc51VQ9nhKn7IFAxw==}
     peerDependencies:
       '@grpc/grpc-js': '*'
@@ -4801,7 +4797,6 @@ packages:
       nats:
         optional: true
     dependencies:
-      '@grpc/grpc-js': 1.9.11
       '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(@nestjs/microservices@10.2.10)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       cache-manager: 5.3.1
@@ -4907,7 +4902,7 @@ packages:
       swagger-ui-dist: 5.9.1
     dev: false
 
-  /@nestjs/terminus@10.1.1(@grpc/grpc-js@1.9.11)(@grpc/proto-loader@0.7.10)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/microservices@10.2.10)(@prisma/client@5.6.0)(reflect-metadata@0.1.13)(rxjs@7.8.1):
+  /@nestjs/terminus@10.1.1(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(@nestjs/microservices@10.2.10)(@prisma/client@5.6.0)(reflect-metadata@0.1.13)(rxjs@7.8.1):
     resolution: {integrity: sha512-aDoPK/uaR9PHn56xzand6zqpp+S3Ibm+y/OrG3M01F1WnScLfo29hbS6MdnIMqmVRAS11r/8X3xWTSo8TT/Lig==}
     peerDependencies:
       '@grpc/grpc-js': '*'
@@ -4955,11 +4950,9 @@ packages:
       typeorm:
         optional: true
     dependencies:
-      '@grpc/grpc-js': 1.9.11
-      '@grpc/proto-loader': 0.7.10
       '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(@nestjs/microservices@10.2.10)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      '@nestjs/microservices': 10.2.10(@grpc/grpc-js@1.9.11)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
+      '@nestjs/microservices': 10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@prisma/client': 5.6.0(prisma@5.6.0)
       boxen: 5.1.2
       check-disk-space: 3.4.0
@@ -4982,7 +4975,7 @@ packages:
     dependencies:
       '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(@nestjs/microservices@10.2.10)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      '@nestjs/microservices': 10.2.10(@grpc/grpc-js@1.9.11)(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
+      '@nestjs/microservices': 10.2.10(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(cache-manager@5.3.1)(kafkajs@2.2.4)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       tslib: 2.6.2
     dev: true
 
@@ -7679,36 +7672,46 @@ packages:
 
   /@protobufjs/aspromise@1.1.2:
     resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
+    dev: true
 
   /@protobufjs/base64@1.1.2:
     resolution: {integrity: sha512-AZkcAA5vnN/v4PDqKyMR5lx7hZttPDgClv83E//FMNhR2TMcLUhfRUBHCmSl0oi9zMgDDqRUJkSxO3wm85+XLg==}
+    dev: true
 
   /@protobufjs/codegen@2.0.4:
     resolution: {integrity: sha512-YyFaikqM5sH0ziFZCN3xDC7zeGaB/d0IUb9CATugHWbd1FRFwWwt4ld4OYMPWu5a3Xe01mGAULCdqhMlPl29Jg==}
+    dev: true
 
   /@protobufjs/eventemitter@1.1.0:
     resolution: {integrity: sha512-j9ednRT81vYJ9OfVuXG6ERSTdEL1xVsNgqpkxMsbIabzSo3goCjDIveeGv5d03om39ML71RdmrGNjG5SReBP/Q==}
+    dev: true
 
   /@protobufjs/fetch@1.1.0:
     resolution: {integrity: sha512-lljVXpqXebpsijW71PZaCYeIcE5on1w5DlQy5WH6GLbFryLUrBD4932W/E2BSpfRJWseIL4v/KPgBFxDOIdKpQ==}
     dependencies:
       '@protobufjs/aspromise': 1.1.2
       '@protobufjs/inquire': 1.1.0
+    dev: true
 
   /@protobufjs/float@1.0.2:
     resolution: {integrity: sha512-Ddb+kVXlXst9d+R9PfTIxh1EdNkgoRe5tOX6t01f1lYWOvJnSPDBlG241QLzcyPdoNTsblLUdujGSE4RzrTZGQ==}
+    dev: true
 
   /@protobufjs/inquire@1.1.0:
     resolution: {integrity: sha512-kdSefcPdruJiFMVSbn801t4vFK7KB/5gd2fYvrxhuJYg8ILrmn9SKSX2tZdV6V+ksulWqS7aXjBcRXl3wHoD9Q==}
+    dev: true
 
   /@protobufjs/path@1.1.2:
     resolution: {integrity: sha512-6JOcJ5Tm08dOHAbdR3GrvP+yUUfkjG5ePsHYczMFLq3ZmMkAD98cDgcT2iA1lJ9NVwFd4tH/iSSoe44YWkltEA==}
+    dev: true
 
   /@protobufjs/pool@1.1.0:
     resolution: {integrity: sha512-0kELaGSIDBKvcgS4zkjz1PeddatrjYcmMWOlAuAPwAeccUrPHdUqo/J6LiymHHEiJT5NrF1UVwxY14f+fy4WQw==}
+    dev: true
 
   /@protobufjs/utf8@1.1.0:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
+    dev: true
 
   /@pulumi/kubernetes@4.5.4:
     resolution: {integrity: sha512-QyufXL/MV6EVXG5sYgvmT87r/6DYigv4uxQ/KvCisSBvkGr2X7wBgWEBlHh77TlZDA5XP+imKBj84D0M8/n2Gg==}
@@ -11048,6 +11051,7 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+    dev: true
 
   /clone-deep@4.0.1:
     resolution: {integrity: sha512-neHB9xuzh/wk0dIHweyAXv2aPGZIVk3pLMe+/RNzINf17fe0OG96QroktYAUm7SM1PBnzTabaLboqqxDyMU+SQ==}
@@ -16619,6 +16623,7 @@ packages:
 
   /lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
+    dev: true
 
   /lodash.castarray@4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
@@ -16749,6 +16754,7 @@ packages:
 
   /long@5.2.3:
     resolution: {integrity: sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==}
+    dev: true
 
   /longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
@@ -20131,6 +20137,7 @@ packages:
       '@protobufjs/utf8': 1.1.0
       '@types/node': 18.14.2
       long: 5.2.3
+    dev: true
 
   /proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
@@ -20942,6 +20949,7 @@ packages:
   /require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
@@ -24531,6 +24539,7 @@ packages:
   /y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
+    dev: true
 
   /yallist@2.1.2:
     resolution: {integrity: sha512-ncTzHV7NvsQZkYe1DW7cbDLm0YpzHmZF5r/iyP3ZnQtMiJ+pjzisCiMNI+Sj+xQF5pXhSHxSB3uDbsBTzY/c2A==}
@@ -24559,6 +24568,7 @@ packages:
   /yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
+    dev: true
 
   /yargs@17.7.2:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
@@ -24571,6 +24581,7 @@ packages:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 21.1.1
+    dev: true
 
   /yauzl@2.10.0:
     resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}

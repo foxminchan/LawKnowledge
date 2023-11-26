@@ -16,9 +16,6 @@
         "outputPath": "dist/apps/api/auth-svc",
         "main": "apps/api/auth-svc/src/main.ts",
         "tsConfig": "apps/api/auth-svc/tsconfig.app.json",
-        "assets": [
-          "apps/api/auth-svc/src/proto"
-        ],
         "isolatedConfig": true,
         "webpackConfig": "apps/api/auth-svc/webpack.config.js"
       },

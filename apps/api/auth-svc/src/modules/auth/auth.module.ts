@@ -1,11 +1,10 @@
+import { JWT_SECRET, JwtStrategy, JWT_EXPIRES_IN } from '@law-knowledge/shared';
 import { UserModule } from '../user';
 import { JwtModule } from '@nestjs/jwt';
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
-import { ApiKeyStrategy, JwtStrategy } from '../../strategies';
-import { JWT_EXPIRES_IN, JWT_SECRET } from '@law-knowledge/shared';
 
 @Module({
   imports: [
@@ -16,7 +15,7 @@ import { JWT_EXPIRES_IN, JWT_SECRET } from '@law-knowledge/shared';
       signOptions: { expiresIn: JWT_EXPIRES_IN },
     }),
   ],
-  providers: [AuthService, JwtStrategy, ApiKeyStrategy],
+  providers: [AuthService, JwtStrategy],
   controllers: [AuthController],
   exports: [AuthService],
 })

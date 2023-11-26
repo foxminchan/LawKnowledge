@@ -5,7 +5,7 @@ import {
   MemoryHealthIndicator,
 } from '@nestjs/terminus';
 import { Get } from '@nestjs/common';
-import { ApiController, Key, SwaggerResponse } from '@law-knowledge/shared';
+import { ApiController, SwaggerResponse } from '@law-knowledge/shared';
 
 @ApiController('health')
 export class HealthController {
@@ -23,7 +23,6 @@ export class HealthController {
     return 'Http working fine';
   }
 
-  @Key()
   @Get('status')
   @HealthCheck()
   @SwaggerResponse({

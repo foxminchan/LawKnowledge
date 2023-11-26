@@ -1,24 +1,19 @@
-import { join } from 'path';
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
-import { GrpcOptions, Transport } from '@nestjs/microservices';
+import { ValidationErrorPipe } from '@law-knowledge/shared';
+import { TcpOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.GRPC,
+    transport: Transport.TCP,
     options: {
-      url: `${process.env.URL}:${process.env.PORT}`,
-      package: 'auth',
-      protoPath: join(__dirname, './proto/auth.proto'),
-      loader: {
-        enums: String,
-        objects: true,
-        arrays: true,
-      },
+      host: process.env.HOST || '0.0.0.0',
+      port: process.env.PORT || 8081,
     },
-  } as GrpcOptions);
+  } as TcpOptions);
 
+  app.useGlobalPipes(new ValidationErrorPipe());
   app.useLogger(app.get(Logger));
   await app.listen();
 }
