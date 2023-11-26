@@ -1,10 +1,11 @@
 using HtmlAgilityPack;
 using System.Net;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace LawKnowledge.Auto.Scraping;
 
-public class Scraping : IScraping
+public partial class Scraping : IScraping
 {
   private readonly HtmlDocument _htmlDocument = new();
 
@@ -52,8 +53,26 @@ public class Scraping : IScraping
 
     foreach (var filePath in Directory.GetFiles(Uri.UnescapeDataString("Raw/demuc"), "*.html"))
     {
-      var outputPath = Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(filePath) + ".txt");
-      File.WriteAllLines(outputPath, GetData(filePath));
+      File.WriteAllLines(Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(filePath) + ".txt"), GetData(filePath));
     }
   }
+
+  public void SplitData()
+  {
+    const string outputDirectory = "Split";
+
+    if (!Directory.Exists(outputDirectory))
+      Directory.CreateDirectory(outputDirectory);
+
+    foreach (var filePath in Directory.GetFiles(Uri.UnescapeDataString("Output"), "*.txt"))
+    {
+      foreach (var sentence in Sentences().Split(File.ReadAllText(filePath)))
+      {
+        File.WriteAllText(Path.Combine(outputDirectory, $"{Path.GetFileNameWithoutExtension(filePath)}.json"), JsonConvert.SerializeObject(new { message = sentence }));
+      }
+    }
+  }
+
+  [System.Text.RegularExpressions.GeneratedRegex(@"(?<=[\.!\?])\s+")]
+  private static partial System.Text.RegularExpressions.Regex Sentences();
 }

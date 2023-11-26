@@ -21,6 +21,8 @@ include = "model"
 
 [tool.poetry.dependencies]
 python = ">=3.9 <=3.12"
+torch = "^2.1.1"
+transformers = "^4.35.2"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"

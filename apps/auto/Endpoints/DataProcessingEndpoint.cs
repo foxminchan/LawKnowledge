@@ -1,5 +1,4 @@
 using Carter;
-using LawKnowledge.Auto.Indexing;
 using LawKnowledge.Auto.Scraping;
 
 namespace LawKnowledge.Auto.Endpoints;
@@ -12,16 +11,10 @@ public class DataProcessingEndpoint : ICarterModule
       scraping.DataProcessing()
     );
 
-    app.MapGet("/index", (ILuceneService luceneService) =>
-      luceneService.Index()
+    app.MapGet("/split", (IScraping scraping) =>
+      scraping.SplitData()
     );
 
-    app.MapGet("/search", (ILuceneService luceneService, string query, int maxResults) =>
-      luceneService.Search(query, maxResults)
-    );
-
-    app.MapGet("/clear", (ILuceneService luceneService) =>
-      luceneService.ClearAll()
-    );
+    app.MapGet("/ping", () => "Server is running");
   }
 }
