@@ -70,7 +70,8 @@ export default function SearchResult(props: Readonly<Props>) {
         </ThemeProvider>
         <Button
           onClick={handleSearch}
-          className="!w-60 !rounded-md !h-11 !bg-japonica-400 !text-white !ml-1"
+          className="!w-60 !rounded-md !h-11 !bg-japonica-400 !text-white !ml-1 disabled:!cursor-not-allowed disabled:!opacity-50"
+          disabled={loading}
         >
           <SearchIcon className="!text-lg" />{' '}
           {loading ? 'Đang tìm kiếm...' : 'Tìm kiếm'}
