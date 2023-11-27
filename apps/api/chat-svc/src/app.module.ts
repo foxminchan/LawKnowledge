@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
+import { LoggerModule } from '@law-knowledge/framework';
 
 @Module({
-  imports: [],
-  controllers: [],
-  providers: [],
+  imports: [LoggerModule],
 })
 export class AppModule {}

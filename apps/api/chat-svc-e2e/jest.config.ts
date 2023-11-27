@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'api-chat-svc-e2e',
   preset: '../../../jest.preset.js',

@@ -65,6 +65,7 @@
     "@mdx-js/react": "^3.0.0",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
+    "@nestjs/axios": "^3.0.1",
     "@nestjs/cache-manager": "^2.1.1",
     "@nestjs/common": "^10.2.10",
     "@nestjs/core": "^10.2.10",

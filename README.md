@@ -12,13 +12,13 @@
   <a href="https://foxminchan.github.io/LawKnowledge/" rel="dofollow" target="blank"><strong>Explore the docs »</strong></a>
 	<br/>
 	<br/>
-	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=%F0%9F%90%9B+Bug+Report%3A+">Report Bug 🐛</a>
+	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=%F0%9F%90%9B+Bug+Report%3A+">🐛 Report Bug</a>
 	|
-	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=%F0%9F%9A%80+Feature%3A+">Request Feature ✈️</a>
+	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=%F0%9F%9A%80+Feature%3A+">✈️ Request Feature</a>
 	|
-	<a href="https://t.me/+bz74heXQgBwwOWRl">Join Our Telegram 💬</a>
+	<a href="https://t.me/+bz74heXQgBwwOWRl">💬 Join Our Telegram</a>
 	|
-	<a href="https://github.com/foxminchan/LawKnowledge/wiki">Read Wiki 📚</a>
+	<a href="https://github.com/foxminchan/LawKnowledge/wiki">📚 Read Wiki</a>
 </p>
 
 <p align="center">
@@ -73,18 +73,18 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-	- [🛠️ Prerequisites](#️-prerequisites)
-	- [📦 Dataset](#-dataset)
-	- [🧑‍💻 Setup](#-setup)
-	- [🚀 Running](#-running)
-	- [🧪 Testing](#-testing)
-	- [🧩 Other](#-other)
+  - [🛠️ Prerequisites](#️-prerequisites)
+  - [📦 Dataset](#-dataset)
+  - [🧑‍💻 Setup](#-setup)
+  - [🚀 Running](#-running)
+  - [🧪 Testing](#-testing)
+  - [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-	- [📖 Contributing Guidelines](#-contributing-guidelines)
-	- [💁 Want to Help?](#-want-to-help)
-	- [🫂 Code of Conduct](#-code-of-conduct)
+  - [📖 Contributing Guidelines](#-contributing-guidelines)
+  - [💁 Want to Help?](#-want-to-help)
+  - [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -224,8 +224,12 @@ To set up the infrastructure, you can run the following command:
 npx nx up iac
 ```
 
+<p align="justify">
+
 > [!IMPORTANT]
 > If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9 <=3.12`.
+
+</p>
 
 ## 🧪 Testing
 

@@ -1,26 +1,21 @@
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
-import { Logger } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
+import { NestFactory } from '@nestjs/core';
+import { ValidationErrorPipe } from '@law-knowledge/shared';
+import { TcpOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter()
-  );
+  const app = await NestFactory.createMicroservice(AppModule, {
+    transport: Transport.TCP,
+    options: {
+      host: process.env.HOST || '0.0.0.0',
+      port: process.env.PORT || 8082,
+    },
+  } as TcpOptions);
 
-  app.setGlobalPrefix('api/v1/');
-  await app.listen(process.env.PORT || 8082);
+  app.useGlobalPipes(new ValidationErrorPipe());
+  app.useLogger(app.get(Logger));
+  await app.listen();
 }
 
-void (async (): Promise<void> => {
-  try {
-    await bootstrap();
-    Logger.log(`🚀 Law Service is running`);
-  } catch (error) {
-    Logger.error(error, '❌ Error starting server');
-  }
-})();
+bootstrap();
