@@ -5,4 +5,5 @@ export * from './filters';
 export * from './decorators';
 export * from './guards';
 export * from './strategies';
+export * from './helpers';
 export * from './interceptors';

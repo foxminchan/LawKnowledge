@@ -1,13 +1,15 @@
 import { UserModule } from '../user';
 import { JwtModule } from '@nestjs/jwt';
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { CqrsModule } from '@nestjs/cqrs';
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
 import { JWT_SECRET, JWT_EXPIRES_IN } from '@law-knowledge/shared';
+import { CreateTokenCommandHandler } from './cqrs/commands/create-token.comand';
 
 @Module({
   imports: [
+    CqrsModule,
     UserModule,
     PassportModule,
     JwtModule.register({
@@ -15,8 +17,7 @@ import { JWT_SECRET, JWT_EXPIRES_IN } from '@law-knowledge/shared';
       signOptions: { expiresIn: JWT_EXPIRES_IN },
     }),
   ],
-  providers: [AuthService],
   controllers: [AuthController],
-  exports: [AuthService],
+  providers: [CreateTokenCommandHandler],
 })
 export class AuthModule {}

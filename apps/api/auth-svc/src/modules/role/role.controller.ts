@@ -1,37 +1,45 @@
+import {
+  GetRoleEvent,
+  GetRolesEvent,
+  CreateRoleEvent,
+  DeleteRoleEvent,
+  UpdateRoleEvent,
+} from './cqrs';
 import { Controller } from '@nestjs/common';
-import { RoleService } from './role.service';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { Criteria } from '@law-knowledge/shared';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { EventPattern } from '@nestjs/microservices';
 import { CreateRoleModel, UpdateRoleModel } from '../../models';
 
 @Controller()
 export class RoleController {
-  constructor(private readonly RoleService: RoleService) {}
+  constructor(
+    private readonly queryBus: QueryBus,
+    private readonly commandBus: CommandBus
+  ) {}
 
-  @MessagePattern({ cmd: 'getRoles' })
-  getRoles() {
-    return this.RoleService.getRoles();
+  @EventPattern({ cmd: 'getRoles' })
+  getRoles(criteria?: Criteria) {
+    return this.queryBus.execute(new GetRolesEvent(criteria));
   }
 
-  @MessagePattern({ cmd: 'getRole' })
-  getRole(@Payload('id') id: string) {
-    return this.RoleService.getRole(id);
+  @EventPattern({ cmd: 'getRole' })
+  getRole(id: string) {
+    return this.queryBus.execute(new GetRoleEvent(id));
   }
 
-  @MessagePattern({ cmd: 'addRole' })
-  addRole(@Payload('role') Role: CreateRoleModel) {
-    return this.RoleService.addRole(Role);
+  @EventPattern({ cmd: 'addRole' })
+  addRole(Role: CreateRoleModel) {
+    return this.commandBus.execute(new CreateRoleEvent(Role));
   }
 
-  @MessagePattern({ cmd: 'updateRole' })
-  updateRole(
-    @Payload('id') id: string,
-    @Payload('role') Role: UpdateRoleModel
-  ) {
-    return this.RoleService.updateRole(id, Role);
+  @EventPattern({ cmd: 'updateRole' })
+  updateRole(id: string, role: UpdateRoleModel) {
+    return this.commandBus.execute(new UpdateRoleEvent(id, role));
   }
 
-  @MessagePattern({ cmd: 'deleteRole' })
-  deleteRole(@Payload('id') id: string) {
-    return this.RoleService.deleteRole(id);
+  @EventPattern({ cmd: 'deleteRole' })
+  deleteRole(id: string) {
+    return this.commandBus.execute(new DeleteRoleEvent(id));
   }
 }

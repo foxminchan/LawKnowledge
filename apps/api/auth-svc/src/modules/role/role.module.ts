@@ -1,10 +1,24 @@
 import { Module } from '@nestjs/common';
-import { RoleService } from './role.service';
 import { RoleController } from './role.controller';
+import { CqrsModule } from '@nestjs/cqrs';
+import {
+  CreateRoleCommandHandler,
+  DeleteRoleCommandHandler,
+  UpdateRoleCommandHandler,
+} from './cqrs/commands';
+import { GetRoleQueryHandler } from './cqrs';
+
+const CommandHandlers = [
+  CreateRoleCommandHandler,
+  DeleteRoleCommandHandler,
+  UpdateRoleCommandHandler,
+];
+
+const QueryHandlers = [GetRoleQueryHandler, GetRoleQueryHandler];
 
 @Module({
-  providers: [RoleService],
+  imports: [CqrsModule],
   controllers: [RoleController],
-  exports: [RoleService],
+  providers: [...CommandHandlers, ...QueryHandlers],
 })
 export class RoleModule {}

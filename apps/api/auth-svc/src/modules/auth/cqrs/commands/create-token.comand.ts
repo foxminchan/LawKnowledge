@@ -1,24 +1,33 @@
-import {
-  Injectable,
-  ForbiddenException,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { UserService } from '../user';
 import { JwtService } from '@nestjs/jwt';
 import { CryptoUtils } from '@law-knowledge/shared';
 import { RpcException } from '@nestjs/microservices';
 import { from, of, switchMap, throwError } from 'rxjs';
+import { DataService } from '@law-knowledge/framework';
+import { CommandHandler, ICommandHandler} from '@nestjs/cqrs';
+import { CreateTokenEvent } from '../events/create-token.event';
 import { AccessToken, JwtPayload, LoginPayload } from '../../@types';
+import { ForbiddenException, UnauthorizedException } from '@nestjs/common';
 
-@Injectable()
-export class AuthService {
+@CommandHandler(CreateTokenEvent)
+export class CreateTokenCommandHandler
+  implements ICommandHandler<CreateTokenEvent>
+{
   constructor(
     private jwtService: JwtService,
-    private userService: UserService
+    private dataService: DataService
   ) {}
 
-  validateUser(user: LoginPayload) {
-    return from(this.userService.getUser(user.email)).pipe(
+  private validateUser(user: LoginPayload) {
+    return from(
+      this.dataService.user.findUnique({
+        where: {
+          email: user.email,
+        },
+        include: {
+          UserRoles: true,
+        },
+      })
+    ).pipe(
       switchMap((res) => {
         if (!res)
           return throwError(
@@ -46,8 +55,8 @@ export class AuthService {
     );
   }
 
-  login(user: LoginPayload) {
-    return this.validateUser(user).pipe(
+  async execute(command: CreateTokenEvent) {
+    return this.validateUser(command.payload).pipe(
       switchMap((res) => {
         if (!res) throw new RpcException(new UnauthorizedException());
 
