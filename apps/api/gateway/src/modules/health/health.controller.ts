@@ -3,6 +3,7 @@ import {
   HealthCheckService,
   DiskHealthIndicator,
   MemoryHealthIndicator,
+  HttpHealthIndicator,
 } from '@nestjs/terminus';
 import { Get } from '@nestjs/common';
 import { ApiController, SwaggerResponse } from '@law-knowledge/shared';
@@ -10,6 +11,7 @@ import { ApiController, SwaggerResponse } from '@law-knowledge/shared';
 @ApiController('health')
 export class HealthController {
   constructor(
+    private http: HttpHealthIndicator,
     private disk: DiskHealthIndicator,
     private health: HealthCheckService,
     private memory: MemoryHealthIndicator
@@ -20,7 +22,7 @@ export class HealthController {
     operation: 'Test health check',
   })
   healthCheck() {
-    return 'Http working fine';
+    return 'API Gateway is up and running';
   }
 
   @Get('status')
@@ -30,6 +32,26 @@ export class HealthController {
   })
   check() {
     return this.health.check([
+      () =>
+        this.http.pingCheck(
+          'Auth service',
+          `http://${process.env.AUTH_SVC_HOST}:${process.env.AUTH_SVC_PORT}`
+        ),
+      () =>
+        this.http.pingCheck(
+          'Law service',
+          `http://${process.env.LAW_SVC_HOST}:${process.env.LAW_SVC_HOST}`
+        ),
+      () =>
+        this.http.pingCheck(
+          'Search service',
+          `http://${process.env.SEARCH_SVC_HOST}:${process.env.SEARCH_SVC_PORT}`
+        ),
+      () =>
+        this.http.pingCheck(
+          'Chat service',
+          `http://${process.env.CHAT_SVC_HOST}:${process.env.CHAT_SVC_PORT}`
+        ),
       async () => this.memory.checkHeap('memory_heap', 200 * 1024 * 1024),
       async () => this.memory.checkRSS('memory_rss', 3000 * 1024 * 1024),
       () =>

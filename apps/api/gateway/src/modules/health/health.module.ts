@@ -3,7 +3,11 @@ import { HealthController } from './health.controller';
 import { TerminusModule } from '@nestjs/terminus';
 
 @Module({
-  imports: [TerminusModule],
+  imports: [
+    TerminusModule.forRoot({
+      errorLogStyle: 'pretty',
+    }),
+  ],
   controllers: [HealthController],
 })
 export class HealthCheckModule {}

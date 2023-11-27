@@ -1,10 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  ForbiddenException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { UserService } from '../user';
 import { JwtService } from '@nestjs/jwt';
 import { CryptoUtils } from '@law-knowledge/shared';
+import { RpcException } from '@nestjs/microservices';
 import { from, of, switchMap, throwError } from 'rxjs';
 import { AccessToken, JwtPayload, LoginPayload } from '../../@types';
-import { RpcException } from '@nestjs/microservices';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +22,10 @@ export class AuthService {
       switchMap((res) => {
         if (!res)
           return throwError(
-            () => new RpcException('Tài khoản của bạn không tồn tại')
+            () =>
+              new RpcException(
+                new ForbiddenException('Tài khoản của bạn không tồn tại')
+              )
           );
 
         return from(CryptoUtils.verifyHash(res.password, user.password)).pipe(
@@ -27,7 +34,11 @@ export class AuthService {
               ? of(res)
               : throwError(
                   () =>
-                    new RpcException('Tên đăng nhập hoặc mật khẩu không hợp lệ')
+                    new RpcException(
+                      new UnauthorizedException(
+                        'Tên đăng nhập hoặc mật khẩu không hợp lệ'
+                      )
+                    )
                 );
           })
         );
@@ -38,7 +49,7 @@ export class AuthService {
   login(user: LoginPayload) {
     return this.validateUser(user).pipe(
       switchMap((res) => {
-        if (!res) throw new RpcException('Tài khoản của bạn không tồn tại');
+        if (!res) throw new RpcException(new UnauthorizedException());
 
         const token: JwtPayload = {
           sub: res.id,

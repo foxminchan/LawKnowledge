@@ -1,4 +1,9 @@
-import { Injectable, ValidationPipe, ValidationError } from '@nestjs/common';
+import {
+  Injectable,
+  ValidationPipe,
+  ValidationError,
+  BadRequestException,
+} from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 
 @Injectable()
@@ -12,10 +17,12 @@ export class ValidationErrorPipe extends ValidationPipe {
       disableErrorMessages: true,
       exceptionFactory: (validationErrors: ValidationError[] = []) =>
         new RpcException(
-          validationErrors.map((error) => ({
-            field: error.property,
-            error: Object.values(error.constraints ?? {}),
-          }))
+          new BadRequestException(
+            validationErrors.map((error) => ({
+              field: error.property,
+              error: Object.values(error.constraints ?? {}),
+            }))
+          )
         ),
     });
   }

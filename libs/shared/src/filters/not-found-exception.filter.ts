@@ -2,6 +2,7 @@ import {
   ArgumentsHost,
   Catch,
   ExceptionFilter,
+  HttpStatus,
   NotFoundException,
 } from '@nestjs/common';
 
@@ -10,8 +11,9 @@ export class NotFoundExceptionFilter implements ExceptionFilter {
   catch(_exception: NotFoundException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
-    response.status(404).send({
-      statusCode: 404,
+    const status = HttpStatus.NOT_FOUND;
+    response.status(status).send({
+      statusCode: status,
       message: 'Endpoint not found',
     });
   }

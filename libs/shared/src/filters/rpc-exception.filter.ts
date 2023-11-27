@@ -1,21 +1,29 @@
 import {
   Catch,
-	HttpStatus,
+  HttpStatus,
   ArgumentsHost,
   ExceptionFilter,
 } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 
+interface RpcError {
+  status?: number;
+  message: object | string;
+}
+
 @Catch(RpcException)
 export class RpcExceptionToHttpExceptionFilter implements ExceptionFilter {
   catch(exception: RpcException, host: ArgumentsHost) {
-    const ctx = host.switchToHttp();
-    const response = ctx.getResponse();
-    const status = HttpStatus.BAD_REQUEST;
+    const error: RpcError = exception.getError() as RpcError;
+    const response = host.switchToHttp().getResponse();
+    const statusCode = error.status ?? HttpStatus.INTERNAL_SERVER_ERROR;
 
-    response.status(status).json({
-      statusCode: status,
-      message: exception.message,
+    response.status(statusCode).send({
+      statusCode,
+      message:
+        statusCode === HttpStatus.INTERNAL_SERVER_ERROR
+          ? 'Dịch vụ hiện không khả dụng vào lúc này'
+          : error,
     });
   }
 }
