@@ -4,9 +4,9 @@ import type {
   NestInterceptor,
 } from '@nestjs/common';
 import { tap } from 'rxjs/operators';
+import { CacheService } from '../cache';
 import { Observable, from, of } from 'rxjs';
 import { Injectable } from '@nestjs/common';
-import { CacheService } from '@law-knowledge/framework';
 
 @Injectable()
 export class ClearCacheInterceptor implements NestInterceptor {

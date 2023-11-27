@@ -1,10 +1,10 @@
 import {
   JwtStrategy,
-  ClearCacheInterceptor,
+  NestCacheModule,
   HttpCacheInterceptor,
+  ClearCacheInterceptor,
 } from '@law-knowledge/shared';
 import {
-  NestCacheModule,
   OtelModule,
   RateLimitModule,
 } from '@law-knowledge/framework';

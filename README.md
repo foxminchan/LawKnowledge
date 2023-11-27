@@ -290,11 +290,11 @@ npx nx dep-graph
 
 Here is the dependency graph of the project:
 
-<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
+<img loading="lazy" src="./assets/images/depend-graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 
-<img loading="lazy" src="./assets/images/cicd.svg" alt="CI/CD" width="100%">
+<img loading="lazy" src="./assets/images/cicd-pipeline.svg" alt="CI/CD" width="100%">
 
 # Contributing
 
