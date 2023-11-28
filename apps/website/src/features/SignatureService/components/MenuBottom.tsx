@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { Grid, Container } from '@mui/material';
 import { IconServiceInformation } from '@common/utils/image';
 import { itemMenuBottom } from '@mocks/signatureService.data';
+import { Link } from 'react-router-dom';
 
 export default function MenuBottom() {
   return (
@@ -30,9 +31,9 @@ export default function MenuBottom() {
                       loading="lazy"
                     />
                   </div>
-                  <span className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800">
+                  <Link to={item.link} className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800">
                     {item.name}
-                  </span>
+                  </Link>
                 </span>
               </div>
             </Grid>
