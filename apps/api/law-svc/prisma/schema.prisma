@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -10,7 +11,7 @@ datasource db {
 model Topic {
   id      String    @id @default(uuid())
   name    String    @db.VarChar(255)
-  no      Int
+  no      Int       @default(autoincrement()) @db.Integer
   Heading Heading[]
 }
 

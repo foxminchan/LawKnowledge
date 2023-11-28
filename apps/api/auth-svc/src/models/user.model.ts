@@ -6,7 +6,8 @@ import {
   MinLength,
   IsNotEmpty,
 } from 'class-validator';
-import { PartialType } from '@nestjs/swagger';
+import { PartialType } from '@nestjs/mapped-types';
+
 export class CreateUserModel {
   @IsNotEmpty({ message: 'Họ tên không được để trống' })
   @MaxLength(50, { message: 'Họ tên không được quá 50 ký tự' })

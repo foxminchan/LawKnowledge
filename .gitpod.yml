@@ -3,3 +3,22 @@ image:
 
 tasks:
   - init: pnpm install -f
+
+ports:
+  - port: 4200
+    visibility: private
+
+vscode:
+  extensions:
+    - "humao.rest-client"
+    - "aaron-bond.better-comments"
+    - "ms-azuretools.vscode-docker"
+    - "wix.vscode-import-cost"
+    - "dsznajder.es7-react-js-snippets"
+    - "mikestead.dotenv"
+    - "formulahendry.auto-complete-tag"
+    - "SonarSource.sonarlint-vscode"
+    - "christian-kohler.npm-intellisense"
+    - "nrwl.angular-console"
+    - "esbenp.prettier-vscode"
+    - "dbaeumer.vscode-eslint"

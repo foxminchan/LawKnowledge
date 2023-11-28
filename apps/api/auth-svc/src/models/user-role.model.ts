@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { PartialType } from '@nestjs/swagger';
+import { PartialType } from '@nestjs/mapped-types';
 
 export class CreateUserRoleModel {
   @IsNotEmpty({ message: 'Mã người dùng không được để trống' })

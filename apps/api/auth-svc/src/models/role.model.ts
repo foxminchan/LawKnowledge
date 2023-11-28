@@ -1,6 +1,6 @@
 import { IsEnum } from 'class-validator';
 import { Roles } from '@law-knowledge/shared';
-import { PartialType } from '@nestjs/swagger';
+import { PartialType } from '@nestjs/mapped-types';
 
 export class CreateRoleModel {
   @IsEnum(Roles, {

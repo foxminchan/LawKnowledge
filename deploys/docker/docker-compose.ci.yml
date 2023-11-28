@@ -3,6 +3,7 @@ version: '3.9'
 services:
   jenkins:
     image: jenkins/jenkins:lts
+    container_name: jenkins
     networks:
       - hutech-network
     ports:
@@ -13,6 +14,7 @@ services:
 
   sonarqube:
     image: sonarqube:developer
+    container_name: sonarqube
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data
@@ -27,8 +29,20 @@ services:
     depends_on:
       - db
 
+  argocd:
+    image: argoproj/argocd:v2.0.0
+    container_name: argocd
+    ports:
+      - '8081:8080'
+    volumes:
+      - ./argocd:/home/argocd
+    command: ['argocd-server', '--staticassets', '/shared/app']
+    networks:
+      - hutech-network
+
   db:
     image: postgres
+    container_name: postgres
     environment:
       - POSTGRES_USER=sonar
       - POSTGRES_PASSWORD=sonar

@@ -13,6 +13,7 @@
       "installJupyterlab": true
     }
   },
+  "postCreateCommand": "npm install -g pnpm && pnpm install",
   "customizations": {
     "vscode": {
       "extensions": [
