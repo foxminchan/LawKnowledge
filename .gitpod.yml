@@ -4,10 +4,6 @@ image:
 tasks:
   - init: pnpm install -f
 
-ports:
-  - port: 4200
-    visibility: private
-
 vscode:
   extensions:
     - "humao.rest-client"
