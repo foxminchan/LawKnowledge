@@ -1,12 +1,12 @@
 import { CreateRoleEvent } from '../events';
-import { DataService } from '@law-knowledge/framework';
+import { AuthDataService } from '@law-knowledge/data';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 @CommandHandler(CreateRoleEvent)
 export class CreateRoleCommandHandler
   implements ICommandHandler<CreateRoleEvent>
 {
-  constructor(public readonly dataService: DataService) {}
+  constructor(public readonly dataService: AuthDataService) {}
 
   async execute(payload: CreateRoleEvent) {
     return this.dataService.$transaction([

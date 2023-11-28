@@ -1,12 +1,12 @@
 import { UpdateUserEvent } from '../events';
-import { DataService } from '@law-knowledge/framework';
+import { AuthDataService } from '@law-knowledge/data';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 @CommandHandler(UpdateUserEvent)
 export class UpdateUserCommandHandler
   implements ICommandHandler<UpdateUserEvent>
 {
-  constructor(private readonly dataService: DataService) {}
+  constructor(private readonly dataService: AuthDataService) {}
 
   async execute(payload: UpdateUserEvent) {
     return this.dataService.$transaction([

@@ -5,6 +5,7 @@ export class JwtPayload {
   roles: string[];
 }
 
-export class AccessToken {
+export class Token {
   access_token: string;
+  refresh_token: string;
 }

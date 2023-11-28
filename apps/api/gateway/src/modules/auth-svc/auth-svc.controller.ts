@@ -1,7 +1,5 @@
 import {
-  User,
   LoginPayload,
-  LoginResponse,
   RegisterPayload,
 } from '../../@types';
 import {
@@ -11,7 +9,6 @@ import {
   SwaggerResponse,
   NoCache,
 } from '@law-knowledge/shared';
-import { BaseResponse } from '../../common';
 import { AuthSvcService } from './auth-svc.service';
 import { Body, Get, Param, Post, UseGuards } from '@nestjs/common';
 
@@ -22,7 +19,6 @@ export class AuthSvcController {
   @SwaggerResponse({
     operation: 'Login',
     body: LoginPayload,
-    response: BaseResponse<LoginResponse>,
   })
   login(@Body() payload: LoginPayload) {
     return this.authSvcService.login(payload);
@@ -32,7 +28,6 @@ export class AuthSvcController {
   @SwaggerResponse({
     operation: 'Register',
     body: RegisterPayload,
-    response: BaseResponse<User>,
   })
   register(@Body() payload: RegisterPayload) {
     return this.authSvcService.register(payload);

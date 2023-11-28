@@ -1,4 +1,4 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class LoginPayload {
   @ApiProperty()
@@ -26,14 +26,4 @@ export class RegisterPayload {
 
   @ApiProperty()
   password: string;
-}
-
-export class LoginResponse {
-  @ApiProperty()
-  access_token: string;
-}
-
-export class User extends PartialType(RegisterPayload) {
-  @ApiProperty()
-  id: string;
 }

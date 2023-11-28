@@ -75,18 +75,18 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-	- [🛠️ Prerequisites](#️-prerequisites)
-	- [📦 Dataset](#-dataset)
-	- [🧑‍💻 Setup](#-setup)
-	- [🚀 Running](#-running)
-	- [🧪 Testing](#-testing)
-	- [🧩 Other](#-other)
+  - [🛠️ Prerequisites](#️-prerequisites)
+  - [📦 Dataset](#-dataset)
+  - [🧑‍💻 Setup](#-setup)
+  - [🚀 Running](#-running)
+  - [🧪 Testing](#-testing)
+  - [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-	- [📖 Contributing Guidelines](#-contributing-guidelines)
-	- [💁 Want to Help?](#-want-to-help)
-	- [🫂 Code of Conduct](#-code-of-conduct)
+  - [📖 Contributing Guidelines](#-contributing-guidelines)
+  - [💁 Want to Help?](#-want-to-help)
+  - [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -290,7 +290,7 @@ npx nx dep-graph
 
 Here is the dependency graph of the project:
 
-<img loading="lazy" src="./assets/images/depend-graph.png" alt="Dependency Graph" width="100%">
+<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 

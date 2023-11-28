@@ -1,3 +1,4 @@
+import { PartialType } from '@nestjs/mapped-types';
 import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
 
 export class CreateDocumentModel {
@@ -14,3 +15,5 @@ export class CreateDocumentModel {
   @IsUUID('4', { message: 'Mã đề mục không hợp lệ' })
   heading_id: string;
 }
+
+export class UpdateDocumentModel extends PartialType(CreateDocumentModel) {}

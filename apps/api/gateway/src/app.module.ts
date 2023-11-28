@@ -1,16 +1,14 @@
 import {
   JwtStrategy,
   NestCacheModule,
+  RefreshTokenStrategy,
   HttpCacheInterceptor,
   ClearCacheInterceptor,
 } from '@law-knowledge/shared';
-import {
-  OtelModule,
-  RateLimitModule,
-} from '@law-knowledge/framework';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggerMiddleware } from './middlewares';
 import { AuthSvcModule, HealthCheckModule } from './modules';
+import { OtelModule, RateLimitModule } from '@law-knowledge/framework';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 @Module({
@@ -23,6 +21,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
   ],
   providers: [
     JwtStrategy,
+    RefreshTokenStrategy,
     {
       provide: APP_INTERCEPTOR,
       useClass: HttpCacheInterceptor,

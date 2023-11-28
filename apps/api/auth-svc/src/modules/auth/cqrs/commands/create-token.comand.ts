@@ -1,12 +1,12 @@
 import { JwtService } from '@nestjs/jwt';
-import { CryptoUtils } from '@law-knowledge/shared';
 import { RpcException } from '@nestjs/microservices';
+import { AuthDataService } from '@law-knowledge/data';
 import { from, of, switchMap, throwError } from 'rxjs';
-import { DataService } from '@law-knowledge/framework';
-import { CommandHandler, ICommandHandler} from '@nestjs/cqrs';
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateTokenEvent } from '../events/create-token.event';
-import { AccessToken, JwtPayload, LoginPayload } from '../../@types';
+import { Token, JwtPayload, LoginPayload } from '../../@types';
 import { ForbiddenException, UnauthorizedException } from '@nestjs/common';
+import { CryptoUtils, JWT_REFRESH_EXPIRES_IN } from '@law-knowledge/shared';
 
 @CommandHandler(CreateTokenEvent)
 export class CreateTokenCommandHandler
@@ -14,7 +14,7 @@ export class CreateTokenCommandHandler
 {
   constructor(
     private jwtService: JwtService,
-    private dataService: DataService
+    private dataService: AuthDataService
   ) {}
 
   private validateUser(user: LoginPayload) {
@@ -64,12 +64,15 @@ export class CreateTokenCommandHandler
           sub: res.id,
           name: res.name,
           email: res.email,
-          roles: res.UserRoles.map((role) => role.role_id),
+          roles: res.UserRoles.map((role: { role_id: string }) => role.role_id),
         };
 
         return of({
           access_token: this.jwtService.sign(token),
-        } as AccessToken);
+          refresh_token: this.jwtService.sign(token, {
+            expiresIn: JWT_REFRESH_EXPIRES_IN,
+          }),
+        } as Token);
       })
     );
   }

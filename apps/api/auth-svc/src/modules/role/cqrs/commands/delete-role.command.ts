@@ -1,11 +1,11 @@
 import { DeleteRoleEvent } from '../events';
 import { ICommandHandler } from '@nestjs/cqrs';
-import { DataService } from '@law-knowledge/framework';
+import { AuthDataService } from '@law-knowledge/data';
 
 export class DeleteRoleCommandHandler
   implements ICommandHandler<DeleteRoleEvent>
 {
-  constructor(private readonly dataService: DataService) {}
+  constructor(private readonly dataService: AuthDataService) {}
 
   async execute(payload: DeleteRoleEvent) {
     return this.dataService.$transaction([
