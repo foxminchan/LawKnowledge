@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_law_knowledge_source=self.webpackChunk_law_knowledge_source||[]).push([[9661],{4232:(e,s,r)=>{r.r(s),r.d(s,{default:()=>d});r(959);var u=r(5924),a=r(9525),c=r(5314),l=r(3797),n=r(9793),o=r(1527);function d(e){return(0,o.jsx)(a.FG,{className:(0,u.Z)(c.k.wrapper.docsPages),children:(0,o.jsx)(n.Z,{children:(0,l.H)(e.route.routes)})})}}}]);
