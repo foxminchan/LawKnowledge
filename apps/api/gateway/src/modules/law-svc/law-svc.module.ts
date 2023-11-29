@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { LawService } from './law-svc.service';
+import { LawController } from './law-svc.controller';
 
 @Module({
   imports: [
@@ -14,7 +16,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
       },
     ]),
   ],
-  controllers: [],
-  providers: [],
+  controllers: [LawController],
+  providers: [LawService],
 })
 export class LawSvcModule {}

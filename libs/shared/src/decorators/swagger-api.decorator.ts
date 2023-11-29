@@ -18,7 +18,7 @@ interface SwaggerResponseOptions<T, K> {
   response?: Type<K>;
 }
 
-export function SwaggerResponse({
+export function SwaggerResponse<T, K>({
   operation,
   notFound,
   badRequest,
@@ -26,7 +26,7 @@ export function SwaggerResponse({
   query,
   body,
   response,
-}: SwaggerResponseOptions<typeof body, typeof response>) {
+}: SwaggerResponseOptions<T, K>) {
   const decsToApply = [ApiOperation({ summary: operation })];
 
   if (params) {

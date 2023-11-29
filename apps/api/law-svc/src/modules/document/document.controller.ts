@@ -18,27 +18,27 @@ export class DocumentController {
     private readonly commandBus: CommandBus
   ) {}
 
-  @EventPattern('getDocuments')
+  @EventPattern({ cmd: 'getDocuments' })
   getDocuments(criteria?: Criteria) {
     return this.queryBus.execute(new GetDocumentsEvent(criteria));
   }
 
-  @EventPattern('getDocument')
+  @EventPattern({ cmd: 'getDocument' })
   getDocument(id: string) {
     return this.queryBus.execute(new GetDocumentEvent(id));
   }
 
-  @EventPattern('deleteDocument')
+  @EventPattern({ cmd: 'deleteDocument' })
   deleteDocument(id: string) {
     return this.commandBus.execute(new DeleteDocumentEvent(id));
   }
 
-  @EventPattern('createDocument')
+  @EventPattern({ cmd: 'createDocument' })
   createDocument(payload: CreateDocumentModel) {
     return this.commandBus.execute(new CreateDocumentEvent(payload));
   }
 
-  @EventPattern('updateDocument')
+  @EventPattern({ cmd: 'updateDocument' })
   updateDocument(id: string, payload: CreateDocumentModel) {
     return this.commandBus.execute(new UpdateDocumentEvent(id, payload));
   }

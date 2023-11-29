@@ -18,27 +18,27 @@ export class HeadingController {
     private readonly commandBus: CommandBus
   ) {}
 
-  @EventPattern('getHeadings')
+  @EventPattern({ cmd: 'getHeadings' })
   getHeadings(criteria?: Criteria) {
     return this.queryBus.execute(new GetHeadingsEvent(criteria));
   }
 
-  @EventPattern('getHeading')
+  @EventPattern({ cmd: 'getHeading' })
   getHeading(id: string) {
     return this.queryBus.execute(new GetHeadingEvent(id));
   }
 
-  @EventPattern('createHeading')
+  @EventPattern({ cmd: 'createHeading' })
   createHeading(payload: CreateHeadingModel) {
     return this.commandBus.execute(new CreateHeadingEvent(payload));
   }
 
-  @EventPattern('updateHeading')
+  @EventPattern({ cmd: 'updateHeading' })
   updateHeading(id: string, payload: UpdateHeadingModel) {
     return this.commandBus.execute(new UpdateHeadingEvent(id, payload));
   }
 
-  @EventPattern('deleteHeading')
+  @EventPattern({ cmd: 'deleteHeading' })
   deleteHeading(id: string) {
     return this.commandBus.execute(new DeleteHeadingEvent(id));
   }

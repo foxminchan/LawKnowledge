@@ -1,8 +1,9 @@
-import { IQueryHandler } from '@nestjs/cqrs';
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetDocumentsEvent } from '../events';
 import { LawDataService } from '@law-knowledge/data';
 import { constructQueryOptions } from '@law-knowledge/shared';
 
+@QueryHandler(GetDocumentsEvent)
 export class GetDocumentsQueryHandler
   implements IQueryHandler<GetDocumentsEvent>
 {

@@ -16,12 +16,12 @@ interface PagingSwaggerResponseOptions<T, K> {
   response?: Type<K>;
 }
 
-export function PagingSwaggerResponse({
+export function PagingSwaggerResponse<T, K>({
   operation,
   params,
   body,
   response,
-}: PagingSwaggerResponseOptions<typeof body, typeof response>) {
+}: PagingSwaggerResponseOptions<T, K>) {
   const decsToApply = [ApiOperation({ summary: operation })];
 
   if (params) {
@@ -44,7 +44,7 @@ export function PagingSwaggerResponse({
               {
                 properties: {
                   data: {
-                    items: { $ref: getSchemaPath(response) },
+                    items: { $ref: response ? getSchemaPath(response) : '' },
                   },
                 },
               },

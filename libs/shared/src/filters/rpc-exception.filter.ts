@@ -1,5 +1,6 @@
 import {
   Catch,
+  Logger,
   HttpStatus,
   ArgumentsHost,
   ExceptionFilter,
@@ -17,6 +18,8 @@ export class RpcExceptionToHttpExceptionFilter implements ExceptionFilter {
     const error: RpcError = exception.getError() as RpcError;
     const response = host.switchToHttp().getResponse();
     const statusCode = error.status ?? HttpStatus.INTERNAL_SERVER_ERROR;
+
+    Logger.error(`❌ RPC has errors: ${JSON.stringify(error)}`);
 
     response.status(statusCode).send({
       statusCode,

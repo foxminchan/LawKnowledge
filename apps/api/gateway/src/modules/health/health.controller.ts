@@ -6,7 +6,7 @@ import {
   HttpHealthIndicator,
 } from '@nestjs/terminus';
 import { Get } from '@nestjs/common';
-import { ApiController, SwaggerResponse } from '@law-knowledge/shared';
+import { ApiController, Key, SwaggerResponse } from '@law-knowledge/shared';
 
 @ApiController('health')
 export class HealthController {
@@ -25,6 +25,7 @@ export class HealthController {
     return 'API Gateway is up and running';
   }
 
+  @Key()
   @Get('status')
   @HealthCheck()
   @SwaggerResponse({

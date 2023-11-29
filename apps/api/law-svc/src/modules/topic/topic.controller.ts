@@ -18,27 +18,27 @@ export class TopicController {
     private readonly commandBus: CommandBus
   ) {}
 
-  @EventPattern('createTopic')
+  @EventPattern({ cmd: 'createTopic' })
   createTopic(data: CreateTopicModel) {
     return this.commandBus.execute(new CreateTopicEvent(data));
   }
 
-  @EventPattern('updateTopic')
+  @EventPattern({ cmd: 'updateTopic' })
   updateTopic(id: string, data: UpdateTopicModel) {
     return this.commandBus.execute(new UpdateTopicEvent(id, data));
   }
 
-  @EventPattern('deleteTopic')
+  @EventPattern({ cmd: 'deleteTopic' })
   deleteTopic(id: string) {
     return this.commandBus.execute(new DeleteTopicEvent(id));
   }
 
-  @EventPattern('getTopics')
+  @EventPattern({ cmd: 'getTopics' })
   getTopics(criteria?: Criteria) {
     return this.queryBus.execute(new GetTopicsEvent(criteria));
   }
 
-  @EventPattern('getTopic')
+  @EventPattern({ cmd: 'getTopic' })
   getTopic(id: string) {
     return this.queryBus.execute(new GetTopicEvent(id));
   }
