@@ -11,11 +11,7 @@ export class KafkaPublisher<T> implements OnModuleInit, OnApplicationShutdown {
   constructor(private kafkaService: KafkaService) {}
 
   async onModuleInit() {
-    await this.kafkaService.connectProducer();
-  }
-
-  async onApplicationShutdown() {
-    await this.kafkaService.producer.disconnect();
+    await this.kafkaService.producer.connect();
   }
 
   async publish(
@@ -26,16 +22,14 @@ export class KafkaPublisher<T> implements OnModuleInit, OnApplicationShutdown {
   ) {
     for (let attempt = 1; attempt <= retryAttempts; attempt++) {
       try {
-        const isPublished = await this.kafkaService.producer.send({
+        const data = await this.kafkaService.producer.send({
           topic,
           messages: messages.map((message) => ({
             value: JSON.stringify(message),
           })),
         });
 
-        Logger.log(
-          `✅ Publish to kafka is success: ${JSON.stringify(isPublished)}`
-        );
+        Logger.log(`✅ Publish to kafka is success: ${JSON.stringify(data)}`);
 
         break;
       } catch (error) {
@@ -43,21 +37,13 @@ export class KafkaPublisher<T> implements OnModuleInit, OnApplicationShutdown {
           Logger.error(
             `❌ Publish to kafka has errors: ${JSON.stringify(error)}`
           );
-          await this.kafkaService.producer.disconnect();
         }
         await new Promise((resolve) => setTimeout(resolve, retryDelay));
       }
     }
   }
 
-  async isPublished(topic: string, messages: T[]) {
-    const isPublished = await this.kafkaService.producer.send({
-      topic,
-      messages: messages.map((message) => ({
-        value: JSON.stringify(message),
-      })),
-    });
-
-    return Promise.resolve(isPublished);
+  async onApplicationShutdown() {
+    await this.kafkaService.producer.disconnect();
   }
 }

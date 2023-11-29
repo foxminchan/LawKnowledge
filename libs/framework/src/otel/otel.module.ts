@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { OpenTelemetryModule } from 'nestjs-otel';
+import { OpenTelemetryTracer } from './otel.tracer';
 
 @Module({
   imports: [
@@ -12,5 +13,6 @@ import { OpenTelemetryModule } from 'nestjs-otel';
       },
     }),
   ],
+  providers: [OpenTelemetryTracer],
 })
 export class OtelModule {}
