@@ -12,6 +12,7 @@ import helmet from '@fastify/helmet';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import compression from '@fastify/compress';
+import { VersioningType } from '@nestjs/common';
 import { SetupSwagger } from '@law-knowledge/framework';
 import fastifyCsrfProtection from '@fastify/csrf-protection';
 
@@ -21,7 +22,11 @@ async function bootstrap() {
     new FastifyAdapter()
   );
 
-  app.setGlobalPrefix('api/v1/');
+  app.setGlobalPrefix('api');
+  app.enableVersioning({
+    type: VersioningType.URI,
+    defaultVersion: '1',
+  });
   app.register(fastifyCsrfProtection);
   app.register(cors, {
     origin: true,
