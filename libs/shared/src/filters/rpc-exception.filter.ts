@@ -5,11 +5,16 @@ import {
   ArgumentsHost,
   ExceptionFilter,
 } from '@nestjs/common';
+import { RFC_TYPE } from '../@types';
 import { RpcException } from '@nestjs/microservices';
+import { ProblemDocument } from 'http-problem-details';
 
 interface RpcError {
   status?: number;
-  message: object | string;
+  response: {
+    message: string | undefined;
+    error: string | undefined;
+  };
 }
 
 @Catch(RpcException)
@@ -21,12 +26,16 @@ export class RpcExceptionToHttpExceptionFilter implements ExceptionFilter {
 
     Logger.error(`❌ RPC has errors: ${JSON.stringify(error)}`);
 
-    response.status(statusCode).send({
-      statusCode,
-      message:
-        statusCode === HttpStatus.INTERNAL_SERVER_ERROR
-          ? 'Dịch vụ hiện không khả dụng vào lúc này'
-          : error,
-    });
+    response.status(statusCode).send(
+      new ProblemDocument({
+        status: statusCode,
+        type: RFC_TYPE,
+        title: error.response.error ?? 'Internal Server Error',
+        detail:
+          statusCode === HttpStatus.INTERNAL_SERVER_ERROR
+            ? 'Dịch vụ hiện không khả dụng vào lúc này'
+            : error.response.message,
+      })
+    );
   }
 }
