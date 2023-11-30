@@ -66,6 +66,7 @@ export default function Navbar() {
     Record<string, boolean>
   >({});
 
+  
   const [menuVisible, setMenuVisible] = useState(false);
 
   const showSubMenu = (itemName: string) => {
@@ -84,6 +85,21 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
+  };
+
+  const determineItemClass = (item: typeof navItems[number]) => {
+    navSupport.some((subItem) =>
+      window.location.pathname.includes(subItem.link)
+    );
+    const isActiveLink = window.location.pathname === item.link;
+
+    if (item.subMenu && navSupport.some((subItem) => window.location.pathname.includes(subItem.link))) {
+      return 'bg-japonica-500 text-white';
+    } else if (isActiveLink) {
+      return 'bg-japonica-500 text-white';
+    } else {
+      return 'bg-white-smoke-100';
+    }
   };
 
   return (
@@ -137,15 +153,7 @@ export default function Navbar() {
                   'hover:text-white',
                   'text-dark-moderate-blue-800',
                   item.width,
-                  item.subMenu &&
-                    navSupport.some((subItem) =>
-                      window.location.pathname.includes(subItem.link)
-                    )
-                    ? 'bg-japonica-500 text-white'
-                    : 'bg-white-smoke-100',
-                  window.location.pathname === item.link
-                    ? '!bg-japonica-500 text-white'
-                    : 'bg-white-smoke-100'
+                  determineItemClass(item)
                 )}
               >
                 <NavLink
@@ -155,7 +163,7 @@ export default function Navbar() {
                   <span className="text-xl font-medium">{item.name}</span>
                 </NavLink>
                 {item.subMenu && subMenuVisibility[item.name] && (
-                  <ul>
+                  <ul className='absolute z-20'>
                     {navSupport.map((subItem) => (
                       <li
                         key={subItem.id}
@@ -170,7 +178,7 @@ export default function Navbar() {
                           to={subItem.link}
                           className="flex items-center w-full h-full px-3 text-left"
                         >
-                          <span className="text-xl font-medium">
+                          <span className="text-xl font-medium ">
                             {subItem.name}
                           </span>
                         </NavLink>

@@ -1,10 +1,13 @@
 import { Dialog, DialogContent, Divider, Typography } from '@mui/material';
 import PdfIcon from '@assets/images/icons/pdf-icon.svg';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import React from 'react';
+import React, { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 export default function HeaderDetail() {
   const [open, setOpen] = React.useState(false);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -12,12 +15,29 @@ export default function HeaderDetail() {
   const handleClose = () => {
     setOpen(false);
   };
-  const convertToPDF = () => {
-   
-    alert('Đã tải xuống thành công')
-  };
+
+  const componentToPrintRef = useRef<HTMLDivElement>(null);
+
+  const generatePDF = () => {
+  if (!componentToPrintRef.current ) {
+    return;
+  }
+
+  html2canvas(componentToPrintRef.current).then((canvas) => {
+    const waitForRender = setInterval(() => {
+      if (canvas.toDataURL) {
+        clearInterval(waitForRender);
+        const imgData = canvas.toDataURL(); 
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'PNG', -10, -10, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+        pdf.save('vbpl.pdf');
+      }
+    }, 100);
+  });
+};
+
   return (
-    <div className="relative">
+    <div ref={componentToPrintRef} className="relative">
       <Typography variant="h5" className="mb-5">
         Tên văn bản pháp luật
       </Typography>
@@ -27,14 +47,13 @@ export default function HeaderDetail() {
           Xem chi tiết
         </button>
       </div>
-      <button onClick={convertToPDF}  className="bg-transparent">
+      <button onClick={generatePDF}  className="bg-transparent z-0">
         <img
           src={PdfIcon}
           alt="pdf-icon"
-          className="absolute w-10 h-10 top-0 right-0"
+          className="absolute w-10 h-10 top-0 right-0 z-0"
         />
       </button>
-
       <Divider className="!mt-5" />
       <Dialog
         fullWidth={true}
@@ -43,13 +62,14 @@ export default function HeaderDetail() {
         onClose={handleClose}
       >
         <DialogContent>
-        <iframe
-          title="Văn Bản Pháp Luật"
-          src="https://baohuy2k3.github.io/PhapDien/demuc/0b675c1b-8f59-429c-ac5f-cdfed4072cab.html"
-          className="block w-full h-[2600vh] border-none"
-        >
-          Trình duyệt không hỗ trợ iframe
-        </iframe>
+          <iframe 
+            
+            title="Văn Bản Pháp Luật"
+            src="https://baohuy2k3.github.io/PhapDien/demuc/0b675c1b-8f59-429c-ac5f-cdfed4072cab.html"
+            className="block w-full h-[2600vh] border-none"
+          >
+            Trình duyệt không hỗ trợ iframe
+          </iframe>
         </DialogContent>
       </Dialog>
     </div>
