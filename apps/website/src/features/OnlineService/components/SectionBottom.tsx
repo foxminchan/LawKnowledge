@@ -1,5 +1,6 @@
 import { Container, Grid } from '@mui/material';
 import drums from '@assets/images/notification/trongdong.png';
+import { Link } from 'react-router-dom';
 
 export default function SectionBottom() {
   return (
@@ -17,9 +18,9 @@ export default function SectionBottom() {
                 <div className="table-cell w-24 align-middle">
                   <img src={drums} alt="icon" loading="lazy" />
                 </div>
-                <span className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800">
-                  Câu hỏi thường gặp
-                </span>
+                <Link to={"/dieu-khoan-su-dung"} className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800">
+                  Điều khoản sử dụng
+                </Link>
               </span>
             </div>
           </Grid>
@@ -29,9 +30,9 @@ export default function SectionBottom() {
                 <div className="table-cell w-24 align-middle">
                   <img src={drums} alt="icon" loading="lazy" />
                 </div>
-                <span className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800">
+                <Link to={"/huong-dan-su-dung"} className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800">
                   Hướng dẫn sử dụng
-                </span>
+                </Link>
               </span>
             </div>
           </Grid>

@@ -435,12 +435,14 @@ export const itemContent = [
 export const itemMenuBottom = [
   {
     id: 1,
-    name: 'Câu hỏi thường gặp',
+    name: 'Điều khoản sử dụng',
+    link: '/dieu-khoan-su-dung',
     isActive: false,
   },
   {
     id: 2,
     name: 'Hướng dẫn sử dụng',
+    link: '/huong-dan-su-dung',
     isActive: true,
   },
 ];

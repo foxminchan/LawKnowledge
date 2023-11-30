@@ -19,6 +19,7 @@ const Introduction = loadable(() => import('./features/Introduction'));
 const SearchResult = loadable(() => import('./features/SearchResult'));
 const OnlineService = loadable(() => import('./features/OnlineService'));
 const SignatureService = loadable(() => import('./features/SignatureService'));
+const ItemSearchDetail = loadable(() => import('./features/ItemSearchDetail'));
 
 export default function App() {
   return (
@@ -121,6 +122,14 @@ export default function App() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Guide title="Hướng dẫn sử dụng" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/chi-tiet-van-ban"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <ItemSearchDetail title="Chi tiết văn bản" />
               </Suspense>
             }
           />
