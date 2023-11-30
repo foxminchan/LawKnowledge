@@ -1,9 +1,9 @@
-import useMetadata from '@/common/hooks/useMetadata';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Breadcrumbs, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import HeaderDetail from './components/HeaderDetail';
+import useMetadata from '@/common/hooks/useMetadata';
 import ContentDetail from './components/ContentDetail';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Breadcrumbs, Container, Typography } from '@mui/material';
 
 type Props = {
   title: string;

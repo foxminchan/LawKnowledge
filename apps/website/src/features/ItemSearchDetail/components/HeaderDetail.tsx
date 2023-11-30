@@ -1,12 +1,12 @@
-import { Dialog, DialogContent, Divider, Typography } from '@mui/material';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+import { useRef, useState } from 'react';
 import PdfIcon from '@assets/images/icons/pdf-icon.svg';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import React, { useRef } from 'react';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
+import { Dialog, DialogContent, Divider, Typography } from '@mui/material';
 
 export default function HeaderDetail() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,22 +19,29 @@ export default function HeaderDetail() {
   const componentToPrintRef = useRef<HTMLDivElement>(null);
 
   const generatePDF = () => {
-  if (!componentToPrintRef.current ) {
-    return;
-  }
+    if (!componentToPrintRef.current) {
+      return;
+    }
 
-  html2canvas(componentToPrintRef.current).then((canvas) => {
-    const waitForRender = setInterval(() => {
-      if (canvas.toDataURL) {
-        clearInterval(waitForRender);
-        const imgData = canvas.toDataURL(); 
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'PNG', -10, -10, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
-        pdf.save('vbpl.pdf');
-      }
-    }, 100);
-  });
-};
+    html2canvas(componentToPrintRef.current).then((canvas) => {
+      const waitForRender = setInterval(() => {
+        if (canvas.toDataURL) {
+          clearInterval(waitForRender);
+          const imgData = canvas.toDataURL();
+          const pdf = new jsPDF();
+          pdf.addImage(
+            imgData,
+            'PNG',
+            -10,
+            -10,
+            pdf.internal.pageSize.getWidth(),
+            pdf.internal.pageSize.getHeight()
+          );
+          pdf.save('van-ban-phap-luat.pdf');
+        }
+      }, 100);
+    });
+  };
 
   return (
     <div ref={componentToPrintRef} className="relative">
@@ -43,11 +50,14 @@ export default function HeaderDetail() {
       </Typography>
       <div className="-ml-1 mt-1">
         <NavigateNextIcon className="text-saffron-mango-500 hover:text-saffron-mango-600 w-3 h-3" />
-        <button onClick={handleClickOpen} className="text-base font-medium bg-transparent text-saffron-mango-500 hover:text-saffron-mango-600 cursor-pointer">
+        <button
+          onClick={handleClickOpen}
+          className="text-base font-medium bg-transparent text-saffron-mango-500 hover:text-saffron-mango-600 cursor-pointer"
+        >
           Xem chi tiết
         </button>
       </div>
-      <button onClick={generatePDF}  className="bg-transparent z-0">
+      <button onClick={generatePDF} className="bg-transparent z-0">
         <img
           src={PdfIcon}
           alt="pdf-icon"
@@ -55,15 +65,9 @@ export default function HeaderDetail() {
         />
       </button>
       <Divider className="!mt-5" />
-      <Dialog
-        fullWidth={true}
-        maxWidth="lg"
-        open={open}
-        onClose={handleClose}
-      >
+      <Dialog fullWidth={true} maxWidth="lg" open={open} onClose={handleClose}>
         <DialogContent>
-          <iframe 
-            
+          <iframe
             title="Văn Bản Pháp Luật"
             src="https://baohuy2k3.github.io/PhapDien/demuc/0b675c1b-8f59-429c-ac5f-cdfed4072cab.html"
             className="block w-full h-[2600vh] border-none"

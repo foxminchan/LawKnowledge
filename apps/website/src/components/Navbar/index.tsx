@@ -66,7 +66,6 @@ export default function Navbar() {
     Record<string, boolean>
   >({});
 
-  
   const [menuVisible, setMenuVisible] = useState(false);
 
   const showSubMenu = (itemName: string) => {
@@ -87,13 +86,18 @@ export default function Navbar() {
     setMenuVisible(!menuVisible);
   };
 
-  const determineItemClass = (item: typeof navItems[number]) => {
+  const determineItemClass = (item: (typeof navItems)[number]) => {
     navSupport.some((subItem) =>
       window.location.pathname.includes(subItem.link)
     );
     const isActiveLink = window.location.pathname === item.link;
 
-    if (item.subMenu && navSupport.some((subItem) => window.location.pathname.includes(subItem.link))) {
+    if (
+      item.subMenu &&
+      navSupport.some((subItem) =>
+        window.location.pathname.includes(subItem.link)
+      )
+    ) {
       return 'bg-japonica-500 text-white';
     } else if (isActiveLink) {
       return 'bg-japonica-500 text-white';
@@ -163,7 +167,7 @@ export default function Navbar() {
                   <span className="text-xl font-medium">{item.name}</span>
                 </NavLink>
                 {item.subMenu && subMenuVisibility[item.name] && (
-                  <ul className='absolute z-20'>
+                  <ul className="absolute z-20">
                     {navSupport.map((subItem) => (
                       <li
                         key={subItem.id}

@@ -31,7 +31,10 @@ export default function MenuBottom() {
                       loading="lazy"
                     />
                   </div>
-                  <Link to={item.link} className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800">
+                  <Link
+                    to={item.link}
+                    className="table-cell pl-5 text-lg align-middle text-dark-moderate-blue-800"
+                  >
                     {item.name}
                   </Link>
                 </span>
