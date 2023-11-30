@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { ClientsModule, Transport, ClientProxy } from '@nestjs/microservices';
 
-describe('Create User', () => {
+describe('Test Auth', () => {
   let app: INestApplication;
   let client: ClientProxy;
 
