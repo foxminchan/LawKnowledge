@@ -21,6 +21,13 @@ include = "searching_svc"
 
 [tool.poetry.dependencies]
 python = ">=3.9 <=3.12"
+fastapi = "^0.104.1"
+uvicorn = { extras = ["standard"], version = "^0.24.0.post1" }
+grpcio = "^1.59.3"
+grpcio-tools = "^1.59.3"
+dependency-injector = "^4.41.0"
+farm-haystack = {extras = ["elasticsearch"], version = "^1.22.1"}
+opentelemetry-instrumentation-fastapi = "^0.42b0"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"

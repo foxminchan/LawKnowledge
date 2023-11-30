@@ -10,6 +10,7 @@ tmp
 .venv
 .cache
 .model
+__pycache__
 
 # dependencies
 node_modules
