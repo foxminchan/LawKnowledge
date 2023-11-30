@@ -1,12 +1,15 @@
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useRef, useState } from 'react';
+import useQuery from '@/common/hooks/useQuery';
 import PdfIcon from '@assets/images/icons/pdf-icon.svg';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Dialog, DialogContent, Divider, Typography } from '@mui/material';
 
 export default function HeaderDetail() {
   const [open, setOpen] = useState(false);
+
+  const param = useQuery();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -69,7 +72,7 @@ export default function HeaderDetail() {
         <DialogContent>
           <iframe
             title="Văn Bản Pháp Luật"
-            src="https://baohuy2k3.github.io/PhapDien/demuc/0b675c1b-8f59-429c-ac5f-cdfed4072cab.html"
+            src={`${import.meta.env.VITE_DOCS_URL}${param.get('id')}.html`}
             className="block w-full h-[2600vh] border-none"
           >
             Trình duyệt không hỗ trợ iframe
