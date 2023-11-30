@@ -2,12 +2,18 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import {
+  AppUtils,
+  NotFoundExceptionFilter,
+  RpcExceptionToHttpExceptionFilter,
+} from '@law-knowledge/shared';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
-import { Logger } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import compression from '@fastify/compress';
+import { VersioningType } from '@nestjs/common';
+import { SetupSwagger } from '@law-knowledge/framework';
 import fastifyCsrfProtection from '@fastify/csrf-protection';
 
 async function bootstrap() {
@@ -16,6 +22,11 @@ async function bootstrap() {
     new FastifyAdapter()
   );
 
+  app.setGlobalPrefix('api');
+  app.enableVersioning({
+    type: VersioningType.URI,
+    defaultVersion: '1',
+  });
   app.register(fastifyCsrfProtection);
   app.register(cors, {
     origin: true,
@@ -34,14 +45,15 @@ async function bootstrap() {
     },
   });
 
-  app.listen(process.env.PORT || 8080);
+  app.useGlobalFilters(new NotFoundExceptionFilter());
+  app.useGlobalFilters(new RpcExceptionToHttpExceptionFilter());
+  app.enableShutdownHooks();
+
+  SetupSwagger(app);
+
+  AppUtils.processAppWithGrace(app);
+
+  await app.listen(process.env.PORT || 8080);
 }
 
-void (async (): Promise<void> => {
-  try {
-    await bootstrap();
-    Logger.log(`🚀 Api Gateway is running`);
-  } catch (error) {
-    Logger.error(error, '❌ Error starting server');
-  }
-})();
+bootstrap();

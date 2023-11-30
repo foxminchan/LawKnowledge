@@ -1,4 +1,4 @@
-import { RegisterResponse } from '../features/SignUp/types/register.type';
+import { RegisterResponse } from '@features/SignUp/types/register.type';
 
 export type userState = {
   userLogin: string | undefined;

@@ -13,14 +13,14 @@ addopts = "--cov --cov-report html:'../../../coverage/apps/api/searching-svc/htm
 name = "searching-svc"
 version = "1.0.0"
 description = "Searching service"
-authors = ['Nguyen Xuan Nhan']
+authors = ['Nguyen Xuan Nhan <nguyenxuannhan407@gmail.com>']
 license = 'MIT'
 
 [[tool.poetry.packages]]
 include = "searching_svc"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.11"
+python = ">=3.9 <=3.12"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"

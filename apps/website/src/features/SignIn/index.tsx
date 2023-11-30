@@ -96,7 +96,7 @@ export default function SignIn(props: Readonly<Props>) {
           )}
           <Button
             type="submit"
-            className="w-full !px-6 !py-2 font-bold !text-white rounded !bg-japonica-400 hover:!bg-japonica-500"
+            className="w-full !px-6 !py-2 font-bold !text-white rounded !bg-japonica-400 hover:!bg-japonica-500 disabled:!cursor-not-allowed disabled:!opacity-50"
             disabled={loading}
           >
             {loading ? (

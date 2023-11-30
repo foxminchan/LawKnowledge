@@ -1,26 +1,27 @@
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
-import { Logger } from '@nestjs/common';
+import { Logger } from 'nestjs-pino';
+import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app/app.module';
+import {
+  ValidationErrorPipe,
+  PrismaClientExceptionFilter,
+} from '@law-knowledge/shared';
+import { TcpOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter()
-  );
+  const app = await NestFactory.createMicroservice(AppModule, {
+    transport: Transport.TCP,
+    options: {
+      host: process.env.HOST || '0.0.0.0',
+      port: process.env.PORT || 8081,
+      retryAttempts: 5,
+      retryDelay: 3000,
+    },
+  } as TcpOptions);
 
-  app.setGlobalPrefix('api/v1/');
-  await app.listen(process.env.PORT || 8081);
+  app.useGlobalPipes(new ValidationErrorPipe());
+  app.useGlobalFilters(new PrismaClientExceptionFilter());
+  app.useLogger(app.get(Logger));
+  await app.listen();
 }
 
-void (async (): Promise<void> => {
-  try {
-    await bootstrap();
-    Logger.log(`🚀 Auth Service is running`);
-  } catch (error) {
-    Logger.error(error, '❌ Error starting server');
-  }
-})();
+bootstrap();

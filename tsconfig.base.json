@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@law-knowledge/data": ["libs/data/src/index.ts"],
       "@law-knowledge/framework": ["libs/framework/src/index.ts"],
       "@law-knowledge/shared": ["libs/shared/src/index.ts"]
     }

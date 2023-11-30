@@ -1,18 +1,26 @@
 import {
-  ArgumentsHost,
   Catch,
+  HttpStatus,
+  ArgumentsHost,
   ExceptionFilter,
   NotFoundException,
 } from '@nestjs/common';
+import { RFC_TYPE } from '../@types';
+import { ProblemDocument } from 'http-problem-details';
 
 @Catch(NotFoundException)
 export class NotFoundExceptionFilter implements ExceptionFilter {
   catch(_exception: NotFoundException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
-    response.status(404).send({
-      statusCode: 404,
-      message: 'Endpoint not found',
-    });
+    const status = HttpStatus.NOT_FOUND;
+    response.status(status).send(
+      new ProblemDocument({
+        status,
+        title: _exception.message,
+        type: RFC_TYPE,
+        detail: _exception.stack,
+      })
+    );
   }
 }

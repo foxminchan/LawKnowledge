@@ -175,18 +175,11 @@ We use SonarQube as a Docker container. The following command will pull the late
 docker run -d --name sonarqube -p 9000:9000 sonarqube
 ```
 
-## Spinnaker
+## ArgoCD
 
 <p align="justify">
 
-Spinnaker is an open-source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence. It provides two core sets of features: cluster management and deployment management. Spinnaker’s deployment management features include:
-
-- Automated Canary Deployments
-- Pipeline Orchestration
-- Stage Orchestration
-- Notifications
-- Load Balancing
-- Cloud Provider Integrations
+Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. Kubernetes manifests can be specified in several ways: kustomize applications, ksonnet applications, helm charts, or plain directory of YAML/json manifests. Argo CD automates the deployment of the desired application states in the specified target environments. Application deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit. Argo CD runs a server process (`argocd-server`) which exposes both a web UI and a gRPC API (both secured via TLS). The web UI is served out of the `argocd-server` process itself. The API server is useful for automation or integrating with other tools, such as CI/CD, that need to interact with Argo CD.
 
 </p>
 
@@ -194,36 +187,43 @@ Spinnaker is an open-source, multi-cloud continuous delivery platform for releas
 
 <p align="justify">
 
-We use Spinnaker as a Helm chart. The following command will add the Spinnaker Helm chart repository.
+We use ArgoCD as a Docker container. The following command will pull the latest ArgoCD image from Docker Hub and run it on port 8080.
 
 </p>
 
 ```bash
-helm repo add spinnaker https://charts.spinnaker.io/stable
+docker run -d -p 8080:8080 argoproj/argocd:v2.1.2
 ```
 
 <p align="justify">
 
-The following command will install Spinnaker.
+After running the above command, we can access ArgoCD at http://localhost:8080. The default username is `admin` and the default password is `password`. We can change the password by running the following command.
 
 </p>
 
 ```bash
-helm install spinnaker spinnaker/spinnaker
+kubectl -n argocd patch secret argocd-secret \
+  -p '{"stringData": {
+    "admin.password": "Hutech@123"
+    }}'
 ```
 
 <p align="justify">
 
-The following command will forward the Spinnaker UI port to port 9000.
+After changing the password, we can access ArgoCD with the new password.
 
 </p>
 
-```bash
-kubectl port-forward svc/spin-deck 9000:9000
-```
+### Webhook Configuration
+
+<p align="justify">
+
+We need to configure the webhook for the GitHub repository. We can configure the webhook by going to the repository settings, selecting Webhooks, and clicking Add webhook. We need to enter the Payload URL, which is the URL of the ArgoCD server, and the secret token. We need to click Add webhook.
+
+</p>
 
 ## References
 
 - [Jenkins](https://www.jenkins.io/)
 - [SonarQube](https://www.sonarqube.org/)
-- [Spinnaker](https://spinnaker.io/)
+- [ArgoCD](https://argoproj.github.io/argo-cd/)

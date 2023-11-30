@@ -1,12 +1,5 @@
 export enum Roles {
   ADMIN = 'ADMIN',
+  LAWYER = 'LAWYER',
   CITIZEN = 'CITIZEN',
-}
-
-export enum Claims {
-  Manager = 'manager',
-  Create = 'create',
-  Read = 'read',
-  Update = 'update',
-  Delete = 'delete',
 }

@@ -1,6 +1,6 @@
-export const SWAGGER_TITLE = 'Goverment Chatbot';
+export const SWAGGER_TITLE = 'Law Knowledge';
 export const SWAGGER_DESCRIPTION =
-  'Smart chatbot for streamlined administrative procedures, powered by advanced language models';
+  "A legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database ⚖️";
 export const SWAGGER_VERSION = '1.0';
 export const LICENSE = {
   NAME: 'MIT',

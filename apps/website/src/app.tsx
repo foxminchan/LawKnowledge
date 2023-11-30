@@ -16,6 +16,7 @@ const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
 const Introduction = loadable(() => import('./features/Introduction'));
+const SearchResult = loadable(() => import('./features/SearchResult'));
 const OnlineService = loadable(() => import('./features/OnlineService'));
 const SignatureService = loadable(() => import('./features/SignatureService'));
 const ItemSearchDetail = loadable(() => import('./features/ItemSearchDetail'));
@@ -61,6 +62,14 @@ export default function App() {
             }
           />
           <Route
+            path="/tra-cuu"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <Search title="Tra cứu" />
+              </Suspense>
+            }
+          />
+          <Route
             path="/gioi-thieu"
             element={
               <Suspense fallback={<CircularProgress />}>
@@ -77,18 +86,10 @@ export default function App() {
             }
           />
           <Route
-            path="/tra-cuu"
+            path="/thu-tuc-hanh-chinh"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <Search title="Tra cứu" />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/dich-vu-cong-noi-bat"
-            element={
-              <Suspense fallback={<CircularProgress />}>
-                <SignatureService title="Dịch vụ công nổi bật" />
+                <SearchResult title="Thủ tục hành chính" />
               </Suspense>
             }
           />
@@ -97,6 +98,14 @@ export default function App() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <Policy title="Điều khoản sử dụng" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dich-vu-cong-noi-bat"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <SignatureService title="Dịch vụ công nổi bật" />
               </Suspense>
             }
           />

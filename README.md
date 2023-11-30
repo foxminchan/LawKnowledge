@@ -12,13 +12,15 @@
   <a href="https://foxminchan.github.io/LawKnowledge/" rel="dofollow" target="blank"><strong>Explore the docs »</strong></a>
 	<br/>
 	<br/>
-	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=%F0%9F%90%9B+Bug+Report%3A+">Report Bug 🐛</a>
+	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=%F0%9F%90%9B+Bug+Report%3A+">🐛 Report Bug</a>
 	|
-	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=%F0%9F%9A%80+Feature%3A+">Request Feature ✈️</a>
+	<a href="https://github.com/foxminchan/LawKnowledge/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=%F0%9F%9A%80+Feature%3A+">✈️ Request Feature</a>
 	|
-	<a href="https://t.me/+bz74heXQgBwwOWRl">Join Our Telegram 💬</a>
+	<a href="https://t.me/+bz74heXQgBwwOWRl">💬 Join Our Telegram</a>
 	|
-	<a href="https://github.com/foxminchan/LawKnowledge/wiki">Read Wiki 📚</a>
+	<a href="https://github.com/foxminchan/LawKnowledge/wiki">📚 Read Wiki</a>
+	|
+	<a href="https://github.com/users/foxminchan/projects/8">📋 Roadmap</a>
 </p>
 
 <p align="center">
@@ -74,9 +76,11 @@
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
   - [🛠️ Prerequisites](#️-prerequisites)
+  - [📦 Dataset](#-dataset)
   - [🧑‍💻 Setup](#-setup)
   - [🚀 Running](#-running)
   - [🧪 Testing](#-testing)
+  - [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
@@ -105,13 +109,14 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 # Tentative technologies
 
 - [React](https://reactjs.org/)
-- [Kafka](https://kafka.apache.org/)
-- [Redis](https://redis.io/)
 - [NestJS](https://nestjs.com/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Pulumi](https://www.pulumi.com/)
+- [Kafka](https://kafka.apache.org/)
+- [ArgoCD](https://argoproj.github.io/argo-cd/)
 - [Jenkins](https://www.jenkins.io/)
-- [PostgreSQL](https://www.postgresql.org/)
+- [OpenStack](https://www.openstack.org/)
+- [Kubernetes](https://kubernetes.io/)
 - [SonarCloud](https://sonarcloud.io/)
 - [OpenTelemetry](https://opentelemetry.io/)
 - [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/), [Loki](https://grafana.com/oss/loki/), [Tempo](https://grafana.com/oss/tempo/), [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/)
@@ -124,7 +129,7 @@ We used **Microservice Architecture** to build this project to make it easier to
 
 </p>
 
-<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -156,6 +161,17 @@ We used **Microservice Architecture** to build this project to make it easier to
 		<b><a href="https://helm.sh/" target="_blank">Helm</a></b> - Helm is the best way to find, share, and use software built for Kubernetes.
 	</li>
 </ul>
+
+## 📦 Dataset
+
+<p align="justify">
+
+You can download the dataset from the following link:
+
+- [Phap Dien](https://phapdien.moj.gov.vn/Pages/home.aspx): A website that provides legal documents of Vietnam.
+- [QPPL](https://vbpl.vn/pages/portal.aspx): Database of Vietnam's legal documents.
+
+</p>
 
 ## 🧑‍💻 Setup
 
@@ -191,8 +207,17 @@ npx nx serve api-auth-svc
 # For the Law Service
 npx nx serve api-law-svc
 
+# For the Chat Service
+npx nx serve api-chat-svc
+
 # For the Search Service
-npx nx serve api-search-svc
+npx nx build api-search-svc
+```
+
+To traning the model, you can run the following command:
+
+```bash
+npx nx build model
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -201,8 +226,12 @@ To set up the infrastructure, you can run the following command:
 npx nx up iac
 ```
 
+<p align="justify">
+
 > [!IMPORTANT]
-> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>= 3.8 and < 3.11`.
+> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9 <=3.12`.
+
+</p>
 
 ## 🧪 Testing
 
@@ -226,6 +255,29 @@ npx nx test api-law-svc
 
 # For the Search Service
 npx nx test api-search-svc
+
+# For the Chat Service
+npx nx test api-chat-svc
+```
+
+To test the model, you can run the following command:
+
+```bash
+npx nx test model
+```
+
+## 🧩 Other
+
+To run the tooling for processing the dataset, you can run the following command:
+
+```bash
+npx nx serve auto
+```
+
+For running documentation, you can run the following command:
+
+```bash
+npx nx serve docs
 ```
 
 # Dependency Graph
@@ -236,9 +288,13 @@ You can see the dependency graph of the project by running the following command
 npx nx dep-graph
 ```
 
+Here is the dependency graph of the project:
+
+<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
+
 # CI/CD
 
-<img loading="lazy" src="./assets/images/cicd.svg" alt="CI/CD" width="100%">
+<img loading="lazy" src="./assets/images/cicd-pipeline.svg" alt="CI/CD" width="100%">
 
 # Contributing
 

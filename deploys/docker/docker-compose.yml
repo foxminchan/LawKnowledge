@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+      - ./nginx/configuration/custom_proxy_settings.conf:/etc/nginx/conf.d/custom_proxy_settings.conf
+    ports:
+      - '80:80'
+    networks:
+      - hutech-network
+
+networks:
+  hutech-network:
+    name: hutech-network
+    external: true

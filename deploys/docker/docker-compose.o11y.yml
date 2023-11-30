@@ -1,8 +1,19 @@
-version: '3.7'
+version: '3.9'
+
+x-default-logging: &logging
+  driver: 'json-file'
+  options:
+    max-size: '5m'
+    max-file: '2'
+
 services:
   otel-collector:
     image: otel/opentelemetry-collector:0.61.0
-    command: ['--config=/etc/otel-collector.yaml']
+    command:
+      [
+        '--config=/etc/otel-collector.yaml',
+        '--feature-gates=pkg.translator.prometheus.NormalizeName',
+      ]
     volumes:
       - ./etc/otel-collector.yaml:/etc/otel-collector.yaml
     ports:
@@ -16,10 +27,17 @@ services:
     depends_on:
       - tempo
       - prometheus
+    deploy:
+      resources:
+        limits:
+          memory: 125M
+    restart: unless-stopped
+    logging: *logging
 
   tempo:
     image: grafana/tempo:2.2.3
-    command: ['-config.file=/etc/tempo.yaml']
+    container_name: tempo
+    command: ['-config.file=/etc/tempo.yaml', '-search.enabled=true']
     volumes:
       - ./etc/tempo.yaml:/etc/tempo.yaml
       - ./data/tempo-data:/tmp/tempo
@@ -29,9 +47,17 @@ services:
       - '4317' # otlp grpc
       - '4318' # otlp http
       - '9411' # zipkin
+    healthcheck:
+      interval: 5s
+      retries: 10
+      test: wget --no-verbose --tries=1 --spider http://localhost:3200/status || exit 1
+    logging: *logging
+    networks:
+      - hutech-network
 
   loki:
     image: grafana/loki:2.8.5
+    container_name: loki
     command: -config.file=/etc/loki/loki.yaml
     ports:
       - '3100:3100'
@@ -43,6 +69,9 @@ services:
     volumes:
       - ./etc/loki.yaml:/etc/loki/loki.yaml
       - ./data/loki-data:/tmp/loki
+    logging: *logging
+    networks:
+      - hutech-network
 
   promtail:
     image: grafana/promtail:2.9.0
@@ -52,6 +81,9 @@ services:
     command: -config.file=/etc/promtail/config.yaml
     depends_on:
       - loki
+    logging: *logging
+    networks:
+      - hutech-network
 
   prometheus:
     image: prom/prometheus:latest
@@ -61,15 +93,29 @@ services:
       - --config.file=/etc/prometheus.yaml
       - --web.enable-remote-write-receiver
       - --enable-feature=exemplar-storage
+      - --storage.tsdb.retention.time=1h
+      - --web.enable-lifecycle
+      - --web.route-prefix=/
+      - --web.console.templates=/etc/prometheus/consoles
+      - --web.console.libraries=/etc/prometheus/console_libraries
     ports:
       - '9090:9090'
+    healthcheck:
+      interval: 5s
+      retries: 10
+      test: wget --no-verbose --tries=1 --spider http://localhost:9090/status || exit 1
+    logging: *logging
+    networks:
+      - hutech-network
 
   grafana:
     image: grafana/grafana:9.2.20
+    container_name: grafana
+    extra_hosts: ['host.docker.internal:host-gateway']
     volumes:
-      - ./data/grafana-data/datasources:/etc/grafana/provisioning/datasources
-      - ./data/grafana-data/dashboards-provisioning:/etc/grafana/provisioning/dashboards
-      - ./data/grafana-data/dashboards:/var/lib/grafana/dashboards
+      - ./provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./provisioning/dashboards-provisioning:/etc/grafana/provisioning/dashboards
+      - ./provisioning/dashboards:/var/lib/grafana/dashboards
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
@@ -80,3 +126,15 @@ services:
       - prometheus
       - tempo
       - loki
+    healthcheck:
+      interval: 5s
+      retries: 10
+      test: wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1
+    logging: *logging
+    networks:
+      - hutech-network
+
+networks:
+  hutech-network:
+    name: hutech-network
+    external: true

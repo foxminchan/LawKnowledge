@@ -1,0 +1,35 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+  output = "../../../../node_modules/@prisma/db-law"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Topic {
+  id      String    @id @default(uuid())
+  name    String    @db.VarChar(255)
+  no      Int       @default(autoincrement()) @db.Integer
+  Heading Heading[]
+}
+
+model Heading {
+  id       String     @id @default(uuid())
+  name     String     @db.VarChar(255)
+  no       Int
+  topic_id String
+  topic    Topic      @relation(fields: [topic_id], references: [id])
+  Document Document[]
+}
+
+model Document {
+  id         String  @id @default(uuid())
+  name       String
+  indexing   String  @db.VarChar(10)
+  mpc        String
+  heading_id String
+  heading    Heading @relation(fields: [heading_id], references: [id])
+}
