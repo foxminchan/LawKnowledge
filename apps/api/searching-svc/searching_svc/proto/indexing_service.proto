@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service IndexingService {
+    rpc RunIndexing (IndexingRequest) returns (IndexingResponse) {}
+}
+
+message IndexingRequest {
+    repeated string file_paths = 1;
+}
+
+message IndexingResponse {
+    string message = 1;
+}

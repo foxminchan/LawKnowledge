@@ -1,29 +1,21 @@
-from fastapi import FastAPI
-from starlette.middleware.cors import CORSMiddleware
-
-from searching_svc.api.routes import api_router
-from searching_svc.core.config import configs
-
-
-app = FastAPI(
-            title=configs.PROJECT_NAME,
-            openapi_url=f"{configs.API}/openapi.json",
-            version="1.0.0",
-            license_info={'name': 'MIT', 'url': 'https://opensource.org/licenses/MIT'},
-        )
-
-if configs.BACKEND_CORS_ORIGINS:
-    app.add_middleware(
-      CORSMiddleware,
-      allow_origins=[str(origin) for origin in configs.BACKEND_CORS_ORIGINS],
-      allow_credentials=True,
-      allow_methods=["*"],
-      allow_headers=["*"],
-    )
-
-app.include_router(api_router, prefix=configs.API_V1_STR)
+import grpc
+from concurrent import futures
+from searching_svc.grpc import indexing_service_pb2_grpc
+from searching_svc.grpc.indexing_service_pb2_grpc import IndexingServiceServicer
 
 
-@app.get("/")
-async def root():
-    return {"message": "Service is running"}
+def serve():
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    indexing_service_pb2_grpc.add_IndexingServiceServicer_to_server(IndexingServiceServicer(), server)
+    server.add_insecure_port('[::]:8083')
+    try:
+        server.start()
+        print("Server started @ 0.0.0.0:8083")
+        server.wait_for_termination()
+    except KeyboardInterrupt:
+        server.stop(0)
+        print("Server disconnected")
+
+
+if __name__ == '__main__':
+    serve()

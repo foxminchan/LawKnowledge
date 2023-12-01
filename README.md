@@ -129,7 +129,7 @@ We used **Microservice Architecture** to build this project to make it easier to
 
 </p>
 
-<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -238,23 +238,23 @@ npx nx up iac
 For the website, you can run the following command:
 
 ```bash
-npx nx test clients-website
+npx nx test clients-website-e2e
 ```
 
 For the API, you can run the following command:
 
 ```bash
 # For the API Gateway
-npx nx test api-gateway
+npx nx test api-gateway-e2e
 
 # For the Auth Service
-npx nx test api-auth-svc
+npx nx test api-auth-svc-e2e
 
 # For the Law Service
-npx nx test api-law-svc
+npx nx test api-law-svc-e2e
 
 # For the Search Service
-npx nx test api-search-svc
+npx nx test api-search-svc-e2e
 
 # For the Chat Service
 npx nx test api-chat-svc
@@ -313,7 +313,7 @@ Here is the dependency graph of the project:
 
 # CI/CD
 
-<img loading="lazy" src="./assets/images/cicd-pipeline.svg" alt="CI/CD" width="100%">
+<img loading="lazy" src="./assets/images/base-cicd.svg" alt="CI/CD" width="100%">
 
 # Contributing
 
