@@ -16,7 +16,7 @@ export default function SignUp(props: Readonly<Props>) {
   useMetadata(props.title);
 
   return (
-    <Container component="main" maxWidth="xs" className="h-screen">
+    <Container component="main" maxWidth="xs" className="mb-3">
       <Box className="flex flex-col items-center mt-16">
         <img
           src={Logo}
