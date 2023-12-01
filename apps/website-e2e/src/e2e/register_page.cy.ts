@@ -11,8 +11,6 @@ describe('Registration Page', () => {
 
     cy.get('button[type="submit"]').click();
 
-    //cy.url().should('not.include', '/dang-ky');
-
     cy.visualSnapshot('Registration Page Result after Successful Registration');
   });
 });
