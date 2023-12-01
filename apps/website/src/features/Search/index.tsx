@@ -22,11 +22,13 @@ export default function Search(props: Readonly<Props>) {
       <div className="flex items-center justify-center min-h-screen">
         <ThemeProvider theme={CustomTheme}>
           <TextField
+            name="input_search"
             className="w-2/4 m-auto text-lg font-medium text-dark-moderate-blue-800 bg-white"
             placeholder="Nhập từ khoá tìm kiếm"
           />
         </ThemeProvider>
         <Button
+          name="search_button"
           className="!w-20 !rounded-none !h-14 !bg-japonica-400 !rounded-r-xl !text-white disabled:!cursor-not-allowed disabled:!opacity-50"
           onClick={handleSearch}
           disabled={loading}
