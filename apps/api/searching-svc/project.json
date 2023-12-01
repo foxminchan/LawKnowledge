@@ -25,9 +25,7 @@
     },
     "build": {
       "executor": "@nxlv/python:build",
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
+      "outputs": ["{projectRoot}/dist"],
       "options": {
         "outputPath": "apps/api/searching-svc/dist",
         "publish": false,
@@ -47,9 +45,7 @@
     },
     "lint": {
       "executor": "@nxlv/python:flake8",
-      "outputs": [
-        "{workspaceRoot}/reports/apps/api/searching-svc/pylint.txt"
-      ],
+      "outputs": ["{workspaceRoot}/reports/apps/api/searching-svc/pylint.txt"],
       "options": {
         "outputFile": "reports/apps/api/searching-svc/pylint.txt"
       }
@@ -63,6 +59,19 @@
       "options": {
         "command": "poetry run pytest tests/",
         "cwd": "apps/api/searching-svc"
+      }
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "api-searching-svc",
+        "hostUrl": "http://localhost:9000",
+        "projectKey": "foxminchan_LawKnowledge",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
       }
     }
   },

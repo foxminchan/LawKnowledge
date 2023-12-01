@@ -1,10 +1,7 @@
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
-import {
-  PrismaClientExceptionFilter,
-  ValidationErrorPipe,
-} from '@law-knowledge/shared';
+import { ValidationErrorPipe } from '@law-knowledge/shared';
 import { TcpOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
@@ -19,7 +16,6 @@ async function bootstrap() {
   } as TcpOptions);
 
   app.useGlobalPipes(new ValidationErrorPipe());
-  app.useGlobalFilters(new PrismaClientExceptionFilter());
   app.useLogger(app.get(Logger));
   await app.listen();
 }

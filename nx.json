@@ -42,6 +42,12 @@
         "{workspaceRoot}/.stylelintrc(.(json|yml|yaml|js))?"
       ],
       "cache": true
+    },
+    "sonar": {
+      "dependsOn": ["^test", "test"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
     }
   },
   "namedInputs": {

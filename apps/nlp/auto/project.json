@@ -33,6 +33,19 @@
     },
     "lint": {
       "executor": "@nx-dotnet/core:format"
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "nlp-auto",
+        "hostUrl": "http://localhost:9000",
+        "projectKey": "foxminchan_LawKnowledge",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
+      }
     }
   },
   "tags": []

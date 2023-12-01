@@ -17,6 +17,19 @@
       "options": {
         "jestConfig": "libs/framework/jest.config.ts"
       }
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "framework",
+        "hostUrl": "http://localhost:9000",
+        "projectKey": "foxminchan_LawKnowledge",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
+      }
     }
   },
   "tags": []

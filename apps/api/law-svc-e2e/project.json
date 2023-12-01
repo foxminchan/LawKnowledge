@@ -18,6 +18,19 @@
       "options": {
         "lintFilePatterns": ["apps/api/law-svc-e2e/**/*.{js,ts}"]
       }
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "api-law-svc-e2e",
+        "hostUrl": "http://localhost:9000",
+        "projectKey": "foxminchan_LawKnowledge",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
+      }
     }
   }
 }
