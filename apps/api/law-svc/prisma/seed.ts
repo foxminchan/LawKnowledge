@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as process from 'process';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/db-law';
 
 const prisma = new PrismaClient();
 

@@ -1,5 +1,5 @@
 import * as process from 'process';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/db-auth';
 
 const prisma = new PrismaClient();
 

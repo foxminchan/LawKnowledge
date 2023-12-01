@@ -1,31 +1,19 @@
-FROM python:3.11-buster AS builder
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
 
-RUN pip install poetry==1.4.2
+WORKDIR /app/
 
-ENV POETRY_NO_INTERACTION=1 \
-	POETRY_VIRTUALENVS_IN_PROJECT=1 \
-	POETRY_VIRTUALENVS_CREATE=1 \
-	POETRY_CACHE_DIR=/tmp/poetry_cache
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
+	cd /usr/local/bin && \
+	ln -s /opt/poetry/bin/poetry && \
+	poetry config virtualenvs.create false
 
-WORKDIR /app
+COPY ./app/pyproject.toml ./app/poetry.lock* /app/
 
-COPY pyproject.toml poetry.lock ./
-RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry install --without dev --no-root
+ARG INSTALL_DEV=false
+RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; else poetry install --no-root --only main ; fi"
 
-FROM python:3.11-slim-buster AS runtime
+ARG INSTALL_JUPYTER=false
+RUN bash -c "if [ $INSTALL_JUPYTER == 'true' ] ; then pip install jupyterlab ; fi"
 
-RUN useradd -m nonroot
-USER nonroot
-
-ENV VIRTUAL_ENV=/app/.venv \
-	PATH="/app/.venv/bin:$PATH"
-
-COPY --from=builder --chown=nonroot:nonroot /app/.venv /app/.venv
-
-COPY --chown=nonroot:nonroot searching-svc ./searching-svc
-
-RUN chmod -R 555 /app/searching-svc
-
-WORKDIR /app/searching-svc
-
-ENTRYPOINT ["python", "-m", "searching-svc.main"]
+COPY ./app /app
+ENV PYTHONPATH=/app

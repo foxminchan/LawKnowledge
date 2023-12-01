@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-routers = APIRouter()
+api_router = APIRouter()
 router_list = []
 
 for router in router_list:
-    routers.include_router(router)
+    api_router .include_router(router)
