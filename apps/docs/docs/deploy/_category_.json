@@ -1,8 +1,0 @@
-{
-  "label": "Deployment",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "description": "A list of all the deployment guides available for this version of the product."
-  }
-}

@@ -1,0 +1,8 @@
+{
+  "label": "System Landscape",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "A list of all the systems in the landscape"
+  }
+}

@@ -6,6 +6,7 @@
     "firsttris.vscode-jest-runner",
     "esbenp.prettier-vscode",
     "dsznajder.es7-react-js-snippets",
-    "sonarsource.sonarlint-vscode"
+    "sonarsource.sonarlint-vscode",
+    "stylelint.vscode-stylelint"
   ]
 }

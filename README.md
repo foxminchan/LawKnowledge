@@ -192,7 +192,7 @@ pnpm install --force
 For the website, you can run the following command:
 
 ```bash
-npx nx serve website
+npx nx serve clients-website
 ```
 
 For the API, you can run the following command:
@@ -211,13 +211,13 @@ npx nx serve api-law-svc
 npx nx serve api-chat-svc
 
 # For the Search Service
-npx nx build api-search-svc
+npx nx build api-searching-svc
 ```
 
 To traning the model, you can run the following command:
 
 ```bash
-npx nx build model
+npx nx build nlp-model
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -238,7 +238,7 @@ npx nx up iac
 For the website, you can run the following command:
 
 ```bash
-npx nx test website
+npx nx test clients-website
 ```
 
 For the API, you can run the following command:
@@ -263,7 +263,7 @@ npx nx test api-chat-svc
 To test the model, you can run the following command:
 
 ```bash
-npx nx test model
+npx nx test nlp-model
 ```
 
 ## 🧩 Other
@@ -271,13 +271,32 @@ npx nx test model
 To run the tooling for processing the dataset, you can run the following command:
 
 ```bash
-npx nx serve auto
+npx nx serve nlp-auto
 ```
 
 For running documentation, you can run the following command:
 
 ```bash
-npx nx serve docs
+npx nx serve clients-docs
+```
+
+Some useful scripts:
+
+```bash
+# Navigate to the scripts directory
+cd tools/scripts && ls
+
+# + scripts
+# +-- build.sh --> Build the project
+# +-- clean.sh --> Clean the docker image
+# +-- init.sh --> Initialize the project
+# +-- prepare.sh --> Prepare the project
+# +-- start.sh --> Start the project
+# +-- start-o11y.sh --> Start the observability stack
+# +-- stop-o11y.sh --> Stop the observability stack
+
+# Run the script
+./<script-name>
 ```
 
 # Dependency Graph
@@ -290,7 +309,7 @@ npx nx dep-graph
 
 Here is the dependency graph of the project:
 
-<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
+<img loading="lazy" src="./assets/images/dependency-graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 
@@ -335,6 +354,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 	          <a href="https://github.com/HutechCJ/ProfioApp/commits?author=foxminchan" title="Developer">💻</a>
 	          <a href="#docs" title="Documentation">📖</a>
 	          <a href="#infra" title="Infrastructure">🚇</a>
+						<a href="#projectManagement" title="Project Management">📆</a>
 						<a href="#mentoring" title="Mentoring">🧑‍🏫</a>
 	        </p>
 			</td>
@@ -346,6 +366,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=baohuy2k3" title="Developer">💻</a>
 						<a href="#data" title="Data">🔣</a>
 						<a href="#design" title="Design">🎨</a>
+						<a href="#research" title="Research">🔬</a>
 	        </p>
 			</td>
 			<td align="center" valign="top">
@@ -355,6 +376,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 	        <p>
 	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=NguyenTriBaoThang" title="Developer">💻</a>
 						<a href="#design" title="Design">🎨</a>
+						<a href="#test" title="Test">🧪</a>
+						<a href="#userTesting" title="User Testing">📓</a>
 	        </p>
 			</td>
 		</tr>
