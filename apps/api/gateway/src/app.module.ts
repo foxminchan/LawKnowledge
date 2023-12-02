@@ -1,4 +1,10 @@
 import {
+  LawSvcModule,
+  AuthSvcModule,
+  SearchSvcModule,
+  HealthCheckModule,
+} from './modules';
+import {
   JwtStrategy,
   ApiKeyStrategy,
   NestCacheModule,
@@ -10,13 +16,13 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggerMiddleware } from './middlewares';
 import { OtelModule, RateLimitModule } from '@law-knowledge/framework';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { AuthSvcModule, HealthCheckModule, LawSvcModule } from './modules';
 
 @Module({
   imports: [
     OtelModule,
     LawSvcModule,
     AuthSvcModule,
+    SearchSvcModule,
     NestCacheModule,
     RateLimitModule,
     HealthCheckModule,

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package search;
+
+service SearchingService {
+    rpc RunIndexing (IndexingRequest) returns (IndexingResponse) {}
+    rpc RunSearch (SearchRequest) returns (SearchResponse) {}
+}
+
+message IndexingRequest {
+    repeated string file_paths = 1;
+}
+
+message IndexingResponse {
+    string message = 1;
+}
+
+message SearchRequest {
+    string query = 1;
+}
+
+message SearchResponse {
+    repeated string documents = 1;
+}
