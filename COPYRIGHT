@@ -1,0 +1,22 @@
+Copyright 2023 by Hutech University
+
+Intellectual Property Notice
+----------------------------
+
+Law Knowledge is licensed under the MIT license.
+(See LICENSE or http://opensource.org/licenses/MIT),
+at your option.
+
+Copyrights and patents in the Law Knowledge project are retained
+by contributors.
+
+No copyright assignment is required to contribute to Law Knowledge
+
+    SPDX-License-Identifier: (Apache-2.0 OR MIT)
+
+SPDX usage
+----------
+
+Individual files may contain SPDX tags instead of the full license text.
+This enables machine processing of license information based on the SPDX
+License Identifiers that are available here: https://spdx.org/licenses/

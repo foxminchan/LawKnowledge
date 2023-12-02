@@ -1,10 +1,12 @@
 from haystack import Pipeline
 from haystack.document_stores import ElasticsearchDocumentStore
 from haystack.nodes import TextConverter, PreProcessor
+
+import searching_svc.grpc.searching_service_pb2_grpc as handler
 from searching_svc.core.config import configs
 
 
-class IndexingService:
+class IndexingServicer(handler.SearchingServiceServicer):
     def __init__(self):
         self.document_store = ElasticsearchDocumentStore(
             host=configs.DB_URL,
@@ -21,6 +23,7 @@ class IndexingService:
         pipeline.add_node(component=self.document_store, name="DocumentStore", inputs=["PreProcessor"])
         return pipeline
 
-    def run_indexing(self, file_paths):
+    def RunIndexing(self, **kwargs):
         pipeline = self.create_indexing_pipeline()
-        pipeline.run(file_paths=file_paths, debug=True)
+        pipeline.run(file_paths=['./datasets/*.txt'], debug=True)
+        return "Indexing completed"

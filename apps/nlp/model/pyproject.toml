@@ -13,7 +13,7 @@ addopts = "--cov --cov-report html:'../../coverage//apps/model/html' --cov-repor
 name = "model"
 version = "1.0.0"
 description = "Train and evaluate a model"
-authors = ['Nguyen Xuan Nhan <nguyenxuannhan407@gmail.com>']
+authors = ['Hutech University <hutech@hutech.edu.vn>']
 license = 'MIT'
 
 [[tool.poetry.packages]]

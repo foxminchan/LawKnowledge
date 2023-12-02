@@ -1,19 +1,8 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.10
-
-WORKDIR /app/
-
-RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
-	cd /usr/local/bin && \
-	ln -s /opt/poetry/bin/poetry && \
-	poetry config virtualenvs.create false
-
-COPY ./app/pyproject.toml ./app/poetry.lock* /app/
-
-ARG INSTALL_DEV=false
-RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; else poetry install --no-root --only main ; fi"
-
-ARG INSTALL_JUPYTER=false
-RUN bash -c "if [ $INSTALL_JUPYTER == 'true' ] ; then pip install jupyterlab ; fi"
-
-COPY ./app /app
-ENV PYTHONPATH=/app
+FROM ubuntu:20.04
+RUN apt-get update \
+	&& apt-get install -y python3.9 python3.9-dev \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
+COPY . .
+RUN  install poetry && poetry install
+CMD ["poetry", "run", "python", "main.py"]
