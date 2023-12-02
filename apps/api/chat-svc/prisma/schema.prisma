@@ -7,3 +7,11 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model ChatHistory {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  question String
+  answer   String
+  date     DateTime @default(now())
+  user_id  String
+}

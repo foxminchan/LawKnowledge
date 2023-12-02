@@ -1,6 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04.3
 
-# Create a non-root user
+LABEL maintainer="Hutech <hutech@hutech.edu.vn>"
+
 RUN useradd -m nonroot
 
 WORKDIR /app
@@ -13,7 +14,7 @@ RUN chown -R nonroot:nonroot /app
 USER nonroot
 
 RUN apt-get update \
-	&& apt-get install -y python3.9 python3.9-dev \
+	&& apt-get install -y --no-install-recommends python3.9 python3.9-dev \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
