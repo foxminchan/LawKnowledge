@@ -4,8 +4,8 @@ message: >-
   If you use this application, please cite it using these metadata.
 type: software
 authors:
-  - family-names: Nguyen
-    given-names: Xuan Nhan
+  - family-names: Hutech
+    given-names: University
   - name: 'Contributors to Law Knowledge'
 repository-code: 'https://github.com/foxminchan/LawKnowledge'
 abstract: >-
