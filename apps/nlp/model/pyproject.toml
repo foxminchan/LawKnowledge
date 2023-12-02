@@ -23,6 +23,7 @@ include = "model"
 python = ">=3.9 <=3.12"
 torch = "^2.1.1"
 transformers = "^4.35.2"
+datasets = "^2.15.0"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"

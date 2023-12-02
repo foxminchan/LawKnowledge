@@ -10,7 +10,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 # Load your labeled question answering dataset
 # Replace 'path/to/your/dataset' with the actual path or name of your dataset
-dataset = load_dataset("C:/Users/ADMIN/Downloads/BoPhapDienDienTu/output/")
+dataset = load_dataset("../datasets/")
 
 
 # Tokenize the dataset
@@ -52,6 +52,6 @@ model.save_pretrained("./question_answering_fine_tuned_model")
 
 # Optionally, evaluate the fine-tuned model on a validation set
 # Replace 'path/to/your/validation/dataset' with the actual path or name of your validation dataset
-validation_dataset = load_dataset("path/to/your/validation/dataset")
+validation_dataset = load_dataset("../dataset")
 tokenized_validation_datasets = validation_dataset.map(tokenize_function, batched=True)
 trainer.evaluate(tokenized_validation_datasets["train"])
