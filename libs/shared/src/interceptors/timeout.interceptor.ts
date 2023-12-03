@@ -1,14 +1,14 @@
 import {
+  timeout,
   Observable,
-  TimeoutError,
   catchError,
   throwError,
-  timeout,
+  TimeoutError,
 } from 'rxjs';
 import {
   CallHandler,
-  ExecutionContext,
   NestInterceptor,
+  ExecutionContext,
   RequestTimeoutException,
 } from '@nestjs/common';
 

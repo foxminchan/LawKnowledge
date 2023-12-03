@@ -12,9 +12,13 @@ import {
   HttpCacheInterceptor,
   ClearCacheInterceptor,
 } from '@law-knowledge/shared';
+import {
+  OtelModule,
+  NestHttpModule,
+  RateLimitModule,
+} from '@law-knowledge/framework';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggerMiddleware } from './middlewares';
-import { OtelModule, RateLimitModule } from '@law-knowledge/framework';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 @Module({
@@ -22,6 +26,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
     OtelModule,
     LawSvcModule,
     AuthSvcModule,
+    NestHttpModule,
     SearchSvcModule,
     NestCacheModule,
     RateLimitModule,
