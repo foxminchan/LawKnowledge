@@ -110,7 +110,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 
 - [React](https://reactjs.org/)
 - [NestJS](https://nestjs.com/)
-- [FastAPI](https://fastapi.tiangolo.com/)
+- [Python](https://www.python.org/)
 - [Pulumi](https://www.pulumi.com/)
 - [Kafka](https://kafka.apache.org/)
 - [ArgoCD](https://argoproj.github.io/argo-cd/)
@@ -124,9 +124,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 # Building blocks
 
 <p align="justify">
-
-We used **Microservice Architecture** to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
-
+We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
 <img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
@@ -337,11 +335,19 @@ Want to report a bug, contribute some code, or improve the documentation? Excell
 
 ## 🫂 Code of Conduct
 
+<p align="justify">
+
 Help us keep Law Knowledge open and inclusive. Please read and follow our [Code of Conduct](.github/CODE_OF_CONDUCT.md).
+
+</p>
 
 # Contributer
 
+<p align="justify">
+
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key))
+
+</p>
 
 <div align="center">
 	<table>

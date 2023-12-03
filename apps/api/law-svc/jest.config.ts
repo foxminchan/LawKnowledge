@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'api-law-svc',
   preset: '../../../jest.preset.js',
