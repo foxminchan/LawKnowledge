@@ -1,13 +1,12 @@
 import {
-  GetDocumentQueryHandler,
-  GetDocumentsQueryHandler,
   CreateDocumentCommandHandler,
   DeleteDocumentCommandHandler,
   UpdateDocumentCommandhandler,
-} from './cqrs';
+} from './commands';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { DocumentController } from './document.controller';
+import { GetDocumentQueryHandler, GetDocumentsQueryHandler } from './queries';
 
 const CommandHandlers = [
   CreateDocumentCommandHandler,

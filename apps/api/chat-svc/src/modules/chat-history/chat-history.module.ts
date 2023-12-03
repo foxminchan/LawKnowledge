@@ -1,11 +1,13 @@
 import {
-  GetChatHistoryQueryHandler,
-  GetChatHistoriesQueryHandler,
   CreateChatHistoryCommandHandler,
   DeleteChatHistoryCommandHandler,
   UpdateChatHistoryCommandHandler,
+} from './commands';
+import {
+  GetChatHistoryQueryHandler,
+  GetChatHistoriesQueryHandler,
   GetChatHistoriesByUserQueryHandler,
-} from './cqrs';
+} from './queries';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { ChatHistoryController } from './chat-history.controller';

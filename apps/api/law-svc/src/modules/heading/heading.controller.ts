@@ -1,15 +1,14 @@
 import {
-  GetHeadingEvent,
-  GetHeadingsEvent,
-  CreateHeadingEvent,
-  DeleteHeadingEvent,
-  UpdateHeadingEvent,
-} from './cqrs';
+  CreateHeadingCommand,
+  DeleteHeadingCommand,
+  UpdateHeadingCommand,
+} from './commands';
 import { Controller } from '@nestjs/common';
 import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
-import { CreateHeadingModel, UpdateHeadingModel } from '../../models';
+import { CreateHeadingDto, UpdateHeadingDto } from './dto';
+import { GetHeadingQuery, GetHeadingsQuery } from './queries';
 
 @Controller()
 export class HeadingController {
@@ -20,26 +19,26 @@ export class HeadingController {
 
   @EventPattern({ cmd: 'getHeadings' })
   getHeadings(criteria?: Criteria) {
-    return this.queryBus.execute(new GetHeadingsEvent(criteria));
+    return this.queryBus.execute(new GetHeadingsQuery(criteria));
   }
 
   @EventPattern({ cmd: 'getHeading' })
   getHeading(id: string) {
-    return this.queryBus.execute(new GetHeadingEvent(id));
+    return this.queryBus.execute(new GetHeadingQuery(id));
   }
 
   @EventPattern({ cmd: 'createHeading' })
-  createHeading(payload: CreateHeadingModel) {
-    return this.commandBus.execute(new CreateHeadingEvent(payload));
+  createHeading(payload: CreateHeadingDto) {
+    return this.commandBus.execute(new CreateHeadingCommand(payload));
   }
 
   @EventPattern({ cmd: 'updateHeading' })
-  updateHeading(id: string, payload: UpdateHeadingModel) {
-    return this.commandBus.execute(new UpdateHeadingEvent(id, payload));
+  updateHeading(id: string, payload: UpdateHeadingDto) {
+    return this.commandBus.execute(new UpdateHeadingCommand(payload));
   }
 
   @EventPattern({ cmd: 'deleteHeading' })
   deleteHeading(id: string) {
-    return this.commandBus.execute(new DeleteHeadingEvent(id));
+    return this.commandBus.execute(new DeleteHeadingCommand(id));
   }
 }

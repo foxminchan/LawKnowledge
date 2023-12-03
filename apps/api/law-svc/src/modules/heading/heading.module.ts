@@ -1,13 +1,12 @@
 import {
-  GetHeadingQueryHandler,
-  GetHeadingsQueryHandler,
   CreateHeadingCommandHandler,
   DeleteHeadingCommandHandler,
   UpdateHeadingCommandHandler,
-} from './cqrs';
+} from './commands';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { HeadingController } from './heading.controller';
+import { GetHeadingQueryHandler, GetHeadingsQueryHandler } from './queries';
 
 const CommandHandlers = [
   CreateHeadingCommandHandler,
