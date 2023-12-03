@@ -2,6 +2,7 @@ import {
   Criteria,
   ApiController,
   SwaggerResponse,
+  PagingSwaggerResponse,
 } from '@law-knowledge/shared';
 import { LawService } from './law-svc.service';
 import { Get, Param, Query } from '@nestjs/common';
@@ -28,7 +29,7 @@ export class LawController {
   }
 
   @Get('topic')
-  @SwaggerResponse({
+  @PagingSwaggerResponse({
     operation: 'Get topics',
   })
   getTopics(@Query() criteria?: Criteria) {

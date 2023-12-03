@@ -62,6 +62,7 @@
   "private": true,
   "dependencies": {
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
+    "@casl/ability": "^6.5.0",
     "@docusaurus/core": "^3.0.1",
     "@docusaurus/plugin-content-docs": "^3.0.1",
     "@docusaurus/plugin-content-pages": "^3.0.1",
