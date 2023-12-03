@@ -24,7 +24,7 @@ export class RpcExceptionToHttpExceptionFilter implements ExceptionFilter {
     const response = host.switchToHttp().getResponse();
     const statusCode = error.status ?? HttpStatus.INTERNAL_SERVER_ERROR;
 
-    Logger.error(`❌ RPC has errors: ${JSON.stringify(error)}`);
+    Logger.error(`❌ RPC has errors: ${JSON.stringify(exception)}`);
 
     response.status(statusCode).send(
       new ProblemDocument({

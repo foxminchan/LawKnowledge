@@ -1,15 +1,14 @@
 import {
-  GetUserEvent,
-  GetUsersEvent,
-  CreateUserEvent,
-  DeleteUserEvent,
-  UpdateUserEvent,
-} from './cqrs';
+  CreateUserCommand,
+  DeleteUserCommand,
+  UpdateUserCommand,
+} from './commands';
 import { Controller } from '@nestjs/common';
 import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
-import { CreateUserModel, UpdateUserModel } from '../../models';
+import { CreateUserDto, UpdateUserDto } from './dto';
+import { GetUserQuery, GetUsersQuery } from './queries';
 
 @Controller()
 export class UserController {
@@ -20,26 +19,26 @@ export class UserController {
 
   @EventPattern({ cmd: 'getUsers' })
   getUsers(criteria?: Criteria) {
-    return this.queryBus.execute(new GetUsersEvent(criteria));
+    return this.queryBus.execute(new GetUsersQuery(criteria));
   }
 
   @EventPattern({ cmd: 'getUser' })
   getUser(email: string) {
-    return this.queryBus.execute(new GetUserEvent(email));
+    return this.queryBus.execute(new GetUserQuery(email));
   }
 
   @EventPattern({ cmd: 'addUser' })
-  addUser(user: CreateUserModel) {
-    return this.commandBus.execute(new CreateUserEvent(user));
+  addUser(user: CreateUserDto) {
+    return this.commandBus.execute(new CreateUserCommand(user));
   }
 
   @EventPattern({ cmd: 'updateUser' })
-  updateUser(id: string, user: UpdateUserModel) {
-    return this.commandBus.execute(new UpdateUserEvent(id, user));
+  updateUser(user: UpdateUserDto) {
+    return this.commandBus.execute(new UpdateUserCommand(user));
   }
 
   @EventPattern({ cmd: 'deleteUser' })
   deleteUser(id: string) {
-    return this.commandBus.execute(new DeleteUserEvent(id));
+    return this.commandBus.execute(new DeleteUserCommand(id));
   }
 }
