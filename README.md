@@ -81,6 +81,7 @@
   - [🚀 Running](#-running)
   - [🧪 Testing](#-testing)
   - [🧩 Other](#-other)
+- [Port Binding](#port-binding)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
@@ -296,6 +297,52 @@ cd tools/scripts && ls
 # Run the script
 ./<script-name>
 ```
+
+# Port Binding
+
+<div align="center">
+	<table>
+		<thead>
+			<tr>
+				<th>Service</th>
+				<th>Port</th>
+				<th>Protocol</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Website</td>
+				<td>4200</td>
+				<td>HTTP</td>
+			</tr>
+			<tr>
+				<td>API Gateway</td>
+				<td>8080</td>
+				<td>HTTP/Socket</td>
+			</tr>
+			<tr>
+				<td>Auth Service</td>
+				<td>8081</td>
+				<td>TCP</td>
+			</tr>
+			<tr>
+				<td>Law Service</td>
+				<td>8082</td>
+				<td>TCP</td>
+			</tr>
+			<tr>
+				<td>Search Service</td>
+				<td>8083</td>
+				<td>gRPC</td>
+			</tr>
+			<tr>
+				<td>Chat Service</td>
+				<td>8084</td>
+				<td>TCP</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 # Dependency Graph
 
