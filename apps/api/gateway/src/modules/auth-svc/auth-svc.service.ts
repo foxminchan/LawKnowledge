@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { catchError, throwError } from 'rxjs';
-import { LoginPayload, RegisterPayload } from '../../@types';
+import { LoginPayload, RegisterPayload } from './auth-svc.payload';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 
 export class AuthSvcService {
