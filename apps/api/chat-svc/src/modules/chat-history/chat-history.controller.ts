@@ -1,16 +1,18 @@
 import {
-  GetChatHistoryEvent,
-  GetChatHistoriesEvent,
-  CreateChatHistoryEvent,
-  UpdateChatHistoryEvent,
-  DeleteChatHistoryEvent,
-  GetChatHistoriesByUserEvent,
-} from './cqrs';
+  GetChatHistoryQuery,
+  GetChatHistoriesQuery,
+  GetChatHistoriesByUserQuery,
+} from './queries';
+import {
+  CreateChatHistoryCommand,
+  DeleteChatHistoryCommand,
+  UpdateChatHistoryCommand,
+} from './commands';
 import { Controller } from '@nestjs/common';
 import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
-import { CreateChatHistoryModel, UpdateChatHistoryModel } from '../../models';
+import { CreateChatHistoryDto, UpdateChatHistoryDto } from './dto';
 
 @Controller()
 export class ChatHistoryController {
@@ -21,33 +23,33 @@ export class ChatHistoryController {
 
   @EventPattern('getChatHistory')
   getChatHistory(id: string) {
-    return this.queryBus.execute(new GetChatHistoryEvent(id));
+    return this.queryBus.execute(new GetChatHistoryQuery(id));
   }
 
   @EventPattern('getChatHistories')
   getChatHistories(criteria?: Criteria) {
-    return this.queryBus.execute(new GetChatHistoriesEvent(criteria));
+    return this.queryBus.execute(new GetChatHistoriesQuery(criteria));
   }
 
   @EventPattern('getChatHistoriesByUser')
   getChatHistoriesByUser(user_id: string, criteria?: Criteria) {
     return this.queryBus.execute(
-      new GetChatHistoriesByUserEvent(user_id, criteria)
+      new GetChatHistoriesByUserQuery(user_id, criteria)
     );
   }
 
   @EventPattern('createChatHistory')
-  createChatHistory(payload: CreateChatHistoryModel) {
-    return this.commandBus.execute(new CreateChatHistoryEvent(payload));
+  createChatHistory(payload: CreateChatHistoryDto) {
+    return this.commandBus.execute(new CreateChatHistoryCommand(payload));
   }
 
   @EventPattern('updateChatHistory')
-  updateChatHistory(id: string, payload: UpdateChatHistoryModel) {
-    return this.commandBus.execute(new UpdateChatHistoryEvent(id, payload));
+  updateChatHistory(id: string, payload: UpdateChatHistoryDto) {
+    return this.commandBus.execute(new UpdateChatHistoryCommand(payload));
   }
 
   @EventPattern('deleteChatHistory')
   deleteChatHistory(id: string) {
-    return this.commandBus.execute(new DeleteChatHistoryEvent(id));
+    return this.commandBus.execute(new DeleteChatHistoryCommand(id));
   }
 }

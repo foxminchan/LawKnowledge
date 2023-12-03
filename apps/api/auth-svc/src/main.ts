@@ -10,8 +10,6 @@ async function bootstrap() {
     options: {
       host: process.env.HOST || '0.0.0.0',
       port: process.env.PORT || 8081,
-      retryAttempts: 5,
-      retryDelay: 3000,
     },
   } as TcpOptions);
 

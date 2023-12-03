@@ -1,15 +1,12 @@
 import {
-  LoginPayload,
-  RegisterPayload,
-} from '../../@types';
-import {
   Auth,
+  NoCache,
   JwtAuthGuard,
   ApiController,
   SwaggerResponse,
-  NoCache,
 } from '@law-knowledge/shared';
 import { AuthSvcService } from './auth-svc.service';
+import { LoginPayload, RegisterPayload } from './auth-svc.payload';
 import { Body, Get, Param, Post, UseGuards } from '@nestjs/common';
 
 @ApiController('auth')

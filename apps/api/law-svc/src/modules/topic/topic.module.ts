@@ -1,13 +1,12 @@
 import {
-  GetTopicQueryHandler,
-  GetTopicsQueryHandler,
   CreateTopicCommandHandler,
   DeleteTopicCommandHandler,
   UpdateTopicCommandHandler,
-} from './cqrs';
+} from './commands';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TopicController } from './topic.controller';
+import { GetTopicQueryHandler, GetTopicsQueryHandler } from './queries';
 
 const CommandHandlers = [
   CreateTopicCommandHandler,

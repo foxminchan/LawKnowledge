@@ -1,15 +1,14 @@
 import {
-  GetDocumentEvent,
-  GetDocumentsEvent,
-  CreateDocumentEvent,
-  DeleteDocumentEvent,
-  UpdateDocumentEvent,
-} from './cqrs';
+  CreateDocumentCommand,
+  DeleteDocumentCommand,
+  UpdateDocumentCommand,
+} from './commands';
 import { Controller } from '@nestjs/common';
 import { Criteria } from '@law-knowledge/shared';
-import { CreateDocumentModel } from '../../models';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
+import { CreateDocumentDto, UpdateDocumentDto } from './dto';
+import { GetDocumentQuery, GetDocumentsQuery } from './queries';
 
 @Controller()
 export class DocumentController {
@@ -20,26 +19,26 @@ export class DocumentController {
 
   @EventPattern({ cmd: 'getDocuments' })
   getDocuments(criteria?: Criteria) {
-    return this.queryBus.execute(new GetDocumentsEvent(criteria));
+    return this.queryBus.execute(new GetDocumentsQuery(criteria));
   }
 
   @EventPattern({ cmd: 'getDocument' })
   getDocument(id: string) {
-    return this.queryBus.execute(new GetDocumentEvent(id));
+    return this.queryBus.execute(new GetDocumentQuery(id));
   }
 
   @EventPattern({ cmd: 'deleteDocument' })
   deleteDocument(id: string) {
-    return this.commandBus.execute(new DeleteDocumentEvent(id));
+    return this.commandBus.execute(new DeleteDocumentCommand(id));
   }
 
   @EventPattern({ cmd: 'createDocument' })
-  createDocument(payload: CreateDocumentModel) {
-    return this.commandBus.execute(new CreateDocumentEvent(payload));
+  createDocument(payload: CreateDocumentDto) {
+    return this.commandBus.execute(new CreateDocumentCommand(payload));
   }
 
   @EventPattern({ cmd: 'updateDocument' })
-  updateDocument(id: string, payload: CreateDocumentModel) {
-    return this.commandBus.execute(new UpdateDocumentEvent(id, payload));
+  updateDocument(payload: UpdateDocumentDto) {
+    return this.commandBus.execute(new UpdateDocumentCommand(payload));
   }
 }

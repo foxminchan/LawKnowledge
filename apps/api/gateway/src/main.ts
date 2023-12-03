@@ -4,6 +4,7 @@ import {
 } from '@nestjs/platform-fastify';
 import {
   AppUtils,
+  CriteriaPipe,
   NotFoundExceptionFilter,
   RpcExceptionToHttpExceptionFilter,
 } from '@law-knowledge/shared';
@@ -45,6 +46,7 @@ async function bootstrap() {
     },
   });
 
+  app.useGlobalPipes(new CriteriaPipe());
   app.useGlobalFilters(new NotFoundExceptionFilter());
   app.useGlobalFilters(new RpcExceptionToHttpExceptionFilter());
   app.enableShutdownHooks();
