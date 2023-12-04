@@ -92,5 +92,5 @@
     }
   },
   "nxCloudAccessToken": "OGU2MTRiNGItNGY5Yy00MzVhLTk5OWUtMzNkMDY1NjNlMzBhfHJlYWQtd3JpdGU=",
-  "plugins": ["@nxlv/python", "@nx-dotnet/core"]
+  "plugins": ["@nxlv/python"]
 }
