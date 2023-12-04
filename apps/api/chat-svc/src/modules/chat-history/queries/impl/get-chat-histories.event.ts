@@ -1,5 +1,6 @@
+import { IQuery } from '@nestjs/cqrs';
 import { Criteria } from '@law-knowledge/shared';
 
-export class GetChatHistoriesQuery {
+export class GetChatHistoriesQuery implements IQuery {
   constructor(public readonly criteria?: Criteria) {}
 }
