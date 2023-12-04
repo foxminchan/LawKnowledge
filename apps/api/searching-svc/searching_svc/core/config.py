@@ -10,8 +10,6 @@ ENV: str = ""
 
 
 class Configs(BaseSettings):
-    DB_URL: str = os.getenv("DB_URL")
-    DB_API_KEY: str = os.getenv("DB_API_KEY")
     OPEN_AI_API_KEY: str = os.getenv("OPEN_AI_API_KEY")
 
     class Config:
