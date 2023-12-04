@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { Logger } from '@nestjs/common';
 import weaviate from 'weaviate-ts-client';
 import { CreateVectorCommand } from '../impl';
 import { DocumentFileType } from '@law-knowledge/shared';
@@ -8,9 +9,8 @@ import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { DocxLoader } from 'langchain/document_loaders/fs/docx';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
 import { WeaviateStore } from 'langchain/vectorstores/weaviate';
-import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { catchError, concatMap, finalize, from, of, tap } from 'rxjs';
-import { Logger } from '@nestjs/common';
+import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 
 @CommandHandler(CreateVectorCommand)
 export class CreateVectorCommandHandler

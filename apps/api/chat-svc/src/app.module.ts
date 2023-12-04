@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { LoggerModule } from '@law-knowledge/framework';
-import { ChatHistoryModule } from './modules/chat-history';
+import { ChatHistoryModule, EmbeddingModule } from './modules';
 
 @Module({
-  imports: [LoggerModule, ChatHistoryModule],
+  imports: [LoggerModule, ChatHistoryModule, EmbeddingModule],
 })
 export class AppModule {}
