@@ -22,14 +22,15 @@ const navItems = [
   { id: 3, name: 'Tra cứu', link: '/tra-cuu', width: 'w-28' },
   {
     id: 4,
-    name: 'Dịch vụ công trực tuyến',
-    link: '/dich-vu-cong-truc-tuyen',
-    width: 'w-60',
+    name: 'Dịch vụ ',
+    link: '/dich-vu-cong-noi-bat',
+    subMenu: true,
+    width: 'w-28',
   },
   {
     id: 5,
-    name: 'Dịch vụ công nổi bật',
-    link: '/dich-vu-cong-noi-bat',
+    name: 'Văn Bản Pháp Luật',
+    link: '/van-ban-phap-luat',
     width: 'w-60',
   },
   { id: 6, name: 'Hỏi đáp', link: '/hoi-dap', width: 'w-28' },
@@ -54,6 +55,19 @@ const navSupport = [
     link: '/huong-dan-su-dung',
   },
 ];
+
+const navService = [
+  {
+    id: 1,
+    name: 'Dịch vụ công nổi bật',
+    link:'/dich-vu-cong-noi-bat'
+  },
+  {
+    id: 2,
+    name: 'Dịch vụ công trực tuyến',
+    link:'/dich-vu-cong-truc-tuyen'
+  }
+]
 
 const navToggleMenu = [
   { id: 1, name: 'Đăng nhập', link: '/dang-nhap', isLogin: false },
@@ -87,14 +101,14 @@ export default function Navbar() {
   };
 
   const determineItemClass = (item: (typeof navItems)[number]) => {
-    navSupport.some((subItem) =>
+    (item.id === 4  ? navService : navSupport).some((subItem) =>
       window.location.pathname.includes(subItem.link)
     );
     const isActiveLink = window.location.pathname === item.link;
 
     if (
       item.subMenu &&
-      navSupport.some((subItem) =>
+      (item.id === 4  ? navService : navSupport).some((subItem) =>
         window.location.pathname.includes(subItem.link)
       )
     ) {
@@ -114,6 +128,7 @@ export default function Navbar() {
           onClick={() => {
             toggleMenu();
             hideSubMenu('Hỗ trợ');
+            hideSubMenu('Dịch vụ');
           }}
         ></Container>
       )}
@@ -168,11 +183,11 @@ export default function Navbar() {
                 </NavLink>
                 {item.subMenu && subMenuVisibility[item.name] && (
                   <ul className="absolute z-20">
-                    {navSupport.map((subItem) => (
+                    {(item.id === 4  ? navService : navSupport).map((subItem) => (
                       <li
                         key={subItem.id}
                         className={clsx(
-                          'w-56 h-12 text-white hover:bg-japonica-500 hover:text-white',
+                          'w-60 h-12 text-white hover:bg-japonica-500 hover:text-white',
                           window.location.pathname === subItem.link
                             ? 'bg-japonica-500 text-white'
                             : 'bg-japonica-400'

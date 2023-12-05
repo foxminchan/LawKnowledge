@@ -14,6 +14,8 @@ import {
   itemEnterpriseCatalog,
 } from '@mocks/signatureService.data';
 import clsx from 'clsx';
+import SubNavbar from '@components/SubNavbar';
+import { informationAndServices } from '@mocks/navSupport.data';
 import { SyntheticEvent, useState } from 'react';
 import CustomText from './components/CustomText';
 import MenuBottom from './components/MenuBottom';
@@ -36,6 +38,7 @@ export default function SignatureService(props: Readonly<Props>) {
 
   return (
     <>
+      <SubNavbar data={informationAndServices} />
       <Container>
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}
