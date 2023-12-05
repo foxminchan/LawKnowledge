@@ -69,7 +69,7 @@ pnpm install --force
 For the website, you can run the following command:
 
 ```bash
-npx nx serve website
+npx nx serve clients-website
 ```
 
 For the API, you can run the following command:
@@ -84,8 +84,11 @@ npx nx serve api-auth-svc
 # For the Law Service
 npx nx serve api-law-svc
 
+# For the Chat Service
+npx nx serve api-chat-svc
+
 # For the Search Service
-npx nx serve api-search-svc
+npx nx serve api-searching-svc
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -94,9 +97,15 @@ To set up the infrastructure, you can run the following command:
 npx nx up iac
 ```
 
+To traning the model, you can run the following command:
+
+```bash
+npx nx build nlp-model
+```
+
 :::warning
 
-If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>= 3.8 and < 3.11`.
+If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>= 3.9.1 and < 3.12`.
 
 :::
 
@@ -105,21 +114,109 @@ If you want to run with Nx, make sure you have installed `poetry` globally. Pyth
 For the website, you can run the following command:
 
 ```bash
-npx nx test website
+npx nx test clients-website-e2e
 ```
 
 For the API, you can run the following command:
 
 ```bash
 # For the API Gateway
-npx nx test api-gateway
+npx nx test api-gateway-e2e
 
 # For the Auth Service
-npx nx test api-auth-svc
+npx nx test api-auth-svc-e2e
 
 # For the Law Service
-npx nx test api-law-svc
+npx nx test api-law-svc-e2e
 
 # For the Search Service
-npx nx test api-search-svc
+npx nx test api-search-svc-e2e
+
+# For the Chat Service
+npx nx test api-chat-svc
 ```
+
+To test the model, you can run the following command:
+
+```bash
+npx nx test nlp-model
+```
+
+## 🧩 Other
+
+To run the tooling for processing the dataset, you can run the following command:
+
+```bash
+npx nx serve nlp-auto
+```
+
+For running documentation, you can run the following command:
+
+```bash
+npx nx serve clients-docs
+```
+
+Some useful scripts:
+
+```bash
+# Navigate to the scripts directory
+cd tools/scripts && ls
+
+# + scripts
+# +-- build.sh --> Build the project
+# +-- clean.sh --> Clean the docker image
+# +-- init.sh --> Initialize the project
+# +-- prepare.sh --> Prepare the project
+# +-- start.sh --> Start the project
+# +-- start-o11y.sh --> Start the observability stack
+# +-- stop-o11y.sh --> Stop the observability stack
+
+# Run the script
+./<script-name>
+```
+
+## 🛜 Port Binding
+
+<div align="center">
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Port</th>
+        <th>Protocol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Website</td>
+        <td>4200</td>
+        <td>HTTP</td>
+      </tr>
+      <tr>
+        <td>API Gateway</td>
+        <td>8080</td>
+        <td>HTTP/Socket</td>
+      </tr>
+      <tr>
+        <td>Auth Service</td>
+        <td>8081</td>
+        <td>TCP</td>
+      </tr>
+      <tr>
+        <td>Law Service</td>
+        <td>8082</td>
+        <td>TCP</td>
+      </tr>
+      <tr>
+        <td>Search Service</td>
+        <td>8083</td>
+        <td>gRPC</td>
+      </tr>
+      <tr>
+        <td>Chat Service</td>
+        <td>8084</td>
+        <td>TCP</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

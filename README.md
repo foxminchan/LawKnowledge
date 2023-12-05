@@ -128,7 +128,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
-<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -270,7 +270,7 @@ npx nx test nlp-model
 To run the tooling for processing the dataset, you can run the following command:
 
 ```bash
-npx nx serve nlp-auto
+npx nx serve nlp-proc
 ```
 
 For running documentation, you can run the following command:
@@ -354,7 +354,7 @@ npx nx dep-graph
 
 Here is the dependency graph of the project:
 
-<img loading="lazy" src="./assets/images/dependency-graph.png" alt="Dependency Graph" width="100%">
+<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 

@@ -12,11 +12,9 @@ last_update:
 
 <p align="justify">
 
-In this project, we build a system that can search and answer questions about the code of laws in Vietnam. The system is built with **Microservice Architecture** to ensure the scalability and maintainability of the system. The system consists of 3 main components: **Question Answering**, **Search Engine**, and **Data Crawling**.
+In this project, we build a system that can search and answer questions about the code of laws in Vietnam. The system is built with **Microservice Architecture** to ensure the scalability and maintainability of the system. The system consists of 3 main components: **Question Answering**, **Search Engine**, and **Summarization**. The **Question Answering** component is responsible for answering questions about the code of laws in Vietnam. The **Search Engine** component is responsible for searching for information about the code of laws in Vietnam. The **Summarization** component is responsible for summarizing the content of the code of laws in Vietnam.
 
-We use **GPT** to build the Question Answering component. The Search Engine component is built with **Haystack**. The Data Crawling component is built with **HtmlAgilityPack**.
-
-The following diagram shows the architecture of the system. The system is deployed on **Open Stack**. All components are **open source** and **free**.
+We use **Langchain** to build the Question Answering component. The Search Engine component is built with **Haystack**. The Data Processor component is built with **Nestjs**. The system is deployed on **Open Stack**. All components are **open source** and **free**.
 
 </p>
 
@@ -68,13 +66,13 @@ The following diagram shows the architecture of the system. The system is deploy
     <td>5</td>
     <td>Search Service</td>
     <td>Searches for information about the code of laws in Vietnam.</td>
-    <td>Fast API + Haystack</td>
+    <td>Python + Haystack</td>
   </tr>
   <tr>
     <td>6</td>
     <td>Chat Service</td>
     <td>Answers questions about the code of laws in Vietnam.</td>
-    <td>Fast API + GPT</td>
+    <td>Nestjs + Langchain</td>
   </tr>
   <tr>
     <td>7</td>
@@ -88,6 +86,6 @@ The following diagram shows the architecture of the system. The system is deploy
 
 <p align="justify">
 
-We use the dataset of the code of laws in Vietnam from the [Phap dien](https://phapdien.gov.vn/) website and [QPPL](https://vbpl.vn/pages/portal.aspx) website. The dataset contains 1,000 articles of the code of laws in Vietnam. We use the [GPT](https://huggingface.co/openai) model to build the Question Answering component.
+We use the dataset of the code of laws in Vietnam from the [Phap dien](https://phapdien.gov.vn/) website and [QPPL](https://vbpl.vn/pages/portal.aspx) website. The dataset contains 1,000 articles of the code of laws in Vietnam. We use the [GPT](https://huggingface.co/openai) model to build the Question Answering component and the [Deepset](https://huggingface.co/deepset/roberta-base-squad2) model to build the Search Engine component.
 
 </p>
