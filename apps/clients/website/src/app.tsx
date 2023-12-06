@@ -86,10 +86,10 @@ export default function App() {
             }
           />
           <Route
-            path="/thu-tuc-hanh-chinh"
+            path="/van-ban"
             element={
               <Suspense fallback={<CircularProgress />}>
-                <SearchResult title="Thủ tục hành chính" />
+                <SearchResult title="Danh sách văn bản" />
               </Suspense>
             }
           />
