@@ -87,7 +87,7 @@ export class CreateVectorCommandHandler
                 )
                 .pipe(
                   concatMap((file) => {
-                    return from(file.save('.'));
+                    return from(file.save('../../../../'));
                   })
                 );
             }),
