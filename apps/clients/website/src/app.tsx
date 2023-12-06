@@ -15,6 +15,7 @@ const Search = loadable(() => import('./features/Search'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
+const LawDocument = loadable() => import('/features/LawDocument');
 const Introduction = loadable(() => import('./features/Introduction'));
 const SearchResult = loadable(() => import('./features/SearchResult'));
 const OnlineService = loadable(() => import('./features/OnlineService'));
@@ -106,6 +107,14 @@ export default function App() {
             element={
               <Suspense fallback={<CircularProgress />}>
                 <SignatureService title="Dịch vụ công nổi bật" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/van-ban-phap-luat"
+            element={
+              <Suspense fallback={<CircularProgress />}>
+                <LawDocument title="Văn bản pháp luật" />
               </Suspense>
             }
           />

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import SubNavbar from '@components/SubNavbar';
 import TabContent from './components/TabContent';
 import useMetadata from '@common/hooks/useMetadata';
 import SectionBottom from './components/SectionBottom';
 import ItemBoxStatic from './components/ItemBoxStatic';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { informationAndServices } from '@mocks/navSupport.data';
 import { Breadcrumbs, Container, Typography } from '@mui/material';
 
 type Props = {
@@ -24,6 +26,7 @@ export default function OnlineService(props: Readonly<Props>) {
 
   return (
     <main className="min-h-[calc(100vh_-_400px)]">
+      <SubNavbar data={informationAndServices} />
       <Container>
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}
