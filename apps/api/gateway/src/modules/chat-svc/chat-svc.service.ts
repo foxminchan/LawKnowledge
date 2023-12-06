@@ -1,5 +1,5 @@
 import { Inject } from '@nestjs/common';
-import { Criteria } from '@law-knowledge/shared';
+import { Criteria, DocumentFileType } from '@law-knowledge/shared';
 import { catchError, throwError, timeout } from 'rxjs';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 
@@ -16,5 +16,12 @@ export class ChatService {
         timeout(5000),
         catchError((err) => throwError(() => new RpcException(err)))
       );
+  }
+
+  addEmbedding(type: DocumentFileType) {
+    return this.authSvcService.send({ cmd: 'addEmbedding' }, { type }).pipe(
+      timeout(5000),
+      catchError((err) => throwError(() => new RpcException(err)))
+    );
   }
 }

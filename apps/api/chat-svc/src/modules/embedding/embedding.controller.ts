@@ -12,7 +12,7 @@ export class EmbeddingController {
     private readonly commandBus: CommandBus
   ) {}
 
-  @EventPattern({ cmd: 'updateEmbedding' })
+  @EventPattern({ cmd: 'addEmbedding' })
   createVector(type: DocumentFileType) {
     return this.commandBus.execute(new CreateVectorCommand(type));
   }

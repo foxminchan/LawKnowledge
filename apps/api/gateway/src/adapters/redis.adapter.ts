@@ -11,7 +11,6 @@ export class RedisIoAdapter extends IoAdapter implements WebSocketAdapter {
   async connectToRedis(): Promise<void> {
     const pubClient = createClient({
       url: process.env.REDIS_URL,
-      password: process.env.REDIS_PASSWORD,
     });
     const subClient = pubClient.duplicate();
     await Promise.all([pubClient.connect(), subClient.connect()]);

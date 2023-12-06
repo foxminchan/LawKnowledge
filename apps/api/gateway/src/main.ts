@@ -13,6 +13,7 @@ import helmet from '@fastify/helmet';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import compression from '@fastify/compress';
+import { RedisIoAdapter } from './adapters';
 import { VersioningType } from '@nestjs/common';
 import { SetupSwagger } from '@law-knowledge/framework';
 import fastifyCsrfProtection from '@fastify/csrf-protection';
@@ -52,6 +53,11 @@ async function bootstrap() {
   app.enableShutdownHooks();
 
   SetupSwagger(app);
+
+  // const redisIoAdapter = new RedisIoAdapter(app);
+
+  // await redisIoAdapter.connectToRedis();
+  // app.useWebSocketAdapter(redisIoAdapter);
 
   AppUtils.processAppWithGrace(app);
 
