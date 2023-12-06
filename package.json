@@ -115,6 +115,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "clsx": "^2.0.0",
+    "faiss-node": "^0.5.1",
     "fastify": "^4.24.3",
     "helper-fns": "^2.6.38",
     "html2canvas": "^1.4.1",
@@ -136,6 +137,7 @@
     "passport-headerapikey": "^1.2.2",
     "passport-jwt": "^4.0.1",
     "pdf-parse": "^1.1.1",
+    "pickleparser": "^0.2.1",
     "pino": "^8.16.2",
     "prism-react-renderer": "^2.3.0",
     "prisma": "^5.6.0",
@@ -156,7 +158,6 @@
     "sweetalert2": "^11.10.1",
     "sweetalert2-react-content": "^5.0.7",
     "tslib": "^2.6.2",
-    "weaviate-ts-client": "^2.0.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
