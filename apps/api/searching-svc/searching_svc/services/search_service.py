@@ -8,10 +8,12 @@ from searching_svc.core.config import configs
 
 class SearchServicer(handler.SearchingServiceServicer):
     def __init__(self):
-        self.document_store = FAISSDocumentStore()
+        self.document_store = FAISSDocumentStore(faiss_index_factory_str="Flat", embedding_dim=1536)
         self.retriever = EmbeddingRetriever(
           document_store=self.document_store,
-          embedding_model="sentence-transformers/multi-qa-mpnet-base-dot-v1"
+          batch_size=32,
+          embedding_model="sentence-transformers/multi-qa-mpnet-base-dot-v1",
+          api_key=configs.OPEN_AI_API_KEY
         )
         self.prompt_node = PromptNode(
           model_name_or_path="gpt-4",

@@ -9,7 +9,10 @@ class IndexingServicer(handler.SearchingServiceServicer):
     def __init__(self):
         self.document_store = FAISSDocumentStore()
         self.converter = TextConverter()
-        self.preprocessor = PreProcessor()
+        self.preprocessor = PreProcessor(split_by= 'word',
+                                         split_length= 250,
+                                         split_overlap= 20,
+                                         split_respect_sentence_boundary= True)
 
     def create_indexing_pipeline(self):
         pipeline = Pipeline()
@@ -21,4 +24,5 @@ class IndexingServicer(handler.SearchingServiceServicer):
     def RunIndexing(self, **kwargs):
         pipeline = self.create_indexing_pipeline()
         pipeline.run(file_paths=['./datasets/*.txt'], debug=True)
+        print("Indexing completed")
         return "Indexing completed"
