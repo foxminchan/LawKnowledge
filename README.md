@@ -84,6 +84,7 @@
 - [Port Binding](#port-binding)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
+- [Our presentation](#our-presentation)
 - [Contributing](#contributing)
   - [📖 Contributing Guidelines](#-contributing-guidelines)
   - [💁 Want to Help?](#-want-to-help)
@@ -359,6 +360,14 @@ Here is the dependency graph of the project:
 # CI/CD
 
 <img loading="lazy" src="./assets/images/base-cicd.svg" alt="CI/CD" width="100%">
+
+# Our presentation
+
+<p align="justify">
+
+You can see our presentation by clicking [here](./assets/slides/OLP.pptx).
+
+</p>
 
 # Contributing
 
