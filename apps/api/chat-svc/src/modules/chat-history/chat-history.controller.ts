@@ -44,7 +44,7 @@ export class ChatHistoryController {
   }
 
   @EventPattern('updateChatHistory')
-  updateChatHistory(id: string, payload: UpdateChatHistoryDto) {
+  updateChatHistory(payload: UpdateChatHistoryDto) {
     return this.commandBus.execute(new UpdateChatHistoryCommand(payload));
   }
 

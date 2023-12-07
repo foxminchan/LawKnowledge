@@ -5,13 +5,13 @@ import {
   ApiController,
   SwaggerResponse,
 } from '@law-knowledge/shared';
-import { AuthSvcService } from './auth-svc.service';
+import { AuthService } from './auth-svc.service';
 import { LoginPayload, RegisterPayload } from './auth-svc.payload';
 import { Body, Get, Param, Post, UseGuards } from '@nestjs/common';
 
 @ApiController('auth')
-export class AuthSvcController {
-  constructor(private readonly authSvcService: AuthSvcService) {}
+export class AuthController {
+  constructor(private readonly authSvcService: AuthService) {}
   @Post('login')
   @SwaggerResponse({
     operation: 'Login',

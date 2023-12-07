@@ -1,14 +1,9 @@
-import {
-  CreateVectorCommand,
-  DeleteVectorCommand,
-  DeleteVectorFilterCommand,
-} from './commands';
-import { FilterDto } from './dto';
 import { Controller } from '@nestjs/common';
+import { SimilaritySearchQuery } from './queries';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
 import { DocumentFileType } from '@law-knowledge/shared';
-import { RelevanceSearchQuery, SimilaritySearchQuery } from './queries';
+import { CreateVectorCommand, DeleteVectorCommand } from './commands';
 
 @Controller()
 export class EmbeddingController {
@@ -17,7 +12,7 @@ export class EmbeddingController {
     private readonly commandBus: CommandBus
   ) {}
 
-  @EventPattern({ cmd: 'updateEmbedding' })
+  @EventPattern({ cmd: 'addEmbedding' })
   createVector(type: DocumentFileType) {
     return this.commandBus.execute(new CreateVectorCommand(type));
   }
@@ -27,18 +22,8 @@ export class EmbeddingController {
     return this.commandBus.execute(new DeleteVectorCommand(ids));
   }
 
-  @EventPattern({ cmd: 'deleteEmbeddingFilter' })
-  deleteVectorFilter(filters: FilterDto) {
-    return this.commandBus.execute(new DeleteVectorFilterCommand(filters));
-  }
-
   @EventPattern({ cmd: 'similaritySearch' })
-  similaritySearch(keyword: string, filters?: FilterDto) {
+  similaritySearch(keyword: string, filters?: number) {
     return this.queryBus.execute(new SimilaritySearchQuery(keyword, filters));
-  }
-
-  @EventPattern({ cmd: 'relevanceSearch' })
-  relevanceSearch(keyword: string) {
-    return this.queryBus.execute(new RelevanceSearchQuery(keyword));
   }
 }

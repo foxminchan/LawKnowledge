@@ -1,0 +1,35 @@
+[tool.coverage.run]
+branch = true
+source = ["recom"]
+
+[tool.coverage.report]
+exclude_lines = ['if TYPE_CHECKING:']
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report html:'../../../coverage//apps/nlp/recom/html' --cov-report xml:'../../../coverage//apps/nlp/recom/coverage.xml' --html='../../../reports//apps/nlp/recom/unittests/html/index.html' --junitxml='../../../reports//apps/nlp/recom/unittests/junit.xml'"
+
+[tool.poetry]
+name = "recom"
+version = "1.0.0"
+description = "Recommendation System"
+authors = ['Hutech University <hutech@hutech.edu.vn>']
+license = 'MIT'
+
+[[tool.poetry.packages]]
+include = "recom"
+
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "2.0.2"
+flake8 = "6.0.0"
+pytest = "7.3.1"
+pytest-sugar = "0.9.7"
+pytest-cov = "4.1.0"
+pytest-html = "3.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
