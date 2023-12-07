@@ -26,7 +26,7 @@ grpcio-tools = "^1.59.3"
 pydantic = "1.10.0"
 protobuf = "^4.25.1"
 python-dotenv = "^1.0.0"
-farm-haystack = {extras = ["elasticsearch"], version = "^1.22.1"}
+farm-haystack = {extras = ["faiss-gpu"], version = "^1.22.1"}
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"
