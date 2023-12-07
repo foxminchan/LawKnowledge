@@ -15,7 +15,7 @@ const Search = loadable(() => import('./features/Search'));
 const Payment = loadable(() => import('./features/Payment'));
 const SignOut = loadable(() => import('./features/SignOut'));
 const NotFound = loadable(() => import('./components/NotFound'));
-const LawDocument = loadable() => import('/features/LawDocument');
+const LawDocument = loadable(() => import('./features/LawDocument'));
 const Introduction = loadable(() => import('./features/Introduction'));
 const SearchResult = loadable(() => import('./features/SearchResult'));
 const OnlineService = loadable(() => import('./features/OnlineService'));

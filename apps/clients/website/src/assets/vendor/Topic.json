@@ -1,0 +1,227 @@
+﻿[
+	{
+		"id": "c3b69131-2931-4f67-926e-b244e18e8081",
+		"name": "An ninh quốc gia",
+		"no": 1
+	},
+	{
+		"id": "5576c952-dabe-4363-b94a-13419996ff4b",
+		"name": "Bảo hiểm",
+		"no": 2
+	},
+	{
+		"id": "c124612e-a23f-4199-8747-55fe4e8a8c89",
+		"name": "Bưu chính, viễn thông",
+		"no": 3
+	},
+	{
+		"id": "e967223c-d26a-4c7f-a8d9-420843bd5bf9",
+		"name": "Bổ trợ tư pháp",
+		"no": 4
+	},
+	{
+		"id": "cb5c6841-2c38-48ca-b946-da24c8d8a099",
+		"name": "Cán bộ, công chức, viên chức",
+		"no": 5
+	},
+	{
+		"id": "e4b6a170-8415-42a5-9ee2-f8eb147f5d15",
+		"name": "Chính sách xã hội",
+		"no": 6
+	},
+	{
+		"id": "3a225bc6-c8c9-459e-967e-9876d4eb2c33",
+		"name": "Công nghiệp",
+		"no": 7
+	},
+	{
+		"id": "efbefb52-bf45-41df-aaf4-6a4e833f333e",
+		"name": "Dân số, gia đình, trẻ em, bình đẳng giới",
+		"no": 8
+	},
+	{
+		"id": "8545ecbc-f0ce-44aa-83d6-c43d056f63f2",
+		"name": "Dân sự",
+		"no": 9
+	},
+	{
+		"id": "a6ee2d1a-2edc-4c30-bff5-81efbd765464",
+		"name": "Dân tộc",
+		"no": 10
+	},
+	{
+		"id": "b64f0e6a-3020-4c4a-be45-a1e5370a0939",
+		"name": "Đất đai",
+		"no": 11
+	},
+	{
+		"id": "8e485a16-50aa-4c80-9fbe-3b286287f8c1",
+		"name": "Doanh nghiệp, hợp tác xã",
+		"no": 12
+	},
+	{
+		"id": "0fb2411e-095b-4095-bbbe-fb8465ec4199",
+		"name": "Giáo dục, đào tạo",
+		"no": 13
+	},
+	{
+		"id": "b82ee309-2527-4a7d-8d4d-fccdfabbc86c",
+		"name": "Giao thông, vận tải",
+		"no": 14
+	},
+	{
+		"id": "a5b5fa2d-056c-48c4-b6fc-c782359511ff",
+		"name": "Hành chính tư pháp",
+		"no": 15
+	},
+	{
+		"id": "0672ce80-caa2-4d12-a474-6d86349c9dab",
+		"name": "Hình sự",
+		"no": 16
+	},
+	{
+		"id": "9daf2b7f-cf24-4c97-adf8-0903f6b7f18e",
+		"name": "Kế toán, kiểm toán",
+		"no": 17
+	},
+	{
+		"id": "ff58c8ec-ab1b-4fdd-b732-5f09f9fa09cd",
+		"name": "Khiếu nại, tố cáo",
+		"no": 18
+	},
+	{
+		"id": "3f0ce861-9980-43c9-9dcc-8e064c536bee",
+		"name": "Khoa học, công nghệ",
+		"no": 19
+	},
+	{
+		"id": "ed53d710-e3ae-4741-abc7-0f5dd82dec24",
+		"name": "Lao động",
+		"no": 20
+	},
+	{
+		"id": "1657cd3c-c513-4df5-ae6b-e39a778c640d",
+		"name": "Môi trường",
+		"no": 21
+	},
+	{
+		"id": "0f8741e9-b3d2-488b-aa70-961ccc802227",
+		"name": "Ngân hàng, tiền tệ",
+		"no": 22
+	},
+	{
+		"id": "6db952fa-b9dd-41f7-adf5-ccb22100ac9c",
+		"name": "Ngoại giao, điều ước quốc tế",
+		"no": 23
+	},
+	{
+		"id": "81215563-6346-448e-bded-2933f86276bb",
+		"name": "Nông nghiệp, nông thôn",
+		"no": 24
+	},
+	{
+		"id": "859b54fa-0c05-4807-a50c-c8be82fcae62",
+		"name": "Quốc phòng",
+		"no": 25
+	},
+	{
+		"id": "7a9dcc15-370d-40b4-a02b-28e583b25dbf",
+		"name": "Tài chính",
+		"no": 26
+	},
+	{
+		"id": "c054141c-d30c-4e83-9f35-2fb1c61c6e7c",
+		"name": "Tài nguyên",
+		"no": 27
+	},
+	{
+		"id": "1afcaf4b-85cb-4039-8627-3a8a101a7e5b",
+		"name": "Tài sản công, nợ công, dự trữ nhà nước",
+		"no": 28
+	},
+	{
+		"id": "c7ee2251-ddf9-4c7a-88f8-a9568fad0247",
+		"name": "Thi đua, khen thưởng, các danh hiệu vinh dự nhà nước",
+		"no": 29
+	},
+	{
+		"id": "88a4972a-48c2-4def-926b-a71b9f6e4be7",
+		"name": "Thi hành án",
+		"no": 30
+	},
+	{
+		"id": "ee961e69-7a8d-4405-8fe6-ecdf7e44323f",
+		"name": "Thống kê",
+		"no": 31
+	},
+	{
+		"id": "73b6a37d-b55b-443d-b0fd-8f7d1b215ca1",
+		"name": "Thông tin, báo chí, xuất bản",
+		"no": 32
+	},
+	{
+		"id": "09ca05d1-7f1d-4887-a65d-a210374d1969",
+		"name": "Thuế, phí, lệ phí, các khoản thu khác",
+		"no": 33
+	},
+	{
+		"id": "717625a2-281b-4307-b21b-68b1c73d2207",
+		"name": "Thương mại, đầu tư, chứng khoán",
+		"no": 34
+	},
+	{
+		"id": "3fc1ee9d-eec6-4839-9c98-7ac2ca9e0792",
+		"name": "Tổ chức bộ máy nhà nước",
+		"no": 3
+	},
+	{
+		"id": "ce9b9ff4-87dd-44d1-add8-27c1ec82d856",
+		"name": "Tổ chức chính trị - xã hội, hội",
+		"no": 36
+	},
+	{
+		"id": "cef09501-9f71-4c9a-aa35-238ea8c79f76",
+		"name": "Tố tụng và các phương thức giải quyết tranh chấp",
+		"no": 37
+	},
+	{
+		"id": "48d084d9-d3f1-4c13-a898-dde6840fe0ff",
+		"name": "Tôn giáo, tín ngưỡng",
+		"no": 38
+	},
+	{
+		"id": "965fd0b7-e8b0-434a-83c2-9f9b2b4fbcba",
+		"name": "Trật tự, an toàn xã hội",
+		"no": 39
+	},
+	{
+		"id": "01684735-cbae-4b6f-9471-1010ab2f350a",
+		"name": "Tương trợ tư pháp",
+		"no": 40
+	},
+	{
+		"id": "487180ab-07c0-45c1-9e73-1ab76b2a55c9",
+		"name": "Văn hóa, thể thao, du lịch",
+		"no": 41
+	},
+	{
+		"id": "1c1f149f-f1bf-4ddb-9f6b-b2adbf17d410",
+		"name": "Văn thư lưu trữ",
+		"no": 42
+	},
+	{
+		"id": "11a7e159-46bf-48bf-93ec-4e415f84c678",
+		"name": "Xây dựng, nhà ở, đô thị",
+		"no": 43
+	},
+	{
+		"id": "ec61c177-8f68-4a69-a42b-2257d599d907",
+		"name": "Xây dựng pháp luật và thi hành pháp luật",
+		"no": 44
+	},
+	{
+		"id": "607817d9-0840-4986-b41f-5f3e9ae650c2",
+		"name": "Y tế, dược",
+		"no": 45
+	}
+]
