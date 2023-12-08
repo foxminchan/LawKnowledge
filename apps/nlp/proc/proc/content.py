@@ -11,7 +11,7 @@ class VBPLCrawler:
         options = Options()
         options.add_argument("--incognito")
         options.add_argument("--window-size=1920x1080")
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(options=options)
 
     def crawl_url(self, page):
         url = ("https://vbpl.vn/VBQPPL_UserControls/Publishing_22/TimKiem/p_KetQuaTimKiemVanBan.aspx??type=0&s=0"
@@ -32,7 +32,8 @@ class VBPLCrawler:
             except:
                 pass
                 is_expire = pd.NA
-            temp_df = temp_df.append({
+
+            temp_df = temp_df._append({
               'url': url.get_attribute('href'),
               'lawName': law_name.text,
               'description': des.text,
@@ -43,23 +44,25 @@ class VBPLCrawler:
         return temp_df
 
     def process_pages(self):
-        df = pd.DataFrame(columns=['url', 'law_name', 'description'])
-        list_raw_data = os.listdir("./raw_data")
-        if "raw_VBPL_corpus.csv" not in list_raw_data:
-            df.to_csv("./raw_data/raw_VBPL_corpus.csv")
-        else:
-            df = pd.read_csv("./raw_data/raw_VBPL_corpus.csv", index_col=0)
+      df = pd.DataFrame(columns=["url", "lawName", "description", "expDate", "isExpire"])  # Correct column names
+      list_raw_data = os.listdir("./raw_data")
+      if "raw_VBPL_corpus.csv" not in list_raw_data:
+        df.to_csv("./raw_data/raw_VBPL_corpus.csv")
+      else:
+        df = pd.read_csv("./raw_data/raw_VBPL_corpus.csv", index_col=0)
 
-        try:
-            for i in tqdm(range(1, 140)):
-                temp_df = self.crawl_url(i)
-                df = pd.concat([df, temp_df])
-            print("Good job! Done and saving to csv")
-            df.to_csv("./raw_data/raw_VBPL_corpus.csv")
-        except Exception as e:
-            print(e)
-            print(f"ERROR DUMP at index {i}! Saving to csv")
-            df.to_csv("./raw_data/raw_VBPL_corpus.csv")
+      try:
+        for i in tqdm(range(1, 140)):
+          temp_df = self.crawl_url(i)
+          df = pd.concat([df, temp_df])
+        print("Good job! Done and saving to csv")
+        df.to_csv("./raw_data/raw_VBPL_corpus.csv")
+        print(df)
+      except Exception as e:
+        print(e)
+        print(f"ERROR DUMP at index {i}! Saving to csv")
+        df.to_csv("./raw_data/raw_VBPL_corpus.csv")
+        print(df)
 
     def close_driver(self):
         self.driver.close()
