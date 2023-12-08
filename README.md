@@ -421,9 +421,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 	        </p>
 			</td>
 			<td align="center" valign="top">
-					<img src="https://github.com/baohuy2k3.png?s=150" loading="lazy" width="150" height="150">
+					<img src="https://github.com/huynguyenjv.png?s=150" loading="lazy" width="150" height="150">
 	        <br>
-	        <a href="https://github.com/baohuy2k3">Bao Huy</a>
+	        <a href="https://github.com/huynguyenjv">Bao Huy</a>
 	        <p>
 	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=baohuy2k3" title="Developer">💻</a>
 						<a href="#data" title="Data">🔣</a>
