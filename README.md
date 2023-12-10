@@ -88,7 +88,7 @@
   - [📖 Contributing Guidelines](#-contributing-guidelines)
   - [💁 Want to Help?](#-want-to-help)
   - [🫂 Code of Conduct](#-code-of-conduct)
-- [Contributer](#contributer)
+- [Contributor](#contributor)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
 
@@ -97,14 +97,16 @@
 # What is Law Knowledge?
 
 <p align="justify">
-
 Law Knowledge is an app designed to provide quick access to Vietnam's legal information, including laws and legal documents. It's ideal for professionals, students, or anyone needing insights into Vietnamese legal codes and regulations.
+</p>
 
-> This project is part of the 2023 open source software competition hosted by the Vietnam Free and Open Source Software Association (VFOSSA).
+<blockquote>
+	<p align="justify">
+		<b>Law Knowledge</b> is a legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database.
+	</p>
+</blockquote>
 
 If you want to find out more about the contest, please visit the [VFOSSA website](https://vfossa.vn/tin-tuc/de-thi-phan-mem-nguon-mo-olp-2023-688.html).
-
-</p>
 
 <img loading="lazy" src="./assets/images/preview.png" alt="Preview" width="100%">
 
@@ -227,12 +229,11 @@ To set up the infrastructure, you can run the following command:
 npx nx up iac
 ```
 
-<p align="justify">
-
 > [!IMPORTANT]
-> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9 <=3.12`.
-
-</p>
+>
+> <p align="justify">
+> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9.1 <=3.12`.
+> </p>
 
 ## 🧪 Testing
 
@@ -397,7 +398,7 @@ Help us keep Law Knowledge open and inclusive. Please read and follow our [Code 
 
 </p>
 
-# Contributer
+# Contributor
 
 <p align="justify">
 
