@@ -11,12 +11,6 @@ export default {
   favicon: 'img/favicon.ico',
   organizationName: 'foxminchan',
 
-  markdown: {
-    mermaid: true,
-  },
-
-  themes: ['@docusaurus/theme-mermaid'],
-
   presets: [
     [
       'classic',

@@ -84,7 +84,6 @@
 - [Port Binding](#port-binding)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
-- [Our presentation](#our-presentation)
 - [Contributing](#contributing)
   - [📖 Contributing Guidelines](#-contributing-guidelines)
   - [💁 Want to Help?](#-want-to-help)
@@ -110,16 +109,14 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 
 # Tentative technologies
 
-- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
 - [NestJS](https://nestjs.com/)
 - [Python](https://www.python.org/)
 - [Pulumi](https://www.pulumi.com/)
 - [Kafka](https://kafka.apache.org/)
 - [ArgoCD](https://argoproj.github.io/argo-cd/)
 - [Jenkins](https://www.jenkins.io/)
-- [OpenStack](https://www.openstack.org/)
 - [Kubernetes](https://kubernetes.io/)
-- [SonarCloud](https://sonarcloud.io/)
 - [OpenTelemetry](https://opentelemetry.io/)
 - [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/), [Loki](https://grafana.com/oss/loki/), [Tempo](https://grafana.com/oss/tempo/), [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/)
 
@@ -192,7 +189,7 @@ pnpm install --force
 For the website, you can run the following command:
 
 ```bash
-npx nx serve clients-website
+npx nx serve webfront
 ```
 
 For the API, you can run the following command:
@@ -202,22 +199,22 @@ For the API, you can run the following command:
 npx nx serve api-gateway
 
 # For the Auth Service
-npx nx serve api-auth-svc
+npx nx serve auth-svc
 
 # For the Law Service
-npx nx serve api-law-svc
+npx nx serve law-svc
 
 # For the Chat Service
-npx nx serve api-chat-svc
+npx nx serve chat-svc
 
 # For the Search Service
-npx nx build api-searching-svc
+npx nx build search-svc
 ```
 
 To traning the model, you can run the following command:
 
 ```bash
-npx nx build nlp-model
+npx nx build model
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -238,7 +235,7 @@ npx nx up iac
 For the website, you can run the following command:
 
 ```bash
-npx nx test clients-website-e2e
+npx nx test webfront-e2e
 ```
 
 For the API, you can run the following command:
@@ -248,22 +245,22 @@ For the API, you can run the following command:
 npx nx test api-gateway-e2e
 
 # For the Auth Service
-npx nx test api-auth-svc-e2e
+npx nx test auth-svc-e2e
 
 # For the Law Service
-npx nx test api-law-svc-e2e
+npx nx test law-svc-e2e
 
 # For the Search Service
-npx nx test api-search-svc-e2e
+npx nx test search-svc-e2e
 
 # For the Chat Service
-npx nx test api-chat-svc
+npx nx test chat-svc
 ```
 
 To test the model, you can run the following command:
 
 ```bash
-npx nx test nlp-model
+npx nx test model
 ```
 
 ## 🧩 Other
@@ -271,13 +268,13 @@ npx nx test nlp-model
 To run the tooling for processing the dataset, you can run the following command:
 
 ```bash
-npx nx serve nlp-proc
+npx nx serve proc
 ```
 
 For running documentation, you can run the following command:
 
 ```bash
-npx nx serve clients-docs
+npx nx serve docs
 ```
 
 Some useful scripts:
@@ -308,6 +305,7 @@ cd tools/scripts && ls
 				<th>Service</th>
 				<th>Port</th>
 				<th>Protocol</th>
+				<th>Endpoint</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -315,31 +313,37 @@ cd tools/scripts && ls
 				<td>Website</td>
 				<td>4200</td>
 				<td>HTTP</td>
+				<td>http://localhost:4200</td>
 			</tr>
 			<tr>
 				<td>API Gateway</td>
 				<td>8080</td>
 				<td>HTTP/Socket</td>
+				<td>http://localhost:8080</td>
 			</tr>
 			<tr>
 				<td>Auth Service</td>
 				<td>8081</td>
-				<td>TCP</td>
+				<td>gRPC</td>
+				<td>0.0.0.0:8081</td>
 			</tr>
 			<tr>
 				<td>Law Service</td>
 				<td>8082</td>
-				<td>TCP</td>
+				<td>gRPC</td>
+				<td>0.0.0.0:8082</td>
 			</tr>
 			<tr>
 				<td>Search Service</td>
 				<td>8083</td>
 				<td>gRPC</td>
+				<td>0.0.0.0:8083</td>
 			</tr>
 			<tr>
 				<td>Chat Service</td>
 				<td>8084</td>
-				<td>TCP</td>
+				<td>gRPC</td>
+				<td>0.0.0.0:8084</td>
 			</tr>
 		</tbody>
 	</table>
@@ -360,14 +364,6 @@ Here is the dependency graph of the project:
 # CI/CD
 
 <img loading="lazy" src="./assets/images/base-cicd.svg" alt="CI/CD" width="100%">
-
-# Our presentation
-
-<p align="justify">
-
-You can see our presentation by clicking [here](./assets/slides/OLP.pptx).
-
-</p>
 
 # Contributing
 
