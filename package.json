@@ -75,8 +75,6 @@
     "@fastify/csrf-protection": "^6.4.1",
     "@fastify/helmet": "^11.1.1",
     "@fastify/static": "^6.12.0",
-    "@grpc/grpc-js": "^1.9.12",
-    "@grpc/proto-loader": "^0.7.10",
     "@inquirer/prompts": "^3.3.0",
     "@mdx-js/react": "^3.0.0",
     "@nestjs-modules/mailer": "^1.9.1",
@@ -104,6 +102,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "clsx": "^2.0.0",
+    "dapr-client": "^3.2.0",
     "faiss-node": "^0.5.1",
     "fastify": "^4.24.3",
     "helper-fns": "^2.6.43",
@@ -113,7 +112,6 @@
     "js-cookie": "^3.0.5",
     "jspdf": "^2.5.1",
     "jwt-decode": "^4.0.0",
-    "kafkajs": "^2.2.4",
     "langchain": "^0.0.203",
     "llmonitor": "^0.6.1",
     "lodash": "^4.17.21",
@@ -127,11 +125,9 @@
     "passport-headerapikey": "^1.2.2",
     "passport-jwt": "^4.0.1",
     "pdf-parse": "^1.1.1",
-    "pickleparser": "^0.2.1",
     "pino": "^8.16.2",
     "prism-react-renderer": "^2.3.0",
     "prisma": "^5.7.0",
-    "prom-client": "^15.0.0",
     "pug": "^3.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -244,4 +240,3 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
-

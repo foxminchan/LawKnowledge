@@ -4,17 +4,17 @@ import {
   UpdateTopicCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
-import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
 import { CreateTopicDto, UpdateTopicDto } from './dto';
+import { Criteria } from '@law-knowledge/building-block';
 import { GetTopicQuery, GetTopicsQuery } from './queries';
 
 @Controller()
 export class TopicController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   @EventPattern({ cmd: 'createTopic' })

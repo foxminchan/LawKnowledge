@@ -1,6 +1,6 @@
 import { DeleteUserCommand } from '../impl';
-import { AuthDataService } from '@law-knowledge/data';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { AuthDataService } from '@law-knowledge/building-block';
 
 @CommandHandler(DeleteUserCommand)
 export class DeleteUserCommandHandler

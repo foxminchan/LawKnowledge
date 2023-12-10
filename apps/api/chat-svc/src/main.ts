@@ -1,8 +1,8 @@
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
-import { ValidationErrorPipe } from '@law-knowledge/shared';
 import { TcpOptions, Transport } from '@nestjs/microservices';
+import { ValidationErrorPipe } from '@law-knowledge/building-block';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {

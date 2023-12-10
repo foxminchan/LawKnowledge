@@ -1,10 +1,10 @@
 import {
   LICENSE,
   SWAGGER_TITLE,
+  SWAGGER_VERSION,
   IS_PUBLIC_KEY_META,
   SWAGGER_DESCRIPTION,
-  SWAGGER_VERSION,
-} from '@law-knowledge/shared';
+} from '../../libs';
 import { isArray } from 'helper-fns';
 import { getMiddleware } from 'swagger-stats';
 import { INestApplication } from '@nestjs/common';
@@ -29,7 +29,7 @@ export function SetupSwagger(app: INestApplication) {
         name: 'X-Api-Key',
         description: 'Enter your API key to access this endpoint',
       },
-      'X-Api-Key'
+      'X-Api-Key',
     )
     .build();
 
@@ -54,7 +54,7 @@ export function SetupSwagger(app: INestApplication) {
       swaggerSpec: document,
       authentication: true,
       uriPath: '/stats',
-    })
+    }),
   );
 
   SwaggerModule.setup('/', app, document, {

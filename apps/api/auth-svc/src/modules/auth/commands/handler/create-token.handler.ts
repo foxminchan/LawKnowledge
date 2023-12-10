@@ -1,12 +1,15 @@
+import {
+  CryptoUtils,
+  AuthDataService,
+  JWT_REFRESH_EXPIRES_IN,
+} from '@law-knowledge/building-block';
 import { JwtService } from '@nestjs/jwt';
 import { CreateTokenCommand } from '../impl';
 import { RpcException } from '@nestjs/microservices';
-import { AuthDataService } from '@law-knowledge/data';
 import { from, of, switchMap, throwError } from 'rxjs';
 import { TokenDto, JwtDto, LoginDto } from '../../dto';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { ForbiddenException, UnauthorizedException } from '@nestjs/common';
-import { CryptoUtils, JWT_REFRESH_EXPIRES_IN } from '@law-knowledge/shared';
 
 @CommandHandler(CreateTokenCommand)
 export class CreateTokenCommandHandler
@@ -14,7 +17,7 @@ export class CreateTokenCommandHandler
 {
   constructor(
     private jwtService: JwtService,
-    private dataService: AuthDataService
+    private dataService: AuthDataService,
   ) {}
 
   private validateUser(user: LoginDto) {
@@ -26,15 +29,15 @@ export class CreateTokenCommandHandler
         include: {
           UserRoles: true,
         },
-      })
+      }),
     ).pipe(
       switchMap((res) => {
         if (!res)
           return throwError(
             () =>
               new RpcException(
-                new ForbiddenException('Tài khoản của bạn không tồn tại')
-              )
+                new ForbiddenException('Tài khoản của bạn không tồn tại'),
+              ),
           );
 
         return from(CryptoUtils.verifyHash(res.password, user.password)).pipe(
@@ -45,13 +48,13 @@ export class CreateTokenCommandHandler
                   () =>
                     new RpcException(
                       new UnauthorizedException(
-                        'Tên đăng nhập hoặc mật khẩu không hợp lệ'
-                      )
-                    )
+                        'Tên đăng nhập hoặc mật khẩu không hợp lệ',
+                      ),
+                    ),
                 );
-          })
+          }),
         );
-      })
+      }),
     );
   }
 
@@ -73,7 +76,7 @@ export class CreateTokenCommandHandler
             expiresIn: JWT_REFRESH_EXPIRES_IN,
           }),
         } as TokenDto);
-      })
+      }),
     );
   }
 }

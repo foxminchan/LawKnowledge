@@ -7,4 +7,5 @@ export * from './filters';
 export * from './helpers';
 export * from './strategies';
 export * from './decorators';
+export * from './middlewares';
 export * from './interceptors';

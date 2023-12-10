@@ -4,7 +4,7 @@ import {
   JwtAuthGuard,
   ApiController,
   SwaggerResponse,
-} from '@law-knowledge/shared';
+} from '@law-knowledge/building-block';
 import { AuthService } from './auth-svc.service';
 import { LoginPayload, RegisterPayload } from './auth-svc.payload';
 import { Body, Get, Param, Post, UseGuards } from '@nestjs/common';

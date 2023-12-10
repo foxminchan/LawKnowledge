@@ -1,7 +1,9 @@
+import {
+  LawDataService,
+  constructQueryOptions,
+} from '@law-knowledge/building-block';
 import { GetDocumentsQuery } from '../impl';
-import { LawDataService } from '@law-knowledge/data';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { constructQueryOptions } from '@law-knowledge/shared';
 
 @QueryHandler(GetDocumentsQuery)
 export class GetDocumentsQueryHandler

@@ -1,6 +1,6 @@
 import { GetTopicQuery } from '../impl';
-import { LawDataService } from '@law-knowledge/data';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { LawDataService } from '@law-knowledge/building-block';
 
 @QueryHandler(GetTopicQuery)
 export class GetTopicQueryHandler implements IQueryHandler<GetTopicQuery> {

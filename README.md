@@ -75,19 +75,19 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-  - [🛠️ Prerequisites](#️-prerequisites)
-  - [📦 Dataset](#-dataset)
-  - [🧑‍💻 Setup](#-setup)
-  - [🚀 Running](#-running)
-  - [🧪 Testing](#-testing)
-  - [🧩 Other](#-other)
+	- [🛠️ Prerequisites](#️-prerequisites)
+	- [📦 Dataset](#-dataset)
+	- [🧑‍💻 Setup](#-setup)
+	- [🚀 Running](#-running)
+	- [🧪 Testing](#-testing)
+	- [🧩 Other](#-other)
 - [Port Binding](#port-binding)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-  - [📖 Contributing Guidelines](#-contributing-guidelines)
-  - [💁 Want to Help?](#-want-to-help)
-  - [🫂 Code of Conduct](#-code-of-conduct)
+	- [📖 Contributing Guidelines](#-contributing-guidelines)
+	- [💁 Want to Help?](#-want-to-help)
+	- [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -97,6 +97,7 @@
 # What is Law Knowledge?
 
 <p align="justify">
+
 Law Knowledge is an app designed to provide quick access to Vietnam's legal information, including laws and legal documents. It's ideal for professionals, students, or anyone needing insights into Vietnamese legal codes and regulations.
 
 > This project is part of the 2023 open source software competition hosted by the Vietnam Free and Open Source Software Association (VFOSSA).

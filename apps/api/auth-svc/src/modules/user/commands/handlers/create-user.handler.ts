@@ -1,8 +1,7 @@
-import { CreateUserCommand } from '../impl';
-import { CryptoUtils } from '@law-knowledge/shared';
-import { AuthDataService } from '@law-knowledge/data';
-import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { User } from '../../model';
+import { CreateUserCommand } from '../impl';
+import { CryptoUtils, AuthDataService } from '@law-knowledge/building-block';
+import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserCommandHandler
@@ -10,7 +9,7 @@ export class CreateUserCommandHandler
 {
   constructor(
     private readonly dataService: AuthDataService,
-    private readonly publisher: EventPublisher
+    private readonly publisher: EventPublisher,
   ) {}
 
   async execute(payload: CreateUserCommand) {
@@ -20,13 +19,13 @@ export class CreateUserCommandHandler
           ...payload.user,
           password: await CryptoUtils.hashString(payload.user.password),
         },
-      })
+      }),
     );
 
     const { id, name, email, phone, card, address, password } = userCreated;
 
     const userWithContext = this.publisher.mergeObjectContext(
-      new User(id, name, email, phone, card, address, password)
+      new User(id, name, email, phone, card, address, password),
     );
 
     userWithContext.createUser();

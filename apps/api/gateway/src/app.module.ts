@@ -6,20 +6,18 @@ import {
   HealthCheckModule,
 } from './modules';
 import {
+  OtelModule,
   JwtStrategy,
+  NestHttpModule,
   ApiKeyStrategy,
+  RateLimitModule,
   NestCacheModule,
+  LoggerMiddleware,
   RefreshTokenStrategy,
   HttpCacheInterceptor,
   ClearCacheInterceptor,
-} from '@law-knowledge/shared';
-import {
-  OtelModule,
-  NestHttpModule,
-  RateLimitModule,
-} from '@law-knowledge/framework';
+} from '@law-knowledge/building-block';
 import { APP_INTERCEPTOR } from '@nestjs/core';
-import { LoggerMiddleware } from './middlewares';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 @Module({

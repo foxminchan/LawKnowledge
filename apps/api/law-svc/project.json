@@ -16,7 +16,6 @@
         "outputPath": "dist/apps/api/law-svc",
         "main": "apps/api/law-svc/src/main.ts",
         "tsConfig": "apps/api/law-svc/tsconfig.app.json",
-        "isolatedConfig": true,
         "webpackConfig": "apps/api/law-svc/webpack.config.js"
       },
       "configurations": {

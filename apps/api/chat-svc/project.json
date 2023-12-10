@@ -19,7 +19,6 @@
         "assets": [
           "apps/api/chat-svc/src/assets"
         ],
-        "isolatedConfig": true,
         "webpackConfig": "apps/api/chat-svc/webpack.config.js"
       },
       "configurations": {

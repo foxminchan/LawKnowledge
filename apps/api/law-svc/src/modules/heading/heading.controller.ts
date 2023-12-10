@@ -4,9 +4,9 @@ import {
   UpdateHeadingCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
-import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
+import { Criteria } from '@law-knowledge/building-block';
 import { CreateHeadingDto, UpdateHeadingDto } from './dto';
 import { GetHeadingQuery, GetHeadingsQuery } from './queries';
 
@@ -14,7 +14,7 @@ import { GetHeadingQuery, GetHeadingsQuery } from './queries';
 export class HeadingController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   @EventPattern({ cmd: 'getHeadings' })

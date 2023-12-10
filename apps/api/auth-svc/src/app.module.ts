@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
-import { AuthDataModule } from '@law-knowledge/data';
-import { LoggerModule } from '@law-knowledge/framework';
 import { AuthModule, RoleModule, UserModule } from './modules';
+import { AuthDataModule, LoggerModule } from '@law-knowledge/building-block';
 
 @Module({
   imports: [AuthDataModule, AuthModule, UserModule, RoleModule, LoggerModule],

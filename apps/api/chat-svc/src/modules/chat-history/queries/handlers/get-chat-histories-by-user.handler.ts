@@ -1,7 +1,9 @@
+import {
+  ChatDataService,
+  constructQueryOptions,
+} from '@law-knowledge/building-block';
 import { GetChatHistoriesByUserQuery } from '../impl';
-import { ChatDataService } from '@law-knowledge/data';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { constructQueryOptions } from '@law-knowledge/shared';
 
 @QueryHandler(GetChatHistoriesByUserQuery)
 export class GetChatHistoriesByUserQueryHandler

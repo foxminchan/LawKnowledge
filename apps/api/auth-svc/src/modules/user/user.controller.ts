@@ -4,17 +4,17 @@ import {
   UpdateUserCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
-import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
 import { CreateUserDto, UpdateUserDto } from './dto';
 import { GetUserQuery, GetUsersQuery } from './queries';
+import { Criteria } from '@law-knowledge/building-block';
 
 @Controller()
 export class UserController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   @EventPattern({ cmd: 'getUsers' })

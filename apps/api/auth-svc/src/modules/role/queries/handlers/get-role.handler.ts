@@ -1,6 +1,6 @@
 import { GetRoleQuery } from '../impl';
-import { AuthDataService } from '@law-knowledge/data';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { AuthDataService } from '@law-knowledge/building-block';
 
 @QueryHandler(GetRoleQuery)
 export class GetRoleQueryHandler implements IQueryHandler<GetRoleQuery> {

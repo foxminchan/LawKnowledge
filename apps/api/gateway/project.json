@@ -19,7 +19,6 @@
         "assets": [
           "apps/api/gateway/src/proto"
         ],
-        "isolatedConfig": true,
         "webpackConfig": "apps/api/gateway/webpack.config.js"
       },
       "configurations": {

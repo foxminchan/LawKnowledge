@@ -1,6 +1,6 @@
 import { UserCreatedEvent } from '../impl';
-import { AuthDataService } from '@law-knowledge/data';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
+import { AuthDataService } from '@law-knowledge/building-block';
 
 @EventsHandler(UserCreatedEvent)
 export class UserCreatedHandler implements IEventHandler<UserCreatedEvent> {
