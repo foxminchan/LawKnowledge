@@ -75,19 +75,19 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-	- [🛠️ Prerequisites](#️-prerequisites)
-	- [📦 Dataset](#-dataset)
-	- [🧑‍💻 Setup](#-setup)
-	- [🚀 Running](#-running)
-	- [🧪 Testing](#-testing)
-	- [🧩 Other](#-other)
+  - [🛠️ Prerequisites](#️-prerequisites)
+  - [📦 Dataset](#-dataset)
+  - [🧑‍💻 Setup](#-setup)
+  - [🚀 Running](#-running)
+  - [🧪 Testing](#-testing)
+  - [🧩 Other](#-other)
 - [Port Binding](#port-binding)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-	- [📖 Contributing Guidelines](#-contributing-guidelines)
-	- [💁 Want to Help?](#-want-to-help)
-	- [🫂 Code of Conduct](#-code-of-conduct)
+  - [📖 Contributing Guidelines](#-contributing-guidelines)
+  - [💁 Want to Help?](#-want-to-help)
+  - [🫂 Code of Conduct](#-code-of-conduct)
 - [Contributer](#contributer)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
@@ -127,7 +127,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
-<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -153,10 +153,13 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 		<b><a href="https://www.pulumi.com/" target="_blank">Pulumi</a></b> - Pulumi is a manage infrastructure, secrets, and configurations intuitively on any cloud.
 	</li>
 	<li align="justify">
-		<b><a href="https://www.docker.com/" target="_blank">Docker (Kubernetes Enabled)</a></b> - Docker is an open platform for developing, shipping, 	and running applications.
+		<b><a href="https://www.docker.com/" target="_blank">Docker (Kubernetes Enabled)</a></b> - Docker is an open platform for developing, shipping, and running applications.
 	</li>
 	<li align="justify">
 		<b><a href="https://helm.sh/" target="_blank">Helm</a></b> - Helm is the best way to find, share, and use software built for Kubernetes.
+	</li>
+	<li align="justify">
+		<b><a href="https://dapr.io/" target="_blank">Dapr</a></b> - Dapr is a portable, event-driven runtime that makes it easy for developers to build resilient, microservice stateless and stateful applications that run on the cloud and edge and embraces the diversity of languages and developer frameworks.
 	</li>
 </ul>
 
