@@ -84,6 +84,12 @@
     },
     "@nxlv/python:poetry-project": {
       "projectNameAndRootFormat": "as-provided"
+    },
+    "@nx/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
     }
   },
   "pluginsConfig": {
