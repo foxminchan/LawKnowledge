@@ -1,5 +1,5 @@
 {
-  "name": "api-auth-svc",
+  "name": "auth-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/api/auth-svc/src",
   "projectType": "application",
@@ -26,14 +26,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api-auth-svc:build"
+        "buildTarget": "auth-svc:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-auth-svc:build:development"
+          "buildTarget": "auth-svc:build:development"
         },
         "production": {
-          "buildTarget": "api-auth-svc:build:production"
+          "buildTarget": "auth-svc:build:production"
         }
       }
     },
@@ -57,7 +57,7 @@
       "options": {
         "engine": "docker",
         "metadata": {
-          "images": ["api-auth-svc"],
+          "images": ["auth-svc"],
           "load": true,
           "tags": [
             "type=schedule",
@@ -72,7 +72,7 @@
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "api-auth-svc",
+        "name": "auth-svc",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,

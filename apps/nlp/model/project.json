@@ -1,5 +1,5 @@
 {
-  "name": "nlp-model",
+  "name": "model",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "/apps/nlp/model/model",
@@ -64,7 +64,7 @@
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "nlp-model",
+        "name": "model",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,

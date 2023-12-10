@@ -1,12 +1,16 @@
 {
-  "name": "api-law-svc-e2e",
+  "name": "law-svc-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["api-law-svc"],
+  "implicitDependencies": [
+    "law-svc"
+  ],
   "projectType": "application",
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{e2eProjectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/api/law-svc-e2e/jest.config.ts",
         "passWithNoTests": true
@@ -14,15 +18,19 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/api/law-svc-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/api/law-svc-e2e/**/*.{js,ts}"
+        ]
       }
     },
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "api-law-svc-e2e",
+        "name": "law-svc-e2e",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,

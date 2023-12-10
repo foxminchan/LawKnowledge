@@ -1,5 +1,5 @@
 {
-  "name": "api-law-svc",
+  "name": "law-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/api/law-svc/src",
   "projectType": "application",
@@ -28,14 +28,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api-law-svc:build"
+        "buildTarget": "law-svc:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-law-svc:build:development"
+          "buildTarget": "law-svc:build:development"
         },
         "production": {
-          "buildTarget": "api-law-svc:build:production"
+          "buildTarget": "law-svc:build:production"
         }
       }
     },
@@ -68,7 +68,7 @@
         "engine": "docker",
         "metadata": {
           "images": [
-            "api-law-svc"
+            "law-svc"
           ],
           "load": true,
           "tags": [

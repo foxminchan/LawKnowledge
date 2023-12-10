@@ -1,5 +1,5 @@
 {
-  "name": "api-chat-svc",
+  "name": "chat-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/api/chat-svc/src",
   "projectType": "application",
@@ -31,14 +31,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api-chat-svc:build"
+        "buildTarget": "chat-svc:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-chat-svc:build:development"
+          "buildTarget": "chat-svc:build:development"
         },
         "production": {
-          "buildTarget": "api-chat-svc:build:production"
+          "buildTarget": "chat-svc:build:production"
         }
       }
     },
@@ -71,7 +71,7 @@
         "engine": "docker",
         "metadata": {
           "images": [
-            "api-chat-svc"
+            "chat-svc"
           ],
           "load": true,
           "tags": [
@@ -87,7 +87,7 @@
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "api-chat-svc",
+        "name": "chat-svc",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,

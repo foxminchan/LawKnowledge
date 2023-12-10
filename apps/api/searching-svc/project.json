@@ -1,5 +1,5 @@
 {
-  "name": "api-searching-svc",
+  "name": "search-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/api/searching-svc/searching_svc",
@@ -25,7 +25,9 @@
     },
     "build": {
       "executor": "@nxlv/python:build",
-      "outputs": ["{projectRoot}/dist"],
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
       "options": {
         "outputPath": "apps/api/searching-svc/dist",
         "publish": false,
@@ -45,7 +47,9 @@
     },
     "lint": {
       "executor": "@nxlv/python:flake8",
-      "outputs": ["{workspaceRoot}/reports/apps/api/searching-svc/pylint.txt"],
+      "outputs": [
+        "{workspaceRoot}/reports/apps/api/searching-svc/pylint.txt"
+      ],
       "options": {
         "outputFile": "reports/apps/api/searching-svc/pylint.txt"
       }
@@ -64,7 +68,7 @@
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "api-searching-svc",
+        "name": "search-svc",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,
