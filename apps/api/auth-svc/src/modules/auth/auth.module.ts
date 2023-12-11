@@ -4,7 +4,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
 import { CreateTokenCommandHandler } from './commands';
-import { JWT_SECRET, JWT_EXPIRES_IN } from '@law-knowledge/shared';
+import { JWT_SECRET, JWT_EXPIRES_IN } from '@law-knowledge/building-block';
 
 @Module({
   imports: [

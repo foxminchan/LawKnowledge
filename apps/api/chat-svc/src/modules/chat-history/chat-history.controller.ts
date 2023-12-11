@@ -9,16 +9,16 @@ import {
   UpdateChatHistoryCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
-import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
+import { Criteria } from '@law-knowledge/building-block';
 import { CreateChatHistoryDto, UpdateChatHistoryDto } from './dto';
 
 @Controller()
 export class ChatHistoryController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   @EventPattern('getChatHistory')
@@ -34,7 +34,7 @@ export class ChatHistoryController {
   @EventPattern('getChatHistoriesByUser')
   getChatHistoriesByUser(user_id: string, criteria?: Criteria) {
     return this.queryBus.execute(
-      new GetChatHistoriesByUserQuery(user_id, criteria)
+      new GetChatHistoriesByUserQuery(user_id, criteria),
     );
   }
 

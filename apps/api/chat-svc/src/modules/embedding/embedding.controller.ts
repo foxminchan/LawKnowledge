@@ -2,14 +2,14 @@ import { Controller } from '@nestjs/common';
 import { SimilaritySearchQuery } from './queries';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
-import { DocumentFileType } from '@law-knowledge/shared';
+import { DocumentFileType } from '@law-knowledge/building-block';
 import { CreateVectorCommand, DeleteVectorCommand } from './commands';
 
 @Controller()
 export class EmbeddingController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   @EventPattern({ cmd: 'addEmbedding' })

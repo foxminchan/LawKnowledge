@@ -4,9 +4,9 @@ import {
   UpdateDocumentCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
-import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
+import { Criteria } from '@law-knowledge/building-block';
 import { CreateDocumentDto, UpdateDocumentDto } from './dto';
 import { GetDocumentQuery, GetDocumentsQuery } from './queries';
 
@@ -14,7 +14,7 @@ import { GetDocumentQuery, GetDocumentsQuery } from './queries';
 export class DocumentController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   @EventPattern({ cmd: 'getDocuments' })

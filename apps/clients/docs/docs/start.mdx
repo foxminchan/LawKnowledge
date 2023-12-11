@@ -47,6 +47,18 @@ Having a computer that meets or exceeds these recommended hardware requirements 
 - [**Node.js**](https://nodejs.org/): An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
 - [**pnpm**](https://pnpm.io/): A fast, disk space efficient package manager that helps to minimize duplication while installing dependencies.
 - [**Pulumi**](https://www.pulumi.com/): Acloud development platform that makes creating cloud programs easy and productive.
+- [**Dapr**](https://dapr.io/): An open source, portable, event-driven runtime that makes it easy for developers to build resilient, microservice stateless and stateful applications that run on the cloud and edge and embraces the diversity of languages and developer frameworks.
+
+</p>
+
+## 📦 Dataset
+
+<p align="justify">
+
+You can download the dataset from the following link:
+
+- [Phap Dien](https://phapdien.moj.gov.vn/Pages/home.aspx): A website that provides legal documents of Vietnam.
+- [QPPL](https://vbpl.vn/pages/portal.aspx): Database of Vietnam's legal documents.
 
 </p>
 
@@ -69,7 +81,7 @@ pnpm install --force
 For the website, you can run the following command:
 
 ```bash
-npx nx serve clients-website
+npx nx serve webfront
 ```
 
 For the API, you can run the following command:
@@ -79,16 +91,22 @@ For the API, you can run the following command:
 npx nx serve api-gateway
 
 # For the Auth Service
-npx nx serve api-auth-svc
+npx nx serve auth-svc
 
 # For the Law Service
-npx nx serve api-law-svc
+npx nx serve law-svc
 
 # For the Chat Service
-npx nx serve api-chat-svc
+npx nx serve chat-svc
 
 # For the Search Service
-npx nx serve api-searching-svc
+npx nx build search-svc
+```
+
+To traning the model, you can run the following command:
+
+```bash
+npx nx build model
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -97,15 +115,9 @@ To set up the infrastructure, you can run the following command:
 npx nx up iac
 ```
 
-To traning the model, you can run the following command:
+:::tip
 
-```bash
-npx nx build nlp-model
-```
-
-:::warning
-
-If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>= 3.9.1 and < 3.12`.
+If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9.1 <=3.12`.
 
 :::
 
@@ -114,7 +126,7 @@ If you want to run with Nx, make sure you have installed `poetry` globally. Pyth
 For the website, you can run the following command:
 
 ```bash
-npx nx test clients-website-e2e
+npx nx test webfront-e2e
 ```
 
 For the API, you can run the following command:
@@ -124,22 +136,22 @@ For the API, you can run the following command:
 npx nx test api-gateway-e2e
 
 # For the Auth Service
-npx nx test api-auth-svc-e2e
+npx nx test auth-svc-e2e
 
 # For the Law Service
-npx nx test api-law-svc-e2e
+npx nx test law-svc-e2e
 
 # For the Search Service
-npx nx test api-search-svc-e2e
+npx nx test search-svc-e2e
 
 # For the Chat Service
-npx nx test api-chat-svc
+npx nx test chat-svc
 ```
 
 To test the model, you can run the following command:
 
 ```bash
-npx nx test nlp-model
+npx nx test model
 ```
 
 ## 🧩 Other
@@ -147,13 +159,13 @@ npx nx test nlp-model
 To run the tooling for processing the dataset, you can run the following command:
 
 ```bash
-npx nx serve nlp-auto
+npx nx serve proc
 ```
 
 For running documentation, you can run the following command:
 
 ```bash
-npx nx serve clients-docs
+npx nx serve docs
 ```
 
 Some useful scripts:
@@ -175,48 +187,56 @@ cd tools/scripts && ls
 ./<script-name>
 ```
 
+
 ## 🛜 Port Binding
 
 <div align="center">
   <table>
-    <thead>
-      <tr>
-        <th>Service</th>
-        <th>Port</th>
-        <th>Protocol</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Website</td>
-        <td>4200</td>
-        <td>HTTP</td>
-      </tr>
-      <tr>
-        <td>API Gateway</td>
-        <td>8080</td>
-        <td>HTTP/Socket</td>
-      </tr>
-      <tr>
-        <td>Auth Service</td>
-        <td>8081</td>
-        <td>TCP</td>
-      </tr>
-      <tr>
-        <td>Law Service</td>
-        <td>8082</td>
-        <td>TCP</td>
-      </tr>
-      <tr>
-        <td>Search Service</td>
-        <td>8083</td>
-        <td>gRPC</td>
-      </tr>
-      <tr>
-        <td>Chat Service</td>
-        <td>8084</td>
-        <td>TCP</td>
-      </tr>
+      <thead>
+          <tr>
+            <th>Service</th>
+				    <th>Port</th>
+				    <th>Protocol</th>
+				    <th>Endpoint</th>
+				  </tr>
+      </thead>
+		  <tbody>
+		      <tr>
+            <td>Website</td>
+				    <td>4200</td>
+				    <td>HTTP</td>
+				    <td>http://localhost:4200</td>
+				  </tr>
+			    <tr>
+			      <td>API Gateway</td>
+				    <td>8080</td>
+				    <td>HTTP/Socket</td>
+				    <td>http://localhost:8080</td>
+				  </tr>
+			    <tr>
+			      <td>Auth Service</td>
+				    <td>8081</td>
+				    <td>gRPC</td>
+				    <td>0.0.0.0:8081</td>
+				  </tr>
+			    <tr>
+			      <td>Law Service</td>
+				    <td>8082</td>
+				    <td>gRPC</td>
+				    <td>0.0.0.0:8082</td>
+				  </tr>
+			    <tr>
+			      <td>Search Service</td>
+				    <td>8083</td>
+				    <td>gRPC</td>
+				    <td>0.0.0.0:8083</td>
+				  </tr>
+			<tr>
+			    <td>Chat Service</td>
+				  <td>8084</td>
+				  <td>gRPC</td>
+				  <td>0.0.0.0:8084</td>
+			</tr>
     </tbody>
   </table>
 </div>

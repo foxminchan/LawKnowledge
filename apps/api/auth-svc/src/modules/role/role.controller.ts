@@ -4,17 +4,17 @@ import {
   UpdateRoleCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
-import { Criteria } from '@law-knowledge/shared';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
 import { CreateRoleDto, UpdateRoleDto } from './dto';
 import { GetRoleQuery, GetRolesQuery } from './queries';
+import { Criteria } from '@law-knowledge/building-block';
 
 @Controller()
 export class RoleController {
   constructor(
     private readonly queryBus: QueryBus,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
   ) {}
 
   @EventPattern({ cmd: 'getRoles' })

@@ -1,8 +1,8 @@
-import { Get, OnModuleInit, Query } from '@nestjs/common';
 import { SearchSvcOptions } from './search-svc.options';
+import { Get, OnModuleInit, Query } from '@nestjs/common';
 import { Client, ClientGrpc } from '@nestjs/microservices';
 import { SearchingService } from './search-svc.interface';
-import { ApiController, SwaggerResponse } from '@law-knowledge/shared';
+import { ApiController, SwaggerResponse } from '@law-knowledge/building-block';
 
 @ApiController('search')
 export class SearchController implements OnModuleInit {

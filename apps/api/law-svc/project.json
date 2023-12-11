@@ -1,5 +1,5 @@
 {
-  "name": "api-law-svc",
+  "name": "law-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/api/law-svc/src",
   "projectType": "application",
@@ -16,7 +16,6 @@
         "outputPath": "dist/apps/api/law-svc",
         "main": "apps/api/law-svc/src/main.ts",
         "tsConfig": "apps/api/law-svc/tsconfig.app.json",
-        "isolatedConfig": true,
         "webpackConfig": "apps/api/law-svc/webpack.config.js"
       },
       "configurations": {
@@ -28,14 +27,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api-law-svc:build"
+        "buildTarget": "law-svc:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-law-svc:build:development"
+          "buildTarget": "law-svc:build:development"
         },
         "production": {
-          "buildTarget": "api-law-svc:build:production"
+          "buildTarget": "law-svc:build:production"
         }
       }
     },
@@ -68,7 +67,7 @@
         "engine": "docker",
         "metadata": {
           "images": [
-            "api-law-svc"
+            "law-svc"
           ],
           "load": true,
           "tags": [
@@ -79,6 +78,19 @@
             "type=sha,prefix=sha-"
           ]
         }
+      }
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "law-svc",
+        "hostUrl": "http://localhost:9000",
+        "projectKey": "foxminchan_LawKnowledge",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
       }
     }
   },

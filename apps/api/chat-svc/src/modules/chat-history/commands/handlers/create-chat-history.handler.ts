@@ -1,6 +1,6 @@
 import { CreateChatHistoryCommand } from '../impl';
-import { ChatDataService } from '@law-knowledge/data';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { ChatDataService } from '@law-knowledge/building-block';
 
 @CommandHandler(CreateChatHistoryCommand)
 export class CreateChatHistoryCommandHandler

@@ -2,7 +2,7 @@ import { join } from 'path';
 import tailwindTypo from '@tailwindcss/typography';
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
 
-export default {
+module.exports = {
   content: [
     join(
       __dirname,

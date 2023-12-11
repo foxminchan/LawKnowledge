@@ -1,7 +1,7 @@
 {
-  "name": "api-chat-svc-e2e",
+  "name": "chat-svc-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["api-chat-svc"],
+  "implicitDependencies": ["chat-svc"],
   "projectType": "application",
   "targets": {
     "e2e": {
@@ -22,7 +22,7 @@
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "api-chat-svc-e2e",
+        "name": "chat-svc-e2e",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,

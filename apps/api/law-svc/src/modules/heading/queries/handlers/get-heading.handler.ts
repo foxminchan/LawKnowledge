@@ -1,6 +1,6 @@
 import { GetHeadingQuery } from '../impl';
-import { LawDataService } from '@law-knowledge/data';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { LawDataService } from '@law-knowledge/building-block';
 
 @QueryHandler(GetHeadingQuery)
 export class GetHeadingQueryHandler implements IQueryHandler<GetHeadingQuery> {

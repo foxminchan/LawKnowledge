@@ -12,7 +12,14 @@ last_update:
 
 <p align="justify">
 
-The infrastructure of the project is built on the OpenStack platform. OpenStack is a free and open-source software platform for cloud computing, mostly deployed as infrastructure-as-a-service (IaaS), whereby virtual servers and other resources are made available to customers. The software platform consists of interrelated components that control diverse, multi-vendor hardware pools of processing, storage, and networking resources throughout a data center. Users either manage it through a web-based dashboard, through command-line tools, or through RESTful web services.
+The infrastructure of the project is built on **[Amazon Web Services (AWS)](https://aws.amazon.com/)**. AWS is a comprehensive and scalable cloud computing platform, offering a suite of services that provide computing power, storage solutions, and various networking capabilities. It operates predominantly under an Infrastructure-as-a-Service (IaaS) model, where AWS provides virtual servers (EC2 instances) and other resources on demand.
+
+AWS is designed with a set of interconnected services, each handling specific aspects of cloud computing. These services include EC2 for virtual computing environments, S3 for scalable storage, VPC for isolated network provisioning, and RDS for database management. AWS's global infrastructure is spread across multiple data centers, ensuring high availability and reliability.
+
+Users interact with AWS through the AWS Management Console, a web-based interface offering comprehensive control over AWS resources. Alternatively, AWS provides a robust set of command-line tools (AWS CLI) and SDKs for programmatic access, enabling automation and integration with existing development workflows. AWS also supports RESTful web services, allowing for direct interaction with AWS services over HTTP.
+
+This extensive range of tools and services makes AWS an ideal platform for hosting scalable, secure, and efficient cloud computing environments, well-suited for diverse project requirements.
+
 
 </p>
 
@@ -27,31 +34,60 @@ The infrastructure of the project is built on the OpenStack platform. OpenStack 
 
 ## Components
 
-- **OpenStack Services:**
+### Amazon Amplify
 
-  - **Nova:** Manages compute instances for Kubernetes nodes.
-  - **Neutron:** Provides networking for the Kubernetes cluster.
-  - **Cinder:** Offers block storage services.
-  - **Keystone:** Handles identity services for authentication and authorization.
-  - **Glance:** Manages VM images for Kubernetes nodes.
+<p align="justify">
 
-- **Kubernetes Cluster:**
+**[AWS Amplify](https://aws.amazon.com/amplify/)** is a set of tools and services that can be used together or on their own, to help front-end web and mobile developers build scalable full stack applications, powered by AWS.
 
-  - **Master Node:** Oversees the entire Kubernetes cluster.
-  - **Worker Nodes:** Host the application services.
-  - **Ingress Controller:** Manages external access to the services.
-  - **Website**: The front-end user interface.
-  - **API Gateway:** Routes API requests to appropriate services.
+AWS Amplify is designed to give a declarative interface to client developers looking to perform common actions using cloud services in a scalable and secure manner. AWS Amplify supports popular web frameworks including JavaScript, React, Angular, Vue, Next.js, and mobile platforms including Android, iOS, React Native, Ionic, Flutter.
 
-- **Individual Services:**
+</p>
 
-  - **Law Service:** Handles law-related functionalities.
-  - **Auth Service:** Manages authentication processes.
-  - **Search Service:** Provides search capabilities.
-  - **Chat Service:** Enables chat functionalities.
+### Amazon WAF
 
-- **Interactions:**
-  - User requests are received by the Ingress controller.
-  - The Ingress controller routes requests to the website or the API Gateway.
-  - The API Gateway further routes requests to the respective services like Law, Auth, Search, and Chat services.
-  - Kubernetes nodes interact with OpenStack services for resources.
+<p align="justify">
+
+**[AWS WAF](https://aws.amazon.com/waf/)** is a web application firewall that helps protect your web applications or APIs against common web exploits that may affect availability, compromise security, or consume excessive resources. AWS WAF gives you control over how traffic reaches your applications by enabling you to create security rules that block common attack patterns, such as SQL injection or cross-site scripting, and rules that filter out specific traffic patterns you define. You can deploy AWS WAF on Amazon CloudFront as part of your CDN solution or the Application Load Balancer (ALB) that fronts your web servers or origin servers running on EC2.
+
+</p>
+
+### Amazon Route 53
+
+<p align="justify">
+
+**[Amazon Route 53](https://aws.amazon.com/route53/)** is a highly available and scalable cloud Domain Name System (DNS) web service. It is designed to give developers and businesses an extremely reliable and cost-effective way to route end users to Internet applications by translating names like www.example.com into the numeric IP addresses like
+
+</p>
+
+### Amazon Elastic Load Balancing
+
+<p align="justify">
+
+**[Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/)** automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP addresses, and Lambda functions. It can handle the varying load of your application traffic in a single Availability Zone or across multiple Availability Zones. Elastic Load Balancing offers three types of load balancers that all feature the high availability, automatic scaling, and robust security necessary to make your applications fault tolerant.
+
+</p>
+
+### Amazon EKS
+
+<p align="justify">
+
+**[Amazon Elastic Kubernetes Service (Amazon EKS)](https://aws.amazon.com/eks/)** is a fully managed Kubernetes service. Customers such as Intel, Snap, Intuit, GoDaddy, and Autodesk trust EKS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.
+
+</p>
+
+### Amazon VPC
+
+<p align="justify">
+
+**[Amazon Virtual Private Cloud (Amazon VPC)](https://aws.amazon.com/vpc/)** enables you to launch AWS resources into a virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
+
+</p>
+
+### Amazon MSK
+
+<p align="justify">
+
+**[Amazon Managed Streaming for Apache Kafka (Amazon MSK)](https://aws.amazon.com/msk/)** is a fully managed service that makes it easy for you to build and run applications that use Apache Kafka to process streaming data. Apache Kafka is an open-source platform for building real-time streaming data pipelines and applications. With Amazon MSK, you can use native Apache Kafka APIs to populate data lakes, stream changes to and from databases, and power machine learning and analytics applications.
+
+</p>

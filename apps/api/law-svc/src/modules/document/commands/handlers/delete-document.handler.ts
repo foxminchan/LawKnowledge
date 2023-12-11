@@ -1,5 +1,5 @@
 import { DeleteDocumentCommand } from '../impl';
-import { LawDataService } from '@law-knowledge/data';
+import { LawDataService } from '@law-knowledge/building-block';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 @CommandHandler(DeleteDocumentCommand)

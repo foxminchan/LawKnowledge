@@ -4,10 +4,11 @@ import {
 } from '@nestjs/platform-fastify';
 import {
   AppUtils,
+  SetupSwagger,
   CriteriaPipe,
   NotFoundExceptionFilter,
   RpcExceptionToHttpExceptionFilter,
-} from '@law-knowledge/shared';
+} from '@law-knowledge/building-block';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import { AppModule } from './app.module';
@@ -15,13 +16,12 @@ import { NestFactory } from '@nestjs/core';
 import compression from '@fastify/compress';
 import { RedisIoAdapter } from './adapters';
 import { VersioningType } from '@nestjs/common';
-import { SetupSwagger } from '@law-knowledge/framework';
 import fastifyCsrfProtection from '@fastify/csrf-protection';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter()
+    new FastifyAdapter(),
   );
 
   app.setGlobalPrefix('api');
@@ -54,10 +54,10 @@ async function bootstrap() {
 
   SetupSwagger(app);
 
-  // const redisIoAdapter = new RedisIoAdapter(app);
+  const redisIoAdapter = new RedisIoAdapter(app);
 
-  // await redisIoAdapter.connectToRedis();
-  // app.useWebSocketAdapter(redisIoAdapter);
+  await redisIoAdapter.connectToRedis();
+  app.useWebSocketAdapter(redisIoAdapter);
 
   AppUtils.processAppWithGrace(app);
 

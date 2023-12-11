@@ -81,15 +81,13 @@
   - [🚀 Running](#-running)
   - [🧪 Testing](#-testing)
   - [🧩 Other](#-other)
-- [Port Binding](#port-binding)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
-- [Our presentation](#our-presentation)
 - [Contributing](#contributing)
   - [📖 Contributing Guidelines](#-contributing-guidelines)
   - [💁 Want to Help?](#-want-to-help)
   - [🫂 Code of Conduct](#-code-of-conduct)
-- [Contributer](#contributer)
+- [Contributor](#contributor)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
 
@@ -99,27 +97,28 @@
 
 <p align="justify">
 Law Knowledge is an app designed to provide quick access to Vietnam's legal information, including laws and legal documents. It's ideal for professionals, students, or anyone needing insights into Vietnamese legal codes and regulations.
+</p>
 
-> This project is part of the 2023 open source software competition hosted by the Vietnam Free and Open Source Software Association (VFOSSA).
+<blockquote>
+	<p align="justify">
+		<b>Law Knowledge</b> is a legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database.
+	</p>
+</blockquote>
 
 If you want to find out more about the contest, please visit the [VFOSSA website](https://vfossa.vn/tin-tuc/de-thi-phan-mem-nguon-mo-olp-2023-688.html).
-
-</p>
 
 <img loading="lazy" src="./assets/images/preview.png" alt="Preview" width="100%">
 
 # Tentative technologies
 
-- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
 - [NestJS](https://nestjs.com/)
 - [Python](https://www.python.org/)
 - [Pulumi](https://www.pulumi.com/)
 - [Kafka](https://kafka.apache.org/)
 - [ArgoCD](https://argoproj.github.io/argo-cd/)
 - [Jenkins](https://www.jenkins.io/)
-- [OpenStack](https://www.openstack.org/)
 - [Kubernetes](https://kubernetes.io/)
-- [SonarCloud](https://sonarcloud.io/)
 - [OpenTelemetry](https://opentelemetry.io/)
 - [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/), [Loki](https://grafana.com/oss/loki/), [Tempo](https://grafana.com/oss/tempo/), [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/)
 
@@ -129,7 +128,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
-<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -155,10 +154,13 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 		<b><a href="https://www.pulumi.com/" target="_blank">Pulumi</a></b> - Pulumi is a manage infrastructure, secrets, and configurations intuitively on any cloud.
 	</li>
 	<li align="justify">
-		<b><a href="https://www.docker.com/" target="_blank">Docker (Kubernetes Enabled)</a></b> - Docker is an open platform for developing, shipping, 	and running applications.
+		<b><a href="https://www.docker.com/" target="_blank">Docker (Kubernetes Enabled)</a></b> - Docker is an open platform for developing, shipping, and running applications.
 	</li>
 	<li align="justify">
 		<b><a href="https://helm.sh/" target="_blank">Helm</a></b> - Helm is the best way to find, share, and use software built for Kubernetes.
+	</li>
+	<li align="justify">
+		<b><a href="https://dapr.io/" target="_blank">Dapr</a></b> - Dapr is a portable, event-driven runtime that makes it easy for developers to build resilient, microservice stateless and stateful applications that run on the cloud and edge and embraces the diversity of languages and developer frameworks.
 	</li>
 </ul>
 
@@ -187,58 +189,63 @@ Next, navigate to the root directory of the project and install the dependencies
 pnpm install --force
 ```
 
+After that, initialize the distributed application runtime:
+
+```bash
+dapr init
+```
+
 ## 🚀 Running
 
 For the website, you can run the following command:
 
 ```bash
-npx nx serve clients-website
+npx nx serve webfront
 ```
 
 For the API, you can run the following command:
 
 ```bash
 # For the API Gateway
-npx nx serve api-gateway
+dapr run --app-id api-gateway --app-port 8080 --components-path ./deploys/iac/dapr -- npx nx serve api-gateway --prod
 
 # For the Auth Service
-npx nx serve api-auth-svc
+dapr run --app-id auth-svc --app-port 8081 --components-path ./deploys/iac/dapr -- npx nx serve auth-svc --prod
 
 # For the Law Service
-npx nx serve api-law-svc
+dapr run --app-id law-svc --app-port 8082 --components-path ./deploys/iac/dapr -- npx nx serve law-svc --prod
 
 # For the Chat Service
-npx nx serve api-chat-svc
+dapr run --app-id chat-svc --app-port 8084 --components-path ./deploys/iac/dapr -- npx nx serve chat-svc --prod
 
 # For the Search Service
-npx nx build api-searching-svc
+dapr run --app-id search-svc --app-port 8083 --components-path ./deploys/iac/dapr -- npx nx serve search-svc --prod
 ```
 
 To traning the model, you can run the following command:
 
 ```bash
-npx nx build nlp-model
+npx nx build model
 ```
 
 To set up the infrastructure, you can run the following command:
 
 ```bash
-npx nx up iac
+npx nx up pulumi
 ```
 
-<p align="justify">
-
 > [!IMPORTANT]
-> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9 <=3.12`.
-
-</p>
+>
+> <p align="justify">
+> If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9.1 <=3.12`.
+> </p>
 
 ## 🧪 Testing
 
 For the website, you can run the following command:
 
 ```bash
-npx nx test clients-website-e2e
+npx nx test webfront-e2e
 ```
 
 For the API, you can run the following command:
@@ -248,22 +255,22 @@ For the API, you can run the following command:
 npx nx test api-gateway-e2e
 
 # For the Auth Service
-npx nx test api-auth-svc-e2e
+npx nx test auth-svc-e2e
 
 # For the Law Service
-npx nx test api-law-svc-e2e
+npx nx test law-svc-e2e
 
 # For the Search Service
-npx nx test api-search-svc-e2e
+npx nx test search-svc-e2e
 
 # For the Chat Service
-npx nx test api-chat-svc
+npx nx test chat-svc
 ```
 
 To test the model, you can run the following command:
 
 ```bash
-npx nx test nlp-model
+npx nx test model
 ```
 
 ## 🧩 Other
@@ -271,13 +278,13 @@ npx nx test nlp-model
 To run the tooling for processing the dataset, you can run the following command:
 
 ```bash
-npx nx serve nlp-proc
+npx nx serve proc
 ```
 
 For running documentation, you can run the following command:
 
 ```bash
-npx nx serve clients-docs
+npx nx serve docs
 ```
 
 Some useful scripts:
@@ -299,52 +306,6 @@ cd tools/scripts && ls
 ./<script-name>
 ```
 
-# Port Binding
-
-<div align="center">
-	<table>
-		<thead>
-			<tr>
-				<th>Service</th>
-				<th>Port</th>
-				<th>Protocol</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Website</td>
-				<td>4200</td>
-				<td>HTTP</td>
-			</tr>
-			<tr>
-				<td>API Gateway</td>
-				<td>8080</td>
-				<td>HTTP/Socket</td>
-			</tr>
-			<tr>
-				<td>Auth Service</td>
-				<td>8081</td>
-				<td>TCP</td>
-			</tr>
-			<tr>
-				<td>Law Service</td>
-				<td>8082</td>
-				<td>TCP</td>
-			</tr>
-			<tr>
-				<td>Search Service</td>
-				<td>8083</td>
-				<td>gRPC</td>
-			</tr>
-			<tr>
-				<td>Chat Service</td>
-				<td>8084</td>
-				<td>TCP</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-
 # Dependency Graph
 
 You can see the dependency graph of the project by running the following command:
@@ -360,14 +321,6 @@ Here is the dependency graph of the project:
 # CI/CD
 
 <img loading="lazy" src="./assets/images/base-cicd.svg" alt="CI/CD" width="100%">
-
-# Our presentation
-
-<p align="justify">
-
-You can see our presentation by clicking [here](./assets/slides/OLP.pptx).
-
-</p>
 
 # Contributing
 
@@ -397,7 +350,7 @@ Help us keep Law Knowledge open and inclusive. Please read and follow our [Code 
 
 </p>
 
-# Contributer
+# Contributor
 
 <p align="justify">
 

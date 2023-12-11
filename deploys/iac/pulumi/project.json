@@ -1,0 +1,34 @@
+{
+  "name": "pulumi",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "deploys/iac/pulumi",
+  "targets": {
+    "up": {
+      "executor": "@nx-extend/pulumi:up",
+      "options": {}
+    },
+    "preview": {
+      "executor": "@nx-extend/pulumi:preview",
+      "options": {}
+    },
+    "refresh": {
+      "executor": "@nx-extend/pulumi:refresh",
+      "options": {}
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "pulumi",
+        "hostUrl": "http://localhost:9000",
+        "projectKey": "foxminchan_LawKnowledge",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
+      }
+    }
+  },
+  "tags": []
+}

@@ -3,7 +3,7 @@ import {
   ApiController,
   SwaggerResponse,
   PagingSwaggerResponse,
-} from '@law-knowledge/shared';
+} from '@law-knowledge/building-block';
 import { LawService } from './law-svc.service';
 import { Get, Param, Query } from '@nestjs/common';
 

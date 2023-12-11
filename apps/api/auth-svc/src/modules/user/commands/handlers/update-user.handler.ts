@@ -1,6 +1,6 @@
 import { UpdateUserCommand } from '../impl';
-import { AuthDataService } from '@law-knowledge/data';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { AuthDataService } from '@law-knowledge/building-block';
 
 @CommandHandler(UpdateUserCommand)
 export class UpdateUserCommandHandler
