@@ -18,16 +18,20 @@
     },
     "stylelint": {
       "executor": "nx-stylelint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/clients/docs/**/*.css"],
+        "lintFilePatterns": [
+          "apps/clients/docs/**/*.css"
+        ],
         "formatter": "unix"
       }
     },
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "clients-docs",
+        "name": "docs",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,

@@ -209,10 +209,10 @@ export default {
         disableInDev: false,
       },
     ],
-    async function myPlugin(_context) {
+    async function myPlugin(_context: any) {
       return {
         name: 'docusaurus-tailwindcss',
-        configurePostCss(postcssOptions) {
+        configurePostCss(postcssOptions: { plugins: any[]; }) {
           postcssOptions.plugins.push(require('tailwindcss'));
           postcssOptions.plugins.push(require('autoprefixer'));
           return postcssOptions;

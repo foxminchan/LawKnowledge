@@ -1,8 +1,8 @@
 {
-  "name": "iac",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "pulumi",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "deploys/iac",
+  "sourceRoot": "deploys/iac/pulumi",
   "targets": {
     "up": {
       "executor": "@nx-extend/pulumi:up",
@@ -19,7 +19,7 @@
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
-        "name": "iac",
+        "name": "pulumi",
         "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,

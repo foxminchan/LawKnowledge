@@ -13,12 +13,31 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/clients/webfront-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/clients/webfront-e2e/**/*.{js,ts}"
+        ]
+      }
+    },
+    "sonar": {
+      "executor": "@koliveira15/nx-sonarqube:scan",
+      "options": {
+        "name": "webfront-e2e",
+        "hostUrl": "http://localhost:9000",
+        "projectKey": "foxminchan_LawKnowledge",
+        "skipTargetDefaults": false,
+        "branches": false,
+        "qualityGate": true,
+        "qualityGateTimeout": "300",
+        "skipImplicitDeps": false
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["webfront"]
+  "implicitDependencies": [
+    "webfront"
+  ]
 }

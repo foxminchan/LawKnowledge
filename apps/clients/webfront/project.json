@@ -74,7 +74,7 @@
       "executor": "@koliveira15/nx-sonarqube:scan",
       "options": {
         "name": "webfront",
-        "hostUrl": "",
+        "hostUrl": "http://localhost:9000",
         "projectKey": "foxminchan_LawKnowledge",
         "skipTargetDefaults": false,
         "branches": false,

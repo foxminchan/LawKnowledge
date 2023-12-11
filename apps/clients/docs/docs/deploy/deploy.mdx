@@ -12,21 +12,21 @@ last_update:
 
 <p align="justify">
 
-To deploy Law Knowledge, we recommend using **[OpenStack](https://www.openstack.org/)**. OpenStack is a free and open-source software platform for cloud computing, mostly deployed as infrastructure-as-a-service (IaaS), whereby virtual servers and other resources are made available to customers. The software platform consists of interrelated components that control diverse, multi-vendor hardware pools of processing, storage, and networking resources throughout a data center. Users either manage it through a web-based dashboard, through command-line tools, or through RESTful web services.
+To deploy Law Knowledge, **[Amazon Web Services (AWS)](https://aws.amazon.com/)** is a recommended platform. AWS is a comprehensive and widely adopted cloud platform, offering over 200 fully featured services from data centers globally. It provides a variety of services including computing power, storage options, and networking capabilities, often under a pay-as-you-go pricing model. AWS services are accessible via the AWS Management Console, which is a web-based interface, command-line tools, or through APIs and SDKs. AWS supports a broad set of applications and workloads, providing flexibility and scalability to users, making it a suitable choice for a range of cloud computing needs.
 
 </p>
 
 <img
   loading="lazy"
-  src="/LawKnowledge/img/banner/openstack.jpg"
-  alt="OpenStack"
+  src="/LawKnowledge/img/banner/aws.jpg"
+  alt="Amazon Web Services"
   width="100%"
 />
 
 ## Deployment Guides
 
-- [Setup Kubernetes Cluster](/LawKnowledge/docs/deploy/k8s)
-- [Deploy Law Knowledge on OpenStack](/LawKnowledge/docs/deploy/infra)
+- [Local deployment on Kubernetes](/LawKnowledge/docs/deploy/k8s)
+- [Deploy Law Knowledge on Amazon Web Service](/LawKnowledge/docs/deploy/infra)
 
 :::info
 
@@ -34,30 +34,11 @@ To deploy Law Knowledge, we recommend using **[OpenStack](https://www.openstack.
 
 We recommend using **Ubuntu OS** for the deployment. If you are using another OS, please make sure that you have installed the following tools:
 
-- [Docker](https://docs.docker.com/engine/install/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-- [Minikube](https://minikube.sigs.k8s.io/docs/start/)
-- [Helm](https://helm.sh/docs/intro/install/)
-- [OpenStack CLI](https://docs.openstack.org/newton/user-guide/common/cli-install-openstack-command-line-clients.html)
+- [Pulumi](https://www.pulumi.com/docs/get-started/install/): Infrastructure as Code tool
+- [Docker](https://docs.docker.com/get-docker/): Containerization tool
+- [Kubernetes](https://kubernetes.io/docs/tasks/tools/): Container orchestration tool
+- [Helm](https://helm.sh/docs/intro/install/): Package manager for Kubernetes
 
 </p>
 
 :::
-
-## Enabling TLS
-
-<p align="justify">
-
-Transport Layer Security (TLS) is the successor to and improved protocol of SSL. It works in much the same way as SSL, using encryption to protect the transfer of data and information and secure HTTP traffic.
-
-To enable TLS, you need to have a domain name and a valid SSL certificate. You can get a free SSL certificate from [OpenSSL](https://www.openssl.org/). After that, you need to create a Kubernetes secret to store the certificate. The following command will create a secret named `tls-secret` in the `default` namespace.
-
-</p>
-
-```bash
-helm upgrade --install tls-secret \
-  --set tls.crt="$(cat /path/to/tls.crt)" \
-  --set tls.key="$(cat /path/to/tls.key)" \
-  --namespace default \
-  stable/nginx-ingress
-```

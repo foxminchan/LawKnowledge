@@ -37,17 +37,17 @@ Jenkins is an open-source automation server that offers an easy way to set up a 
 
 <p align="justify">
 
-We use Jenkins as a Docker container. The following command will pull the latest Jenkins image from Docker Hub and run it on port 8080.
+We use Jenkins as a Docker container. The following command will pull the latest Jenkins image from Docker Hub and run it on port 7070.
 
 </p>
 
 ```bash
-docker run -d -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+docker run -d -p 7070:8080 -p 50000:50000 jenkins/jenkins:lts
 ```
 
 <p align="justify">
 
-After running the above command, we can access Jenkins at http://localhost:8080. The first time we access Jenkins, we will be asked to enter the administrator password. We can get the password by running the following command.
+After running the above command, we can access Jenkins at http://localhost:7070. The first time we access Jenkins, we will be asked to enter the administrator password. We can get the password by running the following command.
 
 </p>
 
@@ -108,7 +108,7 @@ pipeline {
                     }
                     agent any
                     steps {
-                        sh "npm ci"
+                        sh "pnpm install"
                         sh "npx nx-cloud start-ci-run --stop-agents-after='build'"
                         sh "npx nx format:check"
                         sh "npx nx affected --base=HEAD~1 -t lint --parallel=3 & npx nx affected --base=HEAD~1 -t test --parallel=3 --configuration=ci & npx nx affected --base=HEAD~1 -t build --parallel=3"
@@ -120,32 +120,30 @@ pipeline {
                     }
                     agent any
                     steps {
-                        sh "npm ci"
+                        sh "pnpm install"
                         sh "npx nx-cloud start-ci-run --stop-agents-after='build'"
                         sh "npx nx format:check"
                         sh "npx nx affected --base origin/${env.CHANGE_TARGET} -t lint --parallel=2 & npx nx affected --base origin/${env.CHANGE_TARGET} -t test --parallel=2 --configuration=ci & npx nx affected --base origin/${env.CHANGE_TARGET} -t build --parallel=2"
                     }
                 }
-
-                # Add as many agent you want
                 stage('Agent1') {
                    agent any
                    steps {
-                    sh "npm ci"
+                    sh "pnpm install"
                     sh "npx nx-cloud start-agent"
                    }
                 }
                 stage('Agent2') {
                    agent any
                    steps {
-                    sh "npm ci"
+                    sh "pnpm install"
                     sh "npx nx-cloud start-agent"
                    }
                 }
                 stage('Agent3') {
                    agent any
                    steps {
-                    sh "npm ci"
+                    sh "pnpm install"
                     sh "npx nx-cloud start-agent"
                    }
                 }
@@ -187,17 +185,17 @@ Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. It fol
 
 <p align="justify">
 
-We use ArgoCD as a Docker container. The following command will pull the latest ArgoCD image from Docker Hub and run it on port 8080.
+We use ArgoCD as a Docker container. The following command will pull the latest ArgoCD image from Docker Hub and run it on port 7050.
 
 </p>
 
 ```bash
-docker run -d -p 8080:8080 argoproj/argocd:v2.1.2
+docker run -d -p 7050:8080 argoproj/argocd:v2.1.2
 ```
 
 <p align="justify">
 
-After running the above command, we can access ArgoCD at http://localhost:8080. The default username is `admin` and the default password is `password`. We can change the password by running the following command.
+After running the above command, we can access ArgoCD at http://localhost:7050. The default username is `admin` and the default password is `password`. We can change the password by running the following command.
 
 </p>
 

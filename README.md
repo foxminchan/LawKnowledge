@@ -81,7 +81,6 @@
   - [🚀 Running](#-running)
   - [🧪 Testing](#-testing)
   - [🧩 Other](#-other)
-- [Port Binding](#port-binding)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
@@ -190,6 +189,12 @@ Next, navigate to the root directory of the project and install the dependencies
 pnpm install --force
 ```
 
+After that, initialize the distributed application runtime:
+
+```bash
+dapr init
+```
+
 ## 🚀 Running
 
 For the website, you can run the following command:
@@ -202,19 +207,19 @@ For the API, you can run the following command:
 
 ```bash
 # For the API Gateway
-npx nx serve api-gateway
+dapr run --app-id api-gateway --app-port 8080 --components-path ./deploys/iac/dapr -- npx nx serve api-gateway --prod
 
 # For the Auth Service
-npx nx serve auth-svc
+dapr run --app-id auth-svc --app-port 8081 --components-path ./deploys/iac/dapr -- npx nx serve auth-svc --prod
 
 # For the Law Service
-npx nx serve law-svc
+dapr run --app-id law-svc --app-port 8082 --components-path ./deploys/iac/dapr -- npx nx serve law-svc --prod
 
 # For the Chat Service
-npx nx serve chat-svc
+dapr run --app-id chat-svc --app-port 8084 --components-path ./deploys/iac/dapr -- npx nx serve chat-svc --prod
 
 # For the Search Service
-npx nx build search-svc
+dapr run --app-id search-svc --app-port 8083 --components-path ./deploys/iac/dapr -- npx nx serve search-svc --prod
 ```
 
 To traning the model, you can run the following command:
@@ -226,7 +231,7 @@ npx nx build model
 To set up the infrastructure, you can run the following command:
 
 ```bash
-npx nx up iac
+npx nx up pulumi
 ```
 
 > [!IMPORTANT]
@@ -300,59 +305,6 @@ cd tools/scripts && ls
 # Run the script
 ./<script-name>
 ```
-
-# Port Binding
-
-<div align="center">
-	<table>
-		<thead>
-			<tr>
-				<th>Service</th>
-				<th>Port</th>
-				<th>Protocol</th>
-				<th>Endpoint</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Website</td>
-				<td>4200</td>
-				<td>HTTP</td>
-				<td>http://localhost:4200</td>
-			</tr>
-			<tr>
-				<td>API Gateway</td>
-				<td>8080</td>
-				<td>HTTP/Socket</td>
-				<td>http://localhost:8080</td>
-			</tr>
-			<tr>
-				<td>Auth Service</td>
-				<td>8081</td>
-				<td>gRPC</td>
-				<td>0.0.0.0:8081</td>
-			</tr>
-			<tr>
-				<td>Law Service</td>
-				<td>8082</td>
-				<td>gRPC</td>
-				<td>0.0.0.0:8082</td>
-			</tr>
-			<tr>
-				<td>Search Service</td>
-				<td>8083</td>
-				<td>gRPC</td>
-				<td>0.0.0.0:8083</td>
-			</tr>
-			<tr>
-				<td>Chat Service</td>
-				<td>8084</td>
-				<td>gRPC</td>
-				<td>0.0.0.0:8084</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
 
 # Dependency Graph
 

@@ -7,7 +7,7 @@ services:
     networks:
       - hutech-network
     ports:
-      - '8080:8080'
+      - '7070:8080'
       - '50000:50000'
     volumes:
       - ./jenkins_home:/var/jenkins_home
@@ -33,7 +33,7 @@ services:
     image: argoproj/argocd:v2.0.0
     container_name: argocd
     ports:
-      - '8081:8080'
+      - '7071:8080'
     volumes:
       - ./argocd:/home/argocd
     command: ['argocd-server', '--staticassets', '/shared/app']
