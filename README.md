@@ -114,6 +114,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 - [Next.js](https://nextjs.org/)
 - [NestJS](https://nestjs.com/)
 - [Python](https://www.python.org/)
+- [Dapr](https://dapr.io/)
 - [Pulumi](https://www.pulumi.com/)
 - [Kafka](https://kafka.apache.org/)
 - [ArgoCD](https://argoproj.github.io/argo-cd/)

@@ -1,4 +1,6 @@
 import './global.css';
+import { ReactNode } from 'react';
+import { Providers } from './providers';
 
 export const metadata = {
   title: 'Welcome to webfront',
@@ -7,12 +9,14 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{
+  children: ReactNode;
+}>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className="dark">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
