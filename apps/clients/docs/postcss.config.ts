@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-module.exports = {
+export default {
   plugins: {
     tailwindcss: {
       config: join(__dirname, 'tailwind.config.ts'),

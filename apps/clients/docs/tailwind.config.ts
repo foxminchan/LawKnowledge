@@ -2,11 +2,11 @@ import { join } from 'path';
 import tailwindTypo from '@tailwindcss/typography';
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
 
-module.exports = {
+export default {
   content: [
     join(
       __dirname,
-      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
+      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}',
     ),
     './src/**/*.{js,jsx,ts,tsx,md,mdx}',
     './docs/**/*.{md,mdx}',
