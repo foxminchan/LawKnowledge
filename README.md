@@ -130,7 +130,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
-<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 

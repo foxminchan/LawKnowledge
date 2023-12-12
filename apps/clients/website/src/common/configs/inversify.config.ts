@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import { Container } from 'inversify';
-import { TYPES } from '../constants/types';
-import HttpService from '../services/http.service';
-import TokenService from '../services/token.service';
-import { IHttpService, ITokenService } from '../interfaces/interfaces';
+import { TYPES } from '@common/constants/types';
+import HttpService from '@common/services/http.service';
+import TokenService from '@common/services/token.service';
+import { IHttpService, ITokenService } from '@common/interfaces/interfaces';
 
 const container = new Container();
 

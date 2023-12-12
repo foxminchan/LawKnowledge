@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { jwtDecode } from 'jwt-decode';
-import { ITokenService } from '../interfaces/interfaces';
+import { ITokenService } from '@common/interfaces/interfaces';
 
 @injectable()
 export default class TokenService implements ITokenService {

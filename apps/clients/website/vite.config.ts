@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import { fileURLToPath } from 'url';
 
 export default defineConfig({
   root: __dirname,
@@ -9,6 +10,7 @@ export default defineConfig({
   server: {
     port: 4200,
     host: 'localhost',
+    open: true,
   },
 
   preview: {
@@ -18,17 +20,52 @@ export default defineConfig({
 
   plugins: [react(), nxViteTsPaths()],
 
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-
   build: {
+    minify: true,
+    modulePreload: false,
     outDir: '../../../dist/apps/clients/website',
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+        },
+      },
+    },
+  },
+
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+      },
+      {
+        find: '@assets',
+        replacement: fileURLToPath(new URL('./src/assets', import.meta.url)),
+      },
+      {
+        find: '@components',
+        replacement: fileURLToPath(
+          new URL('./src/components', import.meta.url),
+        ),
+      },
+      {
+        find: '@common',
+        replacement: fileURLToPath(new URL('./src/common', import.meta.url)),
+      },
+      {
+        find: '@mocks',
+        replacement: fileURLToPath(new URL('./src/mocks', import.meta.url)),
+      },
+      {
+        find: '@features',
+        replacement: fileURLToPath(new URL('./src/features', import.meta.url)),
+      },
+    ],
   },
 
   test: {

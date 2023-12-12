@@ -16,8 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@law-knowledge/building-block": ["libs/building-block/src/index.ts"],
-      "@law-knowledge/shared": ["libs/shared/src/index.ts"]
+      "@law-knowledge/building-block": ["libs/building-block/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],
