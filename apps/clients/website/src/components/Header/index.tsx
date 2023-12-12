@@ -1,8 +1,11 @@
 import { Image } from 'antd';
 import Cookies from 'js-cookie';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@assets/images/logo.svg';
 import ButtonLink from '@components/ButtonLink';
+import { BarsOutlined } from '@ant-design/icons';
+import { StorageKeys } from '@/common/constants/keys';
 
 const textButton = [
   { id: 1, name: 'Đăng ký', link: '/dang-ky' },
@@ -10,10 +13,20 @@ const textButton = [
 ];
 
 export default function Header() {
-  const isAuthenticated = !!Cookies.get('X-Access-Token');
+  const isAuthenticated = !!Cookies.get(StorageKeys.ACCESS_TOKEN);
+  const [menuVisible, setMenuVisible] = useState(false);
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible);
+  };
 
   return (
     <header className="flex items-center justify-center w-full h-28 py-[15px]">
+      <button
+        onClick={toggleMenu}
+        className="p-2 lg:hidden bg-japonica-500 top-0 right-0 absolute"
+      >
+        <BarsOutlined className="text-white" />
+      </button>
       <div className="relative lg:h-full w-[78%]">
         <Link to="/" className="inline-block">
           <Image
@@ -21,7 +34,7 @@ export default function Header() {
             alt="logo"
             preview={false}
             loading="lazy"
-            className="lg:max-w-[400px] ml-1 lg:h-auto"
+            className="lg:max-w-[378px] ml-1 lg:h-auto"
           />
         </Link>
         <div className="absolute top-0 right-0 flex items-center justify-center h-full">
