@@ -4,7 +4,7 @@ type Props = {
   title: string;
 };
 
-export default function Law(props: Readonly<Props>) {
+export default function ChangePassword(props: Readonly<Props>) {
   useMetadata(props.title);
   return <div>index</div>;
 }

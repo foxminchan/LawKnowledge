@@ -125,6 +125,9 @@ dependencies:
   '@socket.io/redis-adapter':
     specifier: ^8.2.1
     version: 8.2.1(socket.io-adapter@2.5.2)
+  '@tanstack/query-core':
+    specifier: ^5.13.4
+    version: 5.13.4
   antd:
     specifier: ^5.12.1
     version: 5.12.1(react-dom@18.2.0)(react@18.2.0)
@@ -167,6 +170,12 @@ dependencies:
   joi:
     specifier: ^17.11.0
     version: 17.11.0
+  jotai:
+    specifier: ^2.6.0
+    version: 2.6.0(@types/react@18.2.43)(react@18.2.0)
+  jotai-tanstack-query:
+    specifier: ^0.8.0
+    version: 0.8.0(@tanstack/query-core@5.13.4)(jotai@2.6.0)(wonka@6.3.4)
   js-cookie:
     specifier: ^3.0.5
     version: 3.0.5
@@ -257,12 +266,9 @@ dependencies:
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
-  zod:
-    specifier: ^3.22.4
-    version: 3.22.4
-  zustand:
-    specifier: ^4.4.7
-    version: 4.4.7(@types/react@18.2.43)(react@18.2.0)
+  wonka:
+    specifier: ^6.3.4
+    version: 6.3.4
 
 devDependencies:
   '@babel/core':
@@ -10565,6 +10571,10 @@ packages:
       tailwindcss: 3.3.6(ts-node@10.9.2)
     dev: true
 
+  /@tanstack/query-core@5.13.4:
+    resolution: {integrity: sha512-8+rJucXvC/xlr4OrxHhEIob/cTlbT4fgmz1VsvB0D12FRStKaXeLORNGcOhSAynRd2NL74SV/Qq0IIb4DedLcA==}
+    dev: false
+
   /@testing-library/dom@9.3.3:
     resolution: {integrity: sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==}
     engines: {node: '>=14'}
@@ -19415,6 +19425,34 @@ packages:
       '@sideway/address': 4.1.4
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
+
+  /jotai-tanstack-query@0.8.0(@tanstack/query-core@5.13.4)(jotai@2.6.0)(wonka@6.3.4):
+    resolution: {integrity: sha512-jTm8+xlrEeBkY92QUnMbVBt2iJ5C3nfPo27G7F1i26EQtF0cMxOoD8IvMlN5W9a8JzVjn3rcjk3gcu3otVB50A==}
+    peerDependencies:
+      '@tanstack/query-core': '*'
+      jotai: '>=1.11.0'
+      wonka: ^6.3.4
+    dependencies:
+      '@tanstack/query-core': 5.13.4
+      jotai: 2.6.0(@types/react@18.2.43)(react@18.2.0)
+      wonka: 6.3.4
+    dev: false
+
+  /jotai@2.6.0(@types/react@18.2.43)(react@18.2.0):
+    resolution: {integrity: sha512-Vt6hsc04Km4j03l+Ax+Sc+FVft5cRJhqgxt6GTz6GM2eM3DyX3CdBdzcG0z2FrlZToL1/0OAkqDghIyARWnSuQ==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      '@types/react': 18.2.43
+      react: 18.2.0
+    dev: false
 
   /js-beautify@1.14.11:
     resolution: {integrity: sha512-rPogWqAfoYh1Ryqqh2agUpVfbxAhbjuN1SmU86dskQUKouRiggUTCO4+2ym9UPXllc2WAp0J+T5qxn7Um3lCdw==}
@@ -30473,6 +30511,10 @@ packages:
       babel-walk: 3.0.0-canary-5
     dev: false
 
+  /wonka@6.3.4:
+    resolution: {integrity: sha512-CjpbqNtBGNAeyNS/9W6q3kSkKE52+FjIj7AkFlLr11s/VWGUu6a2CdYSdGxocIhIVjaW/zchesBQUKPVU69Cqg==}
+    dev: false
+
   /word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
@@ -31115,26 +31157,6 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-    dev: false
-
-  /zustand@4.4.7(@types/react@18.2.43)(react@18.2.0):
-    resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
-    engines: {node: '>=12.7.0'}
-    peerDependencies:
-      '@types/react': '>=16.8'
-      immer: '>=9.0'
-      react: '>=16.8'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      immer:
-        optional: true
-      react:
-        optional: true
-    dependencies:
-      '@types/react': 18.2.43
-      react: 18.2.0
-      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /zwitch@2.0.4:

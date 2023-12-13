@@ -1,6 +1,8 @@
 import App from '../../app';
+import { Provider } from 'jotai/react';
 import { StrictMode, useMemo } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { useHydrateAtoms } from 'jotai/react/utils';
+import { queryClientAtom } from 'jotai-tanstack-query';
 import { QueryClient, MutationCache, QueryClientProvider } from 'react-query';
 
 export default function AppWrapper() {
@@ -13,17 +15,29 @@ export default function AppWrapper() {
             console.error(error);
           },
         }),
+        defaultOptions: {
+          queries: {
+            staleTime: Infinity,
+          },
+        },
       }),
     [],
   );
 
+  const HydrateAtoms = ({ children }: { children: React.ReactNode }) => {
+    useHydrateAtoms(new Map([[queryClientAtom, client]]));
+    return children;
+  };
+
   return (
     <StrictMode>
-      <BrowserRouter>
-        <QueryClientProvider client={client}>
-          <App />
-        </QueryClientProvider>
-      </BrowserRouter>
+      <QueryClientProvider client={client}>
+        <Provider>
+          <HydrateAtoms>
+            <App />
+          </HydrateAtoms>
+        </Provider>
+      </QueryClientProvider>
     </StrictMode>
   );
 }

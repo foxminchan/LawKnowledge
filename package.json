@@ -100,6 +100,7 @@
     "@rneui/base": "0.0.0-edge.2",
     "@rneui/themed": "0.0.0-edge.2",
     "@socket.io/redis-adapter": "^8.2.1",
+    "@tanstack/query-core": "^5.13.4",
     "antd": "^5.12.1",
     "argon2": "^0.31.2",
     "axios": "^1.6.2",
@@ -114,6 +115,8 @@
     "http-problem-details": "^0.1.5",
     "inversify": "^6.0.2",
     "joi": "^17.11.0",
+    "jotai": "^2.6.0",
+    "jotai-tanstack-query": "^0.8.0",
     "js-cookie": "^3.0.5",
     "jspdf": "^2.5.1",
     "jwt-decode": "^4.0.0",
@@ -144,8 +147,7 @@
     "socket.io-adapter": "^2.5.2",
     "swagger-stats": "^0.99.7",
     "tslib": "^2.6.2",
-    "zod": "^3.22.4",
-    "zustand": "^4.4.7"
+    "wonka": "^6.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
