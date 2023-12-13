@@ -5,6 +5,7 @@ import BasicLayout from './layouts/BasicLayout';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const SignIn = loadable(() => import('@features/SignIn'));
+const SignUp = loadable(() => import('@features/SignUp'));
 const NotFound = loadable(() => import('@components/NotFound'));
 
 export default function App() {
@@ -17,6 +18,14 @@ export default function App() {
             element={
               <Suspense fallback={<Loading />}>
                 <SignIn title="Đăng nhập" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dang-ky"
+            element={
+              <Suspense fallback={<Loading />}>
+                <SignUp title="Đăng ký" />
               </Suspense>
             }
           />
