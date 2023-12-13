@@ -14,7 +14,7 @@ export default function NavItem({ name, to, width }: Readonly<Props>) {
     <NavLink
       to={to}
       className={clsx(
-        'flex items-center justify-center h-full',
+        'flex items-center justify-center h-full hover:!bg-japonica-500 hover:!text-white',
         width,
         match ? 'bg-japonica-500 text-white' : 'text-gray-500',
       )}

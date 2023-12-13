@@ -1,8 +1,8 @@
-import { Image } from 'antd';
 import Cookies from 'js-cookie';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '@assets/images/logo.svg';
+import { Button, Image, Layout } from 'antd';
 import ButtonLink from '@components/ButtonLink';
 import { BarsOutlined } from '@ant-design/icons';
 import { StorageKeys } from '@/common/constants/keys';
@@ -20,13 +20,12 @@ export default function Header() {
   };
 
   return (
-    <header className="flex items-center justify-center w-full h-28 py-[15px]">
-      <button
+    <Layout.Header className="flex items-center justify-center w-full h-28 py-[15px] bg-transparent">
+      <Button
         onClick={toggleMenu}
-        className="p-2 lg:hidden bg-japonica-500 top-0 right-0 absolute"
-      >
-        <BarsOutlined className="text-white" />
-      </button>
+        className="lg:hidden bg-japonica-500 top-0 right-0 absolute"
+        icon={<BarsOutlined className="text-white" />}
+      />
       <div className="relative lg:h-full w-[78%]">
         <Link to="/" className="inline-block">
           <Image
@@ -47,6 +46,6 @@ export default function Header() {
           )}
         </div>
       </div>
-    </header>
+    </Layout.Header>
   );
 }
