@@ -4,14 +4,10 @@ import { Link } from 'react-router-dom';
 import Logo from '@assets/images/logo.svg';
 import { Button, Image, Layout } from 'antd';
 import ButtonLink from '@components/ButtonLink';
+import ToggleMenu from '@components/ToggleMenu';
 import { BarsOutlined } from '@ant-design/icons';
 import { StorageKeys } from '@/common/constants/keys';
-import ToggleMenu from '../ToggleMenu';
-
-const textButton = [
-  { id: 1, name: 'Đăng ký', link: '/dang-ky' },
-  { id: 2, name: 'Đăng nhập', link: '/dang-nhap' },
-];
+import { accountItems, authItems } from '@/mocks/authItem.mock';
 
 export default function Header() {
   const isAuthenticated = !!Cookies.get(StorageKeys.ACCESS_TOKEN);
@@ -38,13 +34,13 @@ export default function Header() {
           />
         </Link>
         <div className="absolute top-0 right-0 flex items-center justify-center h-full">
-          {isAuthenticated ? (
-            <ButtonLink name="Đăng xuất" link="/dang-xuat" />
-          ) : (
-            textButton.map((item) => (
-              <ButtonLink key={item.id} name={item.name} link={item.link} />
-            ))
-          )}
+          {isAuthenticated
+            ? accountItems.map((item) => (
+                <ButtonLink key={item.id} name={item.name} link={item.link} />
+              ))
+            : authItems.map((item) => (
+                <ButtonLink key={item.id} name={item.name} link={item.link} />
+              ))}
         </div>
       </div>
       <ToggleMenu menuVisible={menuVisible} onClose={toggleMenu} />

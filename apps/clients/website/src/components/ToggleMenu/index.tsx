@@ -5,6 +5,7 @@ import { navItems } from '@/mocks/navItem.mock';
 import ToggleItem from '@components/ToggleItem';
 import { CloseOutlined } from '@ant-design/icons';
 import { StorageKeys } from '@/common/constants/keys';
+import { accountItems, authItems } from '@/mocks/authItem.mock';
 
 type Props = {
   menuVisible: boolean;
@@ -12,15 +13,9 @@ type Props = {
 };
 
 export default function ToggleMenu(props: Readonly<Props>) {
-  const additionalItems = Cookies.get(StorageKeys.ACCESS_TOKEN)
-    ? [
-        { id: 5, name: 'Tài khoản', link: '/tai-khoan' },
-        { id: 6, name: 'Đăng xuất', link: '/dang-xuat' },
-      ]
-    : [
-        { id: 5, name: 'Đăng nhập', link: '/dang-nhap' },
-        { id: 6, name: 'Đăng ký', link: '/dang-ky' },
-      ];
+  const userItems = Cookies.get(StorageKeys.ACCESS_TOKEN)
+    ? accountItems
+    : authItems;
 
   return (
     <div
@@ -36,7 +31,7 @@ export default function ToggleMenu(props: Readonly<Props>) {
           icon={<CloseOutlined className="text-japonica-500" />}
         />
         <div className="flex flex-col items-center justify-center w-full h-full">
-          {[...navItems, ...additionalItems].map((item) => (
+          {[...navItems, ...userItems].map((item) => (
             <ToggleItem
               key={item.id}
               id={item.id}
