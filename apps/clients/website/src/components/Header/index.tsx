@@ -6,6 +6,7 @@ import { Button, Image, Layout } from 'antd';
 import ButtonLink from '@components/ButtonLink';
 import { BarsOutlined } from '@ant-design/icons';
 import { StorageKeys } from '@/common/constants/keys';
+import ToggleMenu from '../ToggleMenu';
 
 const textButton = [
   { id: 1, name: 'Đăng ký', link: '/dang-ky' },
@@ -23,8 +24,8 @@ export default function Header() {
     <Layout.Header className="flex items-center justify-center w-full h-28 py-[15px] bg-transparent">
       <Button
         onClick={toggleMenu}
-        className="lg:hidden bg-japonica-500 top-0 right-0 absolute"
-        icon={<BarsOutlined className="text-white" />}
+        className="lg:hidden top-0 right-0 absolute text-lg border-none bg-transparent"
+        icon={<BarsOutlined className="text-japonica-500" />}
       />
       <div className="relative lg:h-full w-[78%]">
         <Link to="/" className="inline-block">
@@ -46,6 +47,7 @@ export default function Header() {
           )}
         </div>
       </div>
+      <ToggleMenu menuVisible={menuVisible} onClose={toggleMenu} />
     </Layout.Header>
   );
 }
