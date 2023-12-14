@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 import Logo from '@assets/images/coat_of_arms.svg';
 import useMetadata from '@/common/hooks/useMetadata';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { useAtom } from 'jotai';
+import { signInAtom } from './atoms/sign-in.atom';
+import { SignInPayload } from './types/sign-in.type';
 
 type Props = {
   title: string;
@@ -17,6 +20,7 @@ type Props = {
 export default function SignIn(props: Readonly<Props>) {
   useMetadata(props.title);
   const { token } = theme.useToken();
+  const [{ mutate }] = useAtom(signInAtom);
 
   return (
     <ProConfigProvider hashed={false}>
@@ -24,6 +28,9 @@ export default function SignIn(props: Readonly<Props>) {
         <LoginForm
           logo={<Image preview={false} loading="lazy" src={Logo} alt="logo" />}
           subTitle="Đăng nhập để tiếp tục"
+          onFinish={async (values) => {
+            mutate(values as SignInPayload);
+          }}
           submitter={{
             searchConfig: {
               submitText: 'Đăng nhập',

@@ -5,6 +5,7 @@ import {
   ProFormDigit,
   ProFormInstance,
 } from '@ant-design/pro-components';
+import { Button } from 'antd';
 import { useAtom } from 'jotai';
 import { MutableRefObject, useRef } from 'react';
 import { signUpAtom } from './atoms/sign-up.atom';
@@ -29,13 +30,34 @@ export default function SignUp(props: Readonly<Props>) {
       <StepsForm
         formMapRef={formMapRef}
         submitter={{
-          submitButtonProps: {
-            className: 'bg-japonica-500 hover:!bg-japonica-600',
+          render: (props) => {
+            const { step, onPre } = props;
+            return [
+              <div className="flex justify-center" key="button">
+                {step !== 0 && (
+                  <Button
+                    type="default"
+                    key="rest"
+                    onClick={onPre}
+                    className="mr-2 hover:!border-japonica-500 hover:!text-japonica-500"
+                  >
+                    Quay lại
+                  </Button>
+                )}
+                <Button
+                  key="submit"
+                  type="primary"
+                  onClick={() => props.form?.submit()}
+                  className="bg-japonica-500 hover:!bg-japonica-600"
+                >
+                  {step === 1 ? 'Đăng ký' : 'Tiếp theo'}
+                </Button>
+              </div>,
+            ];
           },
         }}
         onFinish={async (values) => {
-          const data = values as SignUpPayload;
-          mutate(data);
+          mutate(values as SignUpPayload);
         }}
       >
         <StepsForm.StepForm
@@ -104,7 +126,7 @@ export default function SignUp(props: Readonly<Props>) {
             label="Mật khẩu"
             name="password"
             placeholder="********"
-            extra="Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt"
+            tooltip="Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt"
             rules={[
               { required: true, message: 'Vui lòng nhập mật khẩu' },
               {
