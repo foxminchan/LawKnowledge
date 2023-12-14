@@ -1,7 +1,6 @@
 import {
   LoginForm,
   ProFormText,
-  PageContainer,
   ProFormCheckbox,
   ProConfigProvider,
 } from '@ant-design/pro-components';
@@ -21,7 +20,7 @@ export default function SignIn(props: Readonly<Props>) {
 
   return (
     <ProConfigProvider hashed={false}>
-      <PageContainer className={`bg-${token.colorBgContainer}`}>
+      <div className={`bg-${token.colorBgContainer}`}>
         <LoginForm
           logo={<Image preview={false} loading="lazy" src={Logo} alt="logo" />}
           subTitle="Đăng nhập để tiếp tục"
@@ -71,7 +70,7 @@ export default function SignIn(props: Readonly<Props>) {
             </Link>
           </div>
         </LoginForm>
-      </PageContainer>
+      </div>
     </ProConfigProvider>
   );
 }
