@@ -1,13 +1,18 @@
 import clsx from 'clsx';
-import { Button } from 'antd';
+import Cookies from 'js-cookie';
+import { Button, Modal } from 'antd';
+import { StorageKeys } from '@/common/constants/keys';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
-export default function ButtonLink({
-  name,
-  link,
-}: Readonly<{ name: string; link: string }>) {
+type Props = {
+  name: string;
+  link: string;
+};
+
+export default function ButtonLink(props: Readonly<Props>) {
   const navigate = useNavigate();
-  const resolved = useResolvedPath(link);
+  const [modal] = Modal.useModal();
+  const resolved = useResolvedPath(props.link);
   const match = useMatch({ path: resolved.pathname, end: true });
 
   return (
@@ -19,9 +24,24 @@ export default function ButtonLink({
           : 'text-black border-japonica-400 bg-transparent',
       )}
       disabled={!!match}
-      onClick={() => navigate(link)}
+      onClick={() => {
+        if (props.name === 'Đăng xuất') {
+          modal.confirm({
+            title: 'Đăng xuất',
+            content: 'Bạn có chắc chắn muốn đăng xuất?',
+            okText: 'Đăng xuất',
+            cancelText: 'Hủy',
+            onOk: () => {
+              Cookies.remove(StorageKeys.ACCESS_TOKEN);
+              navigate(props.link);
+            },
+          });
+        } else {
+          navigate(props.link);
+        }
+      }}
     >
-      {name}
+      {props.name}
     </Button>
   );
 }

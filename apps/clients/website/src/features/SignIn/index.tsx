@@ -4,14 +4,16 @@ import {
   ProFormCheckbox,
   ProConfigProvider,
 } from '@ant-design/pro-components';
-import { theme, Image } from 'antd';
-import { Link } from 'react-router-dom';
-import Logo from '@assets/images/coat_of_arms.svg';
-import useMetadata from '@/common/hooks/useMetadata';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import Cookies from 'js-cookie';
 import { useAtom } from 'jotai';
+import { theme, Image, Typography } from 'antd';
 import { signInAtom } from './atoms/sign-in.atom';
+import Logo from '@assets/images/coat_of_arms.svg';
+import { Link, useNavigate } from 'react-router-dom';
 import { SignInPayload } from './types/sign-in.type';
+import useMetadata from '@/common/hooks/useMetadata';
+import { StorageKeys } from '@/common/constants/keys';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 type Props = {
   title: string;
@@ -19,8 +21,9 @@ type Props = {
 
 export default function SignIn(props: Readonly<Props>) {
   useMetadata(props.title);
+  const navigate = useNavigate();
   const { token } = theme.useToken();
-  const [{ mutate }] = useAtom(signInAtom);
+  const [{ mutate, isPending, isError, data }] = useAtom(signInAtom);
 
   return (
     <ProConfigProvider hashed={false}>
@@ -30,6 +33,10 @@ export default function SignIn(props: Readonly<Props>) {
           subTitle="Đăng nhập để tiếp tục"
           onFinish={async (values) => {
             mutate(values as SignInPayload);
+            if (!isError && data) {
+              Cookies.set(StorageKeys.ACCESS_TOKEN, data.access_token);
+              navigate('/');
+            }
           }}
           submitter={{
             searchConfig: {
@@ -37,11 +44,12 @@ export default function SignIn(props: Readonly<Props>) {
             },
             submitButtonProps: {
               className: 'bg-japonica-500 hover:!bg-japonica-600',
+              loading: isPending,
             },
           }}
         >
           <ProFormText
-            name="email"
+            name="username"
             fieldProps={{
               size: 'large',
               prefix: <UserOutlined className="prefixIcon" />,
@@ -68,6 +76,13 @@ export default function SignIn(props: Readonly<Props>) {
               },
             ]}
           />
+          {isError && (
+            <div className="text-center">
+              <Typography.Text className="text-japonica-500">
+                Thông tin đăng nhập không chính xác!
+              </Typography.Text>
+            </div>
+          )}
           <div className="flex justify-between items-center m-6">
             <ProFormCheckbox noStyle name="autoLogin">
               Nhớ mật khẩu

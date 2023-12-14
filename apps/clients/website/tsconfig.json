@@ -11,6 +11,7 @@
       "@mocks/*": ["src/mocks/*"],
       "@common/*": ["src/common/*"],
       "@assets/*": ["src/assets/*"],
+      "@layouts/*": ["src/layouts/*"],
       "@features/*": ["src/features/*"],
       "@components/*": ["src/components/*"]
     },

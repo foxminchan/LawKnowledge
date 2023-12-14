@@ -5,8 +5,9 @@ import {
   ProFormDigit,
   ProFormInstance,
 } from '@ant-design/pro-components';
-import { Button } from 'antd';
+import { Button, notification } from 'antd';
 import { useAtom } from 'jotai';
+import { useNavigate } from 'react-router-dom';
 import { MutableRefObject, useRef } from 'react';
 import { signUpAtom } from './atoms/sign-up.atom';
 import useMetadata from '@/common/hooks/useMetadata';
@@ -19,11 +20,13 @@ type Props = {
 
 export default function SignUp(props: Readonly<Props>) {
   useMetadata(props.title);
+  const navigate = useNavigate();
   const formMapRef = useRef<
     MutableRefObject<ProFormInstance<unknown> | undefined>[]
   >([]);
 
-  const [{ mutate }] = useAtom(signUpAtom);
+  const [api] = notification.useNotification();
+  const [{ mutate, isPending, isError }] = useAtom(signUpAtom);
 
   return (
     <ProCard>
@@ -39,6 +42,7 @@ export default function SignUp(props: Readonly<Props>) {
                     type="default"
                     key="rest"
                     onClick={onPre}
+                    disabled={isPending}
                     className="mr-2 hover:!border-japonica-500 hover:!text-japonica-500"
                   >
                     Quay lại
@@ -48,6 +52,8 @@ export default function SignUp(props: Readonly<Props>) {
                   key="submit"
                   type="primary"
                   onClick={() => props.form?.submit()}
+                  loading={isPending}
+                  disabled={isPending}
                   className="bg-japonica-500 hover:!bg-japonica-600"
                 >
                   {step === 1 ? 'Đăng ký' : 'Tiếp theo'}
@@ -58,6 +64,13 @@ export default function SignUp(props: Readonly<Props>) {
         }}
         onFinish={async (values) => {
           mutate(values as SignUpPayload);
+          if (!isError) {
+            api.success({
+              message: 'Đăng ký thành công',
+              description: 'Vui lòng đăng nhập để tiếp tục',
+            });
+            navigate('/dang-nhap');
+          }
         }}
       >
         <StepsForm.StepForm

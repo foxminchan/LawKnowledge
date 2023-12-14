@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Image, Layout, Typography } from 'antd';
 import Coa from '@assets/images/coat_of_arms.svg';
+import { fallbackImage } from '@/common/constants/image';
 
 export default function Footer() {
   return (
@@ -12,6 +13,7 @@ export default function Footer() {
               src={Coa}
               alt="Coat of arms"
               preview={false}
+              fallback={fallbackImage}
               loading="lazy"
               className="lg:max-w-[378px] ml-1 lg:h-auto"
             />

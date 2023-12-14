@@ -1,11 +1,15 @@
 import clsx from 'clsx';
 import { Button } from 'antd';
 import Cookies from 'js-cookie';
+import { Suspense } from 'react';
+import loadable from '@loadable/component';
 import { navItems } from '@/mocks/navItem.mock';
-import ToggleItem from '@components/ToggleItem';
 import { CloseOutlined } from '@ant-design/icons';
 import { StorageKeys } from '@/common/constants/keys';
+import { PageLoading } from '@ant-design/pro-components';
 import { accountItems, authItems } from '@/mocks/authItem.mock';
+
+const ToggleItem = loadable(() => import('@components/ToggleItem'));
 
 type Props = {
   menuVisible: boolean;
@@ -31,15 +35,17 @@ export default function ToggleMenu(props: Readonly<Props>) {
           icon={<CloseOutlined className="text-japonica-500" />}
         />
         <div className="flex flex-col items-center justify-center w-full h-full">
-          {[...navItems, ...userItems].map((item) => (
-            <ToggleItem
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              link={item.link}
-              onClick={props.onClose}
-            />
-          ))}
+          <Suspense fallback={<PageLoading />}>
+            {[...navItems, ...userItems].map((item) => (
+              <ToggleItem
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                link={item.link}
+                onClick={props.onClose}
+              />
+            ))}
+          </Suspense>
         </div>
       </div>
     </div>

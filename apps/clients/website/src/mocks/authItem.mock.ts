@@ -5,5 +5,5 @@ export const authItems = [
 
 export const accountItems = [
   { id: 5, name: 'Tài khoản', link: '/tai-khoan' },
-  { id: 6, name: 'Đăng xuất', link: '/dang-xuat' },
+  { id: 6, name: 'Đăng xuất', link: '/' },
 ];

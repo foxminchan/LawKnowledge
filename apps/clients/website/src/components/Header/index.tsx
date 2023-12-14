@@ -1,13 +1,17 @@
 import Cookies from 'js-cookie';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Suspense, useState } from 'react';
+import loadable from '@loadable/component';
 import Logo from '@assets/images/logo.svg';
 import { Button, Image, Layout } from 'antd';
-import ButtonLink from '@components/ButtonLink';
-import ToggleMenu from '@components/ToggleMenu';
 import { BarsOutlined } from '@ant-design/icons';
 import { StorageKeys } from '@/common/constants/keys';
+import { PageLoading } from '@ant-design/pro-components';
+import { fallbackImage } from '@/common/constants/image';
 import { accountItems, authItems } from '@/mocks/authItem.mock';
+
+const ButtonLink = loadable(() => import('@components/ButtonLink'));
+const ToggleMenu = loadable(() => import('@components/ToggleMenu'));
 
 export default function Header() {
   const isAuthenticated = !!Cookies.get(StorageKeys.ACCESS_TOKEN);
@@ -29,21 +33,26 @@ export default function Header() {
             src={Logo}
             alt="logo"
             preview={false}
+            fallback={fallbackImage}
             loading="lazy"
             className="lg:max-w-[378px] ml-1 lg:h-auto"
           />
         </Link>
         <div className="absolute top-0 right-0 flex items-center justify-center h-full">
-          {isAuthenticated
-            ? accountItems.map((item) => (
-                <ButtonLink key={item.id} name={item.name} link={item.link} />
-              ))
-            : authItems.map((item) => (
-                <ButtonLink key={item.id} name={item.name} link={item.link} />
-              ))}
+          <Suspense fallback={<PageLoading />}>
+            {isAuthenticated
+              ? accountItems.map((item) => (
+                  <ButtonLink key={item.id} name={item.name} link={item.link} />
+                ))
+              : authItems.map((item) => (
+                  <ButtonLink key={item.id} name={item.name} link={item.link} />
+                ))}
+          </Suspense>
         </div>
       </div>
-      <ToggleMenu menuVisible={menuVisible} onClose={toggleMenu} />
+      <Suspense fallback={<PageLoading />}>
+        <ToggleMenu menuVisible={menuVisible} onClose={toggleMenu} />
+      </Suspense>
     </Layout.Header>
   );
 }
