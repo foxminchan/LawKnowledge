@@ -2,8 +2,8 @@ import { Suspense } from 'react';
 import loadable from '@loadable/component';
 import AuthLayout from '@layouts/AuthLayout';
 import BasicLayout from '@layouts/BasicLayout';
-import { PageLoading } from '@ant-design/pro-components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ErrorBoundary, PageLoading } from '@ant-design/pro-components';
 
 const Law = loadable(() => import('@features/Law'));
 const Home = loadable(() => import('@features/Home'));
@@ -24,6 +24,7 @@ export default function App() {
         <Route element={<AuthLayout />}>
           <Route
             path="/hoi-dap"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <Chat title="Hỏi đáp" />
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/" element={<BasicLayout />}>
           <Route
             index
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <Home title="Trang chủ" />
@@ -42,6 +44,7 @@ export default function App() {
           />
           <Route
             path="/tra-cuu"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <Search title="Tra cứu" />
@@ -50,6 +53,7 @@ export default function App() {
           />
           <Route
             path="/van-ban-phap-luat"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <Law title="Văn bản pháp luật" />
@@ -58,6 +62,7 @@ export default function App() {
           />
           <Route
             path="/van-ban/:id"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <ItemDetail title="Chi tiết văn bản" />
@@ -66,6 +71,7 @@ export default function App() {
           />
           <Route
             path="/dang-nhap"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <SignIn title="Đăng nhập" />
@@ -74,6 +80,7 @@ export default function App() {
           />
           <Route
             path="/dang-ky"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <SignUp title="Đăng ký" />
@@ -82,6 +89,7 @@ export default function App() {
           />
           <Route
             path="/quen-mat-khau"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <ForgotPassword title="Quên mật khẩu" />
@@ -90,6 +98,7 @@ export default function App() {
           />
           <Route
             path="/doi-mat-khau"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <ChangePassword title="Đổi mật khẩu" />
@@ -99,6 +108,7 @@ export default function App() {
           <Route element={<AuthLayout />}>
             <Route
               path="/tai-khoan"
+              errorElement={<ErrorBoundary />}
               element={
                 <Suspense fallback={<PageLoading />}>
                   <Account title="Tài khoản" />
@@ -108,6 +118,7 @@ export default function App() {
           </Route>
           <Route
             path="*"
+            errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
                 <NotFound />

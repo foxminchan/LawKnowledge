@@ -33,7 +33,7 @@ export default function SignIn(props: Readonly<Props>) {
           subTitle="Đăng nhập để tiếp tục"
           onFinish={async (values) => {
             mutate(values as SignInPayload);
-            if (!isError && data) {
+            if (!isError && data?.access_token) {
               Cookies.set(StorageKeys.ACCESS_TOKEN, data.access_token);
               navigate('/');
             }

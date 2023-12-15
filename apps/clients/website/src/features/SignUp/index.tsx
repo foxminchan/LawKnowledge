@@ -5,8 +5,8 @@ import {
   ProFormDigit,
   ProFormInstance,
 } from '@ant-design/pro-components';
-import { Button, notification } from 'antd';
 import { useAtom } from 'jotai';
+import { Button, notification } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { MutableRefObject, useRef } from 'react';
 import { signUpAtom } from './atoms/sign-up.atom';

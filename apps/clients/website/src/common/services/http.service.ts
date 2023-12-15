@@ -58,6 +58,10 @@ export default class HttpService implements IHttpService {
             alert('Bạn đã gửi quá nhiều yêu cầu, vui lòng thử lại sau');
             break;
           }
+          default: {
+            alert('Có lỗi xảy ra, vui lòng thử lại sau');
+            break;
+          }
         }
         return Promise.reject(error);
       },

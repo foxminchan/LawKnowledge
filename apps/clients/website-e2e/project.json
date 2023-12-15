@@ -22,9 +22,13 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     }
   },
-  "implicitDependencies": ["website"],
+  "implicitDependencies": [
+    "website"
+  ],
   "tags": []
 }

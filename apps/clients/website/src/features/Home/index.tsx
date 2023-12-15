@@ -6,5 +6,5 @@ type Props = {
 
 export default function Home(props: Readonly<Props>) {
   useMetadata(props.title);
-  return <div>index</div>;
+  return <p>index</p>;
 }
