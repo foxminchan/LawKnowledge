@@ -5,7 +5,7 @@ import {
 } from './commands';
 import { Controller } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { EventPattern } from '@nestjs/microservices';
+import { GrpcMethod } from '@nestjs/microservices';
 import { CreateUserDto, UpdateUserDto } from './dto';
 import { GetUserQuery, GetUsersQuery } from './queries';
 import { Criteria } from '@law-knowledge/building-block';
@@ -17,27 +17,27 @@ export class UserController {
     private readonly commandBus: CommandBus,
   ) {}
 
-  @EventPattern({ cmd: 'getUsers' })
+  @GrpcMethod('UserService', 'GetUsers')
   getUsers(criteria?: Criteria) {
     return this.queryBus.execute(new GetUsersQuery(criteria));
   }
 
-  @EventPattern({ cmd: 'getUser' })
+  @GrpcMethod('UserService', 'GetUser')
   getUser(email: string) {
     return this.queryBus.execute(new GetUserQuery(email));
   }
 
-  @EventPattern({ cmd: 'addUser' })
+  @GrpcMethod('UserService', 'AddUser')
   addUser(user: CreateUserDto) {
     return this.commandBus.execute(new CreateUserCommand(user));
   }
 
-  @EventPattern({ cmd: 'updateUser' })
+  @GrpcMethod('UserService', 'UpdateUser')
   updateUser(user: UpdateUserDto) {
     return this.commandBus.execute(new UpdateUserCommand(user));
   }
 
-  @EventPattern({ cmd: 'deleteUser' })
+  @GrpcMethod('UserService', 'DeleteUser')
   deleteUser(id: string) {
     return this.commandBus.execute(new DeleteUserCommand(id));
   }

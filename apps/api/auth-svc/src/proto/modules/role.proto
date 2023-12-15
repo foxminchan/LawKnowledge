@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package role;
+
+import "../common/common.proto";
+
+message RoleCreateRequest {
+	string name = 1;
+}
+
+message RoleResponse {
+	common.Id id = 1;
+	string name = 2;
+}
+
+message RoleUpdateRequest {
+	common.Id id = 1;
+	string name = 2;
+}
+
+message RoleDeleteRequest {
+	common.Id id = 1;
+}
+
+service RoleService {
+	rpc GetRole(common.Id) returns (RoleResponse) {}
+	rpc GetRoles(common.Empty) returns (stream RoleResponse) {}
+	rpc AddRole(RoleCreateRequest) returns (RoleResponse) {}
+	rpc UpdateRole(RoleUpdateRequest) returns (RoleResponse) {}
+	rpc DeleteRole(RoleDeleteRequest) returns (common.Empty) {}
+}

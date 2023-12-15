@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "./modules/role.proto";
+import "./modules/user.proto";
+import "./modules/account.proto";
+
+package auth;
+
+message None {}

@@ -11,15 +11,19 @@ exporters:
   debug:
     verbosity: detailed
 
+  logging:
+
   prometheus:
-    endpoint: '0.0.0.0:8889'
+    endpoint: "0.0.0.0:8889"
     const_labels:
       label1: value1
 
-  otlp:
-    endpoint: tempo:4317
-    tls:
-      insecure: true
+  zipkin:
+    endpoint: "http://zipkin:9411/api/v2/spans"
+    format: proto
+
+  elasticsearch:
+    endpoint: "http://elasticsearch:9200"
 
 processors:
   batch:
@@ -29,20 +33,19 @@ processors:
     metric_statements:
       - context: metric
 
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [otlp]
-    metrics:
-      receivers: [otlp]
-      processors: [transform, batch]
-      exporters: [prometheus]
-    logs:
-      receivers: [otlp]
-      processors: [resource/loki, batch]
-      exporters: [loki]
-  telemetry:
-    logs:
-      level: INFO
+pipelines:
+  traces:
+    receivers: [otlp]
+    processors: [batch]
+    exporters: [logging, zipkin]
+  metrics:
+    receivers: [otlp]
+    processors: [transform, batch]
+    exporters: [logging, prometheus]
+  logs:
+    receivers: [otlp]
+    processors: [batch]
+    exporters: [logging, elasticsearch]
+telemetry:
+  logs:
+    level: INFO

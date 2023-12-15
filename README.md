@@ -87,7 +87,6 @@
   - [📖 Contributing Guidelines](#-contributing-guidelines)
   - [💁 Want to Help?](#-want-to-help)
   - [🫂 Code of Conduct](#-code-of-conduct)
-- [Contributor](#contributor)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
 
@@ -122,7 +121,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 - [Jenkins](https://www.jenkins.io/)
 - [Kubernetes](https://kubernetes.io/)
 - [OpenTelemetry](https://opentelemetry.io/)
-- [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/), [Loki](https://grafana.com/oss/loki/), [Tempo](https://grafana.com/oss/tempo/), [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/)
+- [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/), [Zipkin](https://zipkin.io/), [Fluentd](https://www.fluentd.org/)
 
 # Building blocks
 
@@ -130,7 +129,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
-<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -209,19 +208,19 @@ For the API, you can run the following command:
 
 ```bash
 # For the API Gateway
-dapr run --app-id api-gateway --app-port 8080 --components-path ./deploys/iac/dapr -- npx nx serve api-gateway --prod
+dapr run --app-id api-gateway --app-protocol http --app-port 8080 --components-path ./deploys/iac/dapr -- npx nx serve api-gateway --prod
 
 # For the Auth Service
-dapr run --app-id auth-svc --app-port 8081 --components-path ./deploys/iac/dapr -- npx nx serve auth-svc --prod
+dapr run --app-id auth-svc --app-protocol grpc --app-port 8081 --components-path ./deploys/iac/dapr -- npx nx serve auth-svc --prod
 
 # For the Law Service
-dapr run --app-id law-svc --app-port 8082 --components-path ./deploys/iac/dapr -- npx nx serve law-svc --prod
+dapr run --app-id law-svc --app-protocol grpc --app-port 8082 --components-path ./deploys/iac/dapr -- npx nx serve law-svc --prod
 
 # For the Chat Service
-dapr run --app-id chat-svc --app-port 8084 --components-path ./deploys/iac/dapr -- npx nx serve chat-svc --prod
+dapr run --app-id chat-svc --app-protocol grpc --app-port 8084 --components-path ./deploys/iac/dapr -- npx nx serve chat-svc --prod
 
 # For the Search Service
-dapr run --app-id search-svc --app-port 8083 --components-path ./deploys/iac/dapr -- npx nx serve search-svc --prod
+dapr run --app-id search-svc --app-protocol grpc --app-port 8083 --components-path ./deploys/iac/dapr -- npx nx serve search-svc --prod
 ```
 
 To traning the model, you can run the following command:
@@ -351,55 +350,6 @@ Want to report a bug, contribute some code, or improve the documentation? Excell
 Help us keep Law Knowledge open and inclusive. Please read and follow our [Code of Conduct](.github/CODE_OF_CONDUCT.md).
 
 </p>
-
-# Contributor
-
-<p align="justify">
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key))
-
-</p>
-
-<div align="center">
-	<table>
-		<tr>
-			<td align="center" valign="top">
-					<img src="https://github.com/foxminchan.png?s=150" loading="lazy" width="150" height="150">
-	        <br>
-	        <a href="https://github.com/foxminchan">Xuan Nhan</a>
-	        <p>
-	          <a href="https://github.com/HutechCJ/ProfioApp/commits?author=foxminchan" title="Developer">💻</a>
-	          <a href="#docs" title="Documentation">📖</a>
-	          <a href="#infra" title="Infrastructure">🚇</a>
-						<a href="#projectManagement" title="Project Management">📆</a>
-						<a href="#mentoring" title="Mentoring">🧑‍🏫</a>
-	        </p>
-			</td>
-			<td align="center" valign="top">
-					<img src="https://github.com/huynguyenjv.png?s=150" loading="lazy" width="150" height="150">
-	        <br>
-	        <a href="https://github.com/huynguyenjv">Bao Huy</a>
-	        <p>
-	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=baohuy2k3" title="Developer">💻</a>
-						<a href="#data" title="Data">🔣</a>
-						<a href="#design" title="Design">🎨</a>
-						<a href="#research" title="Research">🔬</a>
-	        </p>
-			</td>
-			<td align="center" valign="top">
-					<img src="https://github.com/NguyenTriBaoThang.png?s=150" loading="lazy" width="150" height="150">
-	        <br>
-	        <a href="https://github.com/NguyenTriBaoThang">Bao Thang</a>
-	        <p>
-	          <a href="https://github.com/foxminchan/LawKnowledge/commits?author=NguyenTriBaoThang" title="Developer">💻</a>
-						<a href="#design" title="Design">🎨</a>
-						<a href="#test" title="Test">🧪</a>
-						<a href="#userTesting" title="User Testing">📓</a>
-	        </p>
-			</td>
-		</tr>
-	</table>
-</div>
 
 # Support and Organization
 

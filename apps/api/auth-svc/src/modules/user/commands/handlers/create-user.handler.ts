@@ -1,34 +1,28 @@
-import { User } from '../../model';
 import { CreateUserCommand } from '../impl';
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CryptoUtils, AuthDataService } from '@law-knowledge/building-block';
-import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserCommandHandler
   implements ICommandHandler<CreateUserCommand>
 {
-  constructor(
-    private readonly dataService: AuthDataService,
-    private readonly publisher: EventPublisher,
-  ) {}
+  constructor(private readonly dataService: AuthDataService) {}
 
   async execute(payload: CreateUserCommand) {
-    const userCreated = await this.dataService.$transaction(async () =>
+    return this.dataService.$transaction(async () =>
       this.dataService.user.create({
         data: {
           ...payload.user,
           password: await CryptoUtils.hashString(payload.user.password),
+          UserRoles: {
+            create: [
+              {
+                role_id: '538cca28-8e18-47e7-8b6f-63c5a5ba386a',
+              },
+            ],
+          },
         },
       }),
     );
-
-    const { id, name, email, phone, card, address, password } = userCreated;
-
-    const userWithContext = this.publisher.mergeObjectContext(
-      new User(id, name, email, phone, card, address, password),
-    );
-
-    userWithContext.createUser();
-    userWithContext.commit();
   }
 }
