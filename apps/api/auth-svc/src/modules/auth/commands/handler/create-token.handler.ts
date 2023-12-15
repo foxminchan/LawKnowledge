@@ -1,8 +1,3 @@
-import {
-  CryptoUtils,
-  AuthDataService,
-  JWT_REFRESH_EXPIRES_IN,
-} from '@law-knowledge/building-block';
 import { JwtService } from '@nestjs/jwt';
 import { CreateTokenCommand } from '../impl';
 import { RpcException } from '@nestjs/microservices';
@@ -10,6 +5,7 @@ import { from, of, switchMap, throwError } from 'rxjs';
 import { TokenDto, JwtDto, LoginDto } from '../../dto';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { ForbiddenException, UnauthorizedException } from '@nestjs/common';
+import { CryptoUtils, AuthDataService } from '@law-knowledge/building-block';
 
 @CommandHandler(CreateTokenCommand)
 export class CreateTokenCommandHandler
@@ -72,9 +68,6 @@ export class CreateTokenCommandHandler
 
         return of({
           access_token: this.jwtService.sign(token),
-          refresh_token: this.jwtService.sign(token, {
-            expiresIn: JWT_REFRESH_EXPIRES_IN,
-          }),
         } as TokenDto);
       }),
     );

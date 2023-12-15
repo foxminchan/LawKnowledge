@@ -5,14 +5,12 @@ import {
   HealthCheckModule,
 } from './modules';
 import {
-  OtelModule,
   JwtStrategy,
   NestHttpModule,
   ApiKeyStrategy,
   RateLimitModule,
   NestCacheModule,
   LoggerMiddleware,
-  RefreshTokenStrategy,
   HttpCacheInterceptor,
   ClearCacheInterceptor,
 } from '@law-knowledge/building-block';
@@ -21,7 +19,6 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 @Module({
   imports: [
-    OtelModule,
     LawSvcModule,
     AuthSvcModule,
     NestHttpModule,
@@ -33,7 +30,6 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
   providers: [
     JwtStrategy,
     ApiKeyStrategy,
-    RefreshTokenStrategy,
     {
       provide: APP_INTERCEPTOR,
       useClass: HttpCacheInterceptor,

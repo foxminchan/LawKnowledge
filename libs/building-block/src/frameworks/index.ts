@@ -1,4 +1,3 @@
-export * from './otel';
 export * from './http';
 export * from './prisma';
 export * from './logger';
