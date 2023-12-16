@@ -1,0 +1,34 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledJob
+metadata:
+  name: chat-db-job
+spec:
+  jobTargetRef:
+    template:
+      spec:
+        containers:
+          - name: mongodb
+            image: mongo:latest
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Never
+    backoffLimit: 1
+  maxReplicaCount: 30
+  failedJobsHistoryLimit: 10
+---
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: chat-db-trigger-auth
+spec:
+  secretTargetRef:
+    - parameter: connectionString
+      name: mongodb-secret
+      key: connect
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongodb-secret
+type: Opaque
+data:
+  connect: "mongodb://mongo:27017"

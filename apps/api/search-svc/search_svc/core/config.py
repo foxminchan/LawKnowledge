@@ -10,7 +10,8 @@ ENV: str = ""
 
 
 class Configs(BaseSettings):
-    OPEN_AI_API_KEY: str = os.getenv("OPEN_AI_API_KEY")
+    URL: str = os.getenv("URL")
+    PORT: str = os.getenv("PORT")
 
     class Config:
         case_sensitive = True

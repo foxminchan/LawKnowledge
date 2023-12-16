@@ -12,5 +12,3 @@ spec:
     - type: postgresql
       metadata:
         connection: LAW_DB_CONNECTION
-        query: "SELECT ceil(COUNT(*)::decimal / 16) FROM task_instance WHERE state='running' OR state='queued'"
-        targetQueryValue: 1

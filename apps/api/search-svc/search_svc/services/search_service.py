@@ -3,7 +3,6 @@ from haystack.document_stores import FAISSDocumentStore
 from haystack.nodes import EmbeddingRetriever, PromptNode
 
 import searching_svc.grpc.searching_service_pb2_grpc as handler
-from searching_svc.core.config import configs
 
 
 class SearchServicer(handler.SearchingServiceServicer):
@@ -12,13 +11,11 @@ class SearchServicer(handler.SearchingServiceServicer):
         self.retriever = EmbeddingRetriever(
           document_store=self.document_store,
           batch_size=32,
-          embedding_model="sentence-transformers/multi-qa-mpnet-base-dot-v1",
-          api_key=configs.OPEN_AI_API_KEY
+          embedding_model="keepitreal/vietnamese-sbert",
         )
         self.prompt_node = PromptNode(
-          model_name_or_path="gpt-4",
-          api_key=configs.OPEN_AI_API_KEY,
-          default_prompt_template="deepset/question-answering-with-references"
+          model_name_or_path="vinai/PhoGPT-7B5-Instruct",
+          default_prompt_template="vinai/phobert-base-v2"
         )
 
     def RunSearch(self, keyword, **kwargs):
