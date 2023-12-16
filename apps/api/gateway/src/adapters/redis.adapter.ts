@@ -1,4 +1,5 @@
 import { createClient } from 'redis';
+import { configs } from '../configs';
 import type { Adapter } from 'socket.io-adapter';
 import { WebSocketAdapter } from '@nestjs/common';
 import { IoAdapter } from '@nestjs/platform-socket.io';
@@ -10,7 +11,7 @@ export class RedisIoAdapter extends IoAdapter implements WebSocketAdapter {
 
   async connectToRedis(): Promise<void> {
     const pubClient = createClient({
-      url: process.env.REDIS_URL,
+      url: configs().redisUrl,
     });
     const subClient = pubClient.duplicate();
     await Promise.all([pubClient.connect(), subClient.connect()]);

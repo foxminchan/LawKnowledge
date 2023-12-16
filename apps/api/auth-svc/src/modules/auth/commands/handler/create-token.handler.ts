@@ -3,8 +3,8 @@ import { CreateTokenCommand } from '../impl';
 import { RpcException } from '@nestjs/microservices';
 import { from, of, switchMap, throwError } from 'rxjs';
 import { TokenDto, JwtDto, LoginDto } from '../../dto';
+import { UnauthorizedException } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { ForbiddenException, UnauthorizedException } from '@nestjs/common';
 import { CryptoUtils, AuthDataService } from '@law-knowledge/building-block';
 
 @CommandHandler(CreateTokenCommand)
@@ -32,7 +32,7 @@ export class CreateTokenCommandHandler
           return throwError(
             () =>
               new RpcException(
-                new ForbiddenException('Tài khoản của bạn không tồn tại'),
+                new UnauthorizedException('Tài khoản của bạn không tồn tại'),
               ),
           );
 
@@ -44,7 +44,7 @@ export class CreateTokenCommandHandler
                   () =>
                     new RpcException(
                       new UnauthorizedException(
-                        'Tên đăng nhập hoặc mật khẩu không hợp lệ',
+                        'Tài khoản của bạn không tồn tại',
                       ),
                     ),
                 );

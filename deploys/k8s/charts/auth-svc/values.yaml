@@ -1,0 +1,12 @@
+backend:
+  image:
+    repository: ghcr.io/foxminchan/auth-svc
+    tag: latest
+
+  nameOverride: auth-svc
+  fullnameOverride: auth-svc
+  databaseName: auth-svc
+  ingress:
+    enabled: true
+    host: api.hutech.dev.com
+    path: /auth-svc

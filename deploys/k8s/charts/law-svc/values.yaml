@@ -1,0 +1,12 @@
+backend:
+  image:
+    repository: ghcr.io/foxminchan/law-svc
+    tag: latest
+
+  nameOverride: law-svc
+  fullnameOverride: law-svc
+  databaseName: law-svc
+  ingress:
+    enabled: true
+    host: api.hutech.dev.com
+    path: /law-svc

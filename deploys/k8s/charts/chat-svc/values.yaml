@@ -1,0 +1,12 @@
+backend:
+  image:
+    repository: ghcr.io/foxminchan/chat-svc
+    tag: latest
+
+  nameOverride: chat-svc
+  fullnameOverride: chat-svc
+  databaseName: chat-svc
+  ingress:
+    enabled: true
+    host: api.hutech.dev.com
+    path: /chat-svc

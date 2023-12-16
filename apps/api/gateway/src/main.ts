@@ -10,6 +10,7 @@ import {
   RpcExceptionToHttpExceptionFilter,
 } from '@law-knowledge/building-block';
 import cors from '@fastify/cors';
+import { configs } from './configs';
 import helmet from '@fastify/helmet';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
@@ -61,7 +62,7 @@ async function bootstrap() {
 
   AppUtils.processAppWithGrace(app);
 
-  await app.listen(process.env.PORT || 8080);
+  await app.listen(configs().port || 8080);
 }
 
 bootstrap();

@@ -1,82 +1,49 @@
-import { INestApplication } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
-import { ClientsModule, Transport, ClientProxy } from '@nestjs/microservices';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { join } from 'path';
+import { UnauthorizedException } from '@nestjs/common';
+import { ClientGrpcProxy } from '@nestjs/microservices';
 
-describe('Test Auth', () => {
-  let app: INestApplication;
-  let client: ClientProxy;
+describe('AuthClientGrpcProxy', () => {
+  let client: ClientGrpcProxy;
 
-  beforeAll(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [
-        ClientsModule.register([
-          { name: 'AuthService', transport: Transport.TCP },
-        ]),
-      ],
-    }).compile();
-
-    app = moduleFixture.createNestApplication();
-
-    app.connectMicroservice({
-      transport: Transport.TCP,
-    });
-
-    await app.startAllMicroservices();
-    await app.init();
-    client = app.get('AuthService');
-    await client.connect();
-  });
-
-  afterAll(async () => {
-    await app.close();
-    client.close();
-  });
-
-  it('creates a user', (done) => {
-    const response = client.send(
-      { cmd: 'addUser' },
-      {
-        name: 'Demo User',
-        email: 'demo@gmail.com',
-        password: process.env.PASSWORD,
-        card: '123456789',
-        phone: '1234567890',
-        address: 'Nam Ky Khoi Nghia, Quan 3, TP HCM',
-      }
-    );
-
-    response.subscribe((created) => {
-      expect(created).toBe(true);
-      done();
+  beforeEach(async () => {
+    client = new ClientGrpcProxy({
+      protoPath: join(__dirname, '../proto/auth.test.proto'),
+      package: 'auth.test',
+      loader: {
+        enums: String,
+        objects: true,
+        arrays: true,
+        includeDirs: [join(__dirname, '../proto')],
+      },
     });
   });
 
-  it('login', (done) => {
-    const response = client.send(
-      { cmd: 'login' },
-      {
-        email: 'demo@gmail.com',
-        password: process.env.PASSWORD,
-      }
-    );
-
-    response.subscribe((created) => {
-      expect(created).toBe(true);
-      done();
+  describe('login', () => {
+    describe('when login is called', () => {
+      it('should return an access token', async () => {
+        const result = await client.getService<any>('AuthService').login({
+          username: 'nhan@gmail.com',
+          password: 'P@ssw0rd',
+        });
+        expect(result).toEqual({
+          accessToken: expect.any(String),
+        });
+      });
     });
-  });
 
-  it('get user', (done) => {
-    const response = client.send(
-      { cmd: 'getUser' },
-      {
-        email: 'demo@gmail.com',
-      }
-    );
-
-    response.subscribe((created) => {
-      expect(created).toBe(true);
-      done();
+    describe('when login is called with invalid credentials', () => {
+      it('should throw an error', async () => {
+        const result = await expect(
+          client.getService<any>('AuthService').login({
+            username: 'invalid@gmail.com',
+            password: 'invalid',
+          }),
+        ).rejects.toThrow();
+        expect(result).toThrow(
+          new UnauthorizedException('Tài khoản của bạn không tồn tại'),
+        );
+      });
     });
   });
 });

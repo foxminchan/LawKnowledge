@@ -113,8 +113,6 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 - [React](https://reactjs.org/)
 - [NestJS](https://nestjs.com/)
 - [Python](https://www.python.org/)
-- [React Native](https://reactnative.dev/)
-- [Dapr](https://dapr.io/)
 - [Pulumi](https://www.pulumi.com/)
 - [Kafka](https://kafka.apache.org/)
 - [ArgoCD](https://argoproj.github.io/argo-cd/)
@@ -129,7 +127,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
-<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -160,9 +158,6 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 	<li align="justify">
 		<b><a href="https://helm.sh/" target="_blank">Helm</a></b> - Helm is the best way to find, share, and use software built for Kubernetes.
 	</li>
-	<li align="justify">
-		<b><a href="https://dapr.io/" target="_blank">Dapr</a></b> - Dapr is a portable, event-driven runtime that makes it easy for developers to build resilient, microservice stateless and stateful applications that run on the cloud and edge and embraces the diversity of languages and developer frameworks.
-	</li>
 </ul>
 
 ## 📦 Dataset
@@ -190,37 +185,31 @@ Next, navigate to the root directory of the project and install the dependencies
 pnpm install --force
 ```
 
-After that, initialize the distributed application runtime:
-
-```bash
-dapr init
-```
-
 ## 🚀 Running
 
 For the website, you can run the following command:
 
 ```bash
-npx nx serve webfront
+npx nx serve website --prod
 ```
 
 For the API, you can run the following command:
 
 ```bash
 # For the API Gateway
-dapr run --app-id api-gateway --app-protocol http --app-port 8080 --components-path ./deploys/iac/dapr -- npx nx serve api-gateway --prod
+npx nx serve api-gateway --prod
 
 # For the Auth Service
-dapr run --app-id auth-svc --app-protocol grpc --app-port 8081 --components-path ./deploys/iac/dapr -- npx nx serve auth-svc --prod
+npx nx serve auth-svc --prod
 
 # For the Law Service
-dapr run --app-id law-svc --app-protocol grpc --app-port 8082 --components-path ./deploys/iac/dapr -- npx nx serve law-svc --prod
+npx nx serve law-svc --prod
 
 # For the Chat Service
-dapr run --app-id chat-svc --app-protocol grpc --app-port 8084 --components-path ./deploys/iac/dapr -- npx nx serve chat-svc --prod
+npx nx serve chat-svc --prod
 
 # For the Search Service
-dapr run --app-id search-svc --app-protocol grpc --app-port 8083 --components-path ./deploys/iac/dapr -- npx nx serve search-svc --prod
+npx nx serve search-svc --prod
 ```
 
 To traning the model, you can run the following command:
@@ -246,7 +235,7 @@ npx nx up pulumi
 For the website, you can run the following command:
 
 ```bash
-npx nx test webfront-e2e
+npx nx test website-e2e
 ```
 
 For the API, you can run the following command:

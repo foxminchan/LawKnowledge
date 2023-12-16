@@ -1,0 +1,51 @@
+opentelemetryConfig:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+        http:
+          cors:
+            allowed_origins:
+              - http://*
+              - https://*
+
+  processors:
+    batch:
+      timeout: 1s
+      send_batch_size: 1024
+    transform:
+      metric_statements:
+        - context: metric
+
+  exporters:
+    debug:
+      verbosity: detailed
+
+    logging:
+
+    prometheus:
+      endpoint: "0.0.0.0:8889"
+      const_labels:
+        label1: value1
+
+    zipkin:
+      endpoint: "http://zipkin:9411/api/v2/spans"
+      format: proto
+
+    elasticsearch:
+      endpoint: "http://elasticsearch:9200"
+
+  service:
+    pipelines:
+      traces:
+        receivers: [otlp]
+        processors: [batch]
+        exporters: [logging, zipkin]
+      metrics:
+        receivers: [otlp]
+        processors: [transform, batch]
+        exporters: [logging, prometheus]
+      logs:
+        receivers: [otlp]
+        processors: [batch]
+        exporters: [logging, elasticsearch]

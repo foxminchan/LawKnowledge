@@ -1,0 +1,16 @@
+apiVersion: keda.k8s.io/v1alpha1
+kind: ScaledObject
+metadata:
+  name: auth-worker
+spec:
+  scaleTargetRef:
+    deploymentName: auth-worker
+  pollingInterval: 10
+  cooldownPeriod: 30
+  maxReplicaCount: 10
+  triggers:
+    - type: postgresql
+      metadata:
+        connection: AUTH_DB_CONNECTION
+        query: "SELECT ceil(COUNT(*)::decimal / 16) FROM task_instance WHERE state='running' OR state='queued'"
+        targetQueryValue: 1

@@ -16,6 +16,7 @@ import {
 } from '@law-knowledge/building-block';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { NestConfigModule } from './configs';
 
 @Module({
   imports: [
@@ -23,8 +24,9 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
     AuthSvcModule,
     NestHttpModule,
     SearchSvcModule,
-    NestCacheModule,
     RateLimitModule,
+    NestCacheModule,
+    NestConfigModule,
     HealthCheckModule,
   ],
   providers: [

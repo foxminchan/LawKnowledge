@@ -1,0 +1,4 @@
+hostname: grafana.hutech.dev.ccom
+grafana:
+  username: admin
+  password: admin

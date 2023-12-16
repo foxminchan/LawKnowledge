@@ -1,29 +1,21 @@
 Copyright 2023 by Hutech University
 
-Intellectual Property Notice
-----------------------------
+Law Knowledge is licensed under the MIT license (See LICENSE or http://opensource.org/licenses/MIT), at your option.
 
-Law Knowledge is licensed under the MIT license.
-(See LICENSE or http://opensource.org/licenses/MIT),
-at your option.
+Law Knowledge incorporates material from the projects listed below (collectively, "Third Party Code").  This material is available under the listed licenses.
 
-Copyrights and patents in the Law Knowledge project are retained
-by contributors.
-
-No copyright assignment is required to contribute to Law Knowledge
-
-    SPDX-License-Identifier: (MIT)
-
-SPDX usage
-----------
-
-Individual files may contain SPDX tags instead of the full license text.
-This enables machine processing of license information based on the SPDX
-License Identifiers that are available here: https://spdx.org/licenses/
-
-Here is a component list with their license:
-
-- Haystack with Apache License 2.0: https://spdx.org/licenses/Apache-2.0.html
-- Langchain with Apache License 2.0: https://spdx.org/licenses/Apache-2.0.html
-- Faiss with MIT License: https://spdx.org/licenses/MIT.html
-- Nestjs with MIT License: https://spdx.org/licenses/MIT.html
+Name                     Version        License            Description                                                     Url
+Haystack                 1.23.0         Apache 2.0         A modular framework for neural question answering               https://github.com/deepset-ai/haystack
+Langchainjs              0.0.208        MIT                A framework for building a language chain                       https://github.com/langchain-ai/langchainjs
+Faiss                    1.7.4          MIT                A library for efficient similarity search                       https://github.com/facebookresearch/faiss
+Nestjs                   4.5.9          MIT                A progressive Node.js framework                                 https://github.com/nestjs/nest
+React                    16.8.6         MIT                A JavaScript library for building user interfaces               https://github.com/facebook/react
+Prometheus               2.48.1         Apache 2.0         A monitoring system and time series database                    https://github.com/prometheus/prometheus
+Grafana                  10.2.2         AGPL 3.0           The open and composable observability                           https://github.com/grafana/grafana
+Zipkin                   2.52.2         Apache 2.0         A distributed tracing system                                    https://github.com/openzipkin/zipkin
+Elasticsearch            8.11.3         Apache 2.0         A distributed, RESTful search and analytics engine              https://github.com/elastic/elasticsearch
+Opentelemetry            1.0.0          Apache 2.0         A collection of tools, APIs, and SDKs                           https://github.com/open-telemetry
+Fluentd                  1.16.3         Apache 2.0         An open source data collector for unified logging layer         https://github.com/fluent/fluentd
+Kibana                   8.11.3         Apache 2.0         A free and open user interface that lets you visualize Elastic  https://github.com/elastic/kibana
+transformers             4.36.1         Apache 2.0         State-of-the-art Natural Language Processing for Pytorch and    https://github.com/huggingface/transformers
+tokenizers               0.15.0         Apache 2.0         Fast and Customizable Tokenizers                                https://github.com/huggingface/tokenizers

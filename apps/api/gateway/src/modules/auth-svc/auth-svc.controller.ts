@@ -5,19 +5,27 @@ import {
   ApiController,
   SwaggerResponse,
 } from '@law-knowledge/building-block';
+import {
+  User,
+  AccessToken,
+  LoginPayload,
+  RegisterPayload,
+} from './auth-svc.payload';
 import { AuthService } from './auth-svc.service';
-import { LoginPayload, RegisterPayload } from './auth-svc.payload';
 import { Body, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { LoginRequest, RegisterRequest } from './auth-svc.interface';
 
 @ApiController('auth')
 export class AuthController {
   constructor(private readonly authSvcService: AuthService) {}
+
   @Post('login')
   @SwaggerResponse({
     operation: 'Login',
     body: LoginPayload,
+    response: AccessToken,
   })
-  login(@Body() payload: LoginPayload) {
+  login(@Body() payload: LoginRequest) {
     return this.authSvcService.login(payload);
   }
 
@@ -25,8 +33,9 @@ export class AuthController {
   @SwaggerResponse({
     operation: 'Register',
     body: RegisterPayload,
+    response: User,
   })
-  register(@Body() payload: RegisterPayload) {
+  register(@Body() payload: RegisterRequest) {
     return this.authSvcService.register(payload);
   }
 
@@ -37,6 +46,7 @@ export class AuthController {
   @SwaggerResponse({
     operation: 'Get User',
     params: ['email'],
+    response: User,
   })
   getUser(@Param('email') email: string) {
     return this.authSvcService.getUser(email);

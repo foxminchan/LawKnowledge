@@ -14,7 +14,7 @@ Welcome to the getting started for Law Knowledge project!
 
 If you are new to the project, this is the place to start. Here you will find the information you need to get up and running with the project quickly. You will also find information about the project's architecture, the technologies used, and the tools that are available to help you develop your application.
 
-If you have any questions, please feel free to ask in the [Telegram](https://discord.gg/3qfQ8fz). Our Telegram channel is a place where you can ask questions, share ideas, and collaborate on the project. Connect with users from the community and get help from the project maintainers. Get your questions answered and learn cool new tips and tricks! Watch for notifications of the latest content from Redis and the community. And share your own content with the community.
+If you have any questions, please feel free to ask in the [Telegram](https://t.me/+bz74heXQgBwwOWRl). Our Telegram channel is a place where you can ask questions, share ideas, and collaborate on the project. Connect with users from the community and get help from the project maintainers. Get your questions answered and learn cool new tips and tricks! Watch for notifications of the latest content from Redis and the community. And share your own content with the community.
 
 </p>
 
@@ -47,8 +47,6 @@ Having a computer that meets or exceeds these recommended hardware requirements 
 - [**Node.js**](https://nodejs.org/): An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.
 - [**pnpm**](https://pnpm.io/): A fast, disk space efficient package manager that helps to minimize duplication while installing dependencies.
 - [**Pulumi**](https://www.pulumi.com/): Acloud development platform that makes creating cloud programs easy and productive.
-- [**Dapr**](https://dapr.io/): An open source, portable, event-driven runtime that makes it easy for developers to build resilient, microservice stateless and stateful applications that run on the cloud and edge and embraces the diversity of languages and developer frameworks.
-
 </p>
 
 ## 📦 Dataset
@@ -81,26 +79,26 @@ pnpm install --force
 For the website, you can run the following command:
 
 ```bash
-npx nx serve webfront
+npx nx serve website --prod
 ```
 
 For the API, you can run the following command:
 
 ```bash
 # For the API Gateway
-npx nx serve api-gateway
+npx nx serve api-gateway --prod
 
 # For the Auth Service
-npx nx serve auth-svc
+npx nx serve auth-svc --prod
 
 # For the Law Service
-npx nx serve law-svc
+npx nx serve law-svc --prod
 
 # For the Chat Service
-npx nx serve chat-svc
+npx nx serve chat-svc --prod
 
 # For the Search Service
-npx nx build search-svc
+npx nx serve search-svc --prod
 ```
 
 To traning the model, you can run the following command:
@@ -112,12 +110,14 @@ npx nx build model
 To set up the infrastructure, you can run the following command:
 
 ```bash
-npx nx up iac
+npx nx up pulumi
 ```
 
 :::tip
 
-If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9.1 <=3.12`.
+<p align="justify">
+	If you want to run with Nx, make sure you have installed `poetry` globally. Python version must be `>=3.9.1 <=3.12`.
+</p>
 
 :::
 
@@ -126,7 +126,7 @@ If you want to run with Nx, make sure you have installed `poetry` globally. Pyth
 For the website, you can run the following command:
 
 ```bash
-npx nx test webfront-e2e
+npx nx test website-e2e
 ```
 
 For the API, you can run the following command:
@@ -186,7 +186,6 @@ cd tools/scripts && ls
 # Run the script
 ./<script-name>
 ```
-
 
 ## 🛜 Port Binding
 

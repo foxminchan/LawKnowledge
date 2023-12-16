@@ -1,0 +1,12 @@
+backend:
+  image:
+    repository: ghcr.io/foxminchan/search-svc
+    tag: latest
+
+  nameOverride: search-svc
+  fullnameOverride: search-svc
+  databaseName: search-svc
+  ingress:
+    enabled: true
+    host: api.hutech.dev.com
+    path: /search-svc

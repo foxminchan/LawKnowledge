@@ -12,3 +12,9 @@ run_observability:
 	cd deploys/observability && docker-compose -f docker-compose.o11y.yml up -d
 
 .PHONY: run_observability
+
+run_ci:
+	echo "Running CI"
+	cd deploys/ci && docker-compose -f docker-compose.ci.yml up -d
+
+.PHONY: run_ci

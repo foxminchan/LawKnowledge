@@ -1,0 +1,9 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: opentelemetry
+spec:
+  mode: deployment
+	replicas: 1
+  config: |
+    {{ toYaml .Values.opentelemetryCollectorConfig | nindent 4 }}
