@@ -1,0 +1,38 @@
+[tool.nx]
+autoActivate = true
+
+[tool.poetry]
+name = "@law-knowledge/source"
+version = "1.0.0"
+description = "A legal knowledge search and Q&amp;A application based on Vietnam&#39;s Legal Code and legal document database"
+authors = [ ]
+license = "Proprietary"
+readme = "README.md"
+
+  [tool.poetry.dependencies]
+  python = ">=3.9,<3.11"
+
+    [tool.poetry.dependencies.searching-svc]
+    path = "apps/api/search-svc"
+    develop = true
+
+    [tool.poetry.dependencies.model]
+    path = "apps/nlp/model"
+    develop = true
+
+    [tool.poetry.dependencies.proc]
+    path = "apps/nlp/proc"
+    develop = true
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "2.0.2"
+flake8 = "6.0.0"
+pytest = "7.3.1"
+pytest-sugar = "0.9.7"
+pytest-cov = "4.1.0"
+pytest-html = "3.2.0"
+isort = "^5.12.0"
+
+[build-system]
+requires = [ "poetry-core==1.1.0" ]
+build-backend = "poetry.core.masonry.api"

@@ -23,7 +23,7 @@ async function main() {
   });
 
   console.log(
-    `Created roles: ${LawyerRole.name}, ${CitizenRole.name}, ${AdminRole.name}`
+    `Created roles: ${LawyerRole.name}, ${CitizenRole.name}, ${AdminRole.name}`,
   );
 }
 
