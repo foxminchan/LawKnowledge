@@ -1,0 +1,47 @@
+replicaCount: 1
+
+image:
+  registry: docker.io
+  repository: dpage/pgadmin4
+  tag: latest
+  pullPolicy: IfNotPresent
+serviceAccount:
+  create: true
+pgadmin:
+  user: hutech@hutech.edu.vn
+  password: hutech$123
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 2Gi
+service:
+  type: ClusterIP
+  port: 80
+hostname: &hostname pgadmin.hutech.dev.com
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: *hostname
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

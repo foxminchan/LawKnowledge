@@ -29,7 +29,15 @@ export default function SignIn(props: Readonly<Props>) {
     <ProConfigProvider hashed={false}>
       <div className={`bg-${token.colorBgContainer}`}>
         <LoginForm
-          logo={<Image preview={false} loading="lazy" src={Logo} alt="logo" />}
+          logo={
+            <Image
+              src={Logo}
+              preview={false}
+              decoding="async"
+              loading="lazy"
+              alt="Coat of arms"
+            />
+          }
           subTitle="Đăng nhập để tiếp tục"
           onFinish={async (values) => {
             mutate(values as SignInPayload);

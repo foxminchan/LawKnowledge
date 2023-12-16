@@ -31,4 +31,4 @@ metadata:
   name: mongodb-secret
 type: Opaque
 data:
-  connect: "mongodb://mongo:27017"
+  connect: aHR0cHM6Ly9hZG1pbjpodXRlY2gkMTIzQHBvc3RncmVzOjYwMDEvbW9uZ29kYg==

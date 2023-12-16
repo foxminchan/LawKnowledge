@@ -3,6 +3,7 @@ version: '3.9'
 services:
   nginx:
     image: nginx:latest
+    container_name: nginx
     restart: unless-stopped
     volumes:
       - ./nginx/templates:/etc/nginx/templates
@@ -12,7 +13,222 @@ services:
     networks:
       - hutech-network
 
+  api-gateway:
+    build: ../../apps/api/gateway
+    image: ghcr.io/foxminchan/api-gateway:latest
+    container_name: api-gateway
+    restart: unless-stopped
+    entrypoint: ['node', 'dist/apps/api/auth-svc/main.js']
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+      - AUTH_SVC_HOST=host.docker.internal
+      - AUTH_SVC_PORT=8081
+      - LAW_SVC_HOST=host.docker.internal
+      - LAW_SVC_PORT=8082
+      - SEARCH_SVC_HOST=host.docker.internal
+      - SEARCH_SVC_PORT=8083
+      - CHAT_SVC_HOST=host.docker.internal
+      - CHAT_SVC_PORT=8084
+      - REDIS_URL=redis://:hutech$123:host.docker.internal:6379
+    ports:
+      - '8080:8080'
+    networks:
+      - hutech-network
+
+  auth-svc:
+    build: ../../apps/api/auth-svc
+    image: ghcr.io/foxminchan/auth-svc:latest
+    container_name: auth-svc
+    restart: unless-stopped
+    entrypoint: ['node', 'dist/apps/api/auth-svc/main.js']
+    environment:
+      - PORT=8081
+      - NODE_ENV=production
+      - URL=host.docker.internal
+      - DATABASE_URL=postgre://admin:hutech$123@host.docker.internal:6001/auth_svc_db
+    ports:
+      - '8081:8081'
+    networks:
+      - hutech-network
+    depends_on:
+      - postgresql-auth-svc
+
+  law-svc:
+    build: ../../apps/api/law-svc
+    image: ghcr.io/foxminchan/law-svc:latest
+    container_name: law-svc
+    restart: unless-stopped
+    entrypoint: ['node', 'dist/apps/api/law-svc/main.js']
+    environment:
+      - PORT=8082
+      - NODE_ENV=production
+      - URL=host.docker.internal
+      - DATABASE_URL=postgre://admin:hutech$123@host.docker.internal:6002/law_svc_db
+    ports:
+      - '8082:8082'
+    networks:
+      - hutech-network
+    depends_on:
+      - postgresql-law-svc
+
+  search-svc:
+    build: ../../apps/api/search-svc
+    image: ghcr.io/foxminchan/search-svc:latest
+    container_name: search-svc
+    restart: unless-stopped
+    entrypoint: ['python', 'main.py']
+    environment:
+      - PORT=8083
+      - NODE_ENV=production
+      - URL=host.docker.internal
+    ports:
+      - '8083:8083'
+    networks:
+      - hutech-network
+
+  chat-svc:
+    build: ../../apps/api/chat-svc
+    image: ghcr.io/foxminchan/chat-svc:latest
+    container_name: chat-svc
+    restart: unless-stopped
+    entrypoint: ['node', 'dist/apps/api/chat-svc/main.js']
+    environment:
+      - PORT=8084
+      - NODE_ENV=production
+      - URL=host.docker.internal
+      - DATABASE_URL=mongodb://admin:hutech$123host.docker.internal:27017/chat_svc_db
+    ports:
+      - '8084:8084'
+    networks:
+      - hutech-network
+    depends_on:
+      - mongodb-chat-svc
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - ./redis:/data
+    command: redis-server --requirepass hutech$123
+    ports:
+      - '6379:6379'
+    networks:
+      - hutech-network
+
+  postgresql-auth-svc:
+    image: postgres:latest
+    container_name: postgres-auth-svc
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf.sample:/usr/share/postgresql/postgresql.conf.sample
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=hutech$123
+      - POSTGRES_DB=auth_svc_db
+    ports:
+      - '6001:5432'
+    networks:
+      - hutech-network
+
+  postgresql-law-svc:
+    image: postgres:latest
+    container_name: postgres-law-svc
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf.sample:/usr/share/postgresql/postgresql.conf.sample
+    command: postgres -c 'max_connections=500'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=hutech$123
+      - POSTGRES_DB=law_svc_db
+    ports:
+      - '6002:5432'
+    networks:
+      - hutech-network
+
+  mongodb-chat-svc:
+    image: mongo:latest
+    container_name: mongodb-chat-svc
+    restart: unless-stopped
+    volumes:
+      - ./mongodb:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=hutech$123
+      - MONGO_INITDB_DATABASE=chat_svc_db
+    ports:
+      - '27017:27017'
+    networks:
+      - hutech-network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: hutech@hutech.edu.vn
+      PGADMIN_DEFAULT_PASSWORD: hutech$123
+    networks:
+      - hutech-network
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    restart: unless-stopped
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,PLAINTEXT_HOST://:29092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    ports:
+      - '9092:9092'
+      - '29092:29092'
+    networks:
+      - hutech-network
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    restart: unless-stopped
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    ports:
+      - '2181:2181'
+    networks:
+      - hutech-network
+
+  akhq:
+    image: tchiotludo/akhq:latest
+    container_name: akhq
+    restart: unless-stopped
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            local:
+              properties:
+                bootstrap.servers: kafka:9092
+                schema.registry.url: http://schema-registry:7061
+                basic.auth.credentials.source: USER_INFO
+                basic.auth.user.info: admin:hutech$123
+
 networks:
   hutech-network:
     name: hutech-network
     external: true
+
+volumes:
+  postgresql-law-svc:
+  postgresql-auth-svc:
+  mongodb-chat-svc:
+  redis:
+  pgadmin:

@@ -1,0 +1,21 @@
+replicaCount: 1
+image:
+  repository: zookeeper
+  pullPolicy: IfNotPresent
+serviceAccount:
+  create: true
+service:
+  type: ClusterIP
+  port: 2181
+ingress:
+  enabled: false
+  hosts:
+    - host: zookeeper.hutech.dev.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

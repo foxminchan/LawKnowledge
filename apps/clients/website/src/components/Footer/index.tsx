@@ -11,9 +11,10 @@ export default function Footer() {
           <Link to="/" className="inline-block">
             <Image
               src={Coa}
-              alt="Coat of arms"
               preview={false}
+              decoding="async"
               fallback={fallbackImage}
+              alt="Coat of arms"
               loading="lazy"
               className="lg:max-w-[378px] ml-1 lg:h-auto"
             />

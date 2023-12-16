@@ -11,4 +11,4 @@ spec:
   triggers:
     - type: postgresql
       metadata:
-        connection: LAW_DB_CONNECTION
+        connection: cG9zdGdyZXM6Ly9hZG1pbjpodXRlY2gkMTIzQHBvc3RncmVzOjYwMDEvbGF3X3N2Y19kYg==

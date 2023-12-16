@@ -32,6 +32,7 @@ export default function Header() {
           <Image
             src={Logo}
             alt="logo"
+            decoding="async"
             preview={false}
             fallback={fallbackImage}
             loading="lazy"

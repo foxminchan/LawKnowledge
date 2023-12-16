@@ -1,3 +1,79 @@
 server {
-  server_name api.hutech.local;
+  server_name api.hutech.dev.com;
+
+  resolver 127.0.0.11;
+
+  location / {
+    proxy_pass http://swagger-doc:8080;
+  }
+
+  location /auth-svc/ {
+    proxy_pass http://auth-svc;
+  }
+
+  location /law-svc/ {
+    proxy_pass http://law-svc;
+  }
+
+  location /search-svc/ {
+    proxy_pass http://search-svc;
+  }
+
+  location /chat-svc/ {
+    proxy_pass http://chat-svc;
+  }
+}
+
+server {
+  server_name hutech.dev.com;
+
+  location / {
+	  proxy_pass http://website;
+  }
+}
+
+server {
+  server_name pgadmin.hutech.dev.com;
+
+  location / {
+	  proxy_pass http://pgadmin;
+  }
+}
+
+server {
+  server_name grafana;
+
+  resolver 127.0.0.11;
+
+  location / {
+    set $docker_grafana_host "grafana";
+	  proxy_pass http://$docker_grafana_host:3000;
+  }
+}
+
+server {
+  server_name elasticsearch;
+
+  resolver 127.0.0.11;
+
+  location / {
+    set $docker_elasticsearch_host "elasticsearch";
+	  proxy_pass http://$docker_elasticsearch_host:9200;
+  }
+}
+
+server {
+  server_name kafka;
+
+  location / {
+	  proxy_pass http://kafka:9092;
+  }
+}
+
+server {
+  server_name akhq;
+
+  location / {
+	  proxy_pass http://akhq:7061;
+  }
 }

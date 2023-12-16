@@ -11,4 +11,4 @@ spec:
   triggers:
     - type: postgresql
       metadata:
-        connection: AUTH_DB_CONNECTION
+        connection: cG9zdGdyZXM6Ly9hZG1pbjpodXRlY2gkMTIzQHBvc3RncmVzOjYwMDEvYXV0aF9zdmNfZGI=
