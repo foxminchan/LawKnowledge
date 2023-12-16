@@ -27,4 +27,3 @@ def switch(__action__):
 if __name__ == '__main__':
     action = input("Enter action: ")
     switch(action)
-

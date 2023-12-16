@@ -1,12 +1,15 @@
 import os
 import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
 from tqdm import tqdm
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.common import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 
 
 class VBPLCrawler:
+    RAW_DATA_FILE = "./raw_data/raw_VBPL_corpus.csv"
+
     def __init__(self):
         options = Options()
         options.add_argument("--incognito")
@@ -29,40 +32,42 @@ class VBPLCrawler:
             exp_date = tit.find_elements(By.XPATH, './/p[@class="green"]')[-1]
             try:
                 is_expire = tit.find_element(By.XPATH, './/p[@class="red"]').text
-            except:
-                pass
+            except NoSuchElementException:
                 is_expire = pd.NA
 
             temp_df = temp_df._append({
-              'url': url.get_attribute('href'),
-              'lawName': law_name.text,
-              'description': des.text,
-              "expDate": exp_date.text,
-              "isExpire": is_expire
-            }, ignore_index=True)
+                'url': url.get_attribute('href'),
+                'lawName': law_name.text,
+                'description': des.text,
+                "expDate": exp_date.text,
+                "isExpire": is_expire
+              },
+              ignore_index=True
+            )
 
         return temp_df
 
     def process_pages(self):
-      df = pd.DataFrame(columns=["url", "lawName", "description", "expDate", "isExpire"])  # Correct column names
-      list_raw_data = os.listdir("./raw_data")
-      if "raw_VBPL_corpus.csv" not in list_raw_data:
-        df.to_csv("./raw_data/raw_VBPL_corpus.csv")
-      else:
-        df = pd.read_csv("./raw_data/raw_VBPL_corpus.csv", index_col=0)
+        df = pd.DataFrame(columns=["url", "lawName", "description", "expDate", "isExpire"])  # Correct column names
+        list_raw_data = os.listdir("./raw_data")
+        if "raw_VBPL_corpus.csv" not in list_raw_data:
+            df.to_csv(VBPLCrawler.RAW_DATA_FILE)
+        else:
+            df = pd.read_csv(VBPLCrawler.RAW_DATA_FILE, index_col=0)
 
-      try:
-        for i in tqdm(range(1, 140)):
-          temp_df = self.crawl_url(i)
-          df = pd.concat([df, temp_df])
-        print("Good job! Done and saving to csv")
-        df.to_csv("./raw_data/raw_VBPL_corpus.csv")
-        print(df)
-      except Exception as e:
-        print(e)
-        print(f"ERROR DUMP at index {i}! Saving to csv")
-        df.to_csv("./raw_data/raw_VBPL_corpus.csv")
-        print(df)
+        i = 0
+        try:
+            for i in tqdm(range(1, 140)):
+                temp_df = self.crawl_url(i)
+                df = pd.concat([df, temp_df])
+            print("Good job! Done and saving to csv")
+            df.to_csv(VBPLCrawler.RAW_DATA_FILE)
+            print(df)
+        except Exception as e:
+            print(e)
+            print(f"ERROR DUMP at index {i}! Saving to csv")
+            df.to_csv(VBPLCrawler.RAW_DATA_FILE)
+            print(df)
 
     def close_driver(self):
         self.driver.close()

@@ -1,10 +1,9 @@
+import pandas as pd
+from tqdm import tqdm
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from tqdm import tqdm
-import pandas as pd
 
 
 class LawCorpusCrawler:
@@ -35,6 +34,8 @@ class LawCorpusCrawler:
     def process_corpus(self, file_path):
         df = pd.read_csv(file_path)
         df['content'] = df['content'].astype(str)
+
+        i = 0
         try:
             for i in tqdm(range(350, len(df))):
                 content = self.crawl_text(df.iloc[i]["url"])

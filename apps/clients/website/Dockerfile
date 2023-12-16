@@ -1,4 +1,7 @@
-FROM docker.io/nginx:stable-alpine
-COPY  dist/apps/website/* /usr/share/nginx/html/
+FROM nginx:stable-alpine
+RUN addgroup -S nginxgroup && adduser -S nginxuser -G nginxgroup
+COPY dist/apps/website/* /usr/share/nginx/html/
+RUN chown -R nginxuser:nginxgroup /usr/share/nginx/html
+USER nginxuser
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

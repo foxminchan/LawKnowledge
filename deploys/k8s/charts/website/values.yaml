@@ -1,0 +1,12 @@
+backend:
+  image:
+    repository: ghcr.io/foxminchan/website
+    tag: latest
+
+  nameOverride: website
+  fullnameOverride: website
+  databaseName: website
+  ingress:
+    enabled: true
+    host: hutech.dev.com
+    path: /

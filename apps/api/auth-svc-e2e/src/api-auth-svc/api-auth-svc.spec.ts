@@ -24,7 +24,7 @@ describe('AuthClientGrpcProxy', () => {
       it('should return an access token', async () => {
         const result = await client.getService<any>('AuthService').login({
           username: 'nhan@gmail.com',
-          password: 'P@ssw0rd',
+          password: process.env.PASSWORD,
         });
         expect(result).toEqual({
           accessToken: expect.any(String),
@@ -37,7 +37,7 @@ describe('AuthClientGrpcProxy', () => {
         const result = await expect(
           client.getService<any>('AuthService').login({
             username: 'invalid@gmail.com',
-            password: 'invalid',
+            password: process.env.PASSWORD,
           }),
         ).rejects.toThrow();
         expect(result).toThrow(
