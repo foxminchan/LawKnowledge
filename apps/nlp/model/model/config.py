@@ -8,7 +8,9 @@ ENV: str = ""
 
 
 class Configs(BaseSettings):
-    MODEL: str = os.getenv("MODEL")
+    QA_MODEL: str = os.getenv("QA_MODEL")
+    SUMMARY_MODEL: str = os.getenv("SUMMARY_MODEL")
+    GENERATE_MODEL: str = os.getenv("GENERATE_MODEL")
     PATH: str = os.getenv("PATH")
     DATASET: str = os.getenv("DATASET")
 
