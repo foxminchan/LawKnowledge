@@ -1,9 +1,9 @@
 [tool.coverage.run]
 branch = true
-source = [ "model" ]
+source = ["model"]
 
 [tool.coverage.report]
-exclude_lines = [ "if TYPE_CHECKING:" ]
+exclude_lines = ["if TYPE_CHECKING:"]
 show_missing = true
 
 [tool.pytest.ini_options]
@@ -13,18 +13,20 @@ addopts = "--cov --cov-report html:'../../coverage//apps/model/html' --cov-repor
 name = "model"
 version = "1.0.0"
 description = "Train and evaluate a model"
-authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
+authors = ["Hutech University <hutech@hutech.edu.vn>"]
 license = "MIT"
-group = { }
+group = {}
 
-  [[tool.poetry.packages]]
-  include = "model"
+[[tool.poetry.packages]]
+include = "model"
 
-  [tool.poetry.dependencies]
-  python = ">=3.9 <=3.12"
-  torch = "^2.1.1"
-  transformers = "^4.35.2"
-  datasets = "^2.15.0"
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+torch = "^2.1.1"
+transformers = "^4.35.2"
+datasets = "^2.15.0"
+python-dotenv = "^1.0.0"
+pydantic = "^2.5.2"
 
 [tool.isort]
 multi_line_output = 3
@@ -36,5 +38,5 @@ line_length = 88
 autoActivate = true
 
 [build-system]
-requires = [ "poetry-core" ]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

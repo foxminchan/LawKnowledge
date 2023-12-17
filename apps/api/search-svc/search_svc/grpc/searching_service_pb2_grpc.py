@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from searching_svc.grpc import searching_service_pb2 as searching__service__pb2
+from search_svc.grpc import searching_service_pb2 as searching__service__pb2
 
 
 class SearchingServiceStub(object):

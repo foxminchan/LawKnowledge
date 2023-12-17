@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default {
   displayName: 'building-block',
   preset: '../../jest.preset.js',

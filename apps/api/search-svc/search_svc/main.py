@@ -1,9 +1,9 @@
 import grpc
 from concurrent import futures
-from searching_svc.core.config import configs
-import searching_svc.grpc.searching_service_pb2_grpc as handler
-from searching_svc.services.index_service import IndexingServicer
-from searching_svc.services.search_service import SearchServicer
+from search_svc.core.config import configs
+import search_svc.grpc.searching_service_pb2_grpc as handler
+from search_svc.services.index_service import IndexingServicer
+from search_svc.services.search_service import SearchServicer
 
 
 def serve():

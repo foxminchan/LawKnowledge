@@ -1,18 +1,19 @@
 from haystack import Pipeline
 from haystack.document_stores import FAISSDocumentStore
 from haystack.nodes import TextConverter, PreProcessor
-
-import searching_svc.grpc.searching_service_pb2_grpc as handler
+import search_svc.grpc.searching_service_pb2_grpc as handler
 
 
 class IndexingServicer(handler.SearchingServiceServicer):
     def __init__(self):
         self.document_store = FAISSDocumentStore()
         self.converter = TextConverter()
-        self.preprocessor = PreProcessor(split_by= 'word',
-                                         split_length= 250,
-                                         split_overlap= 20,
-                                         split_respect_sentence_boundary= True)
+        self.preprocessor = PreProcessor(
+          split_by='word',
+          split_length=250,
+          split_overlap=20,
+          split_respect_sentence_boundary=True
+        )
 
     def create_indexing_pipeline(self):
         pipeline = Pipeline()

@@ -8,8 +8,9 @@ ENV: str = ""
 
 
 class Configs(BaseSettings):
-    URL: str = os.getenv("URL")
-    PORT: str = os.getenv("PORT")
+    MODEL: str = os.getenv("MODEL")
+    PATH: str = os.getenv("PATH")
+    DATASET: str = os.getenv("DATASET")
 
     class Config:
         case_sensitive = True

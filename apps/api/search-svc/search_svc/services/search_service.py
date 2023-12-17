@@ -1,8 +1,7 @@
 from haystack import Pipeline
 from haystack.document_stores import FAISSDocumentStore
 from haystack.nodes import EmbeddingRetriever, PromptNode
-
-import searching_svc.grpc.searching_service_pb2_grpc as handler
+import search_svc.grpc.searching_service_pb2_grpc as handler
 
 
 class SearchServicer(handler.SearchingServiceServicer):
