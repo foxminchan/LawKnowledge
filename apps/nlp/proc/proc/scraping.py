@@ -44,7 +44,7 @@ class Scraping:
             executor.map(process_file, [os.path.join(path, file_path) for file_path in os.listdir(path)])
 
     @staticmethod
-    def split_data():
+    def sentence_split_data():
         output_directory = "Split"
         os.makedirs(output_directory, exist_ok=True)
         for file_path in os.listdir('processed_data'):
@@ -56,3 +56,28 @@ class Scraping:
                     file_name = f"{os.path.splitext(file_path)[0]}.json"
                     with open(os.path.join(output_directory, file_name), 'w') as file:
                         json.dump({"message": sentence}, file)
+
+    @staticmethod
+    def chapter_split_data():
+        input_directory = 'processed_data'
+        output_directory = "Split"
+        os.makedirs(output_directory, exist_ok=True)
+
+        def process_chapter_split(file_path):
+            if file_path.endswith('.txt'):
+                with open(os.path.join(input_directory, file_path), 'r') as file:
+                    data = file.read()
+                chapter_pattern = r'Chương (\d+|[IVXLCDM]+)'
+                chapters = re.split(chapter_pattern, data)
+                chapter_titles = re.findall(chapter_pattern, data)
+                chapter_data = {}
+                for i, chapter in enumerate(chapters[1:], start=1):
+                    chapter_title = f'Chương {chapter_titles[i - 1]}'
+                    chapter_data[chapter_title] = chapter.strip()
+                with open(
+                  os.path.join(output_directory, os.path.splitext(file_path)[0] + '.json'), 'w', encoding='utf-8'
+                ) as json_file:
+                    json.dump(chapter_data, json_file, ensure_ascii=False, indent=4)
+
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            executor.map(process_chapter_split, os.listdir(input_directory))
