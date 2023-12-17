@@ -3,23 +3,20 @@
   "image": "mcr.microsoft.com/devcontainers/base:jammy",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers-contrib/features/node-asdf:0": {},
-    "ghcr.io/devcontainers-contrib/features/npm-package:1": {},
-    "ghcr.io/devcontainers-contrib/features/nx-npm:1": {},
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+    "ghcr.io/flexwie/devcontainer-features/pulumi:1": {},
+    "ghcr.io/devcontainers-contrib/features/protoc-asdf:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.9.16",
-      "optimize": true,
-      "installJupyterlab": true
+      "version": "3.9.5",
+      "optimize": true
     }
   },
-  "postCreateCommand": "npm install -g pnpm && pnpm install",
   "customizations": {
     "vscode": {
       "extensions": [
-        "humao.rest-client",
-        "aaron-bond.better-comments",
+        "zxh404.vscode-proto3",
         "ms-azuretools.vscode-docker",
-        "wix.vscode-import-cost",
         "dsznajder.es7-react-js-snippets",
         "mikestead.dotenv",
         "formulahendry.auto-complete-tag",
@@ -27,6 +24,7 @@
         "christian-kohler.npm-intellisense",
         "nrwl.angular-console",
         "esbenp.prettier-vscode",
+        "ms-python.python",
         "dbaeumer.vscode-eslint"
       ]
     }
