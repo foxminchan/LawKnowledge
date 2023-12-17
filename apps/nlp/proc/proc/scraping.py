@@ -1,14 +1,14 @@
-from bs4 import BeautifulSoup
 import os
 import re
 import json
 import codecs
+import concurrent.futures
+from bs4 import BeautifulSoup
 
 
 class Scraping:
     def get_data(self, file_path):
         file_path = codecs.decode(file_path, 'utf-8')
-
         if not os.path.exists(file_path):
             return []
 
@@ -30,24 +30,26 @@ class Scraping:
             text = text.replace(old, new)
         return text
 
-    def data_processing(self):
-        output_directory = "Output"
+    def data_processing(self, path):
+        output_directory = "processed_data"
         os.makedirs(output_directory, exist_ok=True)
 
-        for file_path in os.listdir('Raw/demuc'):
+        def process_file(file_path):
             if file_path.endswith('.html'):
                 file_data = self.get_data(file_path)
                 with open(os.path.join(output_directory, os.path.splitext(file_path)[0] + '.txt'), 'w') as file:
                     file.writelines(file_data)
 
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            executor.map(process_file, [os.path.join(path, file_path) for file_path in os.listdir(path)])
+
     @staticmethod
     def split_data():
         output_directory = "Split"
         os.makedirs(output_directory, exist_ok=True)
-
-        for file_path in os.listdir('Output'):
+        for file_path in os.listdir('processed_data'):
             if file_path.endswith('.txt'):
-                with open(file_path, 'r') as file:
+                with open(os.path.join('processed_data', file_path), 'r') as file:
                     data = file.read()
                 sentences = re.split(r'(?<=[.!?])\s+', data)
                 for sentence in sentences:

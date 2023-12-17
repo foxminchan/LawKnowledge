@@ -27,6 +27,7 @@ transformers = "^4.35.2"
 datasets = "^2.15.0"
 python-dotenv = "^1.0.0"
 pydantic = "^2.5.2"
+pyspark = "^3.5.0"
 
 [tool.isort]
 multi_line_output = 3

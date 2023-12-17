@@ -1,13 +1,15 @@
 import pandas as pd
-from tqdm import tqdm
+import concurrent.futures
 from selenium import webdriver
+from selenium.common import WebDriverException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 
 class LawCorpusCrawler:
-    def __init__(self):
+    @staticmethod
+    def crawl_text(url):
         options = Options()
         options.add_argument("--incognito")
         options.add_argument("--window-size=1920x1080")
@@ -17,40 +19,42 @@ class LawCorpusCrawler:
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--disable-browser-side-navigation")
         options.add_argument("--disable-gpu")
-        self.driver = webdriver.Chrome(options=options)
 
-    def crawl_text(self, url):
         try:
-            self.driver.get(url)
-            WebDriverWait(self.driver, 0.2)
-            self.driver.set_page_load_timeout(5)
-            content = self.driver.find_element(By.XPATH, '//*[@id="toanvancontent"]')
+            driver = webdriver.Chrome(options=options)
+        except WebDriverException:
+            driver = webdriver.Edge(options=options)
+
+        try:
+            driver.get(url)
+            WebDriverWait(driver, 0.2)
+            driver.set_page_load_timeout(5)
+            content = driver.find_element(By.XPATH, '//*[@id="toanvancontent"]')
             text = content.text.replace("  ", "")
+            driver.close()
             return text
         except Exception as ex:
             print(ex)
+            driver.close()
             return ""
 
-    def process_corpus(self, file_path):
+    def process_corpus(self, file_path, start_index=350, max_workers=10):
         df = pd.read_csv(file_path)
         df['content'] = df['content'].astype(str)
 
-        i = 0
-        try:
-            for i in tqdm(range(350, len(df))):
-                content = self.crawl_text(df.iloc[i]["url"])
-                df.at[i, "content"] = content
-                if content != "":
-                    df.at[i, "is_content"] = True
-            print("Good job! Done and saving to csv")
-            df.to_csv(file_path, index=False)
-        except Exception as e:
-            print(e)
-            print("ERROR DUMP at index {}! Saving to csv".format(i))
-            df.to_csv(file_path, index=False)
-        except KeyboardInterrupt:
-            print("ERROR DUMP at index {}! Saving to csv".format(i))
-            df.to_csv(file_path, index=False)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_url = {
+              executor.submit(self.crawl_text, df.iloc[i]["url"]): i for i in range(start_index, len(df))
+            }
+            for future in concurrent.futures.as_completed(future_to_url):
+                i = future_to_url[future]
+                try:
+                    content = future.result()
+                    df.at[i, "content"] = content
+                    if content != "":
+                        df.at[i, "is_content"] = True
+                except Exception as e:
+                    print(f"Error at index {i}: {e}")
 
-    def close_driver(self):
-        self.driver.close()
+        print("Good job! Done and saving to csv")
+        df.to_csv(file_path, index=False)

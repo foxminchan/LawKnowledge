@@ -1,8 +1,8 @@
-import os
 import torch
 import torch.optim as optim
+from pyspark.sql import SparkSession
 from torch.utils.data import DataLoader
-from datasets import load_dataset, load_metric
+from datasets import load_metric, Dataset
 from transformers import RobertaForSequenceClassification, RobertaTokenizer, get_linear_schedule_with_warmup
 
 
@@ -24,13 +24,13 @@ class PhoBertFineTuner:
         return self.tokenizer(examples['text'], padding=True, truncation=True, max_length=512)
 
     def load_dataset(self):
-        csv_files = [
-          os.path.join(self.folder_path, file) for file in os.listdir(self.folder_path) if file.endswith('.csv')
-        ]
-        dataset = load_dataset('csv', data_files=csv_files)
+        spark = SparkSession.builder.appName("PhoBERT").getOrCreate()
+        spark_df = spark.read.csv(f"{self.folder_path}/*.csv", header=True, inferSchema=True)
+        pandas_df = spark_df.toPandas()
+        dataset = Dataset.from_pandas(pandas_df)
         dataset = dataset.map(self.preprocess_function, batched=True)
         dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'label'])
-        train_test_split = dataset['train'].train_test_split(test_size=0.2)
+        train_test_split = dataset.train_test_split(test_size=0.2)
         self.train_dataset = train_test_split['train']
         self.val_dataset = train_test_split['test']
 
@@ -88,9 +88,18 @@ class PhoBertFineTuner:
         print(f"Evaluation Metrics: {eval_metrics}")
 
     def train(self):
-        train_dataloader = DataLoader(self.train_dataset, batch_size=self.per_device_train_batch_size, shuffle=True)
-        val_dataloader = DataLoader(self.val_dataset, batch_size=self.per_device_eval_batch_size)
+        train_dataloader = DataLoader(
+          self.train_dataset,
+          batch_size=self.per_device_train_batch_size,
+          shuffle=True,
+          num_workers=4
+        )
 
+        val_dataloader = DataLoader(
+          self.val_dataset,
+          batch_size=self.per_device_eval_batch_size,
+          num_workers=4
+        )
         optimizer, scheduler = self.configure_optimizers()
 
         for _ in range(self.num_train_epochs):
@@ -99,7 +108,6 @@ class PhoBertFineTuner:
                 batch = {k: v.to(self.device) for k, v in batch.items()}
                 outputs = self.model(**batch)
                 loss = outputs.loss
-
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
