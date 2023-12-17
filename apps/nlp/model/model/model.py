@@ -3,6 +3,7 @@ import torch.optim as optim
 from pyspark.sql import SparkSession
 from torch.utils.data import DataLoader
 from datasets import load_metric, Dataset
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from transformers import RobertaForSequenceClassification, RobertaTokenizer, get_linear_schedule_with_warmup
 
 
@@ -104,17 +105,26 @@ class PhoBertFineTuner:
 
         for _ in range(self.num_train_epochs):
             self.model.train()
-            for batch in train_dataloader:
-                batch = {k: v.to(self.device) for k, v in batch.items()}
-                outputs = self.model(**batch)
-                loss = outputs.loss
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
-                scheduler.step()
+            with ThreadPoolExecutor(max_workers=4) as executor:
+                futures = [
+                  executor.submit(self.process_batch, batch, optimizer, scheduler) for batch in train_dataloader
+                ]
+                for future in as_completed(futures):
+                    try:
+                        future.result()
+                    except Exception as e:
+                        print(f"An error occurred: {e}")
 
-            val_loss, val_accuracy, val_metrics = self.validation(val_dataloader)
-            self.validation_epoch_end(val_loss, val_accuracy, val_metrics)
+        val_loss, val_accuracy, val_metrics = self.validation(val_dataloader)
+        self.validation_epoch_end(val_loss, val_accuracy, val_metrics)
+
+    def process_batch(self, batch, optimizer, scheduler):
+        batch = {k: v.to(self.device) for k, v in batch.items()}
+        loss = self.model(**batch).loss
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        scheduler.step()
 
     def save_model(self, save_directory):
         self.model.save_pretrained(save_directory)
