@@ -1,14 +1,10 @@
 import fs from 'fs';
+import { Logger } from '@nestjs/common';
 import { CreateVectorCommand } from '../impl';
-import { RpcException } from '@nestjs/microservices';
 import { FaissStore } from 'langchain/vectorstores/faiss';
-import { BadRequestException, Logger } from '@nestjs/common';
-import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
-import { DocxLoader } from 'langchain/document_loaders/fs/docx';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
-import { DocumentFileType } from '@law-knowledge/building-block';
 import { catchError, concatMap, finalize, from, of, tap } from 'rxjs';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 
@@ -27,51 +23,10 @@ export class CreateVectorCommandHandler
   }
 
   async execute(payload: CreateVectorCommand) {
-    const source = {
-      [DocumentFileType.PDF]: {
-        path: './apps/api/chat-svc/src/assets/pdf',
-        loader: PDFLoader,
-      },
-      [DocumentFileType.DOC]: {
-        path: './apps/api/chat-svc/src/assets/doc',
-        loader: DocxLoader,
-      },
-      [DocumentFileType.TXT]: {
-        path: './apps/api/chat-svc/src/assets/txt',
-        loader: TextLoader,
-      },
-    }[payload.docType];
-
-    switch (payload.docType) {
-      case DocumentFileType.TXT:
-        this.createVector(source);
-        break;
-      case DocumentFileType.DOC:
-        this.createVector(source);
-        break;
-      case DocumentFileType.PDF:
-        this.createVector(source);
-        break;
-
-      default:
-        throw new RpcException(
-          new BadRequestException('Định dạng tài liệu không hợp lệ'),
-        );
-    }
-  }
-
-  private async createVector(
-    source:
-      | { path: string; loader: typeof PDFLoader }
-      | { path: string; loader: typeof DocxLoader }
-      | { path: string; loader: typeof TextLoader },
-  ) {
-    return from(fs.readdirSync(source.path, 'utf-8'))
+    return from(fs.readdirSync(payload.path, 'utf-8'))
       .pipe(
         concatMap((document) => {
-          return from(
-            new source.loader(`${source.path}/${document}`).load(),
-          ).pipe(
+          return from(new TextLoader(payload.path).load()).pipe(
             concatMap((text) => {
               return from(
                 this.splitter.createDocuments(

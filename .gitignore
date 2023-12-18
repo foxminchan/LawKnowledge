@@ -12,6 +12,7 @@ tmp
 .model
 __pycache__
 jenkins_home
+raw_data
 
 # dependencies
 node_modules

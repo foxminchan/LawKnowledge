@@ -15,10 +15,7 @@ class DataMonitor:
         self.content = LawCorpusCrawler()
 
     def read_existing_data(self):
-        if os.path.exists(self.data_file):
-            return pd.read_csv(self.data_file)
-        else:
-            return pd.DataFrame()
+        return pd.read_csv(self.data_file) if os.path.exists(self.data_file) else pd.DataFrame()
 
     def crawl_new_data(self):
         new_data = pd.DataFrame()
@@ -33,7 +30,6 @@ class DataMonitor:
     def compare_and_update(self):
         existing_data = self.read_existing_data()
         new_data = self.crawl_new_data()
-
         if not new_data.equals(existing_data):
             updated_data = pd.concat([existing_data, new_data]).drop_duplicates(keep='last')
             updated_data.to_csv(self.data_file, index=False)

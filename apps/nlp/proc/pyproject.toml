@@ -1,9 +1,9 @@
 [tool.coverage.run]
 branch = true
-source = [ "proc" ]
+source = ["proc"]
 
 [tool.coverage.report]
-exclude_lines = [ "if TYPE_CHECKING:" ]
+exclude_lines = ["if TYPE_CHECKING:"]
 show_missing = true
 
 [tool.pytest.ini_options]
@@ -13,20 +13,20 @@ addopts = "--cov --cov-report html:'../../../coverage//apps/nlp/proc/html' --cov
 name = "proc"
 version = "1.0.0"
 description = "Data Crawling and Processing"
-authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
+authors = ["Hutech University <hutech@hutech.edu.vn>"]
 license = "MIT"
-group = { }
+group = {}
 
-  [[tool.poetry.packages]]
-  include = "proc"
+[[tool.poetry.packages]]
+include = "proc"
 
-  [tool.poetry.dependencies]
-  python = ">=3.9 <=3.12"
-  bs4 = "^0.0.1"
-  selenium = "^4.15.2"
-  tqdm = "^4.66.1"
-  pandas = "^2.1.3"
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+bs4 = "^0.0.1"
+selenium = "^4.15.2"
+tqdm = "^4.66.1"
+pandas = "^2.1.3"
 
 [build-system]
-requires = [ "poetry-core" ]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

@@ -1,4 +1,5 @@
 import os
+import re
 import pandas as pd
 import concurrent.futures
 from selenium import webdriver
@@ -8,6 +9,7 @@ from selenium.common.exceptions import NoSuchElementException, WebDriverExceptio
 
 
 class VBPLCrawler:
+    FOLDER = "./raw_data"
     RAW_DATA_FILE = "./raw_data/raw_VBPL_corpus.csv"
 
     @staticmethod
@@ -39,20 +41,22 @@ class VBPLCrawler:
             except NoSuchElementException:
                 is_expire = pd.NA
 
-            temp_df = temp_df.append({
-                'url': url.get_attribute('href'),
-                'lawName': law_name.text,
-                'description': des.text,
-                "expDate": exp_date.text,
-                "isExpire": is_expire
-            }, ignore_index=True)
+            temp_df = pd.concat([temp_df, pd.DataFrame([{
+              'url': url.get_attribute('href'),
+              'lawName': law_name.text,
+              'description': des.text,
+              "expDate": exp_date.text,
+              "isExpire": is_expire
+            }])], ignore_index=True)
 
         driver.close()
         return temp_df
 
     def process_pages(self, start_page=1, end_page=140, max_workers=10):
         df = pd.DataFrame(columns=["url", "lawName", "description", "expDate", "isExpire"])
-        if "raw_VBPL_corpus.csv" not in os.listdir("./raw_data"):
+        if not os.path.exists(VBPLCrawler.FOLDER):
+            os.makedirs(VBPLCrawler.FOLDER)
+        if "raw_VBPL_corpus.csv" not in os.listdir(VBPLCrawler.FOLDER):
             df.to_csv(VBPLCrawler.RAW_DATA_FILE)
         else:
             df = pd.read_csv(VBPLCrawler.RAW_DATA_FILE, index_col=0)
@@ -62,12 +66,12 @@ class VBPLCrawler:
             for future in concurrent.futures.as_completed(future_to_page):
                 page = future_to_page[future]
                 try:
-                    temp_df = future.result()
-                    df = pd.concat([df, temp_df])
+                    df = pd.concat([df, future.result().dropna()], ignore_index=True)
                 except Exception as exc:
                     print(f'Page {page} generated an exception: {exc}')
                 else:
                     print(f'Page {page} loaded')
 
+        df = df[~df['isExpire'].str.contains('Hết hiệu lực', na=False, flags=re.IGNORECASE)]
         df.to_csv(VBPLCrawler.RAW_DATA_FILE)
         print("Crawling completed. Data saved to CSV.")

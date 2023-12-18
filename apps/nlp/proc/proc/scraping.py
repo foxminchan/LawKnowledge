@@ -44,20 +44,6 @@ class Scraping:
             executor.map(process_file, [os.path.join(path, file_path) for file_path in os.listdir(path)])
 
     @staticmethod
-    def sentence_split_data():
-        output_directory = "Split"
-        os.makedirs(output_directory, exist_ok=True)
-        for file_path in os.listdir('processed_data'):
-            if file_path.endswith('.txt'):
-                with open(os.path.join('processed_data', file_path), 'r') as file:
-                    data = file.read()
-                sentences = re.split(r'(?<=[.!?])\s+', data)
-                for sentence in sentences:
-                    file_name = f"{os.path.splitext(file_path)[0]}.json"
-                    with open(os.path.join(output_directory, file_name), 'w') as file:
-                        json.dump({"message": sentence}, file)
-
-    @staticmethod
     def chapter_split_data():
         input_directory = 'processed_data'
         output_directory = "Split"

@@ -2,7 +2,6 @@ import { Controller } from '@nestjs/common';
 import { SimilaritySearchQuery } from './queries';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { EventPattern } from '@nestjs/microservices';
-import { DocumentFileType } from '@law-knowledge/building-block';
 import { CreateVectorCommand, DeleteVectorCommand } from './commands';
 
 @Controller()
@@ -13,8 +12,10 @@ export class EmbeddingController {
   ) {}
 
   @EventPattern({ cmd: 'addEmbedding' })
-  createVector(type: DocumentFileType) {
-    return this.commandBus.execute(new CreateVectorCommand(type));
+  createVector() {
+    return this.commandBus.execute(
+      new CreateVectorCommand('./apps/api/chat-svc/src/assets'),
+    );
   }
 
   @EventPattern({ cmd: 'deleteEmbedding' })

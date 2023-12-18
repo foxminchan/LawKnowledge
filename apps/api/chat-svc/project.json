@@ -17,7 +17,8 @@
         "main": "apps/api/chat-svc/src/main.ts",
         "tsConfig": "apps/api/chat-svc/tsconfig.app.json",
         "assets": [
-          "apps/api/chat-svc/src/assets"
+          "apps/api/chat-svc/src/assets",
+          "apps/api/chat-svc/src/proto"
         ],
         "webpackConfig": "apps/api/chat-svc/webpack.config.js"
       },
