@@ -5,20 +5,17 @@ from proc.crawler import LawCorpusCrawler
 
 
 def switch(__action__):
-    if __action__ == 'PHAP_DIEN_CLEAN_DATA':
-        Scraping().data_processing("./raw_data")
-    elif __action__ == 'PHAP_DIEN_CHAPTER_SPLIT_DATA':
-        Scraping().chapter_split_data()
-    elif __action__ == 'CRAWL_DATA':
-        LawCorpusCrawler().process_corpus("./raw_data/raw_VBPL_corpus.csv")
-    elif __action__ == 'CRAWL_URL':
+    if __action__ == 'SETUP_PHAP_DIEN':
+        Scraping().process_data()
+    if __action__ == 'SETUP_CORPUS':
         VBPLCrawler().process_pages()
+        LawCorpusCrawler().process_corpus()
     elif __action__ == 'UPDATE_DATA':
-        DataMonitor("./raw_data/raw_VBPL_corpus.csv").compare_and_update()
+        DataMonitor().compare_and_update()
     else:
         raise ValueError('Invalid action: {}'.format(__action__))
 
 
 if __name__ == '__main__':
-    action = input("Enter action: ")
+    action = input('Please enter action: ')
     switch(action)

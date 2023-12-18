@@ -8,6 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class LawCorpusCrawler:
+    FILE_PATH = "./raw_data/raw_VBPL_corpus.csv"
+
     @staticmethod
     def crawl_text(url):
         options = Options()
@@ -18,7 +20,7 @@ class LawCorpusCrawler:
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--disable-browser-side-navigation")
-        options.add_argument("--disable-gpu")
+        options.add_argument("--headless")
 
         try:
             driver = webdriver.Chrome(options=options)
@@ -31,6 +33,7 @@ class LawCorpusCrawler:
             driver.set_page_load_timeout(5)
             content = driver.find_element(By.XPATH, '//*[@id="toanvancontent"]')
             text = content.text.replace("  ", "")
+            print(f"Done with {url} with {len(text)} characters")
             driver.close()
             return text
         except Exception as ex:
@@ -38,9 +41,9 @@ class LawCorpusCrawler:
             driver.close()
             return ""
 
-    def process_corpus(self, file_path, start_index=350, max_workers=10):
-        df = pd.read_csv(file_path)
-        df['content'] = df['content'].astype(str)
+    def process_corpus(self, start_index=350, max_workers=30):
+        df = pd.read_csv(LawCorpusCrawler.FILE_PATH)
+        df["is_content"] = df['content'].astype(str) if 'content' in df.columns else ''
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_url = {
@@ -51,10 +54,10 @@ class LawCorpusCrawler:
                 try:
                     content = future.result()
                     df.at[i, "content"] = content
-                    if content != "":
-                        df.at[i, "is_content"] = True
+                    df.at[i, "is_content"] = True if content != "" else False
                 except Exception as e:
                     print(f"Error at index {i}: {e}")
 
+        df = df[~df["is_content"]]
         print("Good job! Done and saving to csv")
-        df.to_csv(file_path, index=False)
+        df.to_csv(LawCorpusCrawler.FILE_PATH, index=False)

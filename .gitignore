@@ -12,7 +12,10 @@ tmp
 .model
 __pycache__
 jenkins_home
+
+# datasets
 raw_data
+phap_dien_raw
 
 # dependencies
 node_modules

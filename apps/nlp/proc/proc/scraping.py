@@ -1,69 +1,128 @@
 import os
 import re
+import csv
 import json
-import codecs
+import zipfile
+import requests
 import concurrent.futures
 from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor
 
 
 class Scraping:
-    def get_data(self, file_path):
-        file_path = codecs.decode(file_path, 'utf-8')
-        if not os.path.exists(file_path):
-            return []
-
-        with open(file_path, 'r', encoding='utf-8') as file:
-            html_content = file.read()
-        soup = BeautifulSoup(html_content, 'html.parser')
-        return self.get_body_str(soup.descendants)
-
-    def get_body_str(self, html_nodes):
-        return [self.clean_text(node.get_text().strip()) for node in html_nodes
-                if node and not node.has_children and node.get_text().strip()]
+    MAX_RETRIES = 3
+    ZIP_FILE = 'BoPhapDienDienTu.zip'
+    RAW_DATA_FOLDER = './phap_dien_raw'
+    HTML2TXT_PATH = './phap_dien_raw/demuc'
+    JS_FILE = './phap_dien_raw/jsonData.js'
 
     @staticmethod
-    def clean_text(text):
-        replacements = {
-            "\n\n": "\n", "\t\t": "\t", "\r\r": "\r", "…": "", "(": "", ")": "", ";": ""
-        }
-        for old, new in replacements.items():
-            text = text.replace(old, new)
-        return text
-
-    def data_processing(self, path):
-        output_directory = "processed_data"
-        os.makedirs(output_directory, exist_ok=True)
-
-        def process_file(file_path):
-            if file_path.endswith('.html'):
-                file_data = self.get_data(file_path)
-                with open(os.path.join(output_directory, os.path.splitext(file_path)[0] + '.txt'), 'w') as file:
-                    file.writelines(file_data)
-
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            executor.map(process_file, [os.path.join(path, file_path) for file_path in os.listdir(path)])
+    def download_data():
+        attempt = 0
+        while attempt < Scraping.MAX_RETRIES:
+            try:
+                with requests.get(
+                  'https://phapdien.moj.gov.vn/TraCuuPhapDien/Files/BoPhapDienDienTu.zip', stream=True
+                ) as response:
+                    response.raise_for_status()
+                    with open(Scraping.ZIP_FILE, 'wb') as file:
+                        for chunk in response.iter_content(chunk_size=8192):
+                            file.write(chunk)
+                print(f'Downloaded {Scraping.ZIP_FILE}')
+                break
+            except requests.exceptions.RequestException as e:
+                print(f'Failed to download {Scraping.ZIP_FILE}. Error: {e}. Retrying...')
+                attempt += 1
+                if attempt == Scraping.MAX_RETRIES:
+                    print(f'Failed to download {Scraping.ZIP_FILE} after {Scraping.MAX_RETRIES} attempts.')
+                    raise
+        if not os.path.exists(Scraping.RAW_DATA_FOLDER):
+            os.makedirs(Scraping.RAW_DATA_FOLDER)
+        try:
+            with zipfile.ZipFile(Scraping.ZIP_FILE, 'r') as zip_ref:
+                zip_ref.extractall(Scraping.RAW_DATA_FOLDER)
+            os.remove(Scraping.ZIP_FILE)
+            os.remove(f"{Scraping.RAW_DATA_FOLDER}/lib")
+            os.remove(f"{Scraping.RAW_DATA_FOLDER}/BoPhapDien.html")
+            print(f'Extracted {Scraping.ZIP_FILE} to {Scraping.RAW_DATA_FOLDER}')
+        except zipfile.BadZipFile:
+            print(f'Failed to extract {Scraping.ZIP_FILE}')
+            raise
 
     @staticmethod
-    def chapter_split_data():
-        input_directory = 'processed_data'
-        output_directory = "Split"
-        os.makedirs(output_directory, exist_ok=True)
+    def convert_html_to_text():
+        Scraping.download_data()
 
-        def process_chapter_split(file_path):
-            if file_path.endswith('.txt'):
-                with open(os.path.join(input_directory, file_path), 'r') as file:
-                    data = file.read()
-                chapter_pattern = r'Chương (\d+|[IVXLCDM]+)'
-                chapters = re.split(chapter_pattern, data)
-                chapter_titles = re.findall(chapter_pattern, data)
-                chapter_data = {}
-                for i, chapter in enumerate(chapters[1:], start=1):
-                    chapter_title = f'Chương {chapter_titles[i - 1]}'
-                    chapter_data[chapter_title] = chapter.strip()
-                with open(
-                  os.path.join(output_directory, os.path.splitext(file_path)[0] + '.json'), 'w', encoding='utf-8'
-                ) as json_file:
-                    json.dump(chapter_data, json_file, ensure_ascii=False, indent=4)
+        def convert_file(filename):
+            filepath = os.path.join(Scraping.HTML2TXT_PATH, filename)
+            with open(filepath, 'r', encoding='utf-8') as file:
+                soup = BeautifulSoup(file, 'html.parser')
+                text = '\n'.join(p.get_text() for p in soup.find_all('p'))
+                text = text.replace("(Xem Danh mục văn bản pháp điển vào đề mục: )\n", "")
+            if text.strip():
+                new_filename = filename.replace('.html', '.txt')
+                new_filepath = os.path.join(Scraping.HTML2TXT_PATH, new_filename)
+                with open(new_filepath, 'w', encoding='utf-8') as new_file:
+                    new_file.write(text)
+                print(f'Converted {filename} to {new_filename}')
+            else:
+                print(f'Skipped empty file: {filename}')
+            os.remove(filepath)
 
+        files_to_convert = [f for f in os.listdir(Scraping.HTML2TXT_PATH) if f.endswith('.html')]
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            executor.map(process_chapter_split, os.listdir(input_directory))
+            executor.map(convert_file, files_to_convert)
+
+    @staticmethod
+    def convert_to_csv():
+        Scraping.convert_html_to_text()
+
+        if not os.path.exists(Scraping.JS_FILE):
+            raise FileNotFoundError(f'Folder {Scraping.JS_FILE} not found')
+
+        def to_csv(data, name, output):
+            csv_file_path = os.path.join(output, f'{name}.csv')
+            with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
+                writer = csv.DictWriter(csv_file, fieldnames=data[0].keys())
+                writer.writeheader()
+                writer.writerows(data)
+            print(f'Converted {name} to CSV at {csv_file_path}')
+
+        def split_large_json(json_str):
+            objects = re.split(r'},\s*\{', json_str)
+            json_objects = []
+            for i, obj in enumerate(objects):
+                try:
+                    if i != 0:
+                        obj = '{' + obj
+                    if i != len(objects) - 1:
+                        obj += '}'
+                    json_object = json.loads(obj)
+                    json_objects.append(json_object)
+                except json.JSONDecodeError as e:
+                    print(f"Error decoding JSON object at index {i}: {e}")
+            return json_objects
+
+        with open(Scraping.JS_FILE, 'r', encoding='utf-8') as file:
+            content = file.read()
+            jd_topic = json.loads(re.search(r"var jdChuDe = (\[[^]]*])", content, re.DOTALL).group(1))
+            jd_heading = json.loads(re.search(r"var jdDeMuc = (\[[^]]*])", content, re.DOTALL).group(1))
+            jd_all_tree = split_large_json(
+              re.search(r"var jdAllTree = (\[[^]]*])", content, re.DOTALL).group(1)[1:-1]
+            )
+
+        output_folder = os.path.dirname(Scraping.JS_FILE)
+        tasks = [
+          (jd_topic, 'ChuDe', output_folder),
+          (jd_heading, 'DeMuc', output_folder),
+          (jd_all_tree, 'AllTree', output_folder)
+        ]
+
+        with ThreadPoolExecutor() as executor:
+            executor.map(lambda p: to_csv(*p), tasks)
+
+        os.remove(Scraping.JS_FILE)
+
+    @staticmethod
+    def process_data():
+        Scraping.convert_to_csv()

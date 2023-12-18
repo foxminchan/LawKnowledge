@@ -7,8 +7,8 @@ from crawler import LawCorpusCrawler
 
 
 class DataMonitor:
-    def __init__(self, data_file, start_page=1, end_page=10):
-        self.data_file = data_file
+    def __init__(self, start_page=1, end_page=10):
+        self.data_file = "./raw_data/raw_VBPL_corpus.csv"
         self.start_page = start_page
         self.end_page = end_page
         self.crawler = VBPLCrawler()
@@ -34,7 +34,7 @@ class DataMonitor:
             updated_data = pd.concat([existing_data, new_data]).drop_duplicates(keep='last')
             updated_data.to_csv(self.data_file, index=False)
             print("Data updated.")
-            self.content.process_corpus(self.data_file, start_index=len(existing_data))
+            self.content.process_corpus(start_index=len(existing_data))
             print("Corpus updated.")
         else:
             print("No updates required.")

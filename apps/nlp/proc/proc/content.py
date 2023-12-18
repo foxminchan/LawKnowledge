@@ -17,6 +17,7 @@ class VBPLCrawler:
         options = Options()
         options.add_argument("--incognito")
         options.add_argument("--window-size=1920x1080")
+        options.add_argument("--headless")
 
         try:
             driver = webdriver.Chrome(options=options)
