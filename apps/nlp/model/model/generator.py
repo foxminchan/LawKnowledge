@@ -2,7 +2,10 @@ import csv
 import glob
 import concurrent
 from model.config import configs
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import udf
 from concurrent.futures import ThreadPoolExecutor
+from pyspark.sql.types import StringType, ArrayType
 from transformers import BartForConditionalGeneration, BartTokenizer, T5ForConditionalGeneration, T5Tokenizer
 
 
@@ -25,11 +28,13 @@ class QuestionGenerator:
         return [self.t5_tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
 
     def process_file(self, filename):
-        with open(filename, 'r', encoding='utf-8') as file:
-            text = file.read()
-            summary = self.summarize(text)
-            questions = self.generate_questions(summary)
-            return [(question, summary) for question in questions]
+        spark = SparkSession.builder.appName("TextProcessing").getOrCreate()
+        df = spark.read.csv(filename, header=True, encoding='utf-8')
+        summarize_udf = udf(self.summarize, StringType())
+        generate_questions_udf = udf(self.generate_questions, ArrayType(StringType()))
+        transformed_df = df.withColumn("summary", summarize_udf(df['content'])) \
+            .withColumn("questions", generate_questions_udf(df['summary']))
+        return transformed_df.rdd.flatMap(lambda row: [(q, row['summary']) for q in row['questions']]).collect()
 
     def process_files(self, file_path, max_workers=5):
         question_context_pairs = []

@@ -1,13 +1,13 @@
-from proc.scraping import Scraping
 from proc.monitor import DataMonitor
-from proc.crawler import VBPLCrawler
+from proc.corpus import CorpusCrawler
+from proc.codification import CodificationCrawler
 
 
 def switch(__action__):
-    if __action__ == 'SETUP_PHAP_DIEN':
-        Scraping().process_data()
-    if __action__ == 'SETUP_CORPUS':
-        VBPLCrawler().process_corpus()
+    if __action__ == 'SETUP_CODIFICATION':
+        CodificationCrawler().process_data()
+    elif __action__ == 'SETUP_CORPUS':
+        CorpusCrawler().process_corpus()
     elif __action__ == 'UPDATE_DATA':
         DataMonitor().compare_and_update()
     else:
@@ -15,5 +15,10 @@ def switch(__action__):
 
 
 if __name__ == '__main__':
-    action = input('Please enter action: ')
-    switch(action)
+    while True:
+        action = input('Please enter action (SETUP_CODIFICATION, SETUP_CORPUS, UPDATE_DATA): ')
+        try:
+            switch(action)
+            break
+        except ValueError as error:
+            print(error)

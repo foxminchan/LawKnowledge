@@ -9,7 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 
 
-class VBPLCrawler:
+class CorpusCrawler:
     FOLDER = "./raw_data"
     RAW_DATA_FILE = "./raw_data/raw_VBPL_corpus.csv"
     FILE_PATH = "./raw_data/raw_VBPL_corpus.csv"
@@ -57,12 +57,12 @@ class VBPLCrawler:
 
     def process_pages(self, start_page=1, end_page=140, max_workers=10):
         df = pd.DataFrame(columns=["url", "lawName", "description", "expDate", "isExpire"])
-        if not os.path.exists(VBPLCrawler.FOLDER):
-            os.makedirs(VBPLCrawler.FOLDER)
-        if "raw_VBPL_corpus.csv" not in os.listdir(VBPLCrawler.FOLDER):
-            df.to_csv(VBPLCrawler.RAW_DATA_FILE)
+        if not os.path.exists(CorpusCrawler.FOLDER):
+            os.makedirs(CorpusCrawler.FOLDER)
+        if "raw_VBPL_corpus.csv" not in os.listdir(CorpusCrawler.FOLDER):
+            df.to_csv(CorpusCrawler.RAW_DATA_FILE)
         else:
-            df = pd.read_csv(VBPLCrawler.RAW_DATA_FILE, index_col=0)
+            df = pd.read_csv(CorpusCrawler.RAW_DATA_FILE, index_col=0)
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_page = {executor.submit(self.crawl_url, page): page for page in range(start_page, end_page)}
@@ -76,7 +76,7 @@ class VBPLCrawler:
                     print(f'Page {page} loaded')
 
         df = df[~df['isExpire'].str.contains('Hết hiệu lực', na=False, flags=re.IGNORECASE)]
-        df.to_csv(VBPLCrawler.RAW_DATA_FILE)
+        df.to_csv(CorpusCrawler.RAW_DATA_FILE)
         print("Crawling completed. Data saved to CSV.")
 
     @staticmethod
@@ -111,9 +111,9 @@ class VBPLCrawler:
             return ""
 
     def process_corpus(self, start_index=350, max_workers=30):
-        VBPLCrawler().process_pages()
+        CorpusCrawler().process_pages()
 
-        df = pd.read_csv(VBPLCrawler.FILE_PATH)
+        df = pd.read_csv(CorpusCrawler.FILE_PATH)
         df["is_content"] = df['content'].astype(str) if 'content' in df.columns else ''
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -131,4 +131,4 @@ class VBPLCrawler:
 
         df = df[~df["is_content"]]
         print("Good job! Done and saving to csv")
-        df.to_csv(VBPLCrawler.FILE_PATH, index=False)
+        df.to_csv(CorpusCrawler.FILE_PATH, index=False)

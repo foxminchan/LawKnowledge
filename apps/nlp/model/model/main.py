@@ -6,7 +6,7 @@ from model.generator import QuestionGenerator
 def switch(__action__):
     if __action__ == 'GENERATE_DATA':
         generator = QuestionGenerator()
-        data = generator.process_files('./data/*.txt')
+        data = generator.process_files('./raw-data/*.csv')
         generator.save_to_csv(data, configs.DATASET)
     elif __action__ == 'FINE_TUNING':
         fine_tuner = PhoBertFineTuner(configs.QA_MODEL, configs.DATASET)
@@ -19,5 +19,10 @@ def switch(__action__):
 
 
 if __name__ == '__main__':
-    action = input("Enter action: ")
-    switch(action)
+    while True:
+        try:
+            action = input("Enter action (GENERATE_DATA or FINE_TUNING): ")
+            switch(action)
+            break
+        except ValueError as error:
+            print(error)

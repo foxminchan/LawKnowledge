@@ -9,59 +9,58 @@ from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 
 
-class Scraping:
+class CodificationCrawler:
     MAX_RETRIES = 3
     ZIP_FILE = 'BoPhapDienDienTu.zip'
     RAW_DATA_FOLDER = './phap_dien_raw'
-    HTML2TXT_PATH = './phap_dien_raw/demuc'
     JS_FILE = './phap_dien_raw/jsonData.js'
 
     @staticmethod
     def download_data():
         attempt = 0
-        while attempt < Scraping.MAX_RETRIES:
+        while attempt < CodificationCrawler.MAX_RETRIES:
             try:
                 with requests.get(
                   'https://phapdien.moj.gov.vn/TraCuuPhapDien/Files/BoPhapDienDienTu.zip', stream=True
                 ) as response:
                     response.raise_for_status()
-                    with open(Scraping.ZIP_FILE, 'wb') as file:
+                    with open(CodificationCrawler.ZIP_FILE, 'wb') as file:
                         for chunk in response.iter_content(chunk_size=8192):
                             file.write(chunk)
-                print(f'Downloaded {Scraping.ZIP_FILE}')
+                print(f'Downloaded {CodificationCrawler.ZIP_FILE}')
                 break
             except requests.exceptions.RequestException as e:
-                print(f'Failed to download {Scraping.ZIP_FILE}. Error: {e}. Retrying...')
+                print(f'Failed to download {CodificationCrawler.ZIP_FILE}. Error: {e}. Retrying...')
                 attempt += 1
-                if attempt == Scraping.MAX_RETRIES:
-                    print(f'Failed to download {Scraping.ZIP_FILE} after {Scraping.MAX_RETRIES} attempts.')
+                if attempt == CodificationCrawler.MAX_RETRIES:
+                    print(f'Failed to download {CodificationCrawler.ZIP_FILE} after {attempt} attempts.')
                     raise
-        if not os.path.exists(Scraping.RAW_DATA_FOLDER):
-            os.makedirs(Scraping.RAW_DATA_FOLDER)
+        if not os.path.exists(CodificationCrawler.RAW_DATA_FOLDER):
+            os.makedirs(CodificationCrawler.RAW_DATA_FOLDER)
         try:
-            with zipfile.ZipFile(Scraping.ZIP_FILE, 'r') as zip_ref:
-                zip_ref.extractall(Scraping.RAW_DATA_FOLDER)
-            os.remove(Scraping.ZIP_FILE)
-            os.remove(f"{Scraping.RAW_DATA_FOLDER}/lib")
-            os.remove(f"{Scraping.RAW_DATA_FOLDER}/BoPhapDien.html")
-            print(f'Extracted {Scraping.ZIP_FILE} to {Scraping.RAW_DATA_FOLDER}')
+            with zipfile.ZipFile(CodificationCrawler.ZIP_FILE, 'r') as zip_ref:
+                zip_ref.extractall(CodificationCrawler.RAW_DATA_FOLDER)
+            os.remove(CodificationCrawler.ZIP_FILE)
+            os.remove(f"{CodificationCrawler.RAW_DATA_FOLDER}/lib")
+            os.remove(f"{CodificationCrawler.RAW_DATA_FOLDER}/BoPhapDien.html")
+            print(f'Extracted {CodificationCrawler.ZIP_FILE} to {CodificationCrawler.RAW_DATA_FOLDER}')
         except zipfile.BadZipFile:
-            print(f'Failed to extract {Scraping.ZIP_FILE}')
+            print(f'Failed to extract {CodificationCrawler.ZIP_FILE}')
             raise
 
     @staticmethod
     def convert_html_to_text():
-        Scraping.download_data()
+        CodificationCrawler.download_data()
 
         def convert_file(filename):
-            filepath = os.path.join(Scraping.HTML2TXT_PATH, filename)
+            filepath = os.path.join('./phap_dien_raw/demuc', filename)
             with open(filepath, 'r', encoding='utf-8') as file:
                 soup = BeautifulSoup(file, 'html.parser')
                 text = '\n'.join(p.get_text() for p in soup.find_all('p'))
                 text = text.replace("(Xem Danh mục văn bản pháp điển vào đề mục: )\n", "")
             if text.strip():
                 new_filename = filename.replace('.html', '.txt')
-                new_filepath = os.path.join(Scraping.HTML2TXT_PATH, new_filename)
+                new_filepath = os.path.join('./phap_dien_raw/demuc', new_filename)
                 with open(new_filepath, 'w', encoding='utf-8') as new_file:
                     new_file.write(text)
                 print(f'Converted {filename} to {new_filename}')
@@ -69,16 +68,16 @@ class Scraping:
                 print(f'Skipped empty file: {filename}')
             os.remove(filepath)
 
-        files_to_convert = [f for f in os.listdir(Scraping.HTML2TXT_PATH) if f.endswith('.html')]
+        files_to_convert = [f for f in os.listdir('./phap_dien_raw/txt') if f.endswith('.html')]
         with concurrent.futures.ThreadPoolExecutor() as executor:
             executor.map(convert_file, files_to_convert)
 
     @staticmethod
     def convert_to_csv():
-        Scraping.convert_html_to_text()
+        CodificationCrawler.convert_html_to_text()
 
-        if not os.path.exists(Scraping.JS_FILE):
-            raise FileNotFoundError(f'Folder {Scraping.JS_FILE} not found')
+        if not os.path.exists(CodificationCrawler.JS_FILE):
+            raise FileNotFoundError(f'Folder {CodificationCrawler.JS_FILE} not found')
 
         def to_csv(data, name, output):
             csv_file_path = os.path.join(output, f'{name}.csv')
@@ -103,7 +102,7 @@ class Scraping:
                     print(f"Error decoding JSON object at index {i}: {e}")
             return json_objects
 
-        with open(Scraping.JS_FILE, 'r', encoding='utf-8') as file:
+        with open(CodificationCrawler.JS_FILE, 'r', encoding='utf-8') as file:
             content = file.read()
             jd_topic = json.loads(re.search(r"var jdChuDe = (\[[^]]*])", content, re.DOTALL).group(1))
             jd_heading = json.loads(re.search(r"var jdDeMuc = (\[[^]]*])", content, re.DOTALL).group(1))
@@ -111,7 +110,7 @@ class Scraping:
               re.search(r"var jdAllTree = (\[[^]]*])", content, re.DOTALL).group(1)[1:-1]
             )
 
-        output_folder = os.path.dirname(Scraping.JS_FILE)
+        output_folder = os.path.dirname(CodificationCrawler.JS_FILE)
         tasks = [
           (jd_topic, 'ChuDe', output_folder),
           (jd_heading, 'DeMuc', output_folder),
@@ -121,8 +120,8 @@ class Scraping:
         with ThreadPoolExecutor() as executor:
             executor.map(lambda p: to_csv(*p), tasks)
 
-        os.remove(Scraping.JS_FILE)
+        os.remove(CodificationCrawler.JS_FILE)
 
     @staticmethod
     def process_data():
-        Scraping.convert_to_csv()
+        CodificationCrawler.convert_to_csv()
