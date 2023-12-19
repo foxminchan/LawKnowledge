@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 import concurrent.futures
-from content import VBPLCrawler
+from crawler import VBPLCrawler
 from crawler import LawCorpusCrawler
 
 

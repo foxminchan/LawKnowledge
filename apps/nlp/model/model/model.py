@@ -62,18 +62,16 @@ class PhoBertFineTuner:
             for batch in dataloader:
                 batch = {k: v.to(self.device) for k, v in batch.items()}
                 outputs = self.model(**batch)
-                loss = outputs.loss
-                total_loss += loss.item()
+                total_loss += outputs.loss.item()
                 pred = torch.argmax(outputs.logits, dim=1)
                 total_correct += (pred == batch['labels']).to(torch.int).sum().item()
                 total += batch['labels'].size(0)
                 all_predictions.extend(pred.cpu().numpy())
                 all_references.extend(batch['labels'].cpu().numpy())
 
-        avg_loss = total_loss / len(dataloader)
-        accuracy = total_correct / total
-        metrics = self.compute_metrics(all_predictions, all_references)
-        return avg_loss, accuracy, metrics
+        return (
+          total_loss / len(dataloader), total_correct / total, self.compute_metrics(all_predictions, all_references)
+        )
 
     @staticmethod
     def validation_epoch_end(avg_loss, accuracy, metrics):
@@ -93,19 +91,20 @@ class PhoBertFineTuner:
           self.train_dataset,
           batch_size=self.per_device_train_batch_size,
           shuffle=True,
-          num_workers=4
+          num_workers=10
         )
 
         val_dataloader = DataLoader(
           self.val_dataset,
           batch_size=self.per_device_eval_batch_size,
-          num_workers=4
+          num_workers=5
         )
+
         optimizer, scheduler = self.configure_optimizers()
 
         for _ in range(self.num_train_epochs):
             self.model.train()
-            with ThreadPoolExecutor(max_workers=4) as executor:
+            with ThreadPoolExecutor(max_workers=5) as executor:
                 futures = [
                   executor.submit(self.process_batch, batch, optimizer, scheduler) for batch in train_dataloader
                 ]

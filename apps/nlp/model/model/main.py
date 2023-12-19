@@ -7,7 +7,7 @@ def switch(__action__):
     if __action__ == 'GENERATE_DATA':
         generator = QuestionGenerator()
         data = generator.process_files('./data/*.txt')
-        generator.save_to_csv(data, "question_context_dataset.csv")
+        generator.save_to_csv(data, configs.DATASET)
     elif __action__ == 'FINE_TUNING':
         fine_tuner = PhoBertFineTuner(configs.QA_MODEL, configs.DATASET)
         fine_tuner.load_dataset()
