@@ -15,7 +15,7 @@ class PhoBertFineTuner:
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.tokenizer = RobertaTokenizer.from_pretrained(configs.QA_MODEL)
         self.model = RobertaForSequenceClassification.from_pretrained(configs.QA_MODEL).to(self.device)
-        self.folder_path = configs.DATASET
+        self.folder_path = './datasets'
         self.num_train_epochs = 3
         self.per_device_train_batch_size = 16
         self.per_device_eval_batch_size = 64

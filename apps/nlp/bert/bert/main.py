@@ -6,8 +6,8 @@ from bert.generator import QuestionGenerator
 def switch(__action__):
     if __action__ == 'GENERATE_DATA':
         generator = QuestionGenerator()
-        data = generator.process_files('./raw-data/*.csv')
-        generator.save_to_csv(data, configs.DATASET)
+        data = generator.process_dataset(configs.DATASET)
+        generator.save_to_csv(data)
     elif __action__ == 'FINE_TUNING':
         fine_tuner = PhoBertFineTuner()
         fine_tuner.load_dataset()

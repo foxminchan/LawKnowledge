@@ -122,7 +122,7 @@ services:
     container_name: postgres-auth-svc
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - ./postgres/auth:/var/lib/postgresql/data
       - ./postgres/postgresql.conf.sample:/usr/share/postgresql/postgresql.conf.sample
     environment:
       - POSTGRES_USER=admin
@@ -138,7 +138,7 @@ services:
     container_name: postgres-law-svc
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - ./postgres/law:/var/lib/postgresql/data
       - ./postgres/postgresql.conf.sample:/usr/share/postgresql/postgresql.conf.sample
     command: postgres -c 'max_connections=500'
     environment:
@@ -155,13 +155,28 @@ services:
     container_name: mongodb-chat-svc
     restart: unless-stopped
     volumes:
-      - ./mongodb:/data/db
+      - ./mongodb/chat:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=hutech$123
       - MONGO_INITDB_DATABASE=chat_svc_db
     ports:
       - '27017:27017'
+    networks:
+      - hutech-network
+
+  mongodb-search-svc:
+    image: mongo:latest
+    container_name: mongodb-search-svc
+    restart: unless-stopped
+    volumes:
+      - ./mongodb/search:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=hutech$123
+      - MONGO_INITDB_DATABASE=search_svc_db
+    ports:
+      - '27018:27017'
     networks:
       - hutech-network
 

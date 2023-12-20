@@ -27,6 +27,7 @@ datasets = "^2.15.0"
 python-dotenv = "^1.0.0"
 pydantic = "^2.5.2"
 pyspark = "^3.5.0"
+pydantic-settings = "^2.1.0"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"
