@@ -1,0 +1,38 @@
+[tool.coverage.run]
+branch = true
+source = [ "base-core" ]
+
+[tool.coverage.report]
+exclude_lines = ['if TYPE_CHECKING:']
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report html:'../../coverage//libs/base-core/html' --cov-report xml:'../../coverage//libs/base-core/coverage.xml' --html='../../reports//libs/base-core/unittests/html/index.html' --junitxml='../../reports//libs/base-core/unittests/junit.xml'"
+
+[tool.poetry]
+name = "base-core"
+version = "1.0.0"
+description = "Abstract of retrieval-augmented generation"
+authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
+license = "MIT"
+
+  [[tool.poetry.packages]]
+  include = "base-core"
+
+  [tool.poetry.dependencies]
+  python = ">=3.9 <=3.12"
+  langchain = "^0.0.351"
+  datasets = "^2.15.0"
+  sentence-transformers = "^2.2.2"
+
+  [tool.poetry.group.dev.dependencies]
+  autopep8 = "2.0.2"
+  flake8 = "6.0.0"
+  pytest = "7.3.1"
+  pytest-sugar = "0.9.7"
+  pytest-cov = "4.1.0"
+  pytest-html = "3.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

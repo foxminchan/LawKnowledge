@@ -1,15 +1,15 @@
 import grpc
 from concurrent import futures
-from search_svc.core.config import configs
-import search_svc.grpc.searching_service_pb2_grpc as handler
-from search_svc.services.index_service import IndexingServicer
-from search_svc.services.search_service import SearchServicer
+from core.configs import configs
+import search_svc.grpc.search_service_pb2_grpc as handler
+from search_svc.services.search_service import VectorSearch
+from search_svc.services.vectorize_service import Vectorize
 
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    handler.add_SearchingServiceServicer_to_server(IndexingServicer(), server)
-    handler.add_SearchingServiceServicer_to_server(SearchServicer(), server)
+    handler.add_SearchingServiceServicer_to_server(Vectorize(), server)
+    handler.add_SearchingServiceServicer_to_server(VectorSearch(), server)
     server.add_insecure_port(f"[::]:{configs.PORT}")
     try:
         server.start()

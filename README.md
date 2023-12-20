@@ -25,16 +25,19 @@
 
 <p align="center">
 	<a href="https://github.com/foxminchan/LawKnowledge/issues" target="blank">
-		<img loading="lazy" src="https://img.shields.io/github/issues/foxminchan/LawKnowledge?style=flat-square&label=Issue" alt="LawKnowledge issues"/>
+		<img loading="lazy" src="https://img.shields.io/github/issues/foxminchan/LawKnowledge?label=Issue" alt="LawKnowledge issues"/>
 	</a>
 	<a href="https://github.com/foxminchan/LawKnowledge/blob/main/LICENSE" target="blank">
-		<img loading="lazy" src="https://img.shields.io/github/license/foxminchan/LawKnowledge?style=flat-square&label=License" alt="LawKnowledge license"/>
+		<img loading="lazy" src="https://img.shields.io/github/license/foxminchan/LawKnowledge?label=License" alt="LawKnowledge license"/>
+	</a>
+	<a href="#" target="_blank">
+		<img loading="lazy" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab">
 	</a>
 	<a href="https://gitpod.io/new/#https://github.com/foxminchan/LawKnowledge" target="_blank">
-		<img loading="lazy" src="https://img.shields.io/badge/Gitpod-Ready%20to%20Code-blue?logo=gitpod&style=flat-square" alt="Gitpod">
+		<img loading="lazy" src="https://img.shields.io/badge/Gidpod-Ready%20to%20Code-blue?logo=gitpod" alt="Gitpod">
 	</a>
-		<a href="https://t.me/+bz74heXQgBwwOWRl" target="_blank">
-		<img loading="lazy" src="https://img.shields.io/static/v1?message=Join%20chat&color=9cf&logo=slack&label=Teleram&style=flat-square" alt="Telegram">
+	<a href="https://t.me/+bz74heXQgBwwOWRl" target="_blank">
+		<img loading="lazy" src="https://img.shields.io/static/v1?message=Join%20chat&color=9cf&logo=telegram&label=Teleram" alt="Telegram">
 	</a>
 </p>
 
@@ -54,7 +57,7 @@
 	<a href="https://sonarcloud.io/summary/new_code?id=foxminchan_LawKnowledge" target="blank">
 		<img loading="lazy" src="https://sonarcloud.io/images/project_badges/sonarcloud-white.svg" alt="SonarCloud" height="45" />
 	</a>
-	<a href="https://app.pulumi.com/new?template=https://github.com/foxminchan/LawKnowledge/tree/main/deploys/iac" target="blank">
+	<a href="https://app.pulumi.com/new?template=https://github.com/foxminchan/LawKnowledge/tree/main/deploys/iac/pulumi" target="blank">
 		<img loading="lazy" src="https://get.pulumi.com/new/button.svg" alt="Pulumi" height="45" />
 	</a>
 </p>
@@ -76,6 +79,8 @@
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
   - [🛠️ Prerequisites](#️-prerequisites)
+    - [Infrastucture](#infrastucture)
+    - [Services](#services)
   - [😄 HuggingFace Resources](#-huggingface-resources)
   - [🧑‍💻 Setup](#-setup)
   - [🚀 Running](#-running)
@@ -133,6 +138,8 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 
 ## 🛠️ Prerequisites
 
+### Infrastucture
+
 <ul>
 	<li align="justify">
 		<b><a href="https://nx.dev/" target="_blank">Nx</a></b> - Nx is a set of extensible dev tools for monorepos.
@@ -160,14 +167,25 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 	</li>
 </ul>
 
+### Services
+
+<ul>
+	<li align="justify">
+		<b><a href="https://aws.amazon.com/" target="_blank">An AWS Account</a></b> - AWS is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow.
+	</li>
+	<li align="justify">
+		<b><a href="https://huggingface.co/" target="_blank">HuggingFace</a></b> - HuggingFace is an open-source provider of NLP technologies.
+	</li>
+</ul>
+
 ## 😄 HuggingFace Resources
 
 <p align="justify">
 
 You can download the dataset from the following link:
 
-- [Law Knowledge Data](https://huggingface.co/datasets/foxminchan/law-knowledge)
-- [Law Knowledge Model](https://huggingface.co/foxminchan/law-knowledge)
+- [Law Knowledge Data](https://huggingface.co/datasets/foxminchan/law-knowledge): The dataset from [Pháp điển](https://phapdien.gov.vn/) and [Văn bản pháp luật](https://vanbanphapluat.co/).
+- [Law Knowledge Model](https://huggingface.co/foxminchan/law-knowledge): A fine-tuned model from [PhoBERT](https://huggingface.co/phobert-base-v2).
 
 </p>
 
@@ -205,17 +223,17 @@ npx nx serve auth-svc --prod
 # For the Law Service
 npx nx serve law-svc --prod
 
-# For the Chat Service
-npx nx serve chat-svc --prod
+# For the Search Service, navigate to the search-svc directory
+npx nx build search-svc && cd apps/api/search-svc/search-svc && python main.py
 
-# For the Search Service
-npx nx serve search-svc --prod
+# For the Chat Service, navigate to the chat-svc directory
+npx nx build chat-svc && cd apps/api/chat-svc/chat-svc && python main.py
 ```
 
 To traning the model, you can run the following command:
 
 ```bash
-npx nx build model
+npx nx build bert && cd apps/nlp/bert/bert && python main.py
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -260,7 +278,7 @@ npx nx test chat-svc
 To test the model, you can run the following command:
 
 ```bash
-npx nx test model
+npx nx test bert
 ```
 
 ## 🧩 Other
@@ -268,7 +286,7 @@ npx nx test model
 To run the tooling for processing the dataset, you can run the following command:
 
 ```bash
-npx nx serve proc
+npx nx build processor && cd apps/nlp/processor/processor && python main.py
 ```
 
 For running documentation, you can run the following command:
@@ -306,7 +324,7 @@ npx nx dep-graph
 
 Here is the dependency graph of the project:
 
-<img loading="lazy" src="./assets/images/depend-graph.png" alt="Dependency Graph" width="100%">
+<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 

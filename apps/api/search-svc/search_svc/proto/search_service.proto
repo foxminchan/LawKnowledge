@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+service SearchingService {
+    rpc Vectorize(Empty) returns (DataResponse) {}
+    rpc VectorSearch(SearchRequest) returns (SearchResponse) {}
+}
+
+message Empty {}
+
+message DataResponse {
+    string message = 1;
+}
+
+message SearchRequest {
+    string query = 1;
+}
+
+message SearchResponse {
+    repeated string documents = 1;
+}

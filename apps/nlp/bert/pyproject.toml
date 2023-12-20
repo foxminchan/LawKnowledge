@@ -1,0 +1,48 @@
+[tool.coverage.run]
+branch = true
+source = ["bert"]
+
+[tool.coverage.report]
+exclude_lines = ['if TYPE_CHECKING:']
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report html:'../../../coverage//apps/nlp/bert/html' --cov-report xml:'../../../coverage//apps/nlp/bert/coverage.xml' --html='../../../reports//apps/nlp/bert/unittests/html/index.html' --junitxml='../../../reports//apps/nlp/bert/unittests/junit.xml'"
+
+[tool.poetry]
+name = "bert"
+version = "1.0.0"
+description = "Train and evaluate a model"
+authors = ["Hutech University <hutech@hutech.edu.vn>"]
+license = "MIT"
+
+[[tool.poetry.packages]]
+include = "bert"
+
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+torch = "^2.1.1"
+transformers = "^4.36.2"
+datasets = "^2.15.0"
+python-dotenv = "^1.0.0"
+pydantic = "^2.5.2"
+pyspark = "^3.5.0"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "2.0.2"
+isort = "5.13.2"
+flake8 = "6.0.0"
+pytest = "7.3.1"
+pytest-sugar = "0.9.7"
+pytest-cov = "4.1.0"
+pytest-html = "3.2.0"
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 88
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

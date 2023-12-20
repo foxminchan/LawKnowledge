@@ -1,24 +1,36 @@
-from haystack import Pipeline
-from haystack.document_stores import FAISSDocumentStore
-from haystack.nodes import EmbeddingRetriever, PromptNode
-import search_svc.grpc.searching_service_pb2_grpc as handler
+from pymongo import MongoClient
+from search_svc.core.configs import configs
+import search_svc.grpc.search_service_pb2_grpc as handler
+from langchain.retrievers import ContextualCompressionRetriever
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.retrievers.document_compressors import LLMChainExtractor
+from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
+from langchain_community.vectorstores.mongodb_atlas import MongoDBAtlasVectorSearch
 
 
-class SearchServicer(handler.SearchingServiceServicer):
+class VectorSearch(handler.SearchingServiceServicer):
     def __init__(self):
-        self.document_store = FAISSDocumentStore(faiss_index_factory_str="Flat", embedding_dim=1536)
-        self.retriever = EmbeddingRetriever(
-          document_store=self.document_store,
-          batch_size=32,
-          embedding_model="keepitreal/vietnamese-sbert",
-        )
-        self.prompt_node = PromptNode(
-          model_name_or_path="vinai/PhoGPT-7B5-Instruct",
-          default_prompt_template="vinai/phobert-base-v2"
+        client = MongoClient(configs.DATABASE_URL)
+        collection = client["search_svc_db"]["law"]
+        self.vector_store = MongoDBAtlasVectorSearch(
+            collection,
+            HuggingFaceEmbeddings(model_name=configs.EMBEDDING),
+            index_name=configs.INDEX_NAME
         )
 
-    def RunSearch(self, keyword, **kwargs):
-        pipeline = Pipeline()
-        pipeline.add_node(component=self.retriever, name="Retriever", inputs=["Query"])
-        pipeline.add_node(component=self.prompt_node, name="PromptNode", inputs=["Retriever"])
-        pipeline.run(query=keyword, debug=True)
+        self.llm = HuggingFacePipeline.from_model_id(
+            model_id=configs.MODEL,
+            task="semantic-search",
+            device=0,
+            batch_size=2
+        )
+
+        compressor = LLMChainExtractor.from_llm(self.llm)
+
+        self.compression_retriever = ContextualCompressionRetriever(
+            base_compressor=compressor,
+            base_retriever=self.vector_store.as_retriever()
+        )
+
+    def VectorSearch(self, query, context):
+        return self.compression_retriever.search(query)

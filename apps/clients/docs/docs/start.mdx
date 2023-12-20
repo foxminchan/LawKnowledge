@@ -49,14 +49,14 @@ Having a computer that meets or exceeds these recommended hardware requirements 
 - [**Pulumi**](https://www.pulumi.com/): Acloud development platform that makes creating cloud programs easy and productive.
 </p>
 
-## 📦 Dataset
+## 😄 HuggingFace Resources
 
 <p align="justify">
 
 You can download the dataset from the following link:
 
-- [Phap Dien](https://phapdien.moj.gov.vn/Pages/home.aspx): A website that provides legal documents of Vietnam.
-- [QPPL](https://vbpl.vn/pages/portal.aspx): Database of Vietnam's legal documents.
+- [Law Knowledge Data](https://huggingface.co/datasets/foxminchan/law-knowledge): The dataset from [Pháp điển](https://phapdien.gov.vn/) and [Văn bản pháp luật](https://vanbanphapluat.co/).
+- [Law Knowledge Model](https://huggingface.co/foxminchan/law-knowledge): A fine-tuned model from [PhoBERT](https://huggingface.co/phobert-base-v2).
 
 </p>
 
@@ -94,17 +94,17 @@ npx nx serve auth-svc --prod
 # For the Law Service
 npx nx serve law-svc --prod
 
-# For the Chat Service
-npx nx serve chat-svc --prod
+# For the Search Service, navigate to the search-svc directory
+npx nx build search-svc && cd apps/api/search-svc/search-svc && python main.py
 
-# For the Search Service
-npx nx serve search-svc --prod
+# For the Chat Service, navigate to the chat-svc directory
+npx nx build chat-svc && cd apps/api/chat-svc/chat-svc && python main.py
 ```
 
 To traning the model, you can run the following command:
 
 ```bash
-npx nx build model
+npx nx build bert && cd apps/nlp/bert/bert && python main.py
 ```
 
 To set up the infrastructure, you can run the following command:
@@ -151,7 +151,7 @@ npx nx test chat-svc
 To test the model, you can run the following command:
 
 ```bash
-npx nx test model
+npx nx test bert
 ```
 
 ## 🧩 Other
@@ -159,7 +159,7 @@ npx nx test model
 To run the tooling for processing the dataset, you can run the following command:
 
 ```bash
-npx nx serve proc
+npx nx build processor && cd apps/nlp/processor/processor && python main.py
 ```
 
 For running documentation, you can run the following command:

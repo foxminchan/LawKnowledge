@@ -2,13 +2,13 @@
   "name": "search-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/api/search-svc/search_svc",
+  "sourceRoot": "/apps/api/search-svc/search_svc",
   "targets": {
     "lock": {
       "executor": "@nxlv/python:run-commands",
       "options": {
         "command": "poetry lock --no-update",
-        "cwd": "apps/api/search-svc"
+        "cwd": "/apps/api/search-svc"
       }
     },
     "add": {
@@ -29,7 +29,7 @@
         "{projectRoot}/dist"
       ],
       "options": {
-        "outputPath": "apps/api/search-svc/dist",
+        "outputPath": "/apps/api/search-svc/dist",
         "publish": false,
         "lockedVersions": true,
         "bundleLocalDependencies": true
@@ -48,21 +48,21 @@
     "lint": {
       "executor": "@nxlv/python:flake8",
       "outputs": [
-        "{workspaceRoot}/reports/apps/api/search-svc/pylint.txt"
+        "{workspaceRoot}/reports//apps/api/search-svc/pylint.txt"
       ],
       "options": {
-        "outputFile": "reports/apps/api/search-svc/pylint.txt"
+        "outputFile": "reports//apps/api/search-svc/pylint.txt"
       }
     },
     "test": {
       "executor": "@nxlv/python:run-commands",
       "outputs": [
-        "{workspaceRoot}/reports/apps/api/search-svc/unittests",
-        "{workspaceRoot}/coverage/apps/api/search-svc"
+        "{workspaceRoot}/reports//apps/api/search-svc/unittests",
+        "{workspaceRoot}/coverage//apps/api/search-svc"
       ],
       "options": {
         "command": "poetry run pytest tests/",
-        "cwd": "apps/api/search-svc"
+        "cwd": "/apps/api/search-svc"
       }
     },
     "sonar": {

@@ -4,8 +4,7 @@
   "include": [],
   "references": [
     {
-      "path": "./tsconfig.app.json",
-      "composite": true
+      "path": "./tsconfig.app.json"
     },
     {
       "path": "./tsconfig.spec.json"

@@ -1,9 +1,9 @@
 [tool.coverage.run]
 branch = true
-source = ["chat-svc"]
+source = [ "chat-svc" ]
 
 [tool.coverage.report]
-exclude_lines = ['if TYPE_CHECKING:']
+exclude_lines = [ "if TYPE_CHECKING:" ]
 show_missing = true
 
 [tool.pytest.ini_options]
@@ -13,14 +13,27 @@ addopts = "--cov --cov-report html:'../../../coverage//apps/api/chat-svc/html' -
 name = "chat-svc"
 version = "1.0.0"
 description = "A chat service"
-authors = ["Hutech University <hutech@hutech.edu.vn>"]
+authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
 license = "MIT"
 
-[[tool.poetry.packages]]
-include = "chat-svc"
+  [[tool.poetry.packages]]
+  include = "chat-svc"
 
-[tool.poetry.dependencies]
-python = ">=3.9 <=3.12"
+  [tool.poetry.dependencies]
+  python = ">=3.9 <=3.12"
+  langchain = "^0.0.351"
+  grpcio = "^1.60.0"
+  grpcio-tools = "^1.60.0"
+  protobuf = "^4.25.1"
+  python-dotenv = "^1.0.0"
+  pydantic = "^2.5.2"
+  faiss-cpu = "^1.7.4"
+  pydantic-settings = "^2.1.0"
+  transformers = "^4.36.2"
+
+    [tool.poetry.dependencies.base-core]
+    path = "..\\..\\..\\libs\\base-core"
+    develop = true
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"
@@ -31,5 +44,5 @@ pytest-cov = "4.1.0"
 pytest-html = "3.2.0"
 
 [build-system]
-requires = ["poetry-core"]
+requires = [ "poetry-core" ]
 build-backend = "poetry.core.masonry.api"

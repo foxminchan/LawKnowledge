@@ -1,45 +1,56 @@
 [tool.coverage.run]
 branch = true
-source = [ "search_svc" ]
+source = [ "search-svc" ]
 
 [tool.coverage.report]
 exclude_lines = [ "if TYPE_CHECKING:" ]
 show_missing = true
 
 [tool.pytest.ini_options]
-addopts = "--cov --cov-report html:'../../../coverage/apps/api/searching-svc/html' --cov-report xml:'../../../coverage/apps/api/searching-svc/coverage.xml' --html='../../../reports/apps/api/searching-svc/unittests/html/index.html' --junitxml='../../../reports/apps/api/searching-svc/unittests/junit.xml'"
+addopts = "--cov --cov-report html:'../../../coverage//apps/api/search-svc/html' --cov-report xml:'../../../coverage//apps/api/search-svc/coverage.xml' --html='../../../reports//apps/api/search-svc/unittests/html/index.html' --junitxml='../../../reports//apps/api/search-svc/unittests/junit.xml'"
 
 [tool.poetry]
-name = "searching-svc"
+name = "search-svc"
 version = "1.0.0"
 description = "Searching service"
 authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
 license = "MIT"
-group = { }
 
   [[tool.poetry.packages]]
-  include = "search_svc"
+  include = "search-svc"
 
   [tool.poetry.dependencies]
   python = ">=3.9 <=3.12"
-  grpcio = "^1.59.3"
-  grpcio-tools = "^1.59.3"
-  pydantic = "1.10.0"
+  langchain = "^0.0.351"
+  grpcio = "^1.60.0"
+  grpcio-tools = "^1.60.0"
   protobuf = "^4.25.1"
   python-dotenv = "^1.0.0"
+  pydantic = "^2.5.2"
+  pydantic-settings = "^2.1.0"
+  datasets = "^2.15.0"
+  sentence-transformers = "^2.2.2"
+  pymongo = "^4.6.1"
+  transformers = "^4.36.2"
 
-    [tool.poetry.dependencies.farm-haystack]
-    extras = [ "faiss-gpu" ]
-    version = "^1.22.1"
+    [tool.poetry.dependencies.base-core]
+    path = "..\\..\\..\\libs\\base-core"
+    develop = true
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "2.0.2"
+isort = "5.13.2"
+flake8 = "6.0.0"
+pytest = "7.3.1"
+pytest-sugar = "0.9.7"
+pytest-cov = "4.1.0"
+pytest-html = "3.2.0"
 
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0
 line_length = 88
-
-[tool.nx]
-autoActivate = true
 
 [build-system]
 requires = [ "poetry-core" ]

@@ -9,6 +9,8 @@ services:
     ports:
       - '7070:8080'
       - '50000:50000'
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false -Dhudson.model.DirectoryBrowserSupport.CSP="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
     volumes:
       - ./jenkins_home:/var/jenkins_home
 
@@ -26,6 +28,7 @@ services:
       - hutech-network
     environment:
       - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
+      - JAVA_OPTS=-Dsonar.forceAuthentication=false
     depends_on:
       - db
 

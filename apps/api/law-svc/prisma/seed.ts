@@ -1,52 +1,55 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { csvParse } from 'd3-dsv';
 import * as process from 'process';
 import { PrismaClient } from '@prisma/db-law';
 
 const prisma = new PrismaClient();
 
-async function main() {
-  const jsonTopicData = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'data', 'Topic.json'), 'utf-8')
-  );
+function readCsvFile(filePath: fs.PathOrFileDescriptor) {
+  const fileContents = fs.readFileSync(filePath, 'utf-8');
+  return csvParse(fileContents);
+}
 
-  for (const topic of jsonTopicData) {
+async function main() {
+  const chudeData = readCsvFile(path.join(__dirname, 'data', 'ChuDe.csv'));
+  for (const item of chudeData) {
     await prisma.topic.create({
-      data: topic,
+      data: {
+        id: item.Value,
+        name: item.Text,
+        no: parseInt(item.STT),
+      },
     });
   }
+  console.log('Seeding topic data successfully');
 
-  console.log('Seeded topics successfully');
-
-  const jsonHeadingData = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'data', 'Heading.json'), 'utf-8')
-  );
-
-  for (const heading of jsonHeadingData) {
+  const demucData = readCsvFile(path.join(__dirname, 'data', 'DeMuc.csv'));
+  for (const item of demucData) {
     await prisma.heading.create({
       data: {
-        no: parseInt(heading.no),
-        ...heading,
+        id: item.Value,
+        name: item.Text,
+        topic_id: item.ChuDe,
+        no: parseInt(item.STT),
       },
     });
   }
+  console.log('Seeding heading data successfully');
 
-  console.log('Seeded headings successfully');
-
-  const jsonDocumentData = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'data', 'Document.json'), 'utf-8')
-  );
-
-  for (const document of jsonDocumentData) {
+  const documentData = readCsvFile(path.join(__dirname, 'data', 'AllTree.csv'));
+  for (const item of documentData) {
     await prisma.document.create({
       data: {
-        no: parseInt(document.no),
-        ...document,
+        id: item.ID,
+        indexing: item.ChiMuc,
+        mpc: item.MAPC,
+        name: item.TEN,
+        heading_id: item.DeMucID,
       },
     });
   }
-
-  console.log('Seeded documents successfully');
+  console.log('Seeding document data successfully');
 }
 
 main()
