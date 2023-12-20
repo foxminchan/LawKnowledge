@@ -76,7 +76,7 @@
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
   - [🛠️ Prerequisites](#️-prerequisites)
-  - [📦 Dataset](#-dataset)
+  - [😄 HuggingFace Resources](#-huggingface-resources)
   - [🧑‍💻 Setup](#-setup)
   - [🚀 Running](#-running)
   - [🧪 Testing](#-testing)
@@ -127,7 +127,7 @@ If you want to find out more about the contest, please visit the [VFOSSA website
 We used <b>Microservice Architecture</b> to build this project to make it easier to scale and maintain. The following diagram shows the architecture of the project.
 </p>
 
-<img loading="lazy" src="./assets/images/base-architecture.svg" alt="Architecture" width="100%">
+<img loading="lazy" src="./assets/images/architecture.svg" alt="Architecture" width="100%">
 
 # Getting Started
 
@@ -160,14 +160,14 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 	</li>
 </ul>
 
-## 📦 Dataset
+## 😄 HuggingFace Resources
 
 <p align="justify">
 
 You can download the dataset from the following link:
 
-- [Phap Dien](https://phapdien.moj.gov.vn/Pages/home.aspx): A website that provides legal documents of Vietnam.
-- [QPPL](https://vbpl.vn/pages/portal.aspx): Database of Vietnam's legal documents.
+- [Law Knowledge Data](https://huggingface.co/datasets/foxminchan/law-knowledge)
+- [Law Knowledge Model](https://huggingface.co/foxminchan/law-knowledge)
 
 </p>
 
@@ -306,11 +306,11 @@ npx nx dep-graph
 
 Here is the dependency graph of the project:
 
-<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
+<img loading="lazy" src="./assets/images/depend-graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 
-<img loading="lazy" src="./assets/images/base-cicd.svg" alt="CI/CD" width="100%">
+<img loading="lazy" src="./assets/images/cicd.svg" alt="CI/CD" width="100%">
 
 # Contributing
 

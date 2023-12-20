@@ -1,87 +1,68 @@
 {
   "name": "chat-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api/chat-svc/src",
   "projectType": "application",
+  "sourceRoot": "/apps/api/chat-svc/chat-svc",
   "targets": {
-    "build": {
-      "executor": "@nx/webpack:webpack",
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "defaultConfiguration": "production",
+    "lock": {
+      "executor": "@nxlv/python:run-commands",
       "options": {
-        "target": "node",
-        "compiler": "tsc",
-        "outputPath": "dist/apps/api/chat-svc",
-        "main": "apps/api/chat-svc/src/main.ts",
-        "tsConfig": "apps/api/chat-svc/tsconfig.app.json",
-        "assets": [
-          "apps/api/chat-svc/src/assets",
-          "apps/api/chat-svc/src/proto"
-        ],
-        "webpackConfig": "apps/api/chat-svc/webpack.config.js"
-      },
-      "configurations": {
-        "development": {},
-        "production": {}
+        "command": "poetry lock --no-update",
+        "cwd": "/apps/api/chat-svc"
       }
     },
-    "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
+    "add": {
+      "executor": "@nxlv/python:add",
+      "options": {}
+    },
+    "update": {
+      "executor": "@nxlv/python:update",
+      "options": {}
+    },
+    "remove": {
+      "executor": "@nxlv/python:remove",
+      "options": {}
+    },
+    "build": {
+      "executor": "@nxlv/python:build",
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
       "options": {
-        "buildTarget": "chat-svc:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "chat-svc:build:development"
-        },
-        "production": {
-          "buildTarget": "chat-svc:build:production"
-        }
+        "outputPath": "/apps/api/chat-svc/dist",
+        "publish": false,
+        "lockedVersions": true,
+        "bundleLocalDependencies": true
+      }
+    },
+    "install": {
+      "executor": "@nxlv/python:install",
+      "options": {
+        "silent": false,
+        "args": "",
+        "cacheDir": ".cache/pypoetry",
+        "verbose": false,
+        "debug": false
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
+      "executor": "@nxlv/python:flake8",
       "outputs": [
-        "{options.outputFile}"
+        "{workspaceRoot}/reports//apps/api/chat-svc/pylint.txt"
       ],
       "options": {
-        "lintFilePatterns": [
-          "apps/api/chat-svc/**/*.ts"
-        ]
+        "outputFile": "reports//apps/api/chat-svc/pylint.txt"
       }
     },
     "test": {
-      "executor": "@nx/jest:jest",
+      "executor": "@nxlv/python:run-commands",
       "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
+        "{workspaceRoot}/reports//apps/api/chat-svc/unittests",
+        "{workspaceRoot}/coverage//apps/api/chat-svc"
       ],
       "options": {
-        "jestConfig": "apps/api/chat-svc/jest.config.ts"
-      }
-    },
-    "container": {
-      "executor": "@nx-tools/nx-container:build",
-      "dependsOn": [
-        "build"
-      ],
-      "options": {
-        "engine": "docker",
-        "metadata": {
-          "images": [
-            "chat-svc"
-          ],
-          "load": true,
-          "tags": [
-            "type=schedule",
-            "type=ref,event=branch",
-            "type=ref,event=tag",
-            "type=ref,event=pr",
-            "type=sha,prefix=sha-"
-          ]
-        }
+        "command": "poetry run pytest tests/",
+        "cwd": "/apps/api/chat-svc"
       }
     },
     "sonar": {
@@ -95,72 +76,6 @@
         "qualityGate": true,
         "qualityGateTimeout": "300",
         "skipImplicitDeps": false
-      }
-    },
-    "prisma-generate": {
-      "executor": "@nx-tools/nx-prisma:generate",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-migrate": {
-      "executor": "@nx-tools/nx-prisma:migrate",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-pull": {
-      "executor": "@nx-tools/nx-prisma:pull",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-push": {
-      "executor": "@nx-tools/nx-prisma:push",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-deploy": {
-      "executor": "@nx-tools/nx-prisma:deploy",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-status": {
-      "executor": "@nx-tools/nx-prisma:status",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-studio": {
-      "executor": "@nx-tools/nx-prisma:studio",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-reset": {
-      "executor": "@nx-tools/nx-prisma:reset",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-resolve": {
-      "executor": "@nx-tools/nx-prisma:resolve",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-seed": {
-      "executor": "@nx-tools/nx-prisma:seed",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
-      }
-    },
-    "prisma-validate": {
-      "executor": "@nx-tools/nx-prisma:validate",
-      "options": {
-        "schema": "apps/api/chat-svc/prisma/schema.prisma"
       }
     }
   },
