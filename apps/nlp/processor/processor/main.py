@@ -1,4 +1,6 @@
-from processor.monitor import DataMonitor
+# Copyright (c) 2023-present Hutech University. All rights reserved
+# Licensed under the MIT License
+
 from processor.corpus import CorpusCrawler
 from processor.codification import CodificationCrawler
 
@@ -8,15 +10,15 @@ def switch(__action__):
         CodificationCrawler().process_data()
     elif __action__ == 'SETUP_CORPUS':
         CorpusCrawler().process_corpus()
-    elif __action__ == 'UPDATE_DATA':
-        DataMonitor().compare_and_update()
+    elif __action__ == 'EXIT':
+        exit(0)
     else:
         raise ValueError('Invalid action: {}'.format(__action__))
 
 
 if __name__ == '__main__':
     while True:
-        action = input('Please enter action (SETUP_CODIFICATION, SETUP_CORPUS, UPDATE_DATA): ')
+        action = input('Please enter action (SETUP_CODIFICATION, SETUP_CORPUS, EXIT): ')
         try:
             switch(action)
             break

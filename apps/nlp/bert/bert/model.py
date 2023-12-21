@@ -1,3 +1,6 @@
+# Copyright (c) 2023-present Hutech University. All rights reserved
+# Licensed under the MIT License
+
 import torch
 import torch.optim as optim
 from bert.config import configs

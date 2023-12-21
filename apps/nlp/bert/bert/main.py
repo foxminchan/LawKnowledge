@@ -1,3 +1,6 @@
+# Copyright (c) 2023-present Hutech University. All rights reserved
+# Licensed under the MIT License
+
 from bert.config import configs
 from bert.model import PhoBertFineTuner
 from bert.generator import QuestionGenerator
@@ -14,6 +17,8 @@ def switch(__action__):
         fine_tuner.train()
         fine_tuner.evaluate_model(fine_tuner.val_dataset)
         fine_tuner.save_model(configs.PATH)
+    elif __action__ == 'EXIT':
+        exit(0)
     else:
         raise ValueError('Invalid action: {}'.format(__action__))
 
@@ -21,7 +26,7 @@ def switch(__action__):
 if __name__ == '__main__':
     while True:
         try:
-            action = input("Enter action (GENERATE_DATA or FINE_TUNING): ")
+            action = input("Enter action (GENERATE_DATA, FINE_TUNING, EXIT): ")
             switch(action)
             break
         except ValueError as error:
