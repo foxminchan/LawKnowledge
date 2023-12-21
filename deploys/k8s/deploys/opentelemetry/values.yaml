@@ -49,3 +49,11 @@ opentelemetryConfig:
         receivers: [otlp]
         processors: [batch]
         exporters: [logging, elasticsearch]
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 256Mi

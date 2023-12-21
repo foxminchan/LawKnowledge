@@ -10,3 +10,11 @@ backend:
     enabled: true
     host: api.hutech.dev.com
     path: /law-svc
+
+  resource:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi

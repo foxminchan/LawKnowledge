@@ -10,3 +10,11 @@ backend:
     enabled: true
     host: hutech.dev.com
     path: /
+
+  resource:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi

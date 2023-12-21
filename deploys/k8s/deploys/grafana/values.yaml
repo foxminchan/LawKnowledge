@@ -1,4 +1,12 @@
-hostname: grafana.hutech.dev.ccom
+hostname: grafana.hutech.dev.com
 grafana:
   username: admin
   password: admin
+
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "100m"
+    limits:
+      memory: "200Mi"
+      cpu: "200m"
