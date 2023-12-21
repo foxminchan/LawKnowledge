@@ -25,7 +25,8 @@
         "nrwl.angular-console",
         "esbenp.prettier-vscode",
         "ms-python.python",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "doi.fileheadercomment"
       ]
     }
   }

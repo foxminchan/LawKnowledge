@@ -17,3 +17,4 @@ vscode:
     - "esbenp.prettier-vscode"
     - "ms-python.python"
     - "dbaeumer.vscode-eslint"
+    - "doi.fileheadercomment"

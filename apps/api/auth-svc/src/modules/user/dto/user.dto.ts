@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   IsEmail,
   Matches,
@@ -37,7 +42,7 @@ export class CreateUserDto {
     {
       message:
         'Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số',
-    }
+    },
   )
   password: string;
 }

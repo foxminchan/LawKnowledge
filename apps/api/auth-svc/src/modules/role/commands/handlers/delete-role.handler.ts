@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { DeleteRoleCommand } from '../impl';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { AuthDataService } from '@law-knowledge/building-block';

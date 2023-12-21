@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { JwtService } from '@nestjs/jwt';
 import { CreateTokenCommand } from '../impl';
 import { RpcException } from '@nestjs/microservices';

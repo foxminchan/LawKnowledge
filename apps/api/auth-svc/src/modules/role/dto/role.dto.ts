@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { IsEnum } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
 import { Roles } from '@law-knowledge/building-block';

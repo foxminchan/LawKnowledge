@@ -20,5 +20,21 @@
     "connectionId": "foxminchan",
     "projectKey": "foxminchan_LawKnowledge"
   },
-  "cSpell.words": ["akebifiky", "vectorstore"]
+  "fileHeaderComment.parameter": {
+    "*": {
+      "author": "Hutech University",
+      "license_mit": [
+        "Copyright (c) ${year}-present ${author}. All rights reserved",
+        "Licensed under the MIT License"
+      ]
+    }
+  },
+  "fileHeaderComment.template": {
+    "mit": [
+      "${commentbegin}",
+      "${commentprefix} ${license_mit}",
+      "${commentend}"
+    ]
+  },
+  "cSpell.words": ["akebifiky", "Hutech", "vectorstore"]
 }

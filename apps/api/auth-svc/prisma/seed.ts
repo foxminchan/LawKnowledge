@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import * as process from 'process';
 import { PrismaClient } from '@prisma/db-auth';
 
