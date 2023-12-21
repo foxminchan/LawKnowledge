@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   LawSvcModule,
   AuthSvcModule,
@@ -14,9 +19,9 @@ import {
   HttpCacheInterceptor,
   ClearCacheInterceptor,
 } from '@law-knowledge/building-block';
+import { NestConfigModule } from './configs';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { NestConfigModule } from './configs';
 
 @Module({
   imports: [

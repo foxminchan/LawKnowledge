@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import Joi from 'joi';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';

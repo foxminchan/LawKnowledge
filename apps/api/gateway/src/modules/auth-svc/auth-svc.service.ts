@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { Inject, OnModuleInit } from '@nestjs/common';
 import { catchError, throwError, timeout } from 'rxjs';
 import { ClientGrpc, RpcException } from '@nestjs/microservices';

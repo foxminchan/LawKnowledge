@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { createClient } from 'redis';
 import { configs } from '../configs';
 import type { Adapter } from 'socket.io-adapter';

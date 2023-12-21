@@ -171,10 +171,10 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 
 <ul>
 	<li align="justify">
-		<b><a href="https://aws.amazon.com/" target="_blank">An AWS Account</a></b> - AWS is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow.
+		<b><a href="https://aws.amazon.com/" target="_blank">AWS</a></b> - An Amazon Web Services account is required to deploy the infrastructure.
 	</li>
 	<li align="justify">
-		<b><a href="https://huggingface.co/" target="_blank">HuggingFace</a></b> - HuggingFace is an open-source provider of NLP technologies.
+		<b><a href="https://huggingface.co/" target="_blank">HuggingFace</a></b> - A HuggingFace account is required to download and upload the dataset and model.
 	</li>
 </ul>
 
@@ -184,8 +184,8 @@ We used <b>Microservice Architecture</b> to build this project to make it easier
 
 You can download the dataset from the following link:
 
-- [Law Knowledge Data](https://huggingface.co/datasets/foxminchan/law-knowledge): The dataset from [Pháp điển](https://phapdien.gov.vn/) and [Văn bản pháp luật](https://vanbanphapluat.co/).
-- [Law Knowledge Model](https://huggingface.co/foxminchan/law-knowledge): A fine-tuned model from [PhoBERT](https://huggingface.co/phobert-base-v2).
+- [Law Knowledge Data](https://huggingface.co/datasets/foxminchan/law-knowledge): The dataset from [Pháp điển](https://phapdien.moj.gov.vn/) and [Văn bản pháp luật](https://vbpl.vn/).
+- [Law Knowledge Model](https://huggingface.co/foxminchan/law-knowledge): A fine-tuned model from [PhoBERT](https://huggingface.co/vinai/phobert-base-v2).
 
 </p>
 

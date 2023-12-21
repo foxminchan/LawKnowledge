@@ -1,7 +1,10 @@
-import * as aws from "@pulumi/aws";
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
 
-// Create an AWS resource (S3 Bucket)
-const bucket = new aws.s3.Bucket("my-bucket");
+import * as aws from '@pulumi/aws';
 
-// Export the name of the bucket
+const bucket = new aws.s3.Bucket('my-bucket');
+
 export const bucketName = bucket.id;
