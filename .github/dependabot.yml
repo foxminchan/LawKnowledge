@@ -1,25 +1,31 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'monthly'
+      interval: "monthly"
     open-pull-requests-limit: 0
 
-  - package-ecosystem: 'nuget'
-    directory: '/apps/nlp/auto'
+  - package-ecosystem: "pip"
+    directory: "/apps/api/search-svc"
     schedule:
-      interval: 'daily'
+      interval: "daily"
     open-pull-requests-limit: 0
 
-  - package-ecosystem: 'pip'
-    directory: '/apps/api/search-svc'
+  - package-ecosystem: "pip"
+    directory: "/apps/api/chat-svc"
     schedule:
-      interval: 'daily'
+      interval: "daily"
     open-pull-requests-limit: 0
 
-  - package-ecosystem: 'pip'
-    directory: '/apps/nlp/model'
+  - package-ecosystem: "pip"
+    directory: "/apps/nlp/bert"
     schedule:
-      interval: 'daily'
+      interval: "daily"
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "pip"
+    directory: "/apps/nlp/processor"
+    schedule:
+      interval: "daily"
     open-pull-requests-limit: 0

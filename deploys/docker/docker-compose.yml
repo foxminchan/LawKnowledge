@@ -245,5 +245,6 @@ volumes:
   postgresql-law-svc:
   postgresql-auth-svc:
   mongodb-chat-svc:
+  mongodb-search-svc:
   redis:
   pgadmin:
