@@ -2,7 +2,7 @@
   "name": "chat-svc",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "/apps/api/chat-svc/chat-svc",
+  "sourceRoot": "/apps/api/chat-svc/chat_svc",
   "targets": {
     "lock": {
       "executor": "@nxlv/python:run-commands",

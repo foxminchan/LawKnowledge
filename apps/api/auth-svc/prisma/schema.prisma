@@ -1,3 +1,6 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
 generator client {
   provider = "prisma-client-js"
   output   = "../../../../node_modules/@prisma/db-auth"

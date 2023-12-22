@@ -1,0 +1,23 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+service ChatService {
+    rpc Vectorize(Empty) returns (DataResponse) {}
+    rpc ChatRetrieval(ChatRequest) returns (ChatResponse) {}
+}
+
+message Empty {}
+
+message DataResponse {
+    string message = 1;
+}
+
+message ChatRequest {
+    string query = 1;
+}
+
+message ChatResponse {
+    repeated string documents = 1;
+}

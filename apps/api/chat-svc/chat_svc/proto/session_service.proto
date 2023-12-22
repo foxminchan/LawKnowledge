@@ -1,0 +1,54 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+service ChatSessionService {
+    rpc CreateChatSession(CreateChatSessionRequest) returns (CreateChatSessionResponse) {}
+    rpc GetChatSession(GetChatSessionRequest) returns (GetChatSessionResponse) {}
+    rpc UpdateChatSession(UpdateChatSessionRequest) returns (UpdateChatSessionResponse) {}
+    rpc DeleteChatSession(DeleteChatSessionRequest) returns (DeleteChatSessionResponse) {}
+}
+
+message CreateChatSessionRequest {
+    string name = 1;
+    string user_id = 2;
+}
+
+message CreateChatSessionResponse {
+    ChatSession chat_session = 1;
+}
+
+message GetChatSessionRequest {
+    string user_id = 1;
+}
+
+message GetChatSessionResponse {
+    ChatSession chat_session = 1;
+}
+
+message UpdateChatSessionRequest {
+    string id = 1;
+    string name = 2;
+}
+
+message UpdateChatSessionResponse {
+    ChatSession chat_session = 1;
+}
+
+message DeleteChatSessionRequest {
+    string id = 1;
+}
+
+message DeleteChatSessionResponse {
+    string message = 1;
+}
+
+message ChatSession {
+    string id = 1;
+    string name = 2;
+    google.protobuf.Timestamp created_at = 3;
+    string user_id = 4;
+}

@@ -1,0 +1,30 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+generator client {
+  provider             = "prisma-client-py"
+  interface            = "asyncio"
+  recursive_type_depth = 5
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model ChatSession {
+  id         String        @id @default(auto()) @map("_id") @db.ObjectId
+  name       String        @default("Hỏi đáp pháp luật")
+  created_at DateTime      @default(now())
+  user_id    String
+  messages   ChatHistory[]
+}
+
+model ChatHistory {
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  created_at DateTime    @default(now())
+  question   String
+  answer     String
+  session    ChatSession @relation(fields: [session_id], references: [id])
+  session_id String      @db.ObjectId
+}
