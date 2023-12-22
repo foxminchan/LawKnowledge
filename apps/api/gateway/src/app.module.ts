@@ -13,13 +13,13 @@ import {
   JwtStrategy,
   NestHttpModule,
   ApiKeyStrategy,
-  RateLimitModule,
   NestCacheModule,
   LoggerMiddleware,
   HttpCacheInterceptor,
   ClearCacheInterceptor,
 } from '@law-knowledge/building-block';
 import { NestConfigModule } from './configs';
+import { RateLimitModule } from './throttler';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 

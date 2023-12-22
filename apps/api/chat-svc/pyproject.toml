@@ -1,9 +1,9 @@
 [tool.coverage.run]
 branch = true
-source = [ "chat-svc" ]
+source = ["chat-svc"]
 
 [tool.coverage.report]
-exclude_lines = [ "if TYPE_CHECKING:" ]
+exclude_lines = ['if TYPE_CHECKING:']
 show_missing = true
 
 [tool.pytest.ini_options]
@@ -13,37 +13,45 @@ addopts = "--cov --cov-report html:'../../../coverage//apps/api/chat-svc/html' -
 name = "chat-svc"
 version = "1.0.0"
 description = "A chat service"
-authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
+authors = ["Hutech University <hutech@hutech.edu.vn>"]
 license = "MIT"
 
-  [[tool.poetry.packages]]
-  include = "chat-svc"
+[[tool.poetry.packages]]
+include = "chat-svc"
 
-  [tool.poetry.dependencies]
-  python = ">=3.9 <=3.12"
-  langchain = "^0.0.351"
-  grpcio = "^1.60.0"
-  grpcio-tools = "^1.60.0"
-  protobuf = "^4.25.1"
-  python-dotenv = "^1.0.0"
-  pydantic = "^2.5.2"
-  faiss-cpu = "^1.7.4"
-  pydantic-settings = "^2.1.0"
-  transformers = "^4.36.2"
-  prisma = "^0.11.0"
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+langchain = "^0.0.351"
+grpcio = "^1.60.0"
+grpcio-tools = "^1.60.0"
+protobuf = "^4.25.1"
+python-dotenv = "^1.0.0"
+pydantic = "^2.5.2"
+pydantic-settings = "^2.1.0"
+transformers = "^4.36.2"
+prisma = "^0.11.0"
+faiss-cpu = "^1.7.4"
+loguru = "^0.7.2"
 
-    [tool.poetry.dependencies.base-core]
-    path = "..\\..\\..\\libs\\base-core"
-    develop = true
+[tool.poetry.dependencies.base-core]
+path = "..\\..\\..\\libs\\base-core"
+develop = true
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"
+isort = "5.13.2"
 flake8 = "6.0.0"
 pytest = "7.3.1"
 pytest-sugar = "0.9.7"
 pytest-cov = "4.1.0"
 pytest-html = "3.2.0"
 
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 88
+
 [build-system]
-requires = [ "poetry-core" ]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

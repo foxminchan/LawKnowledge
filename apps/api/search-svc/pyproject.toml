@@ -1,9 +1,9 @@
 [tool.coverage.run]
 branch = true
-source = [ "search-svc" ]
+source = ["search-svc"]
 
 [tool.coverage.report]
-exclude_lines = [ "if TYPE_CHECKING:" ]
+exclude_lines = ["if TYPE_CHECKING:"]
 show_missing = true
 
 [tool.pytest.ini_options]
@@ -13,29 +13,30 @@ addopts = "--cov --cov-report html:'../../../coverage//apps/api/search-svc/html'
 name = "search-svc"
 version = "1.0.0"
 description = "Searching service"
-authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
+authors = ["Hutech University <hutech@hutech.edu.vn>"]
 license = "MIT"
 
-  [[tool.poetry.packages]]
-  include = "search-svc"
+[[tool.poetry.packages]]
+include = "search-svc"
 
-  [tool.poetry.dependencies]
-  python = ">=3.9 <=3.12"
-  langchain = "^0.0.351"
-  grpcio = "^1.60.0"
-  grpcio-tools = "^1.60.0"
-  protobuf = "^4.25.1"
-  python-dotenv = "^1.0.0"
-  pydantic = "^2.5.2"
-  pydantic-settings = "^2.1.0"
-  datasets = "^2.15.0"
-  sentence-transformers = "^2.2.2"
-  pymongo = "^4.6.1"
-  transformers = "^4.36.2"
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+langchain = "^0.0.351"
+grpcio = "^1.60.0"
+grpcio-tools = "^1.60.0"
+protobuf = "^4.25.1"
+python-dotenv = "^1.0.0"
+pydantic = "^2.5.2"
+pydantic-settings = "^2.1.0"
+datasets = "^2.15.0"
+sentence-transformers = "^2.2.2"
+pymongo = "^4.6.1"
+transformers = "^4.36.2"
+loguru = "^0.7.2"
 
-    [tool.poetry.dependencies.base-core]
-    path = "..\\..\\..\\libs\\base-core"
-    develop = true
+[tool.poetry.dependencies.base-core]
+path = "..\\..\\..\\libs\\base-core"
+develop = true
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "2.0.2"
@@ -53,5 +54,5 @@ force_grid_wrap = 0
 line_length = 88
 
 [build-system]
-requires = [ "poetry-core" ]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

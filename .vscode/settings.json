@@ -36,5 +36,5 @@
       "${commentend}"
     ]
   },
-  "cSpell.words": ["akebifiky", "Hutech", "vectorstore"]
+  "cSpell.words": ["akebifiky", "Hutech", "vectorstore", "otel"]
 }

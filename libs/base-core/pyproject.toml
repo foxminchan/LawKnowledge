@@ -1,6 +1,6 @@
 [tool.coverage.run]
 branch = true
-source = [ "base-core" ]
+source = ["base-core"]
 
 [tool.coverage.report]
 exclude_lines = ['if TYPE_CHECKING:']
@@ -13,25 +13,38 @@ addopts = "--cov --cov-report html:'../../coverage//libs/base-core/html' --cov-r
 name = "base-core"
 version = "1.0.0"
 description = "Abstract of retrieval-augmented generation"
-authors = [ "Hutech University <hutech@hutech.edu.vn>" ]
+authors = ["Hutech University <hutech@hutech.edu.vn>"]
 license = "MIT"
 
-  [[tool.poetry.packages]]
-  include = "base-core"
+[[tool.poetry.packages]]
+include = "base-core"
 
-  [tool.poetry.dependencies]
-  python = ">=3.9 <=3.12"
-  langchain = "^0.0.351"
-  datasets = "^2.15.0"
-  sentence-transformers = "^2.2.2"
+[tool.poetry.dependencies]
+python = ">=3.9 <=3.12"
+langchain = "^0.0.351"
+datasets = "^2.15.0"
+sentence-transformers = "^2.2.2"
+opentelemetry-api = "^1.22.0"
+opentelemetry-sdk = "^1.22.0"
+opentelemetry-exporter-otlp = "^1.22.0"
+pydantic-settings = "^2.1.0"
+pydantic = "^2.5.3"
+loguru = "^0.7.2"
 
-  [tool.poetry.group.dev.dependencies]
-  autopep8 = "2.0.2"
-  flake8 = "6.0.0"
-  pytest = "7.3.1"
-  pytest-sugar = "0.9.7"
-  pytest-cov = "4.1.0"
-  pytest-html = "3.2.0"
+[tool.poetry.group.dev.dependencies]
+autopep8 = "2.0.2"
+isort = "5.13.2"
+flake8 = "6.0.0"
+pytest = "7.3.1"
+pytest-sugar = "0.9.7"
+pytest-cov = "4.1.0"
+pytest-html = "3.2.0"
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 88
 
 [build-system]
 requires = ["poetry-core"]
