@@ -27,4 +27,4 @@ process.on('SIGTERM', () => {
     .finally(() => process.exit(0));
 });
 
-export default sdk;
+export { sdk };

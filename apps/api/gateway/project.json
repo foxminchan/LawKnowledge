@@ -14,6 +14,9 @@
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/api/gateway",
+        "assets": [
+          "apps/api/gateway/src/proto"
+        ],
         "main": "apps/api/gateway/src/main.ts",
         "tsConfig": "apps/api/gateway/tsconfig.app.json",
         "webpackConfig": "apps/api/gateway/webpack.config.js"

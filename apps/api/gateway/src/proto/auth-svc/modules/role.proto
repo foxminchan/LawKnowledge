@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package role;
 
-import "../common/common.proto";
+import "./common/common.proto";
 
 message RoleCreateRequest {
 	string name = 1;

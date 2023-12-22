@@ -19,12 +19,12 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         options: {
           url: `${configs().authSvcHost}:${configs().authSvcPort}`,
           package: 'auth',
-          protoPath: join(__dirname, '../../proto/auth-svc/auth-svc.proto'),
+          protoPath: join(__dirname, './proto/auth-svc/auth-svc.proto'),
           loader: {
             enums: String,
             objects: true,
             arrays: true,
-            includeDirs: [join(__dirname, '../../proto')],
+            includeDirs: [join(__dirname, './proto/auth-svc')],
           },
         },
       },

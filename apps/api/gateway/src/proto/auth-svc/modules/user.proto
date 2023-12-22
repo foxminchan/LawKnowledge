@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-import "../common/common.proto";
+import "./common/common.proto";
 
 message UserCreateRequest {
 	string name = 1;

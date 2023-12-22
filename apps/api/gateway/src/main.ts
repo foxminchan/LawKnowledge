@@ -8,6 +8,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import {
+  sdk,
   AppUtils,
   SetupSwagger,
   CriteriaPipe,
@@ -25,6 +26,7 @@ import { VersioningType } from '@nestjs/common';
 import fastifyCsrfProtection from '@fastify/csrf-protection';
 
 async function bootstrap() {
+  sdk.start();
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
