@@ -18,6 +18,7 @@ import {
 import cors from '@fastify/cors';
 import { configs } from './configs';
 import helmet from '@fastify/helmet';
+import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import compression from '@fastify/compress';
@@ -55,6 +56,7 @@ async function bootstrap() {
     },
   });
 
+  app.useLogger(app.get(Logger));
   app.useGlobalPipes(new CriteriaPipe());
   app.useGlobalFilters(new NotFoundExceptionFilter());
   app.useGlobalFilters(new RpcExceptionToHttpExceptionFilter());

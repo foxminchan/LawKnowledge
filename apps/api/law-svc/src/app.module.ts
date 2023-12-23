@@ -4,11 +4,11 @@ import { LawDataModule, LoggerModule } from '@law-knowledge/building-block';
 
 @Module({
   imports: [
+    TopicModule,
     LoggerModule,
     LawDataModule,
-    DocumentModule,
     HeadingModule,
-    TopicModule,
+    DocumentModule,
   ],
 })
 export class AppModule {}

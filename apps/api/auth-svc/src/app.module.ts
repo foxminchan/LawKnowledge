@@ -5,7 +5,7 @@
 
 import { Module } from '@nestjs/common';
 import { NestConfigModule } from './configs';
-import { AuthDataModule } from '@law-knowledge/building-block';
+import { AuthDataModule, LoggerModule } from '@law-knowledge/building-block';
 import { AuthModule, RoleModule, UserModule } from './modules';
 
 @Module({
@@ -13,6 +13,7 @@ import { AuthModule, RoleModule, UserModule } from './modules';
     AuthModule,
     UserModule,
     RoleModule,
+    LoggerModule,
     AuthDataModule,
     NestConfigModule,
   ],

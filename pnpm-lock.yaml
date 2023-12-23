@@ -119,6 +119,9 @@ dependencies:
   '@nestjs/websockets':
     specifier: ^10.3.0
     version: 10.3.0(@nestjs/common@10.3.0)(@nestjs/core@10.3.0)(@nestjs/platform-socket.io@10.3.0)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+  '@opentelemetry/api':
+    specifier: ^1.7.0
+    version: 1.7.0
   '@opentelemetry/auto-instrumentations-node':
     specifier: ^0.40.2
     version: 0.40.2(@opentelemetry/api@1.7.0)

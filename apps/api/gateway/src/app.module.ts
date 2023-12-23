@@ -11,6 +11,7 @@ import {
 } from './modules';
 import {
   JwtStrategy,
+  LoggerModule,
   NestHttpModule,
   ApiKeyStrategy,
   NestCacheModule,
@@ -30,6 +31,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
     NestHttpModule,
     SearchSvcModule,
     RateLimitModule,
+    LoggerModule,
     NestCacheModule,
     NestConfigModule,
     HealthCheckModule,

@@ -5,12 +5,14 @@
 
 import { join } from 'path';
 import { configs } from './configs';
+import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 import { Transport } from '@nestjs/microservices';
-import { ValidationErrorPipe } from '@law-knowledge/building-block';
+import { ValidationErrorPipe, sdk } from '@law-knowledge/building-block';
 
 async function bootstrap() {
+  sdk.start();
   const app = await NestFactory.createMicroservice(AppModule, {
     transport: Transport.GRPC,
     options: {
@@ -26,6 +28,7 @@ async function bootstrap() {
     },
   });
 
+  app.useLogger(app.get(Logger));
   app.useGlobalPipes(new ValidationErrorPipe());
   await app.listen();
 }
