@@ -2,6 +2,7 @@
 # Licensed under the MIT License
 
 import torch
+import random
 import torch.optim as optim
 from bert.config import configs
 from pyspark.sql import SparkSession
@@ -131,3 +132,6 @@ class PhoBertFineTuner:
 
     def save_model(self, save_directory):
         self.model.save_pretrained(save_directory)
+        self.model.push_to_hub(
+          configs.FINE_TUNED_MODEL, commit_message=f"Add fine-tuned model #{random.getrandbits(128)}"
+        )

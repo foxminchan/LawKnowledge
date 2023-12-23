@@ -12,11 +12,12 @@ ENV: str = ""
 
 
 class Configs(BaseSettings):
+    PATH: str = os.getenv("PATH")
+    DATASET: str = os.getenv("DATASET")
     QA_MODEL: str = os.getenv("QA_MODEL")
     SUMMARY_MODEL: str = os.getenv("SUMMARY_MODEL")
     GENERATE_MODEL: str = os.getenv("GENERATE_MODEL")
-    PATH: str = os.getenv("PATH")
-    DATASET: str = os.getenv("DATASET")
+    FINE_TUNED_MODEL: str = os.getenv("FINE_TUNED_MODEL")
 
     class Config:
         case_sensitive = True

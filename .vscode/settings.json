@@ -36,5 +36,12 @@
       "${commentend}"
     ]
   },
-  "cSpell.words": ["akebifiky", "Hutech", "otel", "Pino", "vectorstore"]
+  "cSpell.words": [
+    "akebifiky",
+    "fastify",
+    "Hutech",
+    "otel",
+    "Pino",
+    "vectorstore"
+  ]
 }

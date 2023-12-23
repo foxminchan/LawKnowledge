@@ -20,7 +20,7 @@ def switch(__action__):
     elif __action__ == 'EXIT':
         exit(0)
     else:
-        raise ValueError('Invalid action: {}'.format(__action__))
+        raise ValueError(f'Invalid action: {format(__action__)}')
 
 
 if __name__ == '__main__':
