@@ -3,7 +3,6 @@
 
 import os
 import csv
-import random
 import concurrent
 from bert.config import configs
 from datasets import load_dataset
@@ -57,6 +56,6 @@ class QuestionGenerator:
                 writer.writerow({'question': question, 'context': context})
         print(f"Dataset saved to {QuestionGenerator.QA_SETS}")
         load_dataset(QuestionGenerator.QA_SETS).push_to_hub(
-          configs.DATASET, commit_message=f"Add question-answer dataset #{random.getrandbits(128)}"
+          configs.DATASET, commit_message="Add question-answer dataset"
         )
         print("Dataset uploaded to HuggingFace Hub")

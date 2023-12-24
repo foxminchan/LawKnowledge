@@ -6,11 +6,11 @@
     "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
   },
   "eslint.validate": [
-    "markdown",
     "mdx",
+    "markdown",
     "javascript",
-    "javascriptreact",
     "typescript",
+    "javascriptreact",
     "typescriptreact"
   ],
   "tailwindCSS.experimental.classRegex": [
@@ -37,11 +37,11 @@
     ]
   },
   "cSpell.words": [
-    "akebifiky",
-    "fastify",
-    "Hutech",
     "otel",
     "Pino",
+    "Hutech",
+    "fastify",
+    "akebifiky",
     "vectorstore"
   ]
 }

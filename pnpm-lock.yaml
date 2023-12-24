@@ -361,6 +361,12 @@ devDependencies:
   '@pulumi/awsx':
     specifier: ^2.4.0
     version: 2.4.0
+  '@pulumi/eks':
+    specifier: ^2.0.0
+    version: 2.0.0
+  '@pulumi/kubernetes':
+    specifier: ^4.5.6
+    version: 4.5.6
   '@pulumi/pulumi':
     specifier: ^3.99.0
     version: 3.99.0
@@ -8378,6 +8384,39 @@ packages:
       - supports-color
     dev: true
 
+  /@pulumi/eks@2.0.0:
+    resolution: {integrity: sha512-pnjkwlAXUC3zgDOKWBzDJtzCmYq8QO3prEIgkQRxKDFT6pCYyfF1+EpersDSVJIu1XDroIbKrrbJiH6ZXcxjVQ==}
+    dependencies:
+      '@pulumi/aws': 6.15.0
+      '@pulumi/kubernetes': 4.5.6
+      '@pulumi/pulumi': 3.99.0
+      https-proxy-agent: 5.0.1
+      js-yaml: 4.1.0
+      netmask: 2.0.2
+      semver: 7.5.4
+      which: 1.3.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: true
+
+  /@pulumi/kubernetes@4.5.6:
+    resolution: {integrity: sha512-6gzF77Vv1PP3/EZcPF35h0mdqZ/9pS6uM99DCq3llODB/4XeUHoBqaLvrOdCTz1aUQg5ZNcgTUi+feyC3RaE4A==}
+    requiresBuild: true
+    dependencies:
+      '@pulumi/pulumi': 3.99.0
+      '@types/glob': 5.0.38
+      '@types/node-fetch': 2.6.9
+      '@types/tmp': 0.0.33
+      glob: 7.2.3
+      node-fetch: 2.7.0
+      shell-quote: 1.8.1
+      tmp: 0.0.33
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: true
+
   /@pulumi/pulumi@3.99.0:
     resolution: {integrity: sha512-bS186PU6pfNKU8T7S91aDUSlvYpohcwJmnbQ+kStz6IZaGeZzu8iZoAZ+nM266dydeYxCaanK3Kjkp/iuxUBcg==}
     engines: {node: '>=8.13.0 || >=10.10.0'}
@@ -9971,6 +10010,13 @@ packages:
       '@types/qs': 6.9.11
       '@types/serve-static': 1.15.5
 
+  /@types/glob@5.0.38:
+    resolution: {integrity: sha512-rTtf75rwyP9G2qO5yRpYtdJ6aU1QqEhWbtW55qEgquEDa6bXW0s2TWZfDm02GuppjEozOWG/F2UnPq5hAQb+gw==}
+    dependencies:
+      '@types/minimatch': 5.1.2
+      '@types/node': 20.10.5
+    dev: true
+
   /@types/google-protobuf@3.15.12:
     resolution: {integrity: sha512-40um9QqwHjRS92qnOaDpL7RmDK15NuZYo9HihiJRbYkMQZlWnuH8AdvbMy8/o6lgLmKbDUKa+OALCltHdbOTpQ==}
     dev: true
@@ -10163,6 +10209,10 @@ packages:
   /@types/mime@3.0.4:
     resolution: {integrity: sha512-iJt33IQnVRkqeqC7PzBHPTC6fDlRNRW8vjrgqtScAhrmMwe8c4Eo7+fUGTa+XdWrpEgpyKWMYmi2dIwMAYRzPw==}
 
+  /@types/minimatch@5.1.2:
+    resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
+    dev: true
+
   /@types/minimist@1.2.5:
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
     dev: true
@@ -10176,6 +10226,13 @@ packages:
     dependencies:
       '@types/node': 20.10.5
     dev: false
+
+  /@types/node-fetch@2.6.9:
+    resolution: {integrity: sha512-bQVlnMLFJ2d35DkPNjEPmd9ueO/rh5EiaZt2bhqiSarPjZIuIV6bPQVqcrEyvNo+AfTrRGVazle1tl597w3gfA==}
+    dependencies:
+      '@types/node': 20.10.5
+      form-data: 4.0.0
+    dev: true
 
   /@types/node-forge@1.3.10:
     resolution: {integrity: sha512-y6PJDYN4xYBxwd22l+OVH35N+1fCYWiuC3aiP2SlXVE6Lo7SS+rSx9r89hLxrP4pn6n1lBGhHJ12pj3F3Mpttw==}
@@ -10380,6 +10437,10 @@ packages:
     dependencies:
       '@types/node': 20.10.5
     dev: false
+
+  /@types/tmp@0.0.33:
+    resolution: {integrity: sha512-gVC1InwyVrO326wbBZw+AO3u2vRXz/iRWq9jYhpG4W8LXyIgDv3ZmcLQ5Q4Gs+gFMyqx+viFoFT+l3p61QFCmQ==}
+    dev: true
 
   /@types/tough-cookie@4.0.5:
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
@@ -19912,6 +19973,11 @@ packages:
       reflect-metadata: 0.1.14
     dev: false
 
+  /netmask@2.0.2:
+    resolution: {integrity: sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==}
+    engines: {node: '>= 0.4.0'}
+    dev: true
+
   /nice-try@1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: false
@@ -20489,6 +20555,11 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       arch: 2.2.0
+    dev: true
+
+  /os-tmpdir@1.0.2:
+    resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /ospath@1.2.2:
@@ -25251,6 +25322,13 @@ packages:
     resolution: {integrity: sha512-1OYJQenswGZSOdRw7Bql5Qu7uf75b+F3HFBXbqnG/ifHa0fev1XcG+3pJf3pA/KC6RtHQzfKgIf1vkMlMG7mtQ==}
     hasBin: true
     dev: false
+
+  /tmp@0.0.33:
+    resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}
+    engines: {node: '>=0.6.0'}
+    dependencies:
+      os-tmpdir: 1.0.2
+    dev: true
 
   /tmp@0.2.1:
     resolution: {integrity: sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==}
