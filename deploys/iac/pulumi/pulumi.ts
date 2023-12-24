@@ -37,10 +37,13 @@ const eksRole = new aws.iam.Role('eksRole', {
   }),
 });
 
-new aws.iam.RolePolicyAttachment('eks-AmazonEKSClusterPolicy', {
-  role: eksRole,
-  policyArn: 'arn:aws:iam::aws:policy/AmazonEKSClusterPolicy',
-});
+const eksPolicy = new aws.iam.RolePolicyAttachment(
+  'eks-AmazonEKSClusterPolicy',
+  {
+    role: eksRole,
+    policyArn: 'arn:aws:iam::aws:policy/AmazonEKSClusterPolicy',
+  },
+);
 
 const logGroup = new aws.cloudwatch.LogGroup('eksLogGroup', {
   name: 'EKSLogGroup',
@@ -443,8 +446,9 @@ export const servicesStatus = Object.fromEntries(
 );
 
 export const acl = webAcl.arn;
+export const policy = eksPolicy.urn;
+export const albListener = listener.arn;
 export const logGroupName = logGroup.name;
 export const kubeconfig = cluster.kubeconfig;
 export const kafkaSvc = kafka.bootstrapBrokers;
-export const albListener = listener.arn;
 export const kafkaBootstrapBrokers = kafka.bootstrapBrokers;
