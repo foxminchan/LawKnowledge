@@ -15,25 +15,19 @@ from langchain_community.vectorstores.mongodb_atlas import MongoDBAtlasVectorSea
 
 class VectorSearch(handler.SearchingServiceServicer):
     def __init__(self):
-        client = MongoClient(configs.DATABASE_URL)
-        collection = client["search_svc_db"]["law"]
         self.vector_store = MongoDBAtlasVectorSearch(
-            collection,
-            HuggingFaceEmbeddings(model_name=configs.EMBEDDING),
+            collection=MongoClient(configs.DATABASE_URL)["search_svc_db"]["law"],
+            embedding=HuggingFaceEmbeddings(model_name=configs.EMBEDDING),
             index_name=configs.INDEX_NAME
         )
-
         self.llm = HuggingFacePipeline.from_model_id(
             model_id=configs.MODEL,
             task="semantic-search",
             device=0,
             batch_size=2
         )
-
-        compressor = LLMChainExtractor.from_llm(self.llm)
-
         self.compression_retriever = ContextualCompressionRetriever(
-            base_compressor=compressor,
+            base_compressor=LLMChainExtractor.from_llm(self.llm),
             base_retriever=self.vector_store.as_retriever()
         )
 

@@ -1,35 +1,31 @@
-import { SearchSvcOptions } from './search-svc.options';
-import { Get, OnModuleInit, Query } from '@nestjs/common';
-import { Client, ClientGrpc } from '@nestjs/microservices';
-import { SearchingService } from './search-svc.interface';
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
+import { Get, Query } from '@nestjs/common';
+import { SearchService } from './search-svc.service';
+import { SearchRequest } from './search-svc.interface';
 import { ApiController, SwaggerResponse } from '@law-knowledge/building-block';
 
 @ApiController('search')
-export class SearchController implements OnModuleInit {
-  @Client(SearchSvcOptions)
-  private readonly searchServiceClient: ClientGrpc;
-
-  private searchService: SearchingService;
-
-  onModuleInit() {
-    this.searchService =
-      this.searchServiceClient.getService<SearchingService>('SearchingService');
-  }
+export class SearchController {
+  constructor(private readonly searchService: SearchService) {}
 
   @Get()
   @SwaggerResponse({
-    operation: 'Indexing documents',
+    operation: 'Embedding documents',
   })
-  indexing() {
-    return this.searchService.RunIndexing('./datasets/*.txt');
+  vectoring() {
+    return this.searchService.vectoring();
   }
 
   @Get('search')
   @SwaggerResponse({
     operation: 'Search documents',
-    query: ['keyword'],
+    query: ['context'],
   })
-  search(@Query('keyword') keyword: string) {
-    return this.searchService.search(keyword);
+  search(@Query('context') context: SearchRequest) {
+    return this.searchService.search(context);
   }
 }

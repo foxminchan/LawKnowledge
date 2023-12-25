@@ -26,12 +26,12 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 @Module({
   imports: [
+    LoggerModule,
     LawSvcModule,
     AuthSvcModule,
     NestHttpModule,
     SearchSvcModule,
     RateLimitModule,
-    LoggerModule,
     NestCacheModule,
     NestConfigModule,
     HealthCheckModule,

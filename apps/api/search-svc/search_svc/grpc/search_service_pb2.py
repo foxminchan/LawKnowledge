@@ -16,23 +16,24 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14search_service.proto\"\x07\n\x05\x45mpty\"\x1f\n\x0c\x44\x61taResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1e\n\rSearchRequest\x12\r\n\x05query\x18\x01 \x01(\t\"#\n\x0eSearchResponse\x12\x11\n\tdocuments\x18\x01 \x03(\t2k\n\x10SearchingService\x12$\n\tVectorize\x12\x06.Empty\x1a\r.DataResponse\"\x00\x12\x31\n\x0cVectorSearch\x12\x0e.SearchRequest\x1a\x0f.SearchResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14search_service.proto\x1a\x1cgoogle/protobuf/struct.proto\"\x07\n\x05\x45mpty\"\x1f\n\x0c\x44\x61taResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1e\n\rSearchRequest\x12\r\n\x05query\x18\x01 \x01(\t\";\n\x0eSearchResponse\x12)\n\x08\x64ocument\x18\x01 \x01(\x0b\x32\x17.google.protobuf.Struct2k\n\x10SearchingService\x12$\n\tVectorize\x12\x06.Empty\x1a\r.DataResponse\"\x00\x12\x31\n\x0cVectorSearch\x12\x0e.SearchRequest\x1a\x0f.SearchResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'search_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
-  _globals['_EMPTY']._serialized_start=24
-  _globals['_EMPTY']._serialized_end=31
-  _globals['_DATARESPONSE']._serialized_start=33
-  _globals['_DATARESPONSE']._serialized_end=64
-  _globals['_SEARCHREQUEST']._serialized_start=66
-  _globals['_SEARCHREQUEST']._serialized_end=96
-  _globals['_SEARCHRESPONSE']._serialized_start=98
-  _globals['_SEARCHRESPONSE']._serialized_end=133
-  _globals['_SEARCHINGSERVICE']._serialized_start=135
-  _globals['_SEARCHINGSERVICE']._serialized_end=242
+  _globals['_EMPTY']._serialized_start=54
+  _globals['_EMPTY']._serialized_end=61
+  _globals['_DATARESPONSE']._serialized_start=63
+  _globals['_DATARESPONSE']._serialized_end=94
+  _globals['_SEARCHREQUEST']._serialized_start=96
+  _globals['_SEARCHREQUEST']._serialized_end=126
+  _globals['_SEARCHRESPONSE']._serialized_start=128
+  _globals['_SEARCHRESPONSE']._serialized_end=187
+  _globals['_SEARCHINGSERVICE']._serialized_start=189
+  _globals['_SEARCHINGSERVICE']._serialized_end=296
 # @@protoc_insertion_point(module_scope)
