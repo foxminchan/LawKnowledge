@@ -14,8 +14,6 @@ const SignUp = loadable(() => import('@features/SignUp'));
 const Account = loadable(() => import('@features/Account'));
 const NotFound = loadable(() => import('@components/NotFound'));
 const ItemDetail = loadable(() => import('@features/ItemDetail'));
-const ChangePassword = loadable(() => import('@features/ChangePassword'));
-const ForgotPassword = loadable(() => import('@features/ForgotPassword'));
 
 export default function App() {
   return (
@@ -84,24 +82,6 @@ export default function App() {
             element={
               <Suspense fallback={<PageLoading />}>
                 <SignUp title="Đăng ký" />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/quen-mat-khau"
-            errorElement={<ErrorBoundary />}
-            element={
-              <Suspense fallback={<PageLoading />}>
-                <ForgotPassword title="Quên mật khẩu" />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/doi-mat-khau"
-            errorElement={<ErrorBoundary />}
-            element={
-              <Suspense fallback={<PageLoading />}>
-                <ChangePassword title="Đổi mật khẩu" />
               </Suspense>
             }
           />
