@@ -9,6 +9,7 @@ x-default-logging: &logging
 services:
   otel-collector:
     image: otel/opentelemetry-collector:0.61.0
+    container_name: otel-collector
     command:
       [
         '--config=/etc/otel-collector.yaml',
@@ -105,6 +106,7 @@ services:
 
   prometheus:
     image: prom/prometheus:latest
+    container_name: prometheus
     volumes:
       - ./etc/prometheus.yaml:/etc/prometheus.yaml
     command:
@@ -125,6 +127,22 @@ services:
     logging: *logging
     networks:
       - hutech-network
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports:
+      - '8086:8086'
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    logging: *logging
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin@123
+      - DOCKER_INFLUXDB_INIT_ORG=HUTECH
+      - DOCKER_INFLUXDB_INIT_BUCKET=HUTECH
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=admin@123
 
   grafana:
     image: grafana/grafana:9.2.20
@@ -154,3 +172,7 @@ networks:
   hutech-network:
     name: hutech-network
     external: true
+
+volumes:
+  elasticsearch-data:
+  influxdb-data:
