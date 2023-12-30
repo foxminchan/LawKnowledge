@@ -42,6 +42,7 @@
     "Hutech",
     "fastify",
     "akebifiky",
+    "peaceiris",
     "vectorstore"
   ]
 }
