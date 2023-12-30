@@ -27,7 +27,7 @@ Elasticsearch            8.11.3         Apache 2.0         A distributed, RESTfu
 Opentelemetry            1.0.0          Apache 2.0         A collection of tools, APIs, and SDKs                           https://github.com/open-telemetry
 Fluentd                  1.16.3         Apache 2.0         An open source data collector for unified logging layer         https://github.com/fluent/fluentd
 Kibana                   8.11.3         Apache 2.0         A free and open user interface that lets you visualize Elastic  https://github.com/elastic/kibana
-transformers             4.36.1         Apache 2.0         State-of-the-art Natural Language Processing for Pytorch and    https://github.com/huggingface/transformers
+transformers             4.36.1         Apache 2.0         State-of-the-art NLP for Pytorch and TensorFlow                 https://github.com/huggingface/transformers
 tokenizers               0.15.0         Apache 2.0         Fast and Customizable Tokenizers                                https://github.com/huggingface/tokenizers
 Linkerd									 23.12.4        Apache 2.0         A service mesh for Kubernetes and beyond                        https://github.com/linkerd/linkerd2
 KEDA										 2.12.1         Apache 2.0         Kubernetes-based Event Driven Autoscaling                       https://github.com/kedacore/keda
