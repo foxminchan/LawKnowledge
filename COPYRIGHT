@@ -1,17 +1,27 @@
-Copyright 2023 by Hutech University
+All Law Knowledge is Copyright (c) 2023 by the original authors. See: https://github.com/foxminchan/LawKnowledge
 
-Law Knowledge is licensed under the MIT license (See LICENSE or http://opensource.org/licenses/MIT), at your option.
+This proram is free software: you can redistribute it and/or modify it under the terms of the MIT License as published by the Open Source Initiative.
 
-Law Knowledge incorporates material from the projects listed below (collectively, "Third Party Code").  This material is available under the listed licenses.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the MIT License for more details.
+
+You should have received a copy of the MIT License along with this program as the file LICENSE. If not, see https://opensource.org/licenses/MIT.
+
+Law Knowledge incorporates material from the projects listed below (collectively, "Third Party Code"). This material is available under the listed licenses.
 
 Name                     Version        License            Description                                                     Url
-Haystack                 1.23.0         Apache 2.0         A modular framework for neural question answering               https://github.com/deepset-ai/haystack
-Langchainjs              0.0.208        MIT                A framework for building a language chain                       https://github.com/langchain-ai/langchainjs
+Langchain                0.0.208        MIT                A framework for building a language chain                       https://github.com/langchain-ai/langchain
 Faiss                    1.7.4          MIT                A library for efficient similarity search                       https://github.com/facebookresearch/faiss
 Nestjs                   4.5.9          MIT                A progressive Node.js framework                                 https://github.com/nestjs/nest
 React                    16.8.6         MIT                A JavaScript library for building user interfaces               https://github.com/facebook/react
-Prometheus               2.48.1         Apache 2.0         A monitoring system and time series database                    https://github.com/prometheus/prometheus
+Tailwindcss              3.4.0          MIT                A utility-first CSS framework                                   https://github.com/tailwindlabs/tailwindcss
+influxdb                 2.7.3          MIT                Scalable datastore for metrics, events, and real-time analytics https://github.com/influxdata/influxdb
+pnpm                     8.13.1         MIT                Fast, disk space efficient package manager                      https://github.com/pnpm/pnpm
+torch                    1.9.0          BSD                Tensors and Dynamic neural networks in Python with strong GPU   https://github.com/pytorch/pytorch
 Grafana                  10.2.2         AGPL 3.0           The open and composable observability                           https://github.com/grafana/grafana
+MongoDB                  7.0.4          SSPL 1.0           A general purpose, document-based, distributed database         https://github.com/mongodb/mongo
+gRPC                     1.60.0         Apache 2.0         A high performance, open-source universal RPC framework         https://github.com/grpc/grpc
+Kafka                    3.6            Apache 2.0         A distributed streaming platform                                https://github.com/apache/kafka
+Prometheus               2.48.1         Apache 2.0         A monitoring system and time series database                    https://github.com/prometheus/prometheus
 Zipkin                   2.52.2         Apache 2.0         A distributed tracing system                                    https://github.com/openzipkin/zipkin
 Elasticsearch            8.11.3         Apache 2.0         A distributed, RESTful search and analytics engine              https://github.com/elastic/elasticsearch
 Opentelemetry            1.0.0          Apache 2.0         A collection of tools, APIs, and SDKs                           https://github.com/open-telemetry
@@ -19,3 +29,7 @@ Fluentd                  1.16.3         Apache 2.0         An open source data c
 Kibana                   8.11.3         Apache 2.0         A free and open user interface that lets you visualize Elastic  https://github.com/elastic/kibana
 transformers             4.36.1         Apache 2.0         State-of-the-art Natural Language Processing for Pytorch and    https://github.com/huggingface/transformers
 tokenizers               0.15.0         Apache 2.0         Fast and Customizable Tokenizers                                https://github.com/huggingface/tokenizers
+Linkerd									 23.12.4        Apache 2.0         A service mesh for Kubernetes and beyond                        https://github.com/linkerd/linkerd2
+KEDA										 2.12.1         Apache 2.0         Kubernetes-based Event Driven Autoscaling                       https://github.com/kedacore/keda
+PostgreSQL               16.1           PostgreSQL         A powerful, open source object-relational database system       https://github.com/postgres/postgres
+... see copyright information at the header of source code file.

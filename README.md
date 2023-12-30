@@ -30,7 +30,7 @@
 	<a href="https://github.com/foxminchan/LawKnowledge/blob/main/LICENSE" target="blank">
 		<img loading="lazy" src="https://img.shields.io/github/license/foxminchan/LawKnowledge?label=License" alt="LawKnowledge license"/>
 	</a>
-	<a href="#" target="_blank">
+	<a href="https://colab.research.google.com/drive/1HcL3VrdKhQ1f4ZxbYOhiw_kYTtxRlT_f?usp=sharing" target="_blank">
 		<img loading="lazy" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab">
 	</a>
 	<a href="https://gitpod.io/new/#https://github.com/foxminchan/LawKnowledge" target="_blank">
@@ -78,20 +78,20 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-  - [🛠️ Prerequisites](#️-prerequisites)
-    - [Infrastucture](#infrastucture)
-    - [Services](#services)
-  - [😄 HuggingFace Resources](#-huggingface-resources)
-  - [🧑‍💻 Setup](#-setup)
-  - [🚀 Running](#-running)
-  - [🧪 Testing](#-testing)
-  - [🧩 Other](#-other)
+	- [🛠️ Prerequisites](#️-prerequisites)
+		- [Infrastucture](#infrastucture)
+		- [Services](#services)
+	- [😄 HuggingFace Resources](#-huggingface-resources)
+	- [🧑‍💻 Setup](#-setup)
+	- [🚀 Running](#-running)
+	- [🧪 Testing](#-testing)
+	- [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-  - [📖 Contributing Guidelines](#-contributing-guidelines)
-  - [💁 Want to Help?](#-want-to-help)
-  - [🫂 Code of Conduct](#-code-of-conduct)
+	- [📖 Contributing Guidelines](#-contributing-guidelines)
+	- [💁 Want to Help?](#-want-to-help)
+	- [🫂 Code of Conduct](#-code-of-conduct)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
 
