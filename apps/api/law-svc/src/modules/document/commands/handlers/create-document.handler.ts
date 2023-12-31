@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { CreateDocumentCommand } from '../impl';
 import { LawDataService } from '@law-knowledge/building-block';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';

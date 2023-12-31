@@ -3,8 +3,8 @@
  * Licensed under the MIT License
  */
 
-import { IQuery } from '@nestjs/cqrs';
+import { ICommand } from '@nestjs/cqrs';
 
-export class GetDocumentQuery implements IQuery {
+export class DeleteCodificationCommand implements ICommand {
   constructor(public readonly id: string) {}
 }

@@ -5,13 +5,12 @@
 
 import { AggregateRoot } from '@nestjs/cqrs';
 
-export class Document extends AggregateRoot {
+export class Codification extends AggregateRoot {
   constructor(
     public readonly id: string,
     public readonly name: string,
-    public readonly content: string,
-    public readonly codification_id: string,
-    public readonly heading_id: string,
+    public readonly indexing: string,
+    public readonly parent_id: string,
   ) {
     super();
   }

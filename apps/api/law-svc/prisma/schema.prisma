@@ -29,26 +29,26 @@ model Heading {
 }
 
 model CorpusIndex {
-  id               String            @id @default(uuid())
-  name             String
-  indexing         String            @db.VarChar(10)
-  heading_id       String
-  heading          Heading           @relation(fields: [heading_id], references: [id])
-  parent_id        String?           @map("parent_id")
-  parent           CorpusIndex?      @relation("ParentChild", fields: [parent_id], references: [id])
-  children         CorpusIndex[]     @relation("ParentChild")
-  related_id       String?           @map("related_id")
-  related          CorpusIndex?      @relation("Related", fields: [related_id], references: [id])
-  relateds         CorpusIndex[]     @relation("Related")
+  id              String            @id @default(uuid())
+  name            String            @db.VarChar(255)
+  indexing        String            @db.VarChar(50)
+  heading_id      String
+  heading         Heading           @relation(fields: [heading_id], references: [id])
+  parent_id       String?           @map("parent_id")
+  parent          CorpusIndex?      @relation("ParentChild", fields: [parent_id], references: [id])
+  children        CorpusIndex[]     @relation("ParentChild")
+  related_id      String?           @map("related_id")
+  related         CorpusIndex?      @relation("Related", fields: [related_id], references: [id])
+  relateds        CorpusIndex[]     @relation("Related")
   codification_id String
-  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
-  TableForm        TableForm[]
+  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  TableForm       TableForm[]
 }
 
 model CodificationIndex {
   id          String              @id @default(uuid())
-  name        String
-  indexing    String              @db.VarChar(10)
+  name        String              @db.VarChar(255)
+  indexing    String?             @db.VarChar(50)
   parent_id   String?             @map("parent_id")
   parent      CodificationIndex?  @relation("ParentChild", fields: [parent_id], references: [id])
   children    CodificationIndex[] @relation("ParentChild")
@@ -59,29 +59,29 @@ model CodificationIndex {
 }
 
 model Document {
-  id               String            @id @default(uuid())
-  content          String            @db.Text
-  heading_id       String
-  heading          Heading           @relation(fields: [heading_id], references: [id])
+  id              String            @id @default(uuid())
+  content         String            @db.Text
+  heading_id      String
+  heading         Heading           @relation(fields: [heading_id], references: [id])
   codification_id String
-  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
+  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
 }
 
 model Keyword {
-  id               String            @id @default(uuid())
-  name             String            @db.VarChar(255)
+  id              String            @id @default(uuid())
+  name            String            @db.VarChar(255)
   codification_id String
-  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
+  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
 }
 
 model TableForm {
-  id               String            @id @default(uuid())
-  name             String            @db.VarChar(255)
-  type             TableFormType
+  id              String            @id @default(uuid())
+  name            String            @db.VarChar(255)
+  type            TableFormType
   codification_id String
-  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
-  corpus_id        String
-  corpus           CorpusIndex       @relation(fields: [corpus_id], references: [id])
+  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  corpus_id       String
+  corpus          CorpusIndex       @relation(fields: [corpus_id], references: [id])
 }
 
 enum TableFormType {

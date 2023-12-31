@@ -5,6 +5,6 @@
 
 import { IQuery } from '@nestjs/cqrs';
 
-export class GetDocumentQuery implements IQuery {
+export class GetCodificationQuery implements IQuery {
   constructor(public readonly id: string) {}
 }
