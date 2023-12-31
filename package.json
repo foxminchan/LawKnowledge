@@ -63,7 +63,6 @@
     "@akebifiky/remark-simple-plantuml": "^1.0.2",
     "@ant-design/icons": "^5.2.6",
     "@ant-design/pro-components": "^2.6.43",
-    "@casl/ability": "^6.5.0",
     "@docusaurus/core": "^3.0.1",
     "@docusaurus/plugin-content-docs": "^3.0.1",
     "@docusaurus/plugin-content-pages": "^3.0.1",

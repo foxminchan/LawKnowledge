@@ -5,8 +5,6 @@ syntax = "proto3";
 
 package user.test;
 
-import "./common/common.proto";
-
 message Id {
   string id = 1;
 }

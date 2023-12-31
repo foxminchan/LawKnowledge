@@ -41,8 +41,9 @@
     "Pino",
     "Hutech",
     "fastify",
-    "akebifiky",
     "peaceiris",
+    "akebifiky",
+    "repassword",
     "vectorstore"
   ]
 }

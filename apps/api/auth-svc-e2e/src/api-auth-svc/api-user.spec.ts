@@ -47,4 +47,87 @@ describe('UserClientGrpcProxy', () => {
       });
     });
   });
+
+  describe('updateUser', () => {
+    describe('when updateUser is called', () => {
+      it('should return an user', async () => {
+        const result = await client.getService<any>('UserService').updateUser({
+          id: '5f92cbf10cf217478ba93561',
+          name: 'Nguyễn Xuân Nhân',
+          email: 'nhan@gmail.com',
+          phone: '9876543210',
+          card: '123456789',
+          address: 'Hồ Chí Minh',
+          password: process.env.PASSWORD,
+          repassword: process.env.PASSWORD,
+        });
+        expect(result).toEqual({
+          id: expect.any(String),
+          name: expect.any(String),
+          email: expect.any(String),
+          phone: expect.any(String),
+          card: expect.any(String),
+          address: expect.any(String),
+          password: expect.any(String),
+        });
+      });
+    });
+  });
+
+  describe('deleteUser', () => {
+    describe('when deleteUser is called', () => {
+      it('should return an user', async () => {
+        const result = await client.getService<any>('UserService').deleteUser({
+          id: '5f92cbf10cf217478ba93561',
+        });
+        expect(result).toEqual({
+          id: expect.any(String),
+          name: expect.any(String),
+          email: expect.any(String),
+          phone: expect.any(String),
+          card: expect.any(String),
+          address: expect.any(String),
+          password: expect.any(String),
+        });
+      });
+    });
+  });
+
+  describe('getUser', () => {
+    describe('when getUser is called', () => {
+      it('should return an user', async () => {
+        const result = await client.getService<any>('UserService').getUser({
+          id: '5f92cbf10cf217478ba93561',
+        });
+        expect(result).toEqual({
+          id: expect.any(String),
+          name: expect.any(String),
+          email: expect.any(String),
+          phone: expect.any(String),
+          card: expect.any(String),
+          address: expect.any(String),
+          password: expect.any(String),
+        });
+      });
+    });
+  });
+
+  describe('getUsers', () => {
+    describe('when getUsers is called', () => {
+      it('should return an array of user', async () => {
+        const result = await client.getService<any>('UserService').getUsers();
+        expect(result).toEqual([
+          {
+            id: expect.any(String),
+            name: expect.any(String),
+            email: expect.any(String),
+            phone: expect.any(String),
+            card: expect.any(String),
+            address: expect.any(String),
+            password: expect.any(String),
+          },
+        ]);
+      });
+    });
+  });
 });

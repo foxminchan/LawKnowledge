@@ -1,0 +1,38 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package role.test;
+
+message Id {
+	string id = 1;
+}
+
+message Empty {}
+
+message RoleCreateRequest {
+	string name = 1;
+}
+
+message RoleResponse {
+	Id id = 1;
+	string name = 2;
+}
+
+message RoleUpdateRequest {
+	Id id = 1;
+	string name = 2;
+}
+
+message RoleDeleteRequest {
+	Id id = 1;
+}
+
+service RoleService {
+	rpc GetRole(Id) returns (RoleResponse) {}
+	rpc GetRoles(Empty) returns (stream RoleResponse) {}
+	rpc AddRole(RoleCreateRequest) returns (RoleResponse) {}
+	rpc UpdateRole(RoleUpdateRequest) returns (RoleResponse) {}
+	rpc DeleteRole(RoleDeleteRequest) returns (RoleResponse) {}
+}

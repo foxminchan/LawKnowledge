@@ -14,9 +14,6 @@ dependencies:
   '@ant-design/pro-components':
     specifier: ^2.6.43
     version: 2.6.43(antd@5.12.5)(rc-field-form@1.41.0)(react-dom@18.2.0)(react@18.2.0)
-  '@casl/ability':
-    specifier: ^6.5.0
-    version: 6.5.0
   '@docusaurus/core':
     specifier: ^3.0.1
     version: 3.0.1(@docusaurus/types@3.0.1)(@swc/core@1.3.101)(eslint@8.56.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
@@ -2814,12 +2811,6 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
-
-  /@casl/ability@6.5.0:
-    resolution: {integrity: sha512-3guc94ugr5ylZQIpJTLz0CDfwNi0mxKVECj1vJUPAvs+Lwunh/dcuUjwzc4MHM9D8JOYX0XUZMEPedpB3vIbOw==}
-    dependencies:
-      '@ucast/mongo2js': 1.3.4
-    dev: false
 
   /@chenshuai2144/sketch-color@1.0.9(react@18.2.0):
     resolution: {integrity: sha512-obzSy26cb7Pm7OprWyVpgMpIlrZpZ0B7vbrU0RMbvRg0YAI890S5Xy02Aj1Nhl4+KTbi1lVYHt6HQP8Hm9s+1w==}
@@ -10620,30 +10611,6 @@ packages:
       '@typescript-eslint/types': 6.16.0
       eslint-visitor-keys: 3.4.3
     dev: true
-
-  /@ucast/core@1.10.2:
-    resolution: {integrity: sha512-ons5CwXZ/51wrUPfoduC+cO7AS1/wRb0ybpQJ9RrssossDxVy4t49QxWoWgfBDvVKsz9VXzBk9z0wqTdZ+Cq8g==}
-    dev: false
-
-  /@ucast/js@3.0.3:
-    resolution: {integrity: sha512-jBBqt57T5WagkAjqfCIIE5UYVdaXYgGkOFYv2+kjq2AVpZ2RIbwCo/TujJpDlwTVluUI+WpnRpoGU2tSGlEvFQ==}
-    dependencies:
-      '@ucast/core': 1.10.2
-    dev: false
-
-  /@ucast/mongo2js@1.3.4:
-    resolution: {integrity: sha512-ahazOr1HtelA5AC1KZ9x0UwPMqqimvfmtSm/PRRSeKKeE5G2SCqTgwiNzO7i9jS8zA3dzXpKVPpXMkcYLnyItA==}
-    dependencies:
-      '@ucast/core': 1.10.2
-      '@ucast/js': 3.0.3
-      '@ucast/mongo': 2.4.3
-    dev: false
-
-  /@ucast/mongo@2.4.3:
-    resolution: {integrity: sha512-XcI8LclrHWP83H+7H2anGCEeDq0n+12FU2mXCTz6/Tva9/9ddK/iacvvhCyW6cijAAOILmt0tWplRyRhVyZLsA==}
-    dependencies:
-      '@ucast/core': 1.10.2
-    dev: false
 
   /@umijs/route-utils@4.0.1:
     resolution: {integrity: sha512-+1ixf1BTOLuH+ORb4x8vYMPeIt38n9q0fJDwhv9nSxrV46mxbLF0nmELIo9CKQB2gHfuC4+hww6xejJ6VYnBHQ==}
