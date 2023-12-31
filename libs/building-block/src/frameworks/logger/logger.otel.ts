@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import Pino, { Logger, LoggerOptions } from 'pino';
 import { trace, context } from '@opentelemetry/api';
 

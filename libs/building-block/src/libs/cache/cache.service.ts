@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { Cache } from 'cache-manager';
 import type { Observable } from 'rxjs';
 import { Inject, Injectable } from '@nestjs/common';
@@ -20,7 +25,7 @@ export class CacheService {
         return from(this.cacheManager.del(key));
       }),
       toArray(),
-      map(() => true)
+      map(() => true),
     );
   }
 

@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   ApiBody,
   ApiOperation,
@@ -32,14 +37,14 @@ export function SwaggerResponse<T, K>({
   if (params) {
     for (const parameter of params)
       decsToApply.push(
-        ApiParam({ name: parameter, required: true, type: String })
+        ApiParam({ name: parameter, required: true, type: String }),
       );
   }
 
   if (query)
     for (const parameter of query)
       decsToApply.push(
-        ApiQuery({ name: parameter, required: false, type: String })
+        ApiQuery({ name: parameter, required: false, type: String }),
       );
 
   if (badRequest)

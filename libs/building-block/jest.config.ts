@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 export default {
   displayName: 'building-block',
   preset: '../../jest.preset.js',

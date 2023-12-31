@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   Injectable,
   ValidationPipe,
@@ -21,8 +26,8 @@ export class ValidationErrorPipe extends ValidationPipe {
             validationErrors.map((error) => ({
               field: error.property,
               error: Object.values(error.constraints ?? {}),
-            }))
-          )
+            })),
+          ),
         ),
     });
   }

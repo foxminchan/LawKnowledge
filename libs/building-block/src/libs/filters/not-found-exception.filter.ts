@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   Catch,
   HttpStatus,
@@ -20,7 +25,7 @@ export class NotFoundExceptionFilter implements ExceptionFilter {
         title: _exception.message,
         type: RFC_TYPE,
         detail: _exception.stack,
-      })
+      }),
     );
   }
 }

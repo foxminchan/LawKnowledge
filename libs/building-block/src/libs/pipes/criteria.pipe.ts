@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
 

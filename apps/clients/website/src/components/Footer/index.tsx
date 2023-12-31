@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { Link } from 'react-router-dom';
 import { Image, Layout, Typography } from 'antd';
 import Coa from '@assets/images/coat_of_arms.svg';

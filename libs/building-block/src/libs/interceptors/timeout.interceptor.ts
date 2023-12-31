@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   timeout,
   Observable,
@@ -15,7 +20,7 @@ import {
 export class TimeoutInterceptor implements NestInterceptor {
   intercept(
     _context: ExecutionContext,
-    next: CallHandler
+    next: CallHandler,
   ): Observable<unknown> {
     return next.handle().pipe(
       timeout(5000),
@@ -24,7 +29,7 @@ export class TimeoutInterceptor implements NestInterceptor {
           return throwError(() => new RequestTimeoutException());
 
         return throwError(() => error);
-      })
+      }),
     );
   }
 }

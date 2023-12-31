@@ -3,6 +3,7 @@
  * Licensed under the MIT License
  */
 
-export * from './tableform.enum';
-export * from './permission.enum';
-export * from './pagination.enum';
+export enum TableFormType {
+  Table,
+  Form,
+}

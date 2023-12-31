@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import Cookies from 'js-cookie';
 import Header from '@components/Header';
 import Footer from '@/components/Footer';

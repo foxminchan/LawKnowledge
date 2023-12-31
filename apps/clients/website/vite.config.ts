@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { fileURLToPath } from 'url';
 import react from '@vitejs/plugin-react';
 import { PluginOption, defineConfig } from 'vite';

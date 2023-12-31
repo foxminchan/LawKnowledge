@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import clsx from 'clsx';
 import { NavLink, useMatch, useResolvedPath } from 'react-router-dom';
 

@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import type {
   CallHandler,
   NestInterceptor,
@@ -26,7 +31,7 @@ export class ClearCacheInterceptor implements NestInterceptor {
           return from(this.cacheService.resetCache());
 
         return of();
-      })
+      }),
     );
   }
 }

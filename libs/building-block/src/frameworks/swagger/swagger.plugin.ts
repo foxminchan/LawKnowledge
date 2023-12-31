@@ -1,15 +1,20 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 function CaseInsensitiveFilterPlugin(): {
   fn: {
     opsFilter: (
       taggedOps: {
         filter: (
-          argument: (_tagObject: unknown, tag: string) => boolean
+          argument: (_tagObject: unknown, tag: string) => boolean,
         ) => unknown;
       },
-      phrase: string
+      phrase: string,
     ) => {
       filter: (
-        argument: (_tagObject: unknown, tag: string) => boolean
+        argument: (_tagObject: unknown, tag: string) => boolean,
       ) => unknown;
     };
   };
@@ -19,16 +24,16 @@ function CaseInsensitiveFilterPlugin(): {
       opsFilter: (
         taggedOps: {
           filter: (
-            argument: (_tagObject: unknown, tag: string) => boolean
+            argument: (_tagObject: unknown, tag: string) => boolean,
           ) => unknown;
         },
-        phrase: string
+        phrase: string,
       ) => {
         return taggedOps.filter((_tagObject: unknown, tag: string): boolean =>
-          tag.toLowerCase().includes(phrase.toLowerCase())
+          tag.toLowerCase().includes(phrase.toLowerCase()),
         ) as {
           filter: (
-            argument: (_tagObject: unknown, tag: string) => boolean
+            argument: (_tagObject: unknown, tag: string) => boolean,
           ) => unknown;
         };
       },
@@ -45,7 +50,7 @@ const swaggerOptions = {
   plugins: [CaseInsensitiveFilterPlugin],
   operationsSorter: (
     a: { get: (argument: string) => string },
-    b: { get: (argument: string) => string }
+    b: { get: (argument: string) => string },
   ) => {
     const methodsOrder = [
       'get',

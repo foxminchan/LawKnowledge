@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { Suspense } from 'react';
 import loadable from '@loadable/component';
 import { navItems } from '@/mocks/navItem.mock';

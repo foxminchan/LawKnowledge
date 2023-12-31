@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { ApiKeyAuthGuard } from '../guards';
 import type { CanActivate, Type } from '@nestjs/common';
 import { UseGuards, applyDecorators } from '@nestjs/common';
@@ -18,6 +23,6 @@ export function Key(_options?: KeyGuard) {
   return applyDecorators(
     UseGuards(...options.guards),
     ApiSecurity('X-Api-Key'),
-    ApiUnauthorizedResponse({ description: options.unauthorizedResponse })
+    ApiUnauthorizedResponse({ description: options.unauthorizedResponse }),
   );
 }

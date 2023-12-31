@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   ApiBody,
   ApiOkResponse,
@@ -27,7 +32,7 @@ export function PagingSwaggerResponse<T, K>({
   if (params) {
     for (const parameter of params)
       decsToApply.push(
-        ApiParam({ name: parameter, required: true, type: String })
+        ApiParam({ name: parameter, required: true, type: String }),
       );
   }
 
@@ -52,14 +57,14 @@ export function PagingSwaggerResponse<T, K>({
           },
         ],
       },
-    })
+    }),
   );
 
   decsToApply.push(ApiQuery({ name: 'page', required: false, type: Number }));
   decsToApply.push(ApiQuery({ name: 'limit', required: false, type: Number }));
   decsToApply.push(ApiQuery({ name: 'sort', required: false, type: String }));
   decsToApply.push(
-    ApiQuery({ name: 'orderBy', required: false, type: String })
+    ApiQuery({ name: 'orderBy', required: false, type: String }),
   );
 
   return applyDecorators(...decsToApply);

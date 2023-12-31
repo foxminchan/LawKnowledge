@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   Catch,
   Logger,
@@ -35,7 +40,7 @@ export class RpcExceptionToHttpExceptionFilter implements ExceptionFilter {
           statusCode === HttpStatus.INTERNAL_SERVER_ERROR
             ? 'Dịch vụ hiện không khả dụng vào lúc này'
             : error.response.message,
-      })
+      }),
     );
   }
 }

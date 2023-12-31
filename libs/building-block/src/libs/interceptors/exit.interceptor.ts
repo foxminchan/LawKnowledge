@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import type {
   CallHandler,
   ExecutionContext,
@@ -12,13 +17,13 @@ import { catchError, map } from 'rxjs/operators';
 export class ExitInterceptor implements NestInterceptor {
   intercept(
     _context: ExecutionContext,
-    next: CallHandler
+    next: CallHandler,
   ): Observable<unknown> {
     return next.handle().pipe(
       catchError((error: Error) => {
         return throwError(() => error);
       }),
-      map((data: unknown) => data)
+      map((data: unknown) => data),
     );
   }
 }

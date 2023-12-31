@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 export const SWAGGER_TITLE = 'Law Knowledge';
 export const SWAGGER_DESCRIPTION =
   "A legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database ⚖️";

@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { atomWithMutation } from 'jotai-tanstack-query';
 import { axiosService } from '@/common/utils/inversify';
 import { SignUpPayload, SignUpResponse } from '../types/sign-up.type';

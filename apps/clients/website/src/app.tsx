@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { Suspense } from 'react';
 import loadable from '@loadable/component';
 import AuthLayout from '@layouts/AuthLayout';
@@ -11,7 +16,6 @@ const Chat = loadable(() => import('@features/Chat'));
 const Search = loadable(() => import('@features/Search'));
 const SignIn = loadable(() => import('@features/SignIn'));
 const SignUp = loadable(() => import('@features/SignUp'));
-const Account = loadable(() => import('@features/Account'));
 const NotFound = loadable(() => import('@components/NotFound'));
 const ItemDetail = loadable(() => import('@features/ItemDetail'));
 
@@ -85,17 +89,6 @@ export default function App() {
               </Suspense>
             }
           />
-          <Route element={<AuthLayout />}>
-            <Route
-              path="/tai-khoan"
-              errorElement={<ErrorBoundary />}
-              element={
-                <Suspense fallback={<PageLoading />}>
-                  <Account title="Tài khoản" />
-                </Suspense>
-              }
-            />
-          </Route>
           <Route
             path="*"
             errorElement={<ErrorBoundary />}

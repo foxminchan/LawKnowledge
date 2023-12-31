@@ -1,7 +1,12 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
+import { JwtAuthGuard } from '../guards';
 import type { CanActivate, Type } from '@nestjs/common';
 import { UseGuards, applyDecorators } from '@nestjs/common';
 import { ApiBearerAuth, ApiUnauthorizedResponse } from '@nestjs/swagger';
-import { JwtAuthGuard } from '../guards';
 
 interface AuthGuard {
   guards?: Type<CanActivate>[];
@@ -18,6 +23,6 @@ export function Auth(_options?: AuthGuard) {
   return applyDecorators(
     UseGuards(...options.guards),
     ApiBearerAuth(),
-    ApiUnauthorizedResponse({ description: options.unauthorizedResponse })
+    ApiUnauthorizedResponse({ description: options.unauthorizedResponse }),
   );
 }

@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { Result } from 'antd';
 import { Link } from 'react-router-dom';
 import useMetadata from '@/common/hooks/useMetadata';

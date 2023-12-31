@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { SortBy } from '../@types/enums';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNumber, IsPositive, IsString, Max } from 'class-validator';

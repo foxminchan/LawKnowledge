@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { Observable, from } from 'rxjs';
 import { argon2id, hash, verify } from 'argon2';
 import type { Options as ArgonOptions } from 'argon2';
@@ -16,7 +21,7 @@ export const CryptoUtils = {
 
   verifyHash(
     userPassword: string,
-    passwordToCompare: string
+    passwordToCompare: string,
   ): Observable<boolean> {
     return from(verify(userPassword, passwordToCompare, argon2Options));
   },

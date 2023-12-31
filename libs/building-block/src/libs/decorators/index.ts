@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 export * from './key.decorator';
 export * from './auth.decorator';
 export * from './cache.decorator';

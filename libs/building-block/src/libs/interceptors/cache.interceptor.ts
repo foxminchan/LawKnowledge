@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import { IGNORE_CACHING_META } from '../@types/constants';
 import { ExecutionContext, Injectable } from '@nestjs/common';
 import { CACHE_KEY_METADATA, CacheInterceptor } from '@nestjs/cache-manager';
@@ -10,7 +15,7 @@ export class HttpCacheInterceptor extends CacheInterceptor {
 
     const ignoreCaching: boolean = this.reflector.get(
       IGNORE_CACHING_META,
-      context.getHandler()
+      context.getHandler(),
     );
 
     return !ignoreCaching && request.method === 'GET';
@@ -24,7 +29,7 @@ export class CacheKeyInterceptor extends CacheInterceptor {
     const isHttpApp = httpAdapter && !!httpAdapter.getRequestMethod;
     const cacheMetadata = this.reflector.get(
       CACHE_KEY_METADATA,
-      context.getHandler()
+      context.getHandler(),
     );
 
     const request = context.getArgByIndex(0);

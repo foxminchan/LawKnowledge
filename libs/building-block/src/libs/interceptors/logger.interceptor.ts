@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import type {
   CallHandler,
   NestInterceptor,
@@ -19,7 +24,7 @@ export class LoggingInterceptor implements NestInterceptor {
 
   intercept(
     context: ExecutionContext,
-    call$: CallHandler
+    call$: CallHandler,
   ): Observable<unknown> {
     const request = context.switchToHttp().getRequest();
     const { method, url, body, headers } = request;
@@ -33,7 +38,7 @@ export class LoggingInterceptor implements NestInterceptor {
         body,
         headers,
       },
-      logContext
+      logContext,
     );
 
     return call$.handle().pipe(
@@ -44,7 +49,7 @@ export class LoggingInterceptor implements NestInterceptor {
         error: (error: Error) => {
           this.logError(error, context);
         },
-      })
+      }),
     );
   }
 
@@ -61,7 +66,7 @@ export class LoggingInterceptor implements NestInterceptor {
         message,
         body,
       },
-      logContext
+      logContext,
     );
   }
 
@@ -84,7 +89,7 @@ export class LoggingInterceptor implements NestInterceptor {
             error,
           },
           error.stack,
-          logContext
+          logContext,
         );
       } else {
         this.logger.warn(
@@ -95,7 +100,7 @@ export class LoggingInterceptor implements NestInterceptor {
             body,
             message,
           },
-          logContext
+          logContext,
         );
       }
     } else {
@@ -104,7 +109,7 @@ export class LoggingInterceptor implements NestInterceptor {
           message: `Response - ${method} - ${url}`,
         },
         error.stack,
-        `${this.userPrefix}${this.ctxPrefix} - ${method} - ${url}`
+        `${this.userPrefix}${this.ctxPrefix} - ${method} - ${url}`,
       );
     }
   }
