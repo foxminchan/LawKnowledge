@@ -22,27 +22,27 @@ export class DocumentController {
     private readonly commandBus: CommandBus,
   ) {}
 
-  @GrpcMethod('LawService', 'GetDocuments')
+  @GrpcMethod('DocumentService', 'GetDocuments')
   getDocuments(criteria?: Criteria) {
     return this.queryBus.execute(new GetDocumentsQuery(criteria));
   }
 
-  @GrpcMethod('LawService', 'GetDocument')
+  @GrpcMethod('DocumentService', 'GetDocument')
   getDocument(id: string) {
     return this.queryBus.execute(new GetDocumentQuery(id));
   }
 
-  @GrpcMethod('LawService', 'DeleteDocument')
+  @GrpcMethod('DocumentService', 'DeleteDocument')
   deleteDocument(id: string) {
     return this.commandBus.execute(new DeleteDocumentCommand(id));
   }
 
-  @GrpcMethod('LawService', 'CreateDocument')
+  @GrpcMethod('DocumentService', 'CreateDocument')
   createDocument(payload: CreateDocumentDto) {
     return this.commandBus.execute(new CreateDocumentCommand(payload));
   }
 
-  @GrpcMethod('LawService', 'UpdateDocument')
+  @GrpcMethod('DocumentService', 'UpdateDocument')
   updateDocument(payload: UpdateDocumentDto) {
     return this.commandBus.execute(new UpdateDocumentCommand(payload));
   }
