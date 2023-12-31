@@ -4,8 +4,8 @@ import {
   UpdateDocumentCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { EventPattern } from '@nestjs/microservices';
 import { Criteria } from '@law-knowledge/building-block';
 import { CreateDocumentDto, UpdateDocumentDto } from './dto';
 import { GetDocumentQuery, GetDocumentsQuery } from './queries';
@@ -17,27 +17,27 @@ export class DocumentController {
     private readonly commandBus: CommandBus,
   ) {}
 
-  @EventPattern({ cmd: 'getDocuments' })
+  @GrpcMethod('LawService', 'GetDocuments')
   getDocuments(criteria?: Criteria) {
     return this.queryBus.execute(new GetDocumentsQuery(criteria));
   }
 
-  @EventPattern({ cmd: 'getDocument' })
+  @GrpcMethod('LawService', 'GetDocument')
   getDocument(id: string) {
     return this.queryBus.execute(new GetDocumentQuery(id));
   }
 
-  @EventPattern({ cmd: 'deleteDocument' })
+  @GrpcMethod('LawService', 'DeleteDocument')
   deleteDocument(id: string) {
     return this.commandBus.execute(new DeleteDocumentCommand(id));
   }
 
-  @EventPattern({ cmd: 'createDocument' })
+  @GrpcMethod('LawService', 'CreateDocument')
   createDocument(payload: CreateDocumentDto) {
     return this.commandBus.execute(new CreateDocumentCommand(payload));
   }
 
-  @EventPattern({ cmd: 'updateDocument' })
+  @GrpcMethod('LawService', 'UpdateDocument')
   updateDocument(payload: UpdateDocumentDto) {
     return this.commandBus.execute(new UpdateDocumentCommand(payload));
   }

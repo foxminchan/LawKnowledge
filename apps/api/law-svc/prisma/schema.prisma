@@ -1,7 +1,9 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "fullTextIndex"]
-  output = "../../../../node_modules/@prisma/db-law"
+  provider = "prisma-client-js"
+  output   = "../../../../node_modules/@prisma/db-law"
 }
 
 datasource db {
@@ -17,19 +19,72 @@ model Topic {
 }
 
 model Heading {
-  id       String     @id @default(uuid())
-  name     String     @db.VarChar(255)
-  no       Int
-  topic_id String
-  topic    Topic      @relation(fields: [topic_id], references: [id])
-  Document Document[]
+  id          String        @id @default(uuid())
+  name        String        @db.VarChar(255)
+  no          Int
+  topic_id    String
+  topic       Topic         @relation(fields: [topic_id], references: [id])
+  CorpusIndex CorpusIndex[]
+  Document    Document[]
+}
+
+model CorpusIndex {
+  id               String            @id @default(uuid())
+  name             String
+  indexing         String            @db.VarChar(10)
+  heading_id       String
+  heading          Heading           @relation(fields: [heading_id], references: [id])
+  parent_id        String?           @map("parent_id")
+  parent           CorpusIndex?      @relation("ParentChild", fields: [parent_id], references: [id])
+  children         CorpusIndex[]     @relation("ParentChild")
+  related_id       String?           @map("related_id")
+  related          CorpusIndex?      @relation("Related", fields: [related_id], references: [id])
+  relateds         CorpusIndex[]     @relation("Related")
+  codification_id String
+  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
+  TableForm        TableForm[]
+}
+
+model CodificationIndex {
+  id          String              @id @default(uuid())
+  name        String
+  indexing    String              @db.VarChar(10)
+  parent_id   String?             @map("parent_id")
+  parent      CodificationIndex?  @relation("ParentChild", fields: [parent_id], references: [id])
+  children    CodificationIndex[] @relation("ParentChild")
+  Document    Document[]
+  CorpusIndex CorpusIndex[]
+  Keyword     Keyword[]
+  TableForm   TableForm[]
 }
 
 model Document {
-  id         String  @id @default(uuid())
-  name       String
-  indexing   String  @db.VarChar(10)
-  mpc        String
-  heading_id String
-  heading    Heading @relation(fields: [heading_id], references: [id])
+  id               String            @id @default(uuid())
+  content          String            @db.Text
+  heading_id       String
+  heading          Heading           @relation(fields: [heading_id], references: [id])
+  codification_id String
+  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
+}
+
+model Keyword {
+  id               String            @id @default(uuid())
+  name             String            @db.VarChar(255)
+  codification_id String
+  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
+}
+
+model TableForm {
+  id               String            @id @default(uuid())
+  name             String            @db.VarChar(255)
+  type             TableFormType
+  codification_id String
+  condification    CodificationIndex @relation(fields: [codification_id], references: [id])
+  corpus_id        String
+  corpus           CorpusIndex       @relation(fields: [corpus_id], references: [id])
+}
+
+enum TableFormType {
+  Table
+  Form
 }

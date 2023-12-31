@@ -1,23 +1,30 @@
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
-import { TcpOptions, Transport } from '@nestjs/microservices';
+import { Transport } from '@nestjs/microservices';
 import { ValidationErrorPipe, sdk } from '@law-knowledge/building-block';
+import { configs } from './configs';
+import { join } from 'path';
 
 async function bootstrap() {
   sdk.start();
   const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.TCP,
+    transport: Transport.GRPC,
     options: {
-      host: process.env.HOST || '0.0.0.0',
-      port: process.env.PORT || 8082,
-      retryAttempts: 5,
-      retryDelay: 3000,
+      url: `${configs().url}:${configs().port}`,
+      package: 'law',
+      protoPath: join(__dirname, './proto/law.proto'),
+      loader: {
+        enums: String,
+        objects: true,
+        arrays: true,
+        includeDirs: [join(__dirname, './proto')],
+      },
     },
-  } as TcpOptions);
+  });
 
-  app.useGlobalPipes(new ValidationErrorPipe());
   app.useLogger(app.get(Logger));
+  app.useGlobalPipes(new ValidationErrorPipe());
   await app.listen();
 }
 

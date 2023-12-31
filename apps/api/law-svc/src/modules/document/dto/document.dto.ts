@@ -6,11 +6,11 @@ export class CreateDocumentDto {
   @IsNotEmpty({ message: 'Tên văn bản không được để trống' })
   name: string;
 
-  @IsString({ message: 'Chỉ mục phải là chuỗi' })
-  indexing: string;
+  @IsString({ message: 'Nội dung văn bản phải là chuỗi' })
+  content: string;
 
   @IsString({ message: 'Mã PC phải là chuỗi' })
-  mpc: string;
+  codification_id: string;
 
   @IsUUID('4', { message: 'Mã đề mục không hợp lệ' })
   heading_id: string;

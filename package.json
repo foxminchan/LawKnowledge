@@ -112,7 +112,7 @@
     "class-validator": "^0.14.0",
     "clsx": "^2.1.0",
     "d3-dsv": "^3.0.1",
-    "fastify": "^4.25.2",
+    "fastify": "^4.25.1",
     "helper-fns": "^2.6.43",
     "http-problem-details": "^0.1.5",
     "inversify": "^6.0.2",
@@ -133,14 +133,14 @@
     "pino": "^8.17.2",
     "prism-react-renderer": "^2.3.1",
     "prisma": "^5.7.1",
-    "prom-client": "^15.1.0",
+    "prom-client": "^14.0.0",
     "pug": "^3.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.21.1",
     "redis": "^4.6.12",
-    "reflect-metadata": "^0.1.14",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "socket.io": "^4.7.2",
     "socket.io-adapter": "^2.5.2",
@@ -237,5 +237,11 @@
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "peerDependencies": {
+    "fastify": "^4.25.1",
+    "prom-client": "^14.0.0",
+    "reflect-metadata": "^0.1.13",
+    "vitest": "^1.1.0"
   }
 }
