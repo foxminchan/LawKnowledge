@@ -3,9 +3,15 @@
 
 syntax = "proto3";
 
-package user;
+package user.test;
 
-import "../common/common.proto";
+import "./common/common.proto";
+
+message Id {
+  string id = 1;
+}
+
+message Empty {}
 
 message User {
   string name = 1;
@@ -22,12 +28,12 @@ message UserCreateRequest {
 }
 
 message UserResponse {
-	common.Id id = 1;
+	Id id = 1;
  	User user = 2;
 }
 
 message UserUpdateRequest {
-	common.Id id = 1;
+	Id id = 1;
   User user = 2;
   string repassword = 3;
 }
@@ -38,8 +44,8 @@ message EmailRequest {
 
 service UserService {
 	rpc GetUser(EmailRequest) returns (UserResponse) {}
-	rpc DeleteUser(common.Id) returns (UserResponse) {}
+	rpc DeleteUser(Id) returns (UserResponse) {}
 	rpc AddUser(UserCreateRequest) returns (UserResponse) {}
-	rpc GetUsers(common.Empty) returns (stream UserResponse) {}
+	rpc GetUsers(Empty) returns (stream UserResponse) {}
 	rpc UpdateUser(UserUpdateRequest) returns (UserResponse) {}
 }

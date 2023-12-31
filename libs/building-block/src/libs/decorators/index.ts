@@ -5,6 +5,7 @@ export * from './public.decorator';
 export * from './origin.decorator';
 export * from './paging.decorator';
 export * from './nocache.decorator';
+export * from './compare.decorator';
 export * from './controller.decorator';
 export * from './swagger-api.decorator';
 export * from './client-timezone.decorator';

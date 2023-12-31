@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 <hr/>
 
-[v0.1.0-rc](https://github.com/foxminchan/LawKnowledge/releases/tag/v0.1.0-rc) - 2023-12-06
+## [v0.1.0-rc](https://github.com/foxminchan/LawKnowledge/releases/tag/v0.1.0-rc) - 2023-12-06
 
 ### Added
 

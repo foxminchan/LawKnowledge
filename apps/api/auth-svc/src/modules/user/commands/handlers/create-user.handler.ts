@@ -17,7 +17,11 @@ export class CreateUserCommandHandler
     return this.dataService.$transaction(async () =>
       this.dataService.user.create({
         data: {
-          ...payload.user,
+          name: payload.user.name,
+          email: payload.user.email,
+          phone: payload.user.phone,
+          address: payload.user.address,
+          card: payload.user.card,
           password: await CryptoUtils.hashString(payload.user.password),
           UserRoles: {
             create: [

@@ -36,6 +36,9 @@ export class RegisterPayload {
 
   @ApiProperty()
   password: string;
+
+  @ApiProperty()
+  repassword: string;
 }
 
 export class User extends PartialType(RegisterPayload) {

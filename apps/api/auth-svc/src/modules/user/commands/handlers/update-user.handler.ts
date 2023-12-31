@@ -17,7 +17,13 @@ export class UpdateUserCommandHandler
     return this.dataService.$transaction([
       this.dataService.user.update({
         where: { id: payload.user.id },
-        data: payload.user,
+        data: {
+          name: payload.user.name,
+          email: payload.user.email,
+          phone: payload.user.phone,
+          address: payload.user.address,
+          card: payload.user.card,
+        },
       }),
     ]);
   }

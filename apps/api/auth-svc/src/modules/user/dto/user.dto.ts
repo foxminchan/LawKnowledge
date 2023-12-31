@@ -12,6 +12,7 @@ import {
   IsNotEmpty,
 } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
+import { IsMatch } from '@law-knowledge/building-block';
 
 export class CreateUserDto {
   @IsNotEmpty({ message: 'Họ tên không được để trống' })
@@ -45,6 +46,9 @@ export class CreateUserDto {
     },
   )
   password: string;
+
+  @IsMatch('password', { message: 'Mật khẩu không khớp' })
+  repassword: string;
 }
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {
