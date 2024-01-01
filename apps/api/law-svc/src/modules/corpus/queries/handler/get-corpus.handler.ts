@@ -16,6 +16,10 @@ export class GetCorpusQueryHandler implements IQueryHandler<GetCorpusQuery> {
       where: {
         id: payload.id,
       },
+      include: {
+        CorpusIndex: true,
+        TableForm: true,
+      },
     });
   }
 }

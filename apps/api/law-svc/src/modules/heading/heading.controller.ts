@@ -1,11 +1,16 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   CreateHeadingCommand,
   DeleteHeadingCommand,
   UpdateHeadingCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { EventPattern } from '@nestjs/microservices';
 import { Criteria } from '@law-knowledge/building-block';
 import { CreateHeadingDto, UpdateHeadingDto } from './dto';
 import { GetHeadingQuery, GetHeadingsQuery } from './queries';
@@ -17,27 +22,27 @@ export class HeadingController {
     private readonly commandBus: CommandBus,
   ) {}
 
-  @EventPattern({ cmd: 'getHeadings' })
+  @GrpcMethod('HeadingService', 'GetHeadings')
   getHeadings(criteria?: Criteria) {
     return this.queryBus.execute(new GetHeadingsQuery(criteria));
   }
 
-  @EventPattern({ cmd: 'getHeading' })
+  @GrpcMethod('HeadingService', 'GetHeading')
   getHeading(id: string) {
     return this.queryBus.execute(new GetHeadingQuery(id));
   }
 
-  @EventPattern({ cmd: 'createHeading' })
+  @GrpcMethod('HeadingService', 'CreateHeading')
   createHeading(payload: CreateHeadingDto) {
     return this.commandBus.execute(new CreateHeadingCommand(payload));
   }
 
-  @EventPattern({ cmd: 'updateHeading' })
+  @GrpcMethod('HeadingService', 'UpdateHeading')
   updateHeading(id: string, payload: UpdateHeadingDto) {
     return this.commandBus.execute(new UpdateHeadingCommand(payload));
   }
 
-  @EventPattern({ cmd: 'deleteHeading' })
+  @GrpcMethod('HeadingService', 'DeleteHeading')
   deleteHeading(id: string) {
     return this.commandBus.execute(new DeleteHeadingCommand(id));
   }

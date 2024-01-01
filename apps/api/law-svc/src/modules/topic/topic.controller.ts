@@ -1,11 +1,16 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import {
   CreateTopicCommand,
   DeleteTopicCommand,
   UpdateTopicCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { EventPattern } from '@nestjs/microservices';
 import { CreateTopicDto, UpdateTopicDto } from './dto';
 import { Criteria } from '@law-knowledge/building-block';
 import { GetTopicQuery, GetTopicsQuery } from './queries';
@@ -17,27 +22,27 @@ export class TopicController {
     private readonly commandBus: CommandBus,
   ) {}
 
-  @EventPattern({ cmd: 'createTopic' })
+  @GrpcMethod('TopicService', 'CreateTopic')
   createTopic(data: CreateTopicDto) {
     return this.commandBus.execute(new CreateTopicCommand(data));
   }
 
-  @EventPattern({ cmd: 'updateTopic' })
+  @GrpcMethod('TopicService', 'UpdateTopic')
   updateTopic(id: string, data: UpdateTopicDto) {
     return this.commandBus.execute(new UpdateTopicCommand(data));
   }
 
-  @EventPattern({ cmd: 'deleteTopic' })
+  @GrpcMethod('TopicService', 'DeleteTopic')
   deleteTopic(id: string) {
     return this.commandBus.execute(new DeleteTopicCommand(id));
   }
 
-  @EventPattern({ cmd: 'getTopics' })
+  @GrpcMethod('TopicService', 'GetTopics')
   getTopics(criteria?: Criteria) {
     return this.queryBus.execute(new GetTopicsQuery(criteria));
   }
 
-  @EventPattern({ cmd: 'getTopic' })
+  @GrpcMethod('TopicService', 'GetTopic')
   getTopic(id: string) {
     return this.queryBus.execute(new GetTopicQuery(id));
   }

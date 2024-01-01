@@ -7,6 +7,7 @@ import {
   TopicModule,
   CorpusModule,
   HeadingModule,
+  KeywordModule,
   DocumentModule,
   CodificationModule,
 } from './modules';
@@ -20,6 +21,7 @@ import { LawDataModule, LoggerModule } from '@law-knowledge/building-block';
     CorpusModule,
     LawDataModule,
     HeadingModule,
+    KeywordModule,
     DocumentModule,
     CodificationModule,
   ],
