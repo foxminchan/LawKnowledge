@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import React from 'react';
 import Layout from '@theme/Layout';
 import WhatIs from '../components/WhatIsSection';

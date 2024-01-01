@@ -25,5 +25,6 @@ export class CreateCodificationDto {
 }
 
 export class UpdateCodificationDto extends PartialType(CreateCodificationDto) {
+  @IsUUID('4', { message: 'Mã chỉ mục văn bản pháp luật không hợp lệ' })
   id: string;
 }

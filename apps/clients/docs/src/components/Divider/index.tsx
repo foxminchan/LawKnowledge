@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import clsx from 'clsx';
 import React from 'react';
 
@@ -12,7 +17,7 @@ export default function Divider({ vertical, spacer }: Readonly<DividerProps>) {
       className={clsx(
         'bg-japonica-600 h-px',
         vertical ? 'border-l bg-japonica-600 w-px h-12 ml-12 mr-12' : 'my-16',
-        `m-${spacer * 4}`
+        `m-${spacer * 4}`,
       )}
     />
   );

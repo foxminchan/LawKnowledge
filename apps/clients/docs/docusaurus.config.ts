@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import simplePlantUML from '@akebifiky/remark-simple-plantuml';
 
 export default {
@@ -212,7 +217,7 @@ export default {
     async function myPlugin(_context: any) {
       return {
         name: 'docusaurus-tailwindcss',
-        configurePostCss(postcssOptions: { plugins: any[]; }) {
+        configurePostCss(postcssOptions: { plugins: any[] }) {
           postcssOptions.plugins.push(require('tailwindcss'));
           postcssOptions.plugins.push(require('autoprefixer'));
           return postcssOptions;

@@ -17,7 +17,7 @@ export class UpdateCodificationCommandHandler
     return await this.dataService.$transaction([
       this.dataService.codificationIndex.update({
         where: { id: payload.codification.id },
-        data: payload.codification,
+        data: { ...payload.codification },
       }),
     ]);
   }

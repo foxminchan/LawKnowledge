@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import React from 'react';
 import Link from '@docusaurus/Link';
 import SectionLayout from '../SectionLayout';

@@ -3,6 +3,5 @@
  * Licensed under the MIT License
  */
 
-module.exports = {
-  presets: [require.resolve('@docusaurus/core/lib/babel/preset')],
-};
+export * from './impl';
+export * from './handler';

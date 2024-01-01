@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 import clsx from 'clsx';
 import React from 'react';
 import Link from '@docusaurus/Link';
@@ -27,7 +32,7 @@ function Topic(props: Readonly<TopicProps>) {
         <div
           className={clsx(
             'text-black row',
-            props.direction === 'right' ? 'flex-row-reverse' : 'flex-row'
+            props.direction === 'right' ? 'flex-row-reverse' : 'flex-row',
           )}
         >
           <div className="col">
