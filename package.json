@@ -102,6 +102,7 @@
     "@opentelemetry/resources": "^1.19.0",
     "@opentelemetry/sdk-node": "^0.46.0",
     "@opentelemetry/semantic-conventions": "^1.19.0",
+    "@prisma/instrumentation": "^5.7.1",
     "@socket.io/redis-adapter": "^8.2.1",
     "@tanstack/query-core": "^5.15.5",
     "antd": "^5.12.5",

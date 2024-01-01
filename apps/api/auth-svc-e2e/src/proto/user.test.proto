@@ -9,7 +9,12 @@ message Id {
   string id = 1;
 }
 
-message Empty {}
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
 
 message User {
   string name = 1;
@@ -40,10 +45,15 @@ message EmailRequest {
 	string email = 1;
 }
 
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
 service UserService {
 	rpc GetUser(EmailRequest) returns (UserResponse) {}
 	rpc DeleteUser(Id) returns (UserResponse) {}
 	rpc AddUser(UserCreateRequest) returns (UserResponse) {}
-	rpc GetUsers(Empty) returns (stream UserResponse) {}
+	rpc GetUsers(Criteria) returns (stream UserResponse) {}
 	rpc UpdateUser(UserUpdateRequest) returns (UserResponse) {}
 }

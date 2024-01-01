@@ -5,7 +5,7 @@ syntax = "proto3";
 
 package user;
 
-import "../common/common.proto";
+import "./common/common.proto";
 
 message User {
   string name = 1;
@@ -40,6 +40,6 @@ service UserService {
 	rpc GetUser(EmailRequest) returns (UserResponse) {}
 	rpc DeleteUser(common.Id) returns (UserResponse) {}
 	rpc AddUser(UserCreateRequest) returns (UserResponse) {}
-	rpc GetUsers(common.Empty) returns (stream UserResponse) {}
+	rpc GetUsers(common.Criteria) returns (stream UserResponse) {}
 	rpc UpdateUser(UserUpdateRequest) returns (UserResponse) {}
 }

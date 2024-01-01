@@ -2,8 +2,9 @@
 // Licensed under the MIT License
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../../../../node_modules/@prisma/db-law"
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing"]
+  output          = "../../../../node_modules/@prisma/db-law"
 }
 
 datasource db {
@@ -41,7 +42,7 @@ model CorpusIndex {
   related         CorpusIndex?      @relation("Related", fields: [related_id], references: [id])
   relateds        CorpusIndex[]     @relation("Related")
   codification_id String
-  codification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  codification    CodificationIndex @relation(fields: [codification_id], references: [id])
   TableForm       TableForm[]
 }
 
@@ -71,7 +72,7 @@ model Keyword {
   id              String            @id @default(uuid())
   name            String            @db.VarChar(255)
   codification_id String
-  codification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  codification    CodificationIndex @relation(fields: [codification_id], references: [id])
 }
 
 model TableForm {
@@ -79,7 +80,7 @@ model TableForm {
   name            String            @db.VarChar(255)
   type            TableFormType
   codification_id String
-  codification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  codification    CodificationIndex @relation(fields: [codification_id], references: [id])
   corpus_id       String
   corpus          CorpusIndex       @relation(fields: [corpus_id], references: [id])
 }

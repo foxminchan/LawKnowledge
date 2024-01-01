@@ -131,6 +131,9 @@ dependencies:
   '@opentelemetry/semantic-conventions':
     specifier: ^1.19.0
     version: 1.19.0
+  '@prisma/instrumentation':
+    specifier: ^5.7.1
+    version: 5.7.1
   '@socket.io/redis-adapter':
     specifier: ^8.2.1
     version: 8.2.1(socket.io-adapter@2.5.2)
@@ -8261,6 +8264,16 @@ packages:
     dependencies:
       '@prisma/debug': 5.7.1
 
+  /@prisma/instrumentation@5.7.1:
+    resolution: {integrity: sha512-X7V3KbtIgWmTfVKIDua9xlhuE1CWRkT0/S+U0XQzj5CfDjwttrAzsjxvMHbNQUTsEuQDe+WHmx8PivyTT7dqBQ==}
+    dependencies:
+      '@opentelemetry/api': 1.7.0
+      '@opentelemetry/instrumentation': 0.45.1(@opentelemetry/api@1.7.0)
+      '@opentelemetry/sdk-trace-base': 1.18.1(@opentelemetry/api@1.7.0)
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@protobufjs/aspromise@1.1.2:
     resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
 
@@ -12037,7 +12050,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.3
+      semver: 7.5.4
     dev: true
 
   /bytes@3.0.0:

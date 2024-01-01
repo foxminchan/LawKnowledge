@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
 /* eslint-disable */
 var __TEARDOWN_MESSAGE__: string;
 

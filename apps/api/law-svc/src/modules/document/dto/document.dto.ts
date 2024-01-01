@@ -14,7 +14,7 @@ export class CreateDocumentDto {
   @IsString({ message: 'Nội dung văn bản phải là chuỗi' })
   content: string;
 
-  @IsString({ message: 'Mã PC phải là chuỗi' })
+  @IsUUID('4', { message: 'Mã văn bản pháp luật không hợp lệ' })
   codification_id: string;
 
   @IsUUID('4', { message: 'Mã đề mục không hợp lệ' })
@@ -22,5 +22,6 @@ export class CreateDocumentDto {
 }
 
 export class UpdateDocumentDto extends PartialType(CreateDocumentDto) {
+  @IsUUID('4', { message: 'Mã văn bản không hợp lệ' })
   id: string;
 }

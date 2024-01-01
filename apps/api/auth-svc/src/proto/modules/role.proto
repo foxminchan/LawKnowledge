@@ -27,7 +27,7 @@ message RoleDeleteRequest {
 
 service RoleService {
 	rpc GetRole(common.Id) returns (RoleResponse) {}
-	rpc GetRoles(common.Empty) returns (stream RoleResponse) {}
+	rpc GetRoles(common.Criteria) returns (stream RoleResponse) {}
 	rpc AddRole(RoleCreateRequest) returns (RoleResponse) {}
 	rpc UpdateRole(RoleUpdateRequest) returns (RoleResponse) {}
 	rpc DeleteRole(RoleDeleteRequest) returns (common.Empty) {}

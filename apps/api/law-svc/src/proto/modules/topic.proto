@@ -1,0 +1,35 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package topic;
+
+import "./common/common.proto";
+
+message Topic {
+	string name = 1;
+	optional int32 no = 2;
+}
+
+message TopicCreateRequest {
+	Topic topic = 1;
+}
+
+message TopicResponse {
+	string id = 1;
+	Topic topic = 2;
+}
+
+message TopicUpdateRequest {
+	string id = 1;
+	Topic topic = 2;
+}
+
+service TopicService {
+	rpc CreateTopic(TopicCreateRequest) returns (TopicResponse) {}
+	rpc UpdateTopic(TopicUpdateRequest) returns (TopicResponse) {}
+	rpc DeleteTopic(common.Id) returns (TopicResponse) {}
+	rpc GetTopic(common.Id) returns (TopicResponse) {}
+	rpc GetTopics(common.Criteria) returns (stream TopicResponse) {}
+}

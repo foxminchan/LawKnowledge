@@ -1,0 +1,35 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package keyword;
+
+import "./common/common.proto";
+
+message Keyword {
+	string name = 1;
+	string codification_id = 2;
+}
+
+message KeywordCreateRequest {
+	Keyword keyword = 1;
+}
+
+message KeywordResponse {
+	string id = 1;
+	Keyword keyword = 2;
+}
+
+message KeywordUpdateRequest {
+	string id = 1;
+	Keyword keyword = 2;
+}
+
+service KeywordService {
+	rpc CreateKeyword(KeywordCreateRequest) returns (KeywordResponse) {}
+	rpc UpdateKeyword(KeywordUpdateRequest) returns (KeywordResponse) {}
+	rpc DeleteKeyword(common.Id) returns (KeywordResponse) {}
+	rpc GetKeyword(common.Id) returns (KeywordResponse) {}
+	rpc GetKeywords(common.Criteria) returns (stream KeywordResponse) {}
+}

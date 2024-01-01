@@ -5,6 +5,7 @@
 
 import { Resource } from '@opentelemetry/resources';
 import * as opentelemetry from '@opentelemetry/sdk-node';
+import { PrismaInstrumentation } from '@prisma/instrumentation';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
@@ -16,7 +17,10 @@ const exporterOptions = {
 const traceExporter = new OTLPTraceExporter(exporterOptions);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter,
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+    getNodeAutoInstrumentations(),
+    new PrismaInstrumentation({ middleware: true }),
+  ],
   resource: new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: 'law-knowledge',
   }),
