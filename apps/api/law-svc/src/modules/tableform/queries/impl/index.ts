@@ -3,7 +3,5 @@
  * Licensed under the MIT License
  */
 
-export enum TableFormType {
-  TABLE = 'Table',
-  FORM = 'Form',
-}
+export * from './get-tableform.query';
+export * from './get-tableforms.query';

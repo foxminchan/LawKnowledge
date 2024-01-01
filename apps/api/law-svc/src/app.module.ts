@@ -9,6 +9,7 @@ import {
   HeadingModule,
   KeywordModule,
   DocumentModule,
+  TableFormModule,
   CodificationModule,
 } from './modules';
 import { Module } from '@nestjs/common';
@@ -23,6 +24,7 @@ import { LawDataModule, LoggerModule } from '@law-knowledge/building-block';
     HeadingModule,
     KeywordModule,
     DocumentModule,
+    TableFormModule,
     CodificationModule,
   ],
 })

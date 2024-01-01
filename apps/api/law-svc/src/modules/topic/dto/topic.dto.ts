@@ -20,7 +20,7 @@ export class CreateTopicDto {
 
   @IsNumber({}, { message: 'Thứ tự phải là số' })
   @IsPositive({ message: 'Thứ tự phải là số dương' })
-  no: number;
+  no?: number;
 }
 
 export class UpdateTopicDto extends PartialType(CreateTopicDto) {

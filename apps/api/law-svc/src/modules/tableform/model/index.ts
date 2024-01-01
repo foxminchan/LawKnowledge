@@ -3,7 +3,4 @@
  * Licensed under the MIT License
  */
 
-export enum TableFormType {
-  TABLE = 'Table',
-  FORM = 'Form',
-}
+export * from './tableform.model';

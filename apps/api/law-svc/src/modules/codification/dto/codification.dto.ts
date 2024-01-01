@@ -18,10 +18,10 @@ export class CreateCodificationDto {
   @MaxLength(255, {
     message: 'Chỉ mục văn bản pháp luật không được vượt quá 255 ký tự',
   })
-  indexing: string;
+  indexing?: string;
 
   @IsUUID('4', { message: 'Chỉ mục cha phải là UUID' })
-  parent_id: string;
+  parent_id?: string;
 }
 
 export class UpdateCodificationDto extends PartialType(CreateCodificationDto) {

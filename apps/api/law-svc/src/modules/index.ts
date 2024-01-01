@@ -8,4 +8,5 @@ export * from './corpus';
 export * from './heading';
 export * from './keyword';
 export * from './document';
+export * from './tableform';
 export * from './codification';

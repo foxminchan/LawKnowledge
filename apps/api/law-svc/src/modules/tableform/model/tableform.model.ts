@@ -4,13 +4,15 @@
  */
 
 import { AggregateRoot } from '@nestjs/cqrs';
+import { TableFormType } from '@law-knowledge/building-block';
 
-export class Codification extends AggregateRoot {
+export class TableForm extends AggregateRoot {
   constructor(
     public readonly id: string,
     public readonly name: string,
-    public readonly indexing?: string,
-    public readonly parent_id?: string,
+    public readonly type: TableFormType,
+    public readonly codification_id?: string,
+    public readonly corpus_id?: string,
   ) {
     super();
   }
