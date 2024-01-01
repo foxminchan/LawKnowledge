@@ -41,7 +41,7 @@ model CorpusIndex {
   related         CorpusIndex?      @relation("Related", fields: [related_id], references: [id])
   relateds        CorpusIndex[]     @relation("Related")
   codification_id String
-  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  codification   CodificationIndex @relation(fields: [codification_id], references: [id])
   TableForm       TableForm[]
 }
 
@@ -64,14 +64,14 @@ model Document {
   heading_id      String
   heading         Heading           @relation(fields: [heading_id], references: [id])
   codification_id String
-  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  codification    CodificationIndex @relation(fields: [codification_id], references: [id])
 }
 
 model Keyword {
   id              String            @id @default(uuid())
   name            String            @db.VarChar(255)
   codification_id String
-  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  codification   CodificationIndex @relation(fields: [codification_id], references: [id])
 }
 
 model TableForm {
@@ -79,7 +79,7 @@ model TableForm {
   name            String            @db.VarChar(255)
   type            TableFormType
   codification_id String
-  condification   CodificationIndex @relation(fields: [codification_id], references: [id])
+  codification   CodificationIndex @relation(fields: [codification_id], references: [id])
   corpus_id       String
   corpus          CorpusIndex       @relation(fields: [corpus_id], references: [id])
 }

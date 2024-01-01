@@ -18,7 +18,7 @@ export class GetTableFormQueryHandler
       where: { id: query.id },
       include: {
         corpus: true,
-        condification: true,
+        codification: true,
       },
     });
   }

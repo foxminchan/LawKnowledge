@@ -20,7 +20,7 @@ export class GetKeywordsQueryHandler
     return await this.dataService.keyword.findMany({
       ...constructQueryOptions(payload.criteria),
       include: {
-        condification: true,
+        codification: true,
       },
     });
   }

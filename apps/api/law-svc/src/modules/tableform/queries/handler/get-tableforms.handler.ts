@@ -20,7 +20,7 @@ export class GetTableFormsQueryHandler
       ...constructQueryOptions(payload.criteria),
       include: {
         corpus: true,
-        condification: true,
+        codification: true,
       },
     });
   }

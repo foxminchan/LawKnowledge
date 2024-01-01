@@ -15,7 +15,7 @@ export class GetKeywordQueryHandler implements IQueryHandler<GetKeywordQuery> {
     return await this.dataService.keyword.findUnique({
       where: { id: payload.id },
       include: {
-        condification: true,
+        codification: true,
       },
     });
   }
