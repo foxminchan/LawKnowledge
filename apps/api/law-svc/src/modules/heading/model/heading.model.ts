@@ -10,7 +10,7 @@ export class Heading extends AggregateRoot {
     public id: string,
     public name: string,
     public no: number,
-    public topic_id: string,
+    public topic_id?: string,
   ) {
     super();
   }

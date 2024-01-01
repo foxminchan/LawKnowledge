@@ -10,7 +10,7 @@ import "./common/common.proto";
 message Heading {
 	string name = 1;
 	int32 no = 2;
-	string topic_id = 3;
+	optional string topic_id = 3;
 }
 
 message HeadingCreateRequest {

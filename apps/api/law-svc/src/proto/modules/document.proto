@@ -10,8 +10,8 @@ import "./common/common.proto";
 message Document {
 	string name = 1;
 	string content = 2;
-	string codification_id = 3;
-	string heading_id = 4;
+	optional string codification_id = 3;
+	optional string heading_id = 4;
 }
 
 message DocumentCreateRequest {

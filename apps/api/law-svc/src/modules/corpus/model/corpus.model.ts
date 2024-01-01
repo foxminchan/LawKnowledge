@@ -9,11 +9,11 @@ export class Corpus extends AggregateRoot {
   constructor(
     public readonly id: string,
     public readonly name: string,
-    public readonly indexing: string,
-    public readonly heading_id: string,
-    public readonly parent_id: string,
-    public readonly related_id: string,
-    public readonly codification_id: string,
+    public readonly indexing?: string,
+    public readonly heading_id?: string,
+    public readonly parent_id?: string,
+    public readonly related_id?: string,
+    public readonly codification_id?: string,
   ) {
     super();
   }

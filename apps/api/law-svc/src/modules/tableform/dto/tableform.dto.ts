@@ -27,10 +27,10 @@ export class CreateTableFormDto {
   type: TableFormType = TableFormType.TABLE;
 
   @IsUUID('4', { message: 'Mã văn bản pháp luật không hợp lệ' })
-  codification_id: string;
+  codification_id?: string;
 
   @IsUUID('4', { message: 'Mã pháp điển không hợp lệ' })
-  corpus_id: string;
+  corpus_id?: string;
 }
 
 export class UpdateTableFormDto extends PartialType(CreateTableFormDto) {

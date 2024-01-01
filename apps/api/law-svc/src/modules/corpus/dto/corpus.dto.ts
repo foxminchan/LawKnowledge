@@ -18,19 +18,19 @@ export class CreateCorpusDto {
   @MaxLength(50, {
     message: 'Chỉ mục pháp điển không được vượt quá 50 ký tự',
   })
-  indexing: string;
+  indexing?: string;
 
   @IsUUID('4', { message: 'Mã đề mục pháp điển phải là UUID' })
-  heading_id: string;
+  heading_id?: string;
 
   @IsUUID('4', { message: 'Mã chỉ mục cha phải là UUID' })
-  parent_id: string;
+  parent_id?: string;
 
   @IsUUID('4', { message: 'Mã chỉ mục liên quan phải là UUID' })
-  related_id: string;
+  related_id?: string;
 
   @IsUUID('4', { message: 'Mã chỉ mục văn bản pháp luật phải là UUID' })
-  codification_id: string;
+  codification_id?: string;
 }
 
 export class UpdateCorpusDto extends PartialType(CreateCorpusDto) {

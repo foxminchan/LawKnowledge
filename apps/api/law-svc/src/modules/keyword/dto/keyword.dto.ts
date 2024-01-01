@@ -13,7 +13,7 @@ export class CreateKeywordDto {
   name: string;
 
   @IsUUID('4', { message: 'Mã chỉ mục văn pháp luật không hợp lệ' })
-  codification_id: string;
+  codification_id?: string;
 }
 
 export class UpdateKeywordDto extends PartialType(CreateKeywordDto) {

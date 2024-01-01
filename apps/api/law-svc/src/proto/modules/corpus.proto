@@ -9,11 +9,11 @@ import "./common/common.proto";
 
 message Corpus {
 	string name = 1;
-	string indexing = 2;
-	string heading_id = 3;
-	string parent_id = 4;
-	string related_id = 5;
-	string codification_id = 6;
+	optional string indexing = 2;
+	optional string heading_id = 3;
+	optional string parent_id = 4;
+	optional string related_id = 5;
+	optional string codification_id = 6;
 }
 
 message CorpusCreateRequest {

@@ -9,8 +9,8 @@ import "./common/common.proto";
 
 message Codification {
 	string name = 1;
-	string indexing = 2;
-	string parent_id = 3;
+	optional string indexing = 2;
+	optional string parent_id = 3;
 }
 
 message CodificationCreateRequest {

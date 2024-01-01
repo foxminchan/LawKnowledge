@@ -9,7 +9,7 @@ import "./common/common.proto";
 
 message Keyword {
 	string name = 1;
-	string codification_id = 2;
+	optional string codification_id = 2;
 }
 
 message KeywordCreateRequest {

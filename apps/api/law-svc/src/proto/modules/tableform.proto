@@ -10,8 +10,8 @@ import "./common/common.proto";
 message TableForm {
 	string name = 1;
 	string type = 2;
-	string codification_id = 3;
-	string corpus_id = 4;
+	optional string codification_id = 3;
+	optional string corpus_id = 4;
 }
 
 message TableFormCreateRequest {

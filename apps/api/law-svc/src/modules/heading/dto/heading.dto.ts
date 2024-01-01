@@ -24,7 +24,7 @@ export class CreateHeadingDto {
   no: number;
 
   @IsUUID('4', { message: 'Mã chủ đề không hợp lệ' })
-  topic_id: string;
+  topic_id?: string;
 }
 
 export class UpdateHeadingDto extends PartialType(CreateHeadingDto) {

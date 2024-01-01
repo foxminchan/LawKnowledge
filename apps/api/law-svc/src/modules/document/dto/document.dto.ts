@@ -15,10 +15,10 @@ export class CreateDocumentDto {
   content: string;
 
   @IsUUID('4', { message: 'Mã văn bản pháp luật không hợp lệ' })
-  codification_id: string;
+  codification_id?: string;
 
   @IsUUID('4', { message: 'Mã đề mục không hợp lệ' })
-  heading_id: string;
+  heading_id?: string;
 }
 
 export class UpdateDocumentDto extends PartialType(CreateDocumentDto) {

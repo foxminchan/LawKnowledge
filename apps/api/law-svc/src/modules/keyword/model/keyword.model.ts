@@ -9,7 +9,7 @@ export class Keyword extends AggregateRoot {
   constructor(
     public readonly id: string,
     public readonly name: string,
-    public readonly codification_id: string,
+    public readonly codification_id?: string,
   ) {
     super();
   }
