@@ -78,20 +78,20 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-	- [🛠️ Prerequisites](#️-prerequisites)
-		- [Infrastucture](#infrastucture)
-		- [Services](#services)
-	- [😄 HuggingFace Resources](#-huggingface-resources)
-	- [🧑‍💻 Setup](#-setup)
-	- [🚀 Running](#-running)
-	- [🧪 Testing](#-testing)
-	- [🧩 Other](#-other)
+  - [🛠️ Prerequisites](#️-prerequisites)
+    - [Infrastucture](#infrastucture)
+    - [Services](#services)
+  - [😄 HuggingFace Resources](#-huggingface-resources)
+  - [🧑‍💻 Setup](#-setup)
+  - [🚀 Running](#-running)
+  - [🧪 Testing](#-testing)
+  - [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-	- [📖 Contributing Guidelines](#-contributing-guidelines)
-	- [💁 Want to Help?](#-want-to-help)
-	- [🫂 Code of Conduct](#-code-of-conduct)
+  - [📖 Contributing Guidelines](#-contributing-guidelines)
+  - [💁 Want to Help?](#-want-to-help)
+  - [🫂 Code of Conduct](#-code-of-conduct)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
 
@@ -102,6 +102,8 @@
 <p align="justify">
 Law Knowledge is an app designed to provide quick access to Vietnam's legal information, including laws and legal documents. It's ideal for professionals, students, or anyone needing insights into Vietnamese legal codes and regulations.
 </p>
+
+[![Sparkline](https://stars.medv.io/foxminchan/LawKnowledge.svg)](https://stars.medv.io/foxminchan/LawKnowledge)
 
 <blockquote>
 	<p align="justify">
