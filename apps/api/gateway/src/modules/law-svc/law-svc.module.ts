@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) 2023-present Hutech University. All rights reserved
+ * Licensed under the MIT License
+ */
+
+import { join } from 'path';
+import { configs } from '../../configs';
 import { Module } from '@nestjs/common';
-import { LawService } from './law-svc.service';
-import { LawController } from './law-svc.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
@@ -8,15 +13,22 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ClientsModule.register([
       {
         name: 'LAW_SERVICE',
-        transport: Transport.TCP,
+        transport: Transport.GRPC,
         options: {
-          host: process.env.LAW_SVC_HOST || 'localhost',
-          port: parseInt(process.env.LAW_SVC_PORT, 10) || 8082,
+          url: `${configs().lawSvcHost}:${configs().lawSvcPort}`,
+          package: 'law',
+          protoPath: join(__dirname, './proto/law-svc/law-svc.proto'),
+          loader: {
+            enums: String,
+            objects: true,
+            arrays: true,
+            includeDirs: [join(__dirname, './proto/law-svc')],
+          },
         },
       },
     ]),
   ],
-  controllers: [LawController],
-  providers: [LawService],
+  controllers: [],
+  providers: [],
 })
 export class LawSvcModule {}

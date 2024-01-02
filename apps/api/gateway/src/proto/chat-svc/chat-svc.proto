@@ -1,0 +1,12 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+import "./modules/chat_service.proto";
+import "./modules/message_service.proto";
+import "./modules/session_service.proto";
+
+package chat;
+
+message None {}

@@ -8,7 +8,7 @@ import { LawDataService } from '@law-knowledge/building-block';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 @CommandHandler(UpdateDocumentCommand)
-export class UpdateDocumentCommandhandler
+export class UpdateDocumentCommandHandler
   implements ICommandHandler<UpdateDocumentCommand>
 {
   constructor(private readonly dataService: LawDataService) {}

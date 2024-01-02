@@ -6,6 +6,7 @@
 import {
   CreateDocumentCommand,
   DeleteDocumentCommand,
+  SummarizeDocumentCommand,
   UpdateDocumentCommand,
 } from './commands';
 import { Controller } from '@nestjs/common';
@@ -45,5 +46,10 @@ export class DocumentController {
   @GrpcMethod('DocumentService', 'UpdateDocument')
   updateDocument(payload: UpdateDocumentDto) {
     return this.commandBus.execute(new UpdateDocumentCommand(payload));
+  }
+
+  @GrpcMethod('DocumentService', 'SummarizeDocument')
+  summarizeDocument(content: string) {
+    return this.commandBus.execute(new SummarizeDocumentCommand(content));
   }
 }

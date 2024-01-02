@@ -6,7 +6,8 @@
 import {
   CreateDocumentCommandHandler,
   DeleteDocumentCommandHandler,
-  UpdateDocumentCommandhandler,
+  UpdateDocumentCommandHandler,
+  SummarizeDocumentCommandHandler,
 } from './commands';
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
@@ -15,8 +16,9 @@ import { GetDocumentQueryHandler, GetDocumentsQueryHandler } from './queries';
 
 const CommandHandlers = [
   CreateDocumentCommandHandler,
-  UpdateDocumentCommandhandler,
+  UpdateDocumentCommandHandler,
   DeleteDocumentCommandHandler,
+  SummarizeDocumentCommandHandler,
 ];
 
 const QueryHandlers = [GetDocumentQueryHandler, GetDocumentsQueryHandler];

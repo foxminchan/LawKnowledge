@@ -28,10 +28,19 @@ message DocumentUpdateRequest {
 	Document document = 2;
 }
 
+message SummarizeRequest {
+	string context = 1;
+}
+
+message SummarizeResponse {
+	string summary = 1;
+}
+
 service DocumentService {
 	rpc CreateDocument(DocumentCreateRequest) returns (DocumentResponse) {}
 	rpc UpdateDocument(DocumentUpdateRequest) returns (DocumentResponse) {}
 	rpc DeleteDocument(common.Id) returns (DocumentResponse) {}
 	rpc GetDocument(common.Id) returns (DocumentResponse) {}
 	rpc GetDocuments(common.Criteria) returns (stream DocumentResponse) {}
+	rpc SummarizeDocument(SummarizeRequest) returns (SummarizeResponse) {}
 }

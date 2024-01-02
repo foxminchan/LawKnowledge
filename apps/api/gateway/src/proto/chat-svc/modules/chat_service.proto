@@ -3,13 +3,9 @@
 
 syntax = "proto3";
 
-import "google/protobuf/struct.proto";
-
-package search;
-
-service SearchingService {
+service ChatService {
     rpc Vectorize(Empty) returns (DataResponse) {}
-    rpc VectorSearch(SearchRequest) returns (SearchResponse) {}
+    rpc ChatRetrieval(ChatRequest) returns (ChatResponse) {}
 }
 
 message Empty {}
@@ -18,10 +14,10 @@ message DataResponse {
     string message = 1;
 }
 
-message SearchRequest {
+message ChatRequest {
     string query = 1;
 }
 
-message SearchResponse {
-    google.protobuf.Struct document  = 1;
+message ChatResponse {
+    repeated string documents = 1;
 }
