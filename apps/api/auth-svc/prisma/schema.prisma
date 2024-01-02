@@ -2,8 +2,9 @@
 // Licensed under the MIT License
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../../../../node_modules/@prisma/db-auth"
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing"]
+  output          = "../../../../node_modules/@prisma/db-auth"
 }
 
 datasource db {

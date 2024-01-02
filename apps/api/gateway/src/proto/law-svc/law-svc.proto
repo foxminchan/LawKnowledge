@@ -1,0 +1,16 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+import "./modules/topic.proto";
+import "./modules/corpus.proto";
+import "./modules/heading.proto";
+import "./modules/keyword.proto";
+import "./modules/document.proto";
+import "./modules/tableform.proto";
+import "./modules/codification.proto";
+
+package law;
+
+message None {}

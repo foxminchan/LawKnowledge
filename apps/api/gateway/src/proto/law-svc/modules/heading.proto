@@ -1,0 +1,36 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package heading;
+
+import "./common/common.proto";
+
+message Heading {
+	string name = 1;
+	int32 no = 2;
+	optional string topic_id = 3;
+}
+
+message HeadingCreateRequest {
+	Heading headings = 1;
+}
+
+message HeadingResponse {
+	string id = 1;
+	Heading heading = 2;
+}
+
+message HeadingUpdateRequest {
+	string id = 1;
+	Heading headings = 2;
+}
+
+service HeadingService {
+	rpc CreateHeading(HeadingCreateRequest) returns (HeadingResponse) {}
+	rpc UpdateHeading(HeadingUpdateRequest) returns (HeadingResponse) {}
+	rpc DeleteHeading(common.Id) returns (HeadingResponse) {}
+	rpc GetHeading(common.Id) returns (HeadingResponse) {}
+	rpc GetHeadings(common.Criteria) returns (stream HeadingResponse) {}
+}

@@ -3,22 +3,9 @@
  * Licensed under the MIT License
  */
 
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
-export class LoginPayload {
-  @ApiProperty()
-  email: string;
-
-  @ApiProperty()
-  password: string;
-}
-
-export class AccessToken {
-  @ApiProperty()
-  access_token: string;
-}
-
-export class RegisterPayload {
+export class User {
   @ApiProperty()
   name: string;
 
@@ -36,12 +23,22 @@ export class RegisterPayload {
 
   @ApiProperty()
   password: string;
+}
+
+export class UserCreatePayload extends User {
+  @ApiProperty()
+  repassword: string;
+}
+
+export class UserUpdatePayload extends User {
+  @ApiProperty()
+  id: string;
 
   @ApiProperty()
   repassword: string;
 }
 
-export class User extends PartialType(RegisterPayload) {
+export class UserResponse extends User {
   @ApiProperty()
   id: string;
 }

@@ -6,8 +6,9 @@
 import { join } from 'path';
 import { configs } from '../../configs';
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth-svc.service';
-import { AuthController } from './auth-svc.controller';
+import { AuthController, AuthService } from './auth';
+import { RoleController, RoleService } from './role';
+import { UserController, UserService } from './user';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
@@ -30,7 +31,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
       },
     ]),
   ],
-  controllers: [AuthController],
-  providers: [AuthService],
+  controllers: [AuthController, RoleController, UserController],
+  providers: [AuthService, RoleService, UserService],
 })
 export class AuthSvcModule {}

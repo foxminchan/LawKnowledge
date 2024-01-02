@@ -1,0 +1,37 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package document;
+
+import "./common/common.proto";
+
+message Document {
+	string name = 1;
+	string content = 2;
+	optional string codification_id = 3;
+	optional string heading_id = 4;
+}
+
+message DocumentCreateRequest {
+	Document document = 1;
+}
+
+message DocumentResponse {
+	string id = 1;
+	Document document = 2;
+}
+
+message DocumentUpdateRequest {
+	string id = 1;
+	Document document = 2;
+}
+
+service DocumentService {
+	rpc CreateDocument(DocumentCreateRequest) returns (DocumentResponse) {}
+	rpc UpdateDocument(DocumentUpdateRequest) returns (DocumentResponse) {}
+	rpc DeleteDocument(common.Id) returns (DocumentResponse) {}
+	rpc GetDocument(common.Id) returns (DocumentResponse) {}
+	rpc GetDocuments(common.Criteria) returns (stream DocumentResponse) {}
+}
