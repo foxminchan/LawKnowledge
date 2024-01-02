@@ -5,8 +5,11 @@
 
 import {
   LICENSE,
+  CONTACT,
+  EXTERNAL_DOC,
   SWAGGER_TITLE,
   SWAGGER_VERSION,
+  TERM_OF_SERVICE,
   IS_PUBLIC_KEY_META,
   SWAGGER_DESCRIPTION,
 } from '../../libs';
@@ -21,6 +24,9 @@ export function SetupSwagger(app: INestApplication) {
     .setTitle(SWAGGER_TITLE)
     .setDescription(SWAGGER_DESCRIPTION)
     .setVersion(SWAGGER_VERSION)
+    .setContact(CONTACT.NAME, CONTACT.URL, CONTACT.EMAIL)
+    .setTermsOfService(TERM_OF_SERVICE)
+    .setExternalDoc(EXTERNAL_DOC.DESCRIPTION, EXTERNAL_DOC.URL)
     .setLicense(LICENSE.NAME, LICENSE.URL)
     .addBearerAuth({
       type: 'http',
