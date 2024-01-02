@@ -19,7 +19,7 @@ import { Body, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 
 @ApiController('heading')
 export class HeadingController {
-  constructor(private readonly HeadingSvcService: HeadingService) {}
+  constructor(private readonly headingSvcService: HeadingService) {}
 
   @Get(':id')
   @SwaggerResponse({
@@ -28,7 +28,7 @@ export class HeadingController {
     response: HeadingResponse,
   })
   getHeading(@Param('id') id: string) {
-    return this.HeadingSvcService.getHeading(id);
+    return this.headingSvcService.getHeading(id);
   }
 
   @Get()
@@ -37,7 +37,7 @@ export class HeadingController {
     response: HeadingResponse,
   })
   getHeadings(@Query() criteria?: Criteria) {
-    return this.HeadingSvcService.getHeadings(criteria);
+    return this.headingSvcService.getHeadings(criteria);
   }
 
   @Post()
@@ -47,7 +47,7 @@ export class HeadingController {
     response: HeadingResponse,
   })
   createHeading(@Body() payload: HeadingCreatePayload) {
-    return this.HeadingSvcService.createHeading(payload);
+    return this.headingSvcService.createHeading(payload);
   }
 
   @Put()
@@ -57,7 +57,7 @@ export class HeadingController {
     response: HeadingResponse,
   })
   updateHeading(@Body() payload: HeadingUpdatePayload) {
-    return this.HeadingSvcService.updateHeading(payload);
+    return this.headingSvcService.updateHeading(payload);
   }
 
   @Delete(':id')
@@ -67,6 +67,6 @@ export class HeadingController {
     response: HeadingResponse,
   })
   deleteHeading(@Param('id') id: string) {
-    return this.HeadingSvcService.deleteHeading(id);
+    return this.headingSvcService.deleteHeading(id);
   }
 }

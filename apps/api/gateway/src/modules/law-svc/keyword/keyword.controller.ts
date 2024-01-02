@@ -18,8 +18,8 @@ import { KeywordService } from './keyword.service';
 import { Body, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 
 @ApiController('Keyword')
-export class keywordController {
-  constructor(private readonly KeywordSvcService: KeywordService) {}
+export class KeywordController {
+  constructor(private readonly keywordSvcService: KeywordService) {}
 
   @Get(':id')
   @SwaggerResponse({
@@ -28,7 +28,7 @@ export class keywordController {
     response: KeywordResponse,
   })
   getKeyword(@Param('id') id: string) {
-    return this.KeywordSvcService.getKeyword(id);
+    return this.keywordSvcService.getKeyword(id);
   }
 
   @Get()
@@ -37,7 +37,7 @@ export class keywordController {
     response: KeywordResponse,
   })
   getKeywords(@Query() criteria?: Criteria) {
-    return this.KeywordSvcService.getKeywords(criteria);
+    return this.keywordSvcService.getKeywords(criteria);
   }
 
   @Post()
@@ -47,7 +47,7 @@ export class keywordController {
     response: KeywordResponse,
   })
   createKeyword(@Body() payload: KeywordCreatePayload) {
-    return this.KeywordSvcService.createKeyword(payload);
+    return this.keywordSvcService.createKeyword(payload);
   }
 
   @Put()
@@ -57,7 +57,7 @@ export class keywordController {
     response: KeywordResponse,
   })
   updateKeyword(@Body() payload: KeywordUpdatePayload) {
-    return this.KeywordSvcService.updateKeyword(payload);
+    return this.keywordSvcService.updateKeyword(payload);
   }
 
   @Delete(':id')
@@ -67,6 +67,6 @@ export class keywordController {
     response: KeywordResponse,
   })
   deleteKeyword(@Param('id') id: string) {
-    return this.KeywordSvcService.deleteKeyword(id);
+    return this.keywordSvcService.deleteKeyword(id);
   }
 }
