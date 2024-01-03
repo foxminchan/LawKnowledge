@@ -300,8 +300,6 @@ For running the Diagram as Code, you can run the following command:
 npx nx build dac && cd assets/dac/dac && python main.py
 ```
 
-````
-
 Some useful scripts:
 
 ```bash
