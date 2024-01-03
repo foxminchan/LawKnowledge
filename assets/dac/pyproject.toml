@@ -1,0 +1,36 @@
+[tool.coverage.run]
+branch = true
+source = [ "dac" ]
+
+[tool.coverage.report]
+exclude_lines = ['if TYPE_CHECKING:']
+show_missing = true
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report html:'../../coverage//assets/dac/html' --cov-report xml:'../../coverage//assets/dac/coverage.xml' --html='../../reports//assets/dac/unittests/html/index.html' --junitxml='../../reports//assets/dac/unittests/junit.xml'"
+
+[tool.poetry]
+name = "dac"
+version = "1.0.0"
+description = "Diagram as Code"
+authors = ["Hutech University <hutech@hutech.edu.vn>"]
+license = "MIT"
+
+  [[tool.poetry.packages]]
+  include = "dac"
+
+  [tool.poetry.dependencies]
+  python = ">=3.9,<3.11"
+  diagrams = "^0.23.4"
+
+  [tool.poetry.group.dev.dependencies]
+  autopep8 = "2.0.2"
+  flake8 = "6.0.0"
+  pytest = "7.3.1"
+  pytest-sugar = "0.9.7"
+  pytest-cov = "4.1.0"
+  pytest-html = "3.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

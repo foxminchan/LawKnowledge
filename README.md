@@ -78,20 +78,20 @@
 - [Tentative technologies](#tentative-technologies)
 - [Building blocks](#building-blocks)
 - [Getting Started](#getting-started)
-  - [🛠️ Prerequisites](#️-prerequisites)
-    - [Infrastucture](#infrastucture)
-    - [Services](#services)
-  - [😄 HuggingFace Resources](#-huggingface-resources)
-  - [🧑‍💻 Setup](#-setup)
-  - [🚀 Running](#-running)
-  - [🧪 Testing](#-testing)
-  - [🧩 Other](#-other)
+	- [🛠️ Prerequisites](#️-prerequisites)
+		- [Infrastucture](#infrastucture)
+		- [Services](#services)
+	- [😄 HuggingFace Resources](#-huggingface-resources)
+	- [🧑‍💻 Setup](#-setup)
+	- [🚀 Running](#-running)
+	- [🧪 Testing](#-testing)
+	- [🧩 Other](#-other)
 - [Dependency Graph](#dependency-graph)
 - [CI/CD](#cicd)
 - [Contributing](#contributing)
-  - [📖 Contributing Guidelines](#-contributing-guidelines)
-  - [💁 Want to Help?](#-want-to-help)
-  - [🫂 Code of Conduct](#-code-of-conduct)
+	- [📖 Contributing Guidelines](#-contributing-guidelines)
+	- [💁 Want to Help?](#-want-to-help)
+	- [🫂 Code of Conduct](#-code-of-conduct)
 - [Support and Organization](#support-and-organization)
 - [License](#license)
 
@@ -107,7 +107,7 @@ Law Knowledge is an app designed to provide quick access to Vietnam's legal info
 
 <blockquote>
 	<p align="justify">
-		<b>Law Knowledge</b> is a legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database.
+		<b>Law Knowledge</b> is a legal knowledge search and Q&A application based on Vietnam's Legal Code and legal document database. The application is built on the <b>Microservice Architecture</b> and uses <b>Generative AI</b> to extract legal terms and <b>Question Answering</b> to answer user questions. The application is built with <b>Open Source</b> technologies and is deployed on <b>Cloud</b> platforms.
 	</p>
 </blockquote>
 
@@ -261,9 +261,6 @@ npx nx test website-e2e
 For the API, you can run the following command:
 
 ```bash
-# For the API Gateway
-npx nx test api-gateway-e2e
-
 # For the Auth Service
 npx nx test auth-svc-e2e
 
@@ -297,6 +294,14 @@ For running documentation, you can run the following command:
 npx nx serve docs
 ```
 
+For running the Diagram as Code, you can run the following command:
+
+```bash
+npx nx build dac && cd assets/dac/dac && python main.py
+```
+
+````
+
 Some useful scripts:
 
 ```bash
@@ -314,7 +319,7 @@ cd tools/scripts && ls
 
 # Run the script
 ./<script-name>
-```
+````
 
 # Dependency Graph
 
@@ -326,7 +331,7 @@ npx nx dep-graph
 
 Here is the dependency graph of the project:
 
-<img loading="lazy" src="./assets/images/graph.png" alt="Dependency Graph" width="100%">
+<img loading="lazy" src="./assets/images/dep-graph.png" alt="Dependency Graph" width="100%">
 
 # CI/CD
 
