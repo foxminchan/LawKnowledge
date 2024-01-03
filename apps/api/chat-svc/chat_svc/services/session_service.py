@@ -21,13 +21,8 @@ class SessionService(handler.ChatSessionServiceServicer):
             order={
                 request.order_by: request.order
             },
-            include={
-                "session": True
-            }
         )
-        total = self.prisma.chatsession.count(where={
-            "session_id": request.session_id
-        })
+        total = self.prisma.chatsession.count()
         return {"data": session, "total": total}
 
     def GetChatSession(self, request, context):
