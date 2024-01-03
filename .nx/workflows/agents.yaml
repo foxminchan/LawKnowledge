@@ -1,0 +1,51 @@
+launch-templates:
+  linux-medium:
+    resource-class: "docker_linux_amd64/medium+"
+    env:
+      CI: "true"
+      GIT_AUTHOR_EMAIL: nguyenxuannhan407@gmail.com
+      GIT_AUTHOR_NAME: Nguyen Xuan Nhan
+      GIT_COMMITTER_EMAIL: nguyenxuannhan407@gmail.com
+      GIT_COMMITTER_NAME: Nguyen Xuan Nhan
+      NX_E2E_CI_CACHE_KEY: e2e-jenkins-linux
+      NX_VERBOSE_LOGGING: "true"
+      NX_PERF_LOGGING: "false"
+      NX_NATIVE_LOGGING: "false"
+      SELECTED_PM: "pnpm"
+      NX_E2E_RUN_E2E: "true"
+      NPM_CONFIG_PREFIX: "/home/nx/.npm-global"
+      NX_CLOUD_ACCESS_TOKEN: "{{secrets.NX_CLOUD_ACCESS_TOKEN}}"
+    init-steps:
+      - name: LSCPU
+        script: |
+          lscpu
+      - name: Checkout
+        uses: "nrwl/nx-cloud-workflows/v1.1/workflow-steps/checkout/main.yaml"
+
+      - name: Cache restore
+        uses: "nrwl/nx-cloud-workflows/v1.1/workflow-steps/cache/main.yaml"
+        env:
+          KEY: "pnpm-lock.yaml"
+          PATHS: |
+            node_modules
+            ~/.cache/Cypress
+            ~/.pnpm-store
+          BASE_BRANCH: "main"
+
+      - name: Install Pnpm
+        script: |
+          npm install -g pnpm
+
+      - name: Pnpm Install
+        script: |
+          pnpm install --frozen-lockfile
+
+      - name: Install Cypress
+        script: pnpm exec cypress install
+
+      - name: Install Python 3.9.13
+        script: |
+          sudo apt update
+          sudo apt install software-properties-common
+          sudo add-apt-repository ppa:deadsnakes/ppa
+          sudo apt-get install python3.9
