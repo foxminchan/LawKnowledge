@@ -25,7 +25,7 @@ export interface HeadingResponse extends Heading {
 export interface HeadingSvc {
   createHeading(request: HeadingCreateRequest): Observable<HeadingResponse>;
   updateHeading(request: HeadingUpdateRequest): Observable<HeadingResponse>;
-  deleteHeading(id: string): Observable<void>;
+  deleteHeading(id: string): Observable<HeadingResponse>;
   getHeading(id: string): Observable<HeadingResponse>;
   getHeadings(criteria?: Criteria): Observable<HeadingResponse[]>;
 }

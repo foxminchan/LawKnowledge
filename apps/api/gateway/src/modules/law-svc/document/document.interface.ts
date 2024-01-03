@@ -26,7 +26,7 @@ export interface DocumentResponse extends Document {
 export interface DocumentSvc {
   createDocument(request: DocumentCreateRequest): Observable<DocumentResponse>;
   updateDocument(request: DocumentUpdateRequest): Observable<DocumentResponse>;
-  deleteDocument(id: string): Observable<void>;
+  deleteDocument(id: string): Observable<DocumentResponse>;
   getDocument(id: string): Observable<DocumentResponse>;
   getDocuments(criteria?: Criteria): Observable<DocumentResponse[]>;
   summarizeDocument(context: string): Observable<string>;

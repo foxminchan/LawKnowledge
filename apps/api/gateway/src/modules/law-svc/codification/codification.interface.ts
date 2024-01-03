@@ -29,7 +29,7 @@ export interface CodificationSvc {
   updateCodification(
     request: CodificationUpdateRequest,
   ): Observable<CodificationResponse>;
-  deleteCodification(id: string): Observable<void>;
+  deleteCodification(id: string): Observable<CodificationResponse>;
   getCodification(id: string): Observable<CodificationResponse>;
   getCodifications(criteria?: Criteria): Observable<CodificationResponse[]>;
 }

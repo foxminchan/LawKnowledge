@@ -24,7 +24,7 @@ export interface KeywordResponse extends Keyword {
 export interface KeywordSvc {
   createKeyword(request: KeywordCreateRequest): Observable<KeywordResponse>;
   updateKeyword(request: KeywordUpdateRequest): Observable<KeywordResponse>;
-  deleteKeyword(id: string): Observable<void>;
+  deleteKeyword(id: string): Observable<KeywordResponse>;
   getKeyword(id: string): Observable<KeywordResponse>;
   getKeywords(criteria?: Criteria): Observable<KeywordResponse[]>;
 }

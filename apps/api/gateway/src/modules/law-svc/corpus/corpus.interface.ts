@@ -28,7 +28,7 @@ export interface CorpusResponse extends Corpus {
 export interface CorpusSvc {
   createCorpus(request: CorpusCreateRequest): Observable<CorpusResponse>;
   updateCorpus(request: CorpusUpdateRequest): Observable<CorpusResponse>;
-  deleteCorpus(id: string): Observable<void>;
+  deleteCorpus(id: string): Observable<CorpusResponse>;
   getCorpus(id: string): Observable<CorpusResponse>;
   getCorpuses(criteria?: Criteria): Observable<CorpusResponse[]>;
 }
