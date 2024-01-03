@@ -6,19 +6,9 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
 service ChatSessionService {
-    rpc CreateChatSession(CreateChatSessionRequest) returns (CreateChatSessionResponse) {}
     rpc GetChatSession(GetChatSessionRequest) returns (GetChatSessionResponse) {}
     rpc UpdateChatSession(UpdateChatSessionRequest) returns (UpdateChatSessionResponse) {}
     rpc DeleteChatSession(DeleteChatSessionRequest) returns (DeleteChatSessionResponse) {}
-}
-
-message CreateChatSessionRequest {
-    string name = 1;
-    string user_id = 2;
-}
-
-message CreateChatSessionResponse {
-    ChatSession chat_session = 1;
 }
 
 message GetChatSessionRequest {

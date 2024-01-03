@@ -26,4 +26,4 @@ class Vectorize(handler.SearchingServiceServicer):
             self.processors.embedding_model(),
             index_name=configs.INDEX_NAME,
         )
-        return "Vectorize success"
+        return "Vectorize successfully"

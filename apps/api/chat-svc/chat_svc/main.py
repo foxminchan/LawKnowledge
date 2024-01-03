@@ -6,13 +6,17 @@
 import grpc
 from concurrent import futures
 from core.configs import configs
+from chat_svc.services.chat_service import ChatService
+from chat_svc.services.vectorize_service import Vectorize
 import chat_svc.grpc.chat_service_pb2_grpc as chat_handler
+import chat_svc.grpc.message_service_pb2_grpc as message_handler
+import chat_svc.grpc.session_service_pb2_grpc as session_handler
 
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    chat_handler.add_ChatServiceServicer_to_server((), server)
-    chat_handler.add_ChatServiceServicer_to_server((), server)
+    chat_handler.add_ChatServiceServicer_to_server(Vectorize(), server)
+    chat_handler.add_ChatServiceServicer_to_server(ChatService(), server)
     server.add_insecure_port(f"[::]:{configs.PORT}")
     try:
         server.start()
