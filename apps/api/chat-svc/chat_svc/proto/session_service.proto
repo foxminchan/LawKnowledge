@@ -7,16 +7,32 @@ import "google/protobuf/timestamp.proto";
 
 service ChatSessionService {
     rpc GetChatSession(GetChatSessionRequest) returns (GetChatSessionResponse) {}
+    rpc GetChatSessions(GetChatSessionsRequest) returns (GetChatSessionResponse) {}
+    rpc CreateChatSession(CreateChatSessionRequest) returns (GetChatSessionResponse) {}
     rpc UpdateChatSession(UpdateChatSessionRequest) returns (UpdateChatSessionResponse) {}
     rpc DeleteChatSession(DeleteChatSessionRequest) returns (DeleteChatSessionResponse) {}
 }
 
-message GetChatSessionRequest {
+message GetChatSessionsRequest {
     string user_id = 1;
+    optional int32 take = 2;
+    optional int32 skip = 3;
+    optional string order_by = 4;
+    optional string order = 5;
 }
 
 message GetChatSessionResponse {
     ChatSession chat_session = 1;
+}
+
+message CreateChatSessionRequest {
+    string name = 1;
+    string user_id = 2;
+}
+
+message GetChatSessionsResponse {
+    repeated ChatSession chat_session = 1;
+    int32 total = 2;
 }
 
 message UpdateChatSessionRequest {
@@ -41,4 +57,8 @@ message ChatSession {
     string name = 2;
     google.protobuf.Timestamp created_at = 3;
     string user_id = 4;
+}
+
+message GetChatSessionRequest {
+    string id = 1;
 }

@@ -51,13 +51,7 @@ class ChatService(handler.ChatServiceServicer):
 
     @staticmethod
     def serialize_history(history):
-        converted_chat_history = []
-        for chat in history:
-            if chat[0] == "human":
-                converted_chat_history.append(HumanMessage(content=chat[1]))
-            elif chat[0] == "ai":
-                converted_chat_history.append(AIMessage(content=chat[1]))
-        return converted_chat_history
+        return [HumanMessage(content=chat[1]) if chat[0] == "human" else AIMessage(content=chat[1]) for chat in history]
 
     def create_retrieval_chain(self):
         condense_question_chain = (

@@ -7,26 +7,20 @@ import "google/protobuf/timestamp.proto";
 
 service ChatHistoryService {
     rpc GetChatHistory (GetChatHistoryRequest) returns (GetChatHistoryResponse) {}
-    rpc AddChatHistory (AddChatHistoryRequest) returns (AddChatHistoryResponse) {}
     rpc DeleteChatHistory (DeleteChatHistoryRequest) returns (DeleteChatHistoryResponse) {}
 }
 
 message GetChatHistoryRequest {
     string session_id = 1;
+    optional int32 take = 2;
+    optional int32 skip = 3;
+    optional string order_by = 4;
+    optional string order = 5;
 }
 
 message GetChatHistoryResponse {
     repeated ChatHistory chat_history = 1;
-}
-
-message AddChatHistoryRequest {
-    string question = 1;
-    string answer = 2;
-    string session_id = 3;
-}
-
-message AddChatHistoryResponse {
-    ChatHistory chat_history = 1;
+    int32 total = 2;
 }
 
 message DeleteChatHistoryRequest {
