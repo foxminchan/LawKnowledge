@@ -25,9 +25,7 @@
     },
     "build": {
       "executor": "@nxlv/python:build",
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
+      "outputs": ["{projectRoot}/dist"],
       "options": {
         "outputPath": "/apps/nlp/processor/dist",
         "publish": false,
@@ -47,9 +45,7 @@
     },
     "lint": {
       "executor": "@nxlv/python:flake8",
-      "outputs": [
-        "{workspaceRoot}/reports//apps/nlp/processor/pylint.txt"
-      ],
+      "outputs": ["{workspaceRoot}/reports//apps/nlp/processor/pylint.txt"],
       "options": {
         "outputFile": "reports//apps/nlp/processor/pylint.txt"
       }
@@ -79,5 +75,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:nlp", "type:processor"]
 }

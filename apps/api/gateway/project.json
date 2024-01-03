@@ -6,17 +6,13 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/api/gateway",
-        "assets": [
-          "apps/api/gateway/src/proto"
-        ],
+        "assets": ["apps/api/gateway/src/proto"],
         "main": "apps/api/gateway/src/main.ts",
         "tsConfig": "apps/api/gateway/tsconfig.app.json",
         "webpackConfig": "apps/api/gateway/webpack.config.js"
@@ -43,35 +39,25 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/api/gateway/**/*.ts"
-        ]
+        "lintFilePatterns": ["apps/api/gateway/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/api/gateway/jest.config.ts"
       }
     },
     "container": {
       "executor": "@nx-tools/nx-container:build",
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
         "engine": "docker",
         "metadata": {
-          "images": [
-            "api-gateway"
-          ],
+          "images": ["api-gateway"],
           "load": true,
           "tags": [
             "type=schedule",
@@ -97,5 +83,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:server", "type:api"]
 }

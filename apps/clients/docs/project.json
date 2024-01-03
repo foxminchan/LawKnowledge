@@ -18,13 +18,9 @@
     },
     "stylelint": {
       "executor": "nx-stylelint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/clients/docs/**/*.css"
-        ],
+        "lintFilePatterns": ["apps/clients/docs/**/*.css"],
         "formatter": "unix"
       }
     },
@@ -42,5 +38,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:client"]
 }

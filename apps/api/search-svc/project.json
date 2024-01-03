@@ -25,9 +25,7 @@
     },
     "build": {
       "executor": "@nxlv/python:build",
-      "outputs": [
-        "{projectRoot}/dist"
-      ],
+      "outputs": ["{projectRoot}/dist"],
       "options": {
         "outputPath": "/apps/api/search-svc/dist",
         "publish": false,
@@ -47,9 +45,7 @@
     },
     "lint": {
       "executor": "@nxlv/python:flake8",
-      "outputs": [
-        "{workspaceRoot}/reports//apps/api/search-svc/pylint.txt"
-      ],
+      "outputs": ["{workspaceRoot}/reports//apps/api/search-svc/pylint.txt"],
       "options": {
         "outputFile": "reports//apps/api/search-svc/pylint.txt"
       }
@@ -79,5 +75,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:server", "type:api"]
 }

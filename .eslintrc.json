@@ -2,6 +2,41 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nx"],
+  "rules": {
+    "@nx/enforce-module-boundaries": [
+      "error",
+      {
+        "allow": [],
+        "depConstraints": [
+          {
+            "sourceTag": "scope:shared",
+            "onlyDependOnLibsWithTags": ["scope:shared"]
+          },
+          {
+            "sourceTag": "scope:server",
+            "onlyDependOnLibsWithTags": [
+              "type:api",
+              "scope:shared",
+              "scope:server"
+            ],
+            "notDependOnLibsWithTags": ["scope:client", "scope:nlp"],
+            "bannedExternalImports": ["*react*"]
+          },
+          {
+            "sourceTag": "scope:client",
+            "onlyDependOnLibsWithTags": ["scope:shared", "scope:client"],
+            "notDependOnLibsWithTags": ["scope:server", "scope:nlp"],
+            "bannedExternalImports": ["@nestjs/*"]
+          },
+          {
+            "sourceTag": "scope:nlp",
+            "onlyDependOnLibsWithTags": ["scope:shared", "scope:nlp"],
+            "notDependOnLibsWithTags": ["scope:server", "scope:client"]
+          }
+        ]
+      }
+    ]
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

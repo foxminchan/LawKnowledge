@@ -22,9 +22,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "sonar": {
       "executor": "@koliveira15/nx-sonarqube:scan",
@@ -40,8 +38,6 @@
       }
     }
   },
-  "implicitDependencies": [
-    "website"
-  ],
-  "tags": []
+  "implicitDependencies": ["website"],
+  "tags": ["scope:client"]
 }

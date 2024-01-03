@@ -43,6 +43,7 @@
     "fastify",
     "peaceiris",
     "akebifiky",
+    "foxminchan",
     "repassword",
     "vectorstore"
   ]

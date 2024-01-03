@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/clients/website"
@@ -56,18 +54,14 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": [
-        "{options.reportsDirectory}"
-      ],
+      "outputs": ["{options.reportsDirectory}"],
       "options": {
         "reportsDirectory": "../../../coverage/apps/clients/website"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
@@ -77,13 +71,9 @@
     },
     "stylelint": {
       "executor": "nx-stylelint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/clients/website/**/*.css"
-        ]
+        "lintFilePatterns": ["apps/clients/website/**/*.css"]
       }
     },
     "sonar": {
@@ -101,15 +91,11 @@
     },
     "container": {
       "executor": "@nx-tools/nx-container:build",
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
         "engine": "docker",
         "metadata": {
-          "images": [
-            "website"
-          ],
+          "images": ["website"],
           "load": true,
           "tags": [
             "type=schedule",
@@ -122,5 +108,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:client"]
 }
