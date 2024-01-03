@@ -1,0 +1,50 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package heading.test;
+
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
+message Heading {
+	string name = 1;
+	int32 no = 2;
+	optional string topic_id = 3;
+}
+
+message HeadingCreateRequest {
+	Heading headings = 1;
+}
+
+message HeadingResponse {
+	string id = 1;
+	Heading heading = 2;
+}
+
+message HeadingUpdateRequest {
+	string id = 1;
+	Heading headings = 2;
+}
+
+service HeadingService {
+	rpc CreateHeading(HeadingCreateRequest) returns (HeadingResponse) {}
+	rpc UpdateHeading(HeadingUpdateRequest) returns (HeadingResponse) {}
+	rpc DeleteHeading(Id) returns (HeadingResponse) {}
+	rpc GetHeading(Id) returns (HeadingResponse) {}
+	rpc GetHeadings(Criteria) returns (stream HeadingResponse) {}
+}

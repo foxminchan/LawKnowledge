@@ -1,0 +1,49 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package topic.test;
+
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
+message Topic {
+	string name = 1;
+	optional int32 no = 2;
+}
+
+message TopicCreateRequest {
+	Topic topic = 1;
+}
+
+message TopicResponse {
+	string id = 1;
+	Topic topic = 2;
+}
+
+message TopicUpdateRequest {
+	string id = 1;
+	Topic topic = 2;
+}
+
+service TopicService {
+	rpc CreateTopic(TopicCreateRequest) returns (TopicResponse) {}
+	rpc UpdateTopic(TopicUpdateRequest) returns (TopicResponse) {}
+	rpc DeleteTopic(Id) returns (TopicResponse) {}
+	rpc GetTopic(Id) returns (TopicResponse) {}
+	rpc GetTopics(Criteria) returns (stream TopicResponse) {}
+}

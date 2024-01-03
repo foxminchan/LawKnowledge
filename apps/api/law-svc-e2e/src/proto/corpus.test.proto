@@ -1,0 +1,52 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package corpus.test;
+
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
+message Corpus {
+	string name = 1;
+	optional string indexing = 2;
+	optional string heading_id = 3;
+	optional string parent_id = 4;
+	optional string related_id = 5;
+	optional string codification_id = 6;
+}
+
+message CorpusCreateRequest {
+  Corpus corpus = 1;
+}
+
+message CorpusResponse {
+	string id = 1;
+	Corpus corpus = 2;
+}
+
+message CorpusUpdateRequest {
+	Corpus corpus = 1;
+}
+
+service CorpusService {
+	rpc CreateCorpus(CorpusCreateRequest) returns (CorpusResponse);
+	rpc UpdateCorpus(CorpusUpdateRequest) returns (CorpusResponse);
+	rpc DeleteCorpus(Id) returns (CorpusResponse);
+	rpc GetCorpus(Id) returns (CorpusResponse);
+	rpc GetCorpuses(Criteria) returns (stream CorpusResponse);
+}

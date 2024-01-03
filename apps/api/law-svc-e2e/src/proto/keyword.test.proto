@@ -1,0 +1,49 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package keyword.test;
+
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
+message Keyword {
+	string name = 1;
+	optional string codification_id = 2;
+}
+
+message KeywordCreateRequest {
+	Keyword keyword = 1;
+}
+
+message KeywordResponse {
+	string id = 1;
+	Keyword keyword = 2;
+}
+
+message KeywordUpdateRequest {
+	string id = 1;
+	Keyword keyword = 2;
+}
+
+service KeywordService {
+	rpc CreateKeyword(KeywordCreateRequest) returns (KeywordResponse) {}
+	rpc UpdateKeyword(KeywordUpdateRequest) returns (KeywordResponse) {}
+	rpc DeleteKeyword(Id) returns (KeywordResponse) {}
+	rpc GetKeyword(Id) returns (KeywordResponse) {}
+	rpc GetKeywords(Criteria) returns (stream KeywordResponse) {}
+}

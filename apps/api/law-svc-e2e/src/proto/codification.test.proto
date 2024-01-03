@@ -1,0 +1,50 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package codification.test;
+
+message Codification {
+	string name = 1;
+	optional string indexing = 2;
+	optional string parent_id = 3;
+}
+
+message CodificationCreateRequest {
+  Codification codification = 1;
+}
+
+message CodificationResponse {
+	Id id = 1;
+	Codification codification = 2;
+}
+
+message CodificationUpdateRequest {
+	Id id = 1;
+	Codification codification = 2;
+}
+
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
+service CodificationService {
+	rpc CreateCodification(CodificationCreateRequest) returns (CodificationResponse) {}
+	rpc UpdateCodification(CodificationUpdateRequest) returns (CodificationResponse) {}
+	rpc DeleteCodification(Id) returns (CodificationResponse) {}
+	rpc GetCodification(Id) returns (CodificationResponse) {}
+	rpc GetCodifications(Criteria) returns (stream CodificationResponse) {}
+}

@@ -1,0 +1,60 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package document.test;
+
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
+message Document {
+	string name = 1;
+	string content = 2;
+	optional string codification_id = 3;
+	optional string heading_id = 4;
+}
+
+message DocumentCreateRequest {
+	Document document = 1;
+}
+
+message DocumentResponse {
+	string id = 1;
+	Document document = 2;
+}
+
+message DocumentUpdateRequest {
+	string id = 1;
+	Document document = 2;
+}
+
+message SummarizeRequest {
+	string context = 1;
+}
+
+message SummarizeResponse {
+	string summary = 1;
+}
+
+service DocumentService {
+	rpc CreateDocument(DocumentCreateRequest) returns (DocumentResponse) {}
+	rpc UpdateDocument(DocumentUpdateRequest) returns (DocumentResponse) {}
+	rpc DeleteDocument(Id) returns (DocumentResponse) {}
+	rpc GetDocument(Id) returns (DocumentResponse) {}
+	rpc GetDocuments(Criteria) returns (stream DocumentResponse) {}
+	rpc SummarizeDocument(SummarizeRequest) returns (SummarizeResponse) {}
+}

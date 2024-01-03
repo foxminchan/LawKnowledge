@@ -1,0 +1,51 @@
+// Copyright (c) 2023-present Hutech University. All rights reserved
+// Licensed under the MIT License
+
+syntax = "proto3";
+
+package tableform.test;
+
+message Criteria {
+	int32 page = 1;
+	int64 limit = 2;
+	SortBy sort = 3;
+	string orderBy = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+enum SortBy {
+	ASC = 0;
+	DESC = 1;
+}
+
+message TableForm {
+	string name = 1;
+	string type = 2;
+	optional string codification_id = 3;
+	optional string corpus_id = 4;
+}
+
+message TableFormCreateRequest {
+	TableForm table_form = 1;
+}
+
+message TableFormResponse {
+	string id = 1;
+	TableForm table_form = 2;
+}
+
+message TableFormUpdateRequest {
+	string id = 1;
+	TableForm table_form = 2;
+}
+
+service TableFormService {
+	rpc CreateTableForm(TableFormCreateRequest) returns (TableFormResponse) {}
+	rpc UpdateTableForm(TableFormUpdateRequest) returns (TableFormResponse) {}
+	rpc DeleteTableForm(Id) returns (TableFormResponse) {}
+	rpc GetTableForm(Id) returns (TableFormResponse) {}
+	rpc GetTableForms(Criteria) returns (stream TableFormResponse) {}
+}
