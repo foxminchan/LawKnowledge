@@ -111,6 +111,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./redis:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     command: redis-server --requirepass hutech$123
     ports:
       - '6379:6379'
