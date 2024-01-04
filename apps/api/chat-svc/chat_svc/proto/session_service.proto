@@ -6,10 +6,10 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
 service ChatSessionService {
-    rpc GetChatSession(GetChatSessionRequest) returns (GetChatSessionResponse) {}
-    rpc GetChatSessions(GetChatSessionsRequest) returns (GetChatSessionResponse) {}
-    rpc CreateChatSession(CreateChatSessionRequest) returns (GetChatSessionResponse) {}
-    rpc UpdateChatSession(UpdateChatSessionRequest) returns (UpdateChatSessionResponse) {}
+    rpc GetChatSession(GetChatSessionRequest) returns (ChatSessionResponse) {}
+    rpc GetChatSessions(GetChatSessionsRequest) returns (GetChatSessionsResponse) {}
+    rpc CreateChatSession(CreateChatSessionRequest) returns (ChatSessionResponse) {}
+    rpc UpdateChatSession(UpdateChatSessionRequest) returns (ChatSessionResponse) {}
     rpc DeleteChatSession(DeleteChatSessionRequest) returns (DeleteChatSessionResponse) {}
 }
 
@@ -21,8 +21,9 @@ message GetChatSessionsRequest {
     optional string order = 5;
 }
 
-message GetChatSessionResponse {
-    ChatSession chat_session = 1;
+message ChatSessionResponse {
+    string id = 1;
+    ChatSession chat_session = 2;
 }
 
 message CreateChatSessionRequest {
@@ -40,10 +41,6 @@ message UpdateChatSessionRequest {
     string name = 2;
 }
 
-message UpdateChatSessionResponse {
-    ChatSession chat_session = 1;
-}
-
 message DeleteChatSessionRequest {
     string id = 1;
 }
@@ -53,7 +50,6 @@ message DeleteChatSessionResponse {
 }
 
 message ChatSession {
-    string id = 1;
     string name = 2;
     google.protobuf.Timestamp created_at = 3;
     string user_id = 4;

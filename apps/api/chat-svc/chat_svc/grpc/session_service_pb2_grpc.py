@@ -17,22 +17,22 @@ class ChatSessionServiceStub(object):
         self.GetChatSession = channel.unary_unary(
                 '/ChatSessionService/GetChatSession',
                 request_serializer=session__service__pb2.GetChatSessionRequest.SerializeToString,
-                response_deserializer=session__service__pb2.GetChatSessionResponse.FromString,
+                response_deserializer=session__service__pb2.ChatSessionResponse.FromString,
                 )
         self.GetChatSessions = channel.unary_unary(
                 '/ChatSessionService/GetChatSessions',
                 request_serializer=session__service__pb2.GetChatSessionsRequest.SerializeToString,
-                response_deserializer=session__service__pb2.GetChatSessionResponse.FromString,
+                response_deserializer=session__service__pb2.GetChatSessionsResponse.FromString,
                 )
         self.CreateChatSession = channel.unary_unary(
                 '/ChatSessionService/CreateChatSession',
                 request_serializer=session__service__pb2.CreateChatSessionRequest.SerializeToString,
-                response_deserializer=session__service__pb2.GetChatSessionResponse.FromString,
+                response_deserializer=session__service__pb2.ChatSessionResponse.FromString,
                 )
         self.UpdateChatSession = channel.unary_unary(
                 '/ChatSessionService/UpdateChatSession',
                 request_serializer=session__service__pb2.UpdateChatSessionRequest.SerializeToString,
-                response_deserializer=session__service__pb2.UpdateChatSessionResponse.FromString,
+                response_deserializer=session__service__pb2.ChatSessionResponse.FromString,
                 )
         self.DeleteChatSession = channel.unary_unary(
                 '/ChatSessionService/DeleteChatSession',
@@ -80,22 +80,22 @@ def add_ChatSessionServiceServicer_to_server(servicer, server):
             'GetChatSession': grpc.unary_unary_rpc_method_handler(
                     servicer.GetChatSession,
                     request_deserializer=session__service__pb2.GetChatSessionRequest.FromString,
-                    response_serializer=session__service__pb2.GetChatSessionResponse.SerializeToString,
+                    response_serializer=session__service__pb2.ChatSessionResponse.SerializeToString,
             ),
             'GetChatSessions': grpc.unary_unary_rpc_method_handler(
                     servicer.GetChatSessions,
                     request_deserializer=session__service__pb2.GetChatSessionsRequest.FromString,
-                    response_serializer=session__service__pb2.GetChatSessionResponse.SerializeToString,
+                    response_serializer=session__service__pb2.GetChatSessionsResponse.SerializeToString,
             ),
             'CreateChatSession': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateChatSession,
                     request_deserializer=session__service__pb2.CreateChatSessionRequest.FromString,
-                    response_serializer=session__service__pb2.GetChatSessionResponse.SerializeToString,
+                    response_serializer=session__service__pb2.ChatSessionResponse.SerializeToString,
             ),
             'UpdateChatSession': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateChatSession,
                     request_deserializer=session__service__pb2.UpdateChatSessionRequest.FromString,
-                    response_serializer=session__service__pb2.UpdateChatSessionResponse.SerializeToString,
+                    response_serializer=session__service__pb2.ChatSessionResponse.SerializeToString,
             ),
             'DeleteChatSession': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteChatSession,
@@ -125,7 +125,7 @@ class ChatSessionService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ChatSessionService/GetChatSession',
             session__service__pb2.GetChatSessionRequest.SerializeToString,
-            session__service__pb2.GetChatSessionResponse.FromString,
+            session__service__pb2.ChatSessionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -142,7 +142,7 @@ class ChatSessionService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ChatSessionService/GetChatSessions',
             session__service__pb2.GetChatSessionsRequest.SerializeToString,
-            session__service__pb2.GetChatSessionResponse.FromString,
+            session__service__pb2.GetChatSessionsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -159,7 +159,7 @@ class ChatSessionService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ChatSessionService/CreateChatSession',
             session__service__pb2.CreateChatSessionRequest.SerializeToString,
-            session__service__pb2.GetChatSessionResponse.FromString,
+            session__service__pb2.ChatSessionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -176,7 +176,7 @@ class ChatSessionService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ChatSessionService/UpdateChatSession',
             session__service__pb2.UpdateChatSessionRequest.SerializeToString,
-            session__service__pb2.UpdateChatSessionResponse.FromString,
+            session__service__pb2.ChatSessionResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

@@ -12,6 +12,8 @@ import { ChatService } from './chat/chat.service';
 import { ChatController } from './chat/chat.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { SocketConnectionService } from './chat/connection.service';
+import { ChatHistoryController, ChatHistoryService } from './message';
+import { ChatSessionController, ChatSessionService } from './session';
 
 @Module({
   imports: [
@@ -33,7 +35,14 @@ import { SocketConnectionService } from './chat/connection.service';
       },
     ]),
   ],
-  controllers: [ChatController],
-  providers: [SocketGateway, ChatService, WsJwtGuard, SocketConnectionService],
+  controllers: [ChatController, ChatHistoryController, ChatSessionController],
+  providers: [
+    WsJwtGuard,
+    ChatService,
+    SocketGateway,
+    ChatSessionService,
+    ChatHistoryService,
+    SocketConnectionService,
+  ],
 })
 export class ChatSvcModule {}
