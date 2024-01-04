@@ -6,6 +6,7 @@
 import {
   LawSvcModule,
   AuthSvcModule,
+  ChatSvcModule,
   SearchSvcModule,
   HealthCheckModule,
 } from './modules';
@@ -29,6 +30,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
     LoggerModule,
     LawSvcModule,
     AuthSvcModule,
+    ChatSvcModule,
     NestHttpModule,
     SearchSvcModule,
     RateLimitModule,

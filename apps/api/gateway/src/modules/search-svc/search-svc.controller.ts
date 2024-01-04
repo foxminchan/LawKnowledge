@@ -3,15 +3,20 @@
  * Licensed under the MIT License
  */
 
+import {
+  Key,
+  ApiController,
+  SwaggerResponse,
+} from '@law-knowledge/building-block';
 import { Get, Query } from '@nestjs/common';
 import { SearchService } from './search-svc.service';
 import { SearchRequest } from './search-svc.interface';
-import { ApiController, SwaggerResponse } from '@law-knowledge/building-block';
 
 @ApiController('search')
 export class SearchController {
   constructor(private readonly searchService: SearchService) {}
 
+  @Key()
   @Get()
   @SwaggerResponse({
     operation: 'Embedding documents',

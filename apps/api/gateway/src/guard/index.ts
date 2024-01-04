@@ -3,4 +3,4 @@
  * Licensed under the MIT License
  */
 
-export * from './chat-svc.module';
+export * from './ws.guard';
