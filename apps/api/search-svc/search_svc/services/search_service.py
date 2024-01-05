@@ -1,7 +1,5 @@
-#
 # Copyright (c) 2023-present Hutech University. All rights reserved
 # Licensed under the MIT License
-#
 
 from pymongo import MongoClient
 from search_svc.core.configs import configs

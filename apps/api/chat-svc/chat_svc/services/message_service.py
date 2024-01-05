@@ -1,7 +1,5 @@
-#
 # Copyright (c) 2023-present Hutech University. All rights reserved
 # Licensed under the MIT License
-#
 
 from prisma import Prisma
 import chat_svc.grpc.message_service_pb2_grpc as handler
