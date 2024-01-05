@@ -6,7 +6,7 @@ from diagrams import Diagram, Cluster
 from diagrams.aws.compute import EKS, ECS
 from diagrams.aws.network import Route53, ALB
 
-with Diagram("Clustered Web Services", show=False):
+with Diagram("AWS Diagram", show=False):
     dns = Route53("dns")
     lb = ALB("lb")
     waf = WAF("waf")
