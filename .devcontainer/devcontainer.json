@@ -1,6 +1,18 @@
 {
-  "name": "Ubuntu",
-  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "name": "LawKnowledge",
+  "workspaceFolder": "/workspace",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "VARIANT": "3.9",
+      "INSTALL_NODE": "true"
+    }
+  },
+  "dockerComposeFile": [
+    "../deploys/docker/docker-compose.o11y.yml",
+    "../deploys/docker/docker-compose.ci.yml"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
@@ -10,6 +22,46 @@
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.9.5",
       "optimize": true
+    }
+  },
+  "forwardPorts": [
+    "gateway:8080",
+    "auth-svc:8081",
+    "law-svc:8082",
+    "search-svc:8083",
+    "chat-svc:8084",
+    "website:3000",
+    "docs:4200"
+  ],
+  "postCreateCommand": "bash .devcontainer/init.sh",
+  "portsAttributes": {
+    "8080": {
+      "protocol": "http",
+      "label": "gateway"
+    },
+    "8081": {
+      "protocol": "http",
+      "label": "auth-svc"
+    },
+    "8082": {
+      "protocol": "http",
+      "label": "law-svc"
+    },
+    "8083": {
+      "protocol": "http",
+      "label": "search-svc"
+    },
+    "8084": {
+      "protocol": "http",
+      "label": "chat-svc"
+    },
+    "3000": {
+      "protocol": "http",
+      "label": "website"
+    },
+    "4200": {
+      "protocol": "http",
+      "label": "docs"
     }
   },
   "customizations": {

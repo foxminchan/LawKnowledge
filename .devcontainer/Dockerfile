@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full-vnc:2023-11-24-15-04-57
+FROM mcr.microsoft.com/devcontainers/base:jammy
 
 RUN sudo apt-get update \
 	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \

@@ -18,3 +18,24 @@ vscode:
     - "ms-python.python"
     - "dbaeumer.vscode-eslint"
     - "doi.fileheadercomment"
+
+ports:
+  - name: Gateway
+    port: 8080
+    visibility: public
+  - name: Auth Service
+    port: 8081
+    visibility: public
+  - name: Law Service
+    port: 8082
+    visibility: public
+  - name: Search Service
+    port: 8083
+    visibility: public
+  - name: Chat Service
+    port: 8084
+    visibility: public
+  - name: Website
+    port: 3000
+    visibility: public
+    onOpen: open-browser
