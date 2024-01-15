@@ -13,11 +13,12 @@ import { ErrorBoundary, PageLoading } from '@ant-design/pro-components';
 const Law = loadable(() => import('@features/Law'));
 const Home = loadable(() => import('@features/Home'));
 const Chat = loadable(() => import('@features/Chat'));
+const Item = loadable(() => import('@/features/Item'));
+const Items = loadable(() => import('@/features/Items'));
 const Search = loadable(() => import('@features/Search'));
 const SignIn = loadable(() => import('@features/SignIn'));
 const SignUp = loadable(() => import('@features/SignUp'));
 const NotFound = loadable(() => import('@components/NotFound'));
-const ItemDetail = loadable(() => import('@features/ItemDetail'));
 
 export default function App() {
   return (
@@ -67,7 +68,16 @@ export default function App() {
             errorElement={<ErrorBoundary />}
             element={
               <Suspense fallback={<PageLoading />}>
-                <ItemDetail title="Chi tiết văn bản" />
+                <Item title="Chi tiết văn bản" />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/van-ban"
+            errorElement={<ErrorBoundary />}
+            element={
+              <Suspense fallback={<PageLoading />}>
+                <Items title="Danh sách văn bản" />
               </Suspense>
             }
           />

@@ -4,7 +4,7 @@ type Props = {
   title: string;
 };
 
-export default function ItemDetail(props: Readonly<Props>) {
+export default function Item(props: Readonly<Props>) {
   useMetadata(props.title);
   return <div>index</div>;
 }
