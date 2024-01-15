@@ -127,4 +127,33 @@ class CodificationCrawler:
 
     @staticmethod
     def process_data():
-        CodificationCrawler.convert_to_csv()
+        def process_file(file):
+            with open(CodificationCrawler.RAW_DATA_FOLDER + '/demuc/' + file, 'r', encoding='utf-8') as f:
+                text = f.read()
+                text = text.split('Chương')
+                content = []
+                for i in range(1, len(text)):
+                    chapter = text[i].split('Mục')[0].strip()
+                    section = text[i].split('Điều')[0].strip()
+                    article = text[i].split('Điều')[1].strip()
+                    content.append({
+                        'chapter': chapter,
+                        'section': section,
+                        'article': article
+                    })
+                return content
+
+        files = os.listdir(CodificationCrawler.RAW_DATA_FOLDER + '/demuc')
+        files = [f for f in files if f.endswith('.txt')]
+        data = []
+
+        with ThreadPoolExecutor() as executor:
+            results = list(executor.map(process_file, files))
+
+        for result in results:
+            data.extend(result)
+
+        with open(CodificationCrawler.RAW_DATA_FOLDER + '/data.csv', 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=data[0].keys())
+            writer.writeheader()
+            writer.writerows(data)
