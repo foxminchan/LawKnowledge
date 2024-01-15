@@ -21,10 +21,12 @@
   "include": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.app.json",
+      "composite": true
     },
     {
-      "path": "./tsconfig.spec.json"
+      "path": "./tsconfig.spec.json",
+      "composite": true
     }
   ],
   "extends": "../../../tsconfig.base.json"

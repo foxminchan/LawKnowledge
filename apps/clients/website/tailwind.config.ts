@@ -46,6 +46,9 @@ export default {
         },
       },
     },
+    backgroundImage: {
+      'search-bg': "url('./assets/images/search-bg.jpg')",
+    },
   },
   plugins: [tailwindTypo],
 };
