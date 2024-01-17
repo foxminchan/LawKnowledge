@@ -5,7 +5,8 @@
 
 import { useRef } from 'react';
 import { useAtom } from 'jotai';
-import { Breadcrumb } from 'antd';
+import { Link } from 'react-router-dom';
+import { Breadcrumb, Button } from 'antd';
 import useMetadata from '@/common/hooks/useMetadata';
 import { ItemResponse } from './types/law-search.type';
 import { lawSearchAtom } from './atoms/law-search.atom';
@@ -30,19 +31,33 @@ export default function Items(props: Readonly<Props>) {
       dataIndex: 'name',
       title: 'Văn bản',
       width: 400,
+      render: (text, record) => (
+        <Link to={`/van-ban/${record.id}`} target="_blank" rel="noreferrer">
+          {text}
+        </Link>
+      ),
       align: 'center',
+      fieldProps: {
+        placeholder: 'Nhập tên văn bản',
+      },
     },
     {
       dataIndex: 'topic',
       title: 'Chủ đề',
       width: 200,
       align: 'center',
+      fieldProps: {
+        placeholder: 'Nhập chủ đề',
+      },
     },
     {
       dataIndex: 'heading',
       title: 'Đề mục',
       width: 200,
       align: 'center',
+      fieldProps: {
+        placeholder: 'Nhập đề mục',
+      },
     },
   ];
 
@@ -56,6 +71,13 @@ export default function Items(props: Readonly<Props>) {
       </Breadcrumb>
       <ProTable<ItemResponse>
         headerTitle="Danh sách văn bản"
+        options={{
+          reloadIcon: true,
+          densityIcon: true,
+          fullScreen: true,
+          reload: true,
+          setting: false,
+        }}
         columns={columns}
         actionRef={actionRef}
         cardBordered
@@ -70,7 +92,41 @@ export default function Items(props: Readonly<Props>) {
         }}
         rowKey="id"
         search={{
-          labelWidth: 'auto',
+          layout: 'vertical',
+          defaultCollapsed: false,
+          resetText: 'Tải lại',
+          searchText: 'Tìm kiếm',
+          optionRender: ({ searchText, resetText }, { form }) => [
+            <Button
+              key="search"
+              className="bg-japonica-400 !text-white hover:!bg-japonica-600 border-none"
+              onClick={() => {
+                form?.submit();
+              }}
+            >
+              {searchText}
+            </Button>,
+            <Button
+              key="reset"
+              className="hover:!text-japonica-400 hover:!bg-white hover:!border-japonica-400"
+              onClick={() => {
+                form?.resetFields();
+              }}
+            >
+              {resetText}
+            </Button>,
+          ],
+        }}
+        form={{
+          syncToUrl: (values, type) => {
+            if (type === 'get') {
+              return {
+                ...values,
+                created_at: [values.startTime, values.endTime],
+              };
+            }
+            return values;
+          },
         }}
         scroll={{
           x: 1300,
@@ -83,7 +139,7 @@ export default function Items(props: Readonly<Props>) {
             `${range[0]}-${range[1]} trên ${total} văn bản`,
         }}
         locale={{
-          emptyText: 'Hiện chưa có dữ liệu',
+          emptyText: <div className="text-center">Không có dữ liệu</div>,
         }}
       />
     </>
